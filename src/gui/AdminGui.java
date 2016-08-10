@@ -31,58 +31,72 @@ public class AdminGui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        btnDisconnect = new javax.swing.JButton();
-        btnExit = new javax.swing.JButton();
+        btnExit = new javax.swing.JLabel();
+        btnDisconnect = new javax.swing.JLabel();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1024, 768));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/Admin.jpg"))); // NOI18N
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                btnExitMouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        btnDisconnect.setText("jButton1");
-        btnDisconnect.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDisconnectActionPerformed(evt);
+        btnExit.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                btnExitPropertyChange(evt);
             }
         });
-        getContentPane().add(btnDisconnect, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 655, 190, 50));
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 710, 180, 40));
 
-        btnExit.setText("jButton1");
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 700, 190, 50));
+        btnDisconnect.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDisconnectMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnDisconnect, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 180, 40));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/Admin.jpg"))); // NOI18N
+        Background.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BackgroundMouseClicked(evt);
+            }
+        });
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        // TODO add your handling code here:
-        System.err.println("Closing VirtualShape");
+    private void BackgroundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackgroundMouseClicked
+    
+    }//GEN-LAST:event_BackgroundMouseClicked
+
+    private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
         dispose();
         System.exit(0);
-   
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_btnExitMouseClicked
 
-    private void btnDisconnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisconnectActionPerformed
+    private void btnDisconnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDisconnectMouseClicked
         // TODO add your handling code here:
         dispose();
         LoginView tmp = new LoginView();
         tmp.setVisible(true);
-    }//GEN-LAST:event_btnDisconnectActionPerformed
+        
+    }//GEN-LAST:event_btnDisconnectMouseClicked
+
+    private void btnExitPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_btnExitPropertyChange
+        // TODO add your handling code here:
+     
+    }//GEN-LAST:event_btnExitPropertyChange
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         
-        LoginView login = new LoginView();
-        login.setVisible(true);
+      
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -116,8 +130,8 @@ public class AdminGui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDisconnect;
-    private javax.swing.JButton btnExit;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel Background;
+    private javax.swing.JLabel btnDisconnect;
+    private javax.swing.JLabel btnExit;
     // End of variables declaration//GEN-END:variables
 }
