@@ -5,6 +5,8 @@
  */
 package gui;
 
+import gui.internal.iStatistics;
+
 /**
  *
  * @author nisan
@@ -31,6 +33,9 @@ public class AdminGui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ContentFrame = new javax.swing.JDesktopPane();
+        checkbox1 = new java.awt.Checkbox();
+        btnStatistics = new javax.swing.JLabel();
         btnExit = new javax.swing.JLabel();
         btnDisconnect = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
@@ -38,6 +43,22 @@ public class AdminGui extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1024, 768));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ContentFrame.setOpaque(false);
+        ContentFrame.setVisible(false);
+
+        checkbox1.setLabel("checkbox1");
+        ContentFrame.add(checkbox1);
+        checkbox1.setBounds(230, 180, 84, 20);
+
+        getContentPane().add(ContentFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 820, 590));
+
+        btnStatistics.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnStatisticsMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnStatistics, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 190, 50));
 
         btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -91,6 +112,14 @@ public class AdminGui extends javax.swing.JFrame {
      
     }//GEN-LAST:event_btnExitPropertyChange
 
+    private void btnStatisticsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStatisticsMouseClicked
+        // TODO add your handling code here:
+        //Open Internal JFrame
+        iStatistics comp = new iStatistics();
+        ContentFrame.add(comp);
+        ContentFrame.setVisible(true);
+    }//GEN-LAST:event_btnStatisticsMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -131,7 +160,10 @@ public class AdminGui extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
+    private javax.swing.JDesktopPane ContentFrame;
     private javax.swing.JLabel btnDisconnect;
     private javax.swing.JLabel btnExit;
+    private javax.swing.JLabel btnStatistics;
+    private java.awt.Checkbox checkbox1;
     // End of variables declaration//GEN-END:variables
 }
