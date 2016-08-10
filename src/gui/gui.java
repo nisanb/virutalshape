@@ -5,21 +5,10 @@
  */
 package gui;
 
-import javax.swing.JFrame;
-
 /**
  *
  * @author nisan
  */
-public class MainGui {
-
-    
-    public static void main(String args[]){
-     LoginView login = new LoginView();
-     login.setVisible(true);
-
-    }
-    
-    
+class gui {
     
 }

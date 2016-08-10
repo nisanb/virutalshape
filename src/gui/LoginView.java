@@ -6,6 +6,8 @@
 package gui;
 
 import java.awt.Color;
+import javax.swing.JFrame;
+import gui.AdminGui;
 //TEST
 /**
  *
@@ -141,8 +143,8 @@ public class LoginView extends javax.swing.JFrame {
         // TODO add your handling code here:
                 System.err.println("Clicked!");
                 dispose();
-                MainGui login = new MainGui();
-                login.setVisible(true);
+                AdminGui openGUI = new AdminGui();
+                openGUI.setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
