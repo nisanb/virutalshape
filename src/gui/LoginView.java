@@ -18,6 +18,7 @@ public class LoginView extends javax.swing.JFrame {
      */
     public LoginView() {
         initComponents();
+        System.err.println("Display Login View");
     }
 
     /**
