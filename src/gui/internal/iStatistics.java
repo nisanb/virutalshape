@@ -5,6 +5,8 @@
  */
 package gui.internal;
 
+import java.awt.Color;
+
 /**
  *
  * @author nisan
@@ -29,6 +31,14 @@ public class iStatistics extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 102, 0));
+        setBorder(null);
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setMaximumSize(new java.awt.Dimension(79, 33));
+        setPreferredSize(new java.awt.Dimension(79, 33));
+
         jLabel1.setText("Statistics View");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -38,14 +48,14 @@ public class iStatistics extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(104, 104, 104)
                 .addComponent(jLabel1)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addContainerGap(223, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addContainerGap(256, Short.MAX_VALUE))
         );
 
         pack();
