@@ -5,10 +5,9 @@
  */
 package gui;
 
-//Nissan Gay
-//Test
-
-import gui.internal.iStatistics;
+import gui.internal.iStatisticsNew;
+import java.awt.Color;
+import javax.swing.JDesktopPane;
 
 /**
  *
@@ -43,6 +42,8 @@ public class AdminGui extends javax.swing.JFrame {
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 51, 204));
+        setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setMaximumSize(new java.awt.Dimension(1024, 768));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -72,8 +73,23 @@ public class AdminGui extends javax.swing.JFrame {
         });
         getContentPane().add(btnDisconnect, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 180, 40));
 
+        ContentFrame.setForeground(new java.awt.Color(255, 51, 102));
+        ;
+        ContentFrame.setAutoscrolls(true);
         ContentFrame.setOpaque(false);
         ContentFrame.setVisible(false);
+
+        javax.swing.GroupLayout ContentFrameLayout = new javax.swing.GroupLayout(ContentFrame);
+        ContentFrame.setLayout(ContentFrameLayout);
+        ContentFrameLayout.setHorizontalGroup(
+            ContentFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 820, Short.MAX_VALUE)
+        );
+        ContentFrameLayout.setVerticalGroup(
+            ContentFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 670, Short.MAX_VALUE)
+        );
+
         getContentPane().add(ContentFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 820, 670));
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/Admin.jpg"))); // NOI18N
@@ -112,7 +128,7 @@ public class AdminGui extends javax.swing.JFrame {
     private void btnStatisticsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStatisticsMouseClicked
         // TODO add your handling code here:
         //Open Internal JFrame
-        iStatistics comp = new iStatistics();
+        iStatisticsNew comp = new iStatisticsNew();
         comp.setVisible(true);
         ContentFrame.add(comp);
         ContentFrame.setVisible(true);
