@@ -37,6 +37,7 @@ public class AdminGui extends javax.swing.JFrame {
     private void initComponents() {
 
         btnStatistics = new javax.swing.JLabel();
+        btnBranches = new javax.swing.JLabel();
         btnExit = new javax.swing.JLabel();
         btnDisconnect = new javax.swing.JLabel();
         ContentFrame = new javax.swing.JPanel();
@@ -53,7 +54,14 @@ public class AdminGui extends javax.swing.JFrame {
                 btnStatisticsMouseClicked(evt);
             }
         });
-        getContentPane().add(btnStatistics, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 190, 50));
+        getContentPane().add(btnStatistics, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 190, 50));
+
+        btnBranches.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBranchesMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnBranches, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 190, 50));
 
         btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -134,6 +142,11 @@ public class AdminGui extends javax.swing.JFrame {
         iWindow.openWin(tmp, tmp.getWindowID());
     }//GEN-LAST:event_btnStatisticsMouseClicked
 
+    private void btnBranchesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBranchesMouseClicked
+        AddBranchForm add = new AddBranchForm();
+        iWindow.openWin(add, add.getWindowID());
+    }//GEN-LAST:event_btnBranchesMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -175,6 +188,7 @@ public class AdminGui extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
     private javax.swing.JPanel ContentFrame;
+    private javax.swing.JLabel btnBranches;
     private javax.swing.JLabel btnDisconnect;
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnStatistics;
