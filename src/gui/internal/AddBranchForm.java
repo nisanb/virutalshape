@@ -5,6 +5,9 @@
  */
 package gui.internal;
 
+import Validators.CharValidator;
+import Validators.PositiveValidator;
+import core.Branch;
 import java.awt.Color;
 import utils.E_Cities;
 
@@ -47,23 +50,29 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnAddBranch = new javax.swing.JButton();
         btnBranchCountry = new javax.swing.JTextField();
         btnBranchStreet = new javax.swing.JTextField();
         btnHouseNumber = new javax.swing.JTextField();
+        numError = new javax.swing.JLabel();
+        phoneError = new javax.swing.JLabel();
+        countryError = new javax.swing.JLabel();
+        streetError = new javax.swing.JLabel();
+        houseError = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setIconifiable(true);
+        setMaximizable(true);
         setAutoscrolls(true);
         setFrameIcon(null);
         setInheritsPopupMenu(true);
-        setMaximumSize(new java.awt.Dimension(410, 314));
-        setMinimumSize(new java.awt.Dimension(410, 314));
+        setMaximumSize(new java.awt.Dimension(560, 330));
+        setMinimumSize(new java.awt.Dimension(560, 330));
         setName(""); // NOI18N
-        setPreferredSize(new java.awt.Dimension(410, 314));
+        setPreferredSize(new java.awt.Dimension(500, 314));
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -113,6 +122,11 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnBranchNum.setCaretColor(new java.awt.Color(255, 255, 255));
         btnBranchNum.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         btnBranchNum.setSelectionColor(new java.awt.Color(204, 204, 204));
+        btnBranchNum.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                btnBranchNumFocusLost(evt);
+            }
+        });
         btnBranchNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBranchNumActionPerformed(evt);
@@ -127,9 +141,9 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnBranchName.setForeground(new java.awt.Color(255, 255, 255));
         btnBranchName.setText("Branch Name");
         btnBranchName.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        btnBranchName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBranchNameActionPerformed(evt);
+        btnBranchName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                btnBranchNameFocusLost(evt);
             }
         });
         getContentPane().add(btnBranchName);
@@ -165,19 +179,22 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel8);
         jLabel8.setBounds(30, 170, 110, 20);
 
-        jButton1.setText("OK");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAddBranch.setBackground(new java.awt.Color(102, 102, 102));
+        btnAddBranch.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAddBranch.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddBranch.setText("Add Branch");
+        btnAddBranch.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btnAddBranchMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAddBranch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAddBranchActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(160, 260, 73, 25);
+        getContentPane().add(btnAddBranch);
+        btnAddBranch.setBounds(190, 260, 110, 23);
 
         btnBranchCountry.setBackground(new java.awt.Color(0, 0, 0));
         btnBranchCountry.setColumns(20);
@@ -221,6 +238,31 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         getContentPane().add(btnHouseNumber);
         btnHouseNumber.setBounds(160, 170, 170, 21);
 
+        numError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        numError.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(numError);
+        numError.setBounds(350, 20, 170, 20);
+
+        phoneError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        phoneError.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(phoneError);
+        phoneError.setBounds(350, 200, 170, 20);
+
+        countryError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        countryError.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(countryError);
+        countryError.setBounds(350, 80, 170, 20);
+
+        streetError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        streetError.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(streetError);
+        streetError.setBounds(350, 140, 180, 20);
+
+        houseError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        houseError.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(houseError);
+        houseError.setBounds(350, 170, 180, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -231,14 +273,6 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
     private void btnBranchNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBranchNumActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBranchNumActionPerformed
-
-    private void btnBranchNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBranchNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBranchNameActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnBranchCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBranchCountryActionPerformed
         // TODO add your handling code here:
@@ -256,20 +290,47 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_slctCityActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void btnAddBranchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddBranchMouseClicked
         // TODO add your handling code here:
         System.out.println(slctCity.getSelectedItem());
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_btnAddBranchMouseClicked
+
+    private void btnAddBranchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddBranchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddBranchActionPerformed
+
+    private void btnBranchNumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchNumFocusLost
+        String str = btnBranchNum.getText();
+        System.err.println("CHeck");
+        if (!CharValidator.isNumber(str) || !PositiveValidator.isPositiveStringNum(str)){
+            numError.setText("Positive numbers only");
+            pack();
+            return;
+        }          
+        
+        if (!iWindow.DB.getBranches().containsKey(Integer.parseInt(btnBranchNum.getText()))){
+              //numError.setText("OK");
+           }
+           else numError.setText("Branch num exists");
+        
+        pack();
+    }//GEN-LAST:event_btnBranchNumFocusLost
+
+    private void btnBranchNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchNameFocusLost
+       //TODO
+    }//GEN-LAST:event_btnBranchNameFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddBranch;
     private javax.swing.JTextField btnBranchCountry;
     private javax.swing.JTextField btnBranchName;
     private javax.swing.JTextField btnBranchNum;
     private javax.swing.JTextField btnBranchStreet;
     private javax.swing.JTextField btnHouseNumber;
     private javax.swing.JTextField btnPhoneNumber;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel countryError;
+    private javax.swing.JLabel houseError;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -277,7 +338,10 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel numError;
+    private javax.swing.JLabel phoneError;
     private javax.swing.JComboBox<String> slctCity;
+    private javax.swing.JLabel streetError;
     // End of variables declaration//GEN-END:variables
 
     public int getWindowID(){

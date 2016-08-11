@@ -38,7 +38,6 @@ import utils.MyFileLogWriter;
 
 /**
  * The Main Class -The program runner
- *
  * @author Java Course Team 2016
  * @author University Of Haifa-Israel
  */
