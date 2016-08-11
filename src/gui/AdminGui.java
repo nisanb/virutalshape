@@ -125,6 +125,7 @@ public class AdminGui extends javax.swing.JFrame {
      
     }//GEN-LAST:event_btnExitPropertyChange
 
+    ///Commit
     private void btnStatisticsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStatisticsMouseClicked
         // TODO add your handling code here:
         //Open Internal JFrame
