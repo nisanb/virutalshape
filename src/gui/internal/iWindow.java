@@ -5,6 +5,7 @@
 package gui.internal;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JPanel;
 
 /**
  * @author mickey shalev
@@ -12,24 +13,24 @@ import javax.swing.JInternalFrame;
 public class iWindow {
     protected static boolean isInternalOpened = false;
     protected static JInternalFrame currentWindow = null;
-    
+    protected static JPanel panel = null;
     
     
     
     //================================= Setters and Getters ==================================
-    protected static void setWindowState(boolean state){
+    public static void setWindowState(boolean state){
         isInternalOpened = state;
     }
     
-    protected static boolean getWindowState(){
+    public static boolean getWindowState(){
         return isInternalOpened;
     }
     
-    protected static void setCurrentWindow(JInternalFrame frame){
+    public static void setCurrentWindow(JInternalFrame frame){
         currentWindow = frame;
     }
     
-    protected static JInternalFrame getCurrentWindow(){
+    public static JInternalFrame getCurrentWindow(){
         return currentWindow;
     }
     
@@ -40,23 +41,31 @@ public class iWindow {
      * This method controls the opened internal windows by hiding and showing desired windows
      * @param frame 
      */
-    protected static void openWin(JInternalFrame frame){
+    public static void openWin(JInternalFrame frame){
+        
+        frame.setOpaque(true);
         if (!getWindowState()){
             setCurrentWindow(frame);
+            getPanel().add(frame);
+            getPanel().setVisible(true);
             frame.setVisible(true);
             setWindowState(true);
         }else{
-            currentWindow.setVisible(false);
+            getCurrentWindow().hide();
             setCurrentWindow(frame);
-            currentWindow.setVisible(true);
-            setWindowState(true);
+            getPanel().add(frame);
+            getCurrentWindow().setVisible(true);
         }
 
         
         return;
     }
     
-    
-    
+    public static void setPanel(JPanel tmp){
+        panel=tmp;
+    }
+    public static JPanel getPanel(){
+        return panel;
+    }
     
 }
