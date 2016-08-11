@@ -39,25 +39,18 @@ public class LoginView extends javax.swing.JFrame {
         loginUser = new javax.swing.JTextField();
         loginPass = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
-
+        jButton1.setBackground(new Color(0,0,0,0));
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 285, 360, 70));
 
-        jButton1.setBackground(new Color(0,0,0,0));
-        jButton1.setActionCommand("");
-        jButton1.setBorder(null);
-        jButton1.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jButton1StateChanged(evt);
-            }
-        });
+        
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 285, 360, 70));
-
+        
         loginUser.setBackground(new Color(0,0,0,0));
         loginUser.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         loginUser.setForeground(new java.awt.Color(153, 153, 153));
@@ -82,13 +75,13 @@ public class LoginView extends javax.swing.JFrame {
         });
         getContentPane().add(loginUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 210, 40));
 
-        loginPass.setBackground(new Color(0,0,0,0));
+      loginPass.setBackground(new Color(0,0,0,0));
         loginPass.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         loginPass.setForeground(new java.awt.Color(153, 153, 153));
         loginPass.setText("Password");
-        loginPass.setToolTipText("");
         loginPass.setBorder(null);
         loginPass.setCaretPosition(0);
+        loginPass.setOpaque(false);
         loginPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginPassActionPerformed(evt);
@@ -102,9 +95,10 @@ public class LoginView extends javax.swing.JFrame {
         getContentPane().add(loginPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 200, 50));
 
         jLabel1.setBackground(new Color(0,0,0,0));
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jLabel1.setName(""); // NOI18N
+        jLabel1.setText("");
+        jLabel1.setName("asd"); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(500, 500));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -136,11 +130,6 @@ public class LoginView extends javax.swing.JFrame {
     private void loginPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginPassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_loginPassActionPerformed
-
-    private void jButton1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jButton1StateChanged
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jButton1StateChanged
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:

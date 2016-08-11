@@ -6,19 +6,26 @@
 package gui.internal;
 
 import java.awt.Color;
+import utils.E_Cities;
 
 /**
  *
  * @author nisans
  */
 public class AddBranchForm extends javax.swing.JInternalFrame {
-    private int WindowID = 1;
+    private int WindowID = 2;
     /**
      * Creates new form NewJInternalFrame
      */
     public AddBranchForm() {
         initComponents();
          
+        
+        //Finished Loading
+        
+        for(E_Cities city : E_Cities.values())
+            slctCity.addItem(city.toString());
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,20 +40,20 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        btnPhoneNumber = new javax.swing.JTextField();
+        btnBranchNum = new javax.swing.JTextField();
+        btnBranchName = new javax.swing.JTextField();
+        slctCity = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        btnBranchCountry = new javax.swing.JTextField();
+        btnBranchStreet = new javax.swing.JTextField();
+        btnHouseNumber = new javax.swing.JTextField();
 
-        setBackground(new Color(255,255,255,85));
-        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        setBackground(new Color(0,0,0,85));
+        setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setIconifiable(true);
@@ -60,164 +67,209 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Phone Number");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(30, 200, 110, 20);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Branch Nunber");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 20, 110, 20);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Branch Name");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(30, 50, 110, 20);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Country");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(30, 80, 110, 20);
 
-        jTextField1.setColumns(15);
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField1.setText("Phone Number");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        btnPhoneNumber.setBackground(new java.awt.Color(0, 0, 0));
+        btnPhoneNumber.setColumns(15);
+        btnPhoneNumber.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnPhoneNumber.setForeground(new java.awt.Color(255, 255, 255));
+        btnPhoneNumber.setText("Phone Number");
+        btnPhoneNumber.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnPhoneNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                btnPhoneNumberActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(160, 200, 170, 23);
+        getContentPane().add(btnPhoneNumber);
+        btnPhoneNumber.setBounds(160, 200, 170, 21);
 
-        jTextField2.setColumns(10);
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField2.setText("Branch Num");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        btnBranchNum.setBackground(new java.awt.Color(0, 0, 0));
+        btnBranchNum.setColumns(10);
+        btnBranchNum.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnBranchNum.setForeground(new java.awt.Color(255, 255, 255));
+        btnBranchNum.setText("Branch Num");
+        btnBranchNum.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnBranchNum.setCaretColor(new java.awt.Color(255, 255, 255));
+        btnBranchNum.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        btnBranchNum.setSelectionColor(new java.awt.Color(204, 204, 204));
+        btnBranchNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                btnBranchNumActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(160, 20, 170, 23);
+        getContentPane().add(btnBranchNum);
+        btnBranchNum.setBounds(160, 20, 170, 21);
 
-        jTextField3.setColumns(20);
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField3.setText("Branch Name");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        btnBranchName.setBackground(new java.awt.Color(0, 0, 0));
+        btnBranchName.setColumns(20);
+        btnBranchName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnBranchName.setForeground(new java.awt.Color(255, 255, 255));
+        btnBranchName.setText("Branch Name");
+        btnBranchName.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnBranchName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                btnBranchNameActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(160, 50, 170, 23);
+        getContentPane().add(btnBranchName);
+        btnBranchName.setBounds(160, 50, 170, 21);
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        slctCity.setBackground(new java.awt.Color(0, 0, 0));
+        slctCity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        slctCity.setForeground(new java.awt.Color(255, 255, 255));
+        slctCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select City" }));
+        slctCity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                slctCityActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(160, 110, 170, 20);
+        getContentPane().add(slctCity);
+        slctCity.setBounds(160, 110, 170, 20);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("City");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(30, 110, 110, 20);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Street");
         getContentPane().add(jLabel7);
         jLabel7.setBounds(30, 140, 110, 20);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("House Number");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(30, 170, 110, 20);
 
         jButton1.setText("OK");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(160, 260, 73, 23);
+        jButton1.setBounds(160, 260, 73, 25);
 
-        jTextField4.setColumns(20);
-        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField4.setText("Country");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        btnBranchCountry.setBackground(new java.awt.Color(0, 0, 0));
+        btnBranchCountry.setColumns(20);
+        btnBranchCountry.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnBranchCountry.setForeground(new java.awt.Color(255, 255, 255));
+        btnBranchCountry.setText("Country");
+        btnBranchCountry.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnBranchCountry.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                btnBranchCountryActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(160, 80, 170, 23);
+        getContentPane().add(btnBranchCountry);
+        btnBranchCountry.setBounds(160, 80, 170, 21);
 
-        jTextField5.setColumns(20);
-        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField5.setText("Street");
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        btnBranchStreet.setBackground(new java.awt.Color(0, 0, 0));
+        btnBranchStreet.setColumns(20);
+        btnBranchStreet.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnBranchStreet.setForeground(new java.awt.Color(255, 255, 255));
+        btnBranchStreet.setText("Street");
+        btnBranchStreet.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnBranchStreet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                btnBranchStreetActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(160, 140, 170, 23);
+        getContentPane().add(btnBranchStreet);
+        btnBranchStreet.setBounds(160, 140, 170, 21);
 
-        jTextField6.setColumns(4);
-        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField6.setText("House Number");
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        btnHouseNumber.setBackground(new java.awt.Color(0, 0, 0));
+        btnHouseNumber.setColumns(4);
+        btnHouseNumber.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnHouseNumber.setForeground(new java.awt.Color(255, 255, 255));
+        btnHouseNumber.setText("House Number");
+        btnHouseNumber.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnHouseNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                btnHouseNumberActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField6);
-        jTextField6.setBounds(160, 170, 170, 23);
+        getContentPane().add(btnHouseNumber);
+        btnHouseNumber.setBounds(160, 170, 170, 21);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void btnPhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhoneNumberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_btnPhoneNumberActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void btnBranchNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBranchNumActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_btnBranchNumActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void btnBranchNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBranchNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_btnBranchNameActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void btnBranchCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBranchCountryActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_btnBranchCountryActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void btnBranchStreetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBranchStreetActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_btnBranchStreetActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void btnHouseNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHouseNumberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_btnHouseNumberActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void slctCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slctCityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_slctCityActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        System.out.println(slctCity.getSelectedItem());
+    }//GEN-LAST:event_jButton1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField btnBranchCountry;
+    private javax.swing.JTextField btnBranchName;
+    private javax.swing.JTextField btnBranchNum;
+    private javax.swing.JTextField btnBranchStreet;
+    private javax.swing.JTextField btnHouseNumber;
+    private javax.swing.JTextField btnPhoneNumber;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -225,12 +277,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JComboBox<String> slctCity;
     // End of variables declaration//GEN-END:variables
 
     public int getWindowID(){

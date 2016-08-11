@@ -24,10 +24,10 @@ public class iStatisticsNew extends javax.swing.JInternalFrame {
         this.lblCountBranches.setText(""+branchesCount);
         
         int employeesCount = iWindow.getDB().getEmployees().size();
-        this.lblCountBranches.setText(""+employeesCount);
+        this.lblCountEmployees.setText(""+employeesCount);
         
         int customersCount = iWindow.getDB().getCustomers().size();
-        this.lblCountBranches.setText(""+customersCount);
+        this.lblCountCustomers.setText(""+customersCount);
         
         
     }
@@ -47,7 +47,7 @@ public class iStatisticsNew extends javax.swing.JInternalFrame {
         lblCountBranches = new javax.swing.JLabel();
         lblCountEmployees = new javax.swing.JLabel();
 
-        setBackground(new Color(255,255,255,85));
+        setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -61,26 +61,35 @@ public class iStatisticsNew extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(410, 314));
         getContentPane().setLayout(null);
 
+        lblCustomers.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        lblCustomers.setForeground(new java.awt.Color(255, 255, 255));
         lblCustomers.setText("Total Customers");
         getContentPane().add(lblCustomers);
-        lblCustomers.setBounds(40, 140, 100, 16);
+        lblCustomers.setBounds(40, 140, 130, 19);
 
+        lblBranches.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        lblBranches.setForeground(new java.awt.Color(255, 255, 255));
         lblBranches.setText("Total Branches");
         getContentPane().add(lblBranches);
-        lblBranches.setBounds(40, 60, 100, 16);
+        lblBranches.setBounds(40, 60, 130, 19);
 
+        lblEmployees.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        lblEmployees.setForeground(new java.awt.Color(255, 255, 255));
         lblEmployees.setText("Total Employees");
         getContentPane().add(lblEmployees);
-        lblEmployees.setBounds(40, 100, 100, 16);
+        lblEmployees.setBounds(40, 100, 130, 19);
 
+        lblCountCustomers.setForeground(new java.awt.Color(255, 255, 255));
         lblCountCustomers.setText("asdasd");
         getContentPane().add(lblCountCustomers);
         lblCountCustomers.setBounds(170, 140, 130, 20);
 
+        lblCountBranches.setForeground(new java.awt.Color(255, 255, 255));
         lblCountBranches.setText("asdasdasd");
         getContentPane().add(lblCountBranches);
         lblCountBranches.setBounds(170, 60, 130, 20);
 
+        lblCountEmployees.setForeground(new java.awt.Color(255, 255, 255));
         lblCountEmployees.setText("asdasd");
         getContentPane().add(lblCountEmployees);
         lblCountEmployees.setBounds(170, 100, 130, 20);
