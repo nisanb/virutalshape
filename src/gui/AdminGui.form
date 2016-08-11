@@ -9,9 +9,6 @@
     <Property name="maximizedBounds" type="java.awt.Rectangle" editor="org.netbeans.beaninfo.editors.RectangleEditor">
       <Rectangle value="[0, 0, 0, 0]"/>
     </Property>
-    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1024, 768]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -50,7 +47,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="220" width="190" height="50"/>
+          <AbsoluteConstraints x="10" y="210" width="190" height="50"/>
         </Constraint>
       </Constraints>
     </Component>

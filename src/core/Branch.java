@@ -284,6 +284,10 @@ public class Branch implements Serializable {
 
 	@Override
 	public String toString() {		
+		return "Branch #"+getBranchNumber()+" "+getBranchName();
+	}
+     
+	public String toString2() {		
 		return "Branch [branchNumber=" + branchNumber + ", branchName="
 				+ branchName + ", coaches=" + coaches.toString().replace("[", "{").replace("]", "}") 
 				+ ", respt=" + respt.toString().replace("[", "{").replace("]", "}")

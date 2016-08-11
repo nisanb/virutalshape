@@ -46,7 +46,6 @@ public class AdminGui extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 51, 204));
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
-        setMaximumSize(new java.awt.Dimension(1024, 768));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnStatistics.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -61,7 +60,7 @@ public class AdminGui extends javax.swing.JFrame {
                 btnBranchesMouseClicked(evt);
             }
         });
-        getContentPane().add(btnBranches, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 190, 50));
+        getContentPane().add(btnBranches, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 190, 50));
 
         btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -143,7 +142,8 @@ public class AdminGui extends javax.swing.JFrame {
     }//GEN-LAST:event_btnStatisticsMouseClicked
 
     private void btnBranchesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBranchesMouseClicked
-        AddBranchForm add = new AddBranchForm();
+        //AddBranchForm add = new AddBranchForm();
+        ManageBranches add = new ManageBranches();
         iWindow.openWin(add, add.getWindowID());
     }//GEN-LAST:event_btnBranchesMouseClicked
 

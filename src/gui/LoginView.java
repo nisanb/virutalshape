@@ -23,6 +23,8 @@ public class LoginView extends javax.swing.JFrame {
     public LoginView() {
 
         initComponents();
+        
+        
       //Test Commit
     }
 
@@ -35,11 +37,11 @@ public class LoginView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JLabel();
         loginUser = new javax.swing.JTextField();
         loginPass = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1.setBackground(new Color(0,0,0,0));
+        jButton1.setBackground(new Color(25,25,25));
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 285, 360, 70));
@@ -175,7 +177,7 @@ getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField loginPass;
     private javax.swing.JTextField loginUser;
