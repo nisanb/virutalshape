@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
 /**
- * @author mickey
+ * @author mickey shalev
  */
 public class iWindow {
     protected static boolean isInternalOpened = false;
