@@ -11,6 +11,7 @@ import javax.swing.JPanel;
  * @author mickey shalev
  */
 public class iWindow {
+    protected static int WindowID = 0;
     protected static boolean isInternalOpened = false;
     protected static JInternalFrame currentWindow = null;
     protected static JPanel panel = null;
@@ -42,8 +43,13 @@ public class iWindow {
      * @param frame 
      */
     //Commit
-    public static void openWin(JInternalFrame frame){
-        
+    public static void openWin(JInternalFrame frame, int WindowID){
+        if(WindowID==getWindowID()) {
+            getCurrentWindow().setVisible(true);
+            
+            return;
+        }
+        System.err.println(WindowID + " " + getWindowID());
         frame.setOpaque(true);
         if (!getWindowState()){
             setCurrentWindow(frame);
@@ -51,13 +57,15 @@ public class iWindow {
             getPanel().setVisible(true);
             frame.setVisible(true);
             setWindowState(true);
+            setWindowID(WindowID);
         }else{
             getCurrentWindow().hide();
             setCurrentWindow(frame);
             getPanel().add(frame);
             getCurrentWindow().setVisible(true);
+            setWindowID(WindowID);
         }
-
+        System.err.println("test");
         
         return;
     }
@@ -67,6 +75,12 @@ public class iWindow {
     }
     public static JPanel getPanel(){
         return panel;
+    }
+    public static void setWindowID(int tmp){
+        WindowID=tmp;
+    }
+    public static int getWindowID(){
+        return WindowID;
     }
     
 }

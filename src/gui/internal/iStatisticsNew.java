@@ -12,7 +12,7 @@ import java.awt.Color;
  * @author nisans
  */
 public class iStatisticsNew extends javax.swing.JInternalFrame {
-
+    private int WindowID = 1;
     /**
      * Creates new form NewJInternalFrame
      */
@@ -32,23 +32,17 @@ public class iStatisticsNew extends javax.swing.JInternalFrame {
         setBackground(new Color(0,0,0,0));
         setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setAutoscrolls(true);
         setFrameIcon(null);
         setInheritsPopupMenu(true);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 406, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
-        );
+        setMaximumSize(new java.awt.Dimension(410, 314));
+        setMinimumSize(new java.awt.Dimension(410, 314));
+        setName(""); // NOI18N
+        getContentPane().setLayout(null);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -56,4 +50,12 @@ public class iStatisticsNew extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+
+    public int getWindowID(){
+        return this.WindowID;
+    }
+
+    public void setWindowID(int id){
+        this.WindowID=id;
+    }
 }

@@ -129,7 +129,9 @@ public class AdminGui extends javax.swing.JFrame {
     private void btnStatisticsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStatisticsMouseClicked
         // TODO add your handling code here:
         //Open Internal JFrame
-        iWindow.openWin(new iStatisticsNew());
+        iStatisticsNew tmp = new iStatisticsNew();
+        
+        iWindow.openWin(tmp, tmp.getWindowID());
     }//GEN-LAST:event_btnStatisticsMouseClicked
 
     /**
