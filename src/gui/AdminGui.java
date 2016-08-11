@@ -5,10 +5,10 @@
  */
 package gui;
 
-import gui.internal.iStatisticsNew;
+
 import java.awt.Color;
 import javax.swing.JDesktopPane;
-
+import gui.internal.*;
 /**
  *
  * @author nisan
@@ -21,7 +21,7 @@ public class AdminGui extends javax.swing.JFrame {
     public AdminGui() {
         
         initComponents();
-
+        iWindow.setPanel(ContentFrame);
       
         
     }
@@ -128,10 +128,7 @@ public class AdminGui extends javax.swing.JFrame {
     private void btnStatisticsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStatisticsMouseClicked
         // TODO add your handling code here:
         //Open Internal JFrame
-        iStatisticsNew comp = new iStatisticsNew();
-        comp.setVisible(true);
-        ContentFrame.add(comp);
-        ContentFrame.setVisible(true);
+        iWindow.openWin(new iStatisticsNew());
     }//GEN-LAST:event_btnStatisticsMouseClicked
 
     /**
