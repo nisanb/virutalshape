@@ -12,6 +12,7 @@ import core.Branch;
 import java.awt.Color;
 import utils.E_Cities;
 import java.lang.Enum.*;
+import java.util.ArrayList;
 import javax.swing.JCheckBox;
 
 /**
@@ -106,7 +107,6 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnPhoneNumber.setColumns(15);
         btnPhoneNumber.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnPhoneNumber.setForeground(new java.awt.Color(255, 255, 255));
-        btnPhoneNumber.setText("Phone Number");
         btnPhoneNumber.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
         btnPhoneNumber.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -120,7 +120,6 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnBranchNum.setColumns(10);
         btnBranchNum.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBranchNum.setForeground(new java.awt.Color(255, 255, 255));
-        btnBranchNum.setText("Branch Num");
         btnBranchNum.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
         btnBranchNum.setCaretColor(new java.awt.Color(255, 255, 255));
         btnBranchNum.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -137,7 +136,6 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnBranchName.setColumns(20);
         btnBranchName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBranchName.setForeground(new java.awt.Color(255, 255, 255));
-        btnBranchName.setText("Branch Name");
         btnBranchName.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
         btnBranchName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -198,7 +196,6 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnBranchCountry.setColumns(20);
         btnBranchCountry.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBranchCountry.setForeground(new java.awt.Color(255, 255, 255));
-        btnBranchCountry.setText("Country");
         btnBranchCountry.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
         btnBranchCountry.setEnabled(false);
         btnBranchCountry.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -213,7 +210,6 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnBranchStreet.setColumns(20);
         btnBranchStreet.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBranchStreet.setForeground(new java.awt.Color(255, 255, 255));
-        btnBranchStreet.setText("Street");
         btnBranchStreet.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
         btnBranchStreet.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -227,7 +223,6 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnHouseNumber.setColumns(4);
         btnHouseNumber.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnHouseNumber.setForeground(new java.awt.Color(255, 255, 255));
-        btnHouseNumber.setText("House Number");
         btnHouseNumber.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
         btnHouseNumber.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -296,15 +291,15 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBranchNameFocusLost
 
     private void btnBranchCountryFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchCountryFocusLost
-        String str = btnBranchCountry.getText();
-        if (CharValidator.isWord(str)) {
-            countryError.setText(" ");
-            country = str;
-        }
-        else {
-            countryError.setText("Enter valid name");
-            country = null;
-        }
+//        String str = btnBranchCountry.getText();
+//        if (CharValidator.isWord(str)) {
+//            countryError.setText(" ");
+//            country = str;
+//        }
+//        else {
+//            countryError.setText("Enter valid name");
+//            country = null;
+//        }
     }//GEN-LAST:event_btnBranchCountryFocusLost
 
     private void btnBranchStreetFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchStreetFocusLost
@@ -333,32 +328,33 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnHouseNumberFocusLost
 
     private void btnPhoneNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnPhoneNumberFocusLost
+        if (phoneNumber == null) phoneNumber = new ArrayList<String>();
         String str = btnPhoneNumber.getText();
         if (PhoneValidator.validatePhone(str)) {
             phoneError.setText(" ");
-            phoneNumber[0] = str;
+            phoneNumber.add(str);
             return;
         }
         else {
             phoneError.setText("Error (example: 972-xxxx)");
-            phoneNumber = null;
         }
     }//GEN-LAST:event_btnPhoneNumberFocusLost
 
     private void slctCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_slctCityFocusLost
-//        try{
-        String str = (String)slctCity.getSelectedItem();
-        city = E_Cities.valueOf(str);
-        btnBranchCountry.setText(city.getCountry());
-//        System.out.println(str);
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
+        //        try{
+            String str = (String)slctCity.getSelectedItem();
+            city = E_Cities.valueOf(str);
+            btnBranchCountry.setText(city.getCountry());
+            country = city.getCountry();
+            //        System.out.println(str);
+            //        }catch (Exception e){
+            //            e.printStackTrace();
+            //        }
     }//GEN-LAST:event_slctCityFocusLost
 
     private void btnAddBranchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddBranchActionPerformed
-        if (iWindow.DB.addBranch(branchNumber, branchName, city, country, street, housNumber, phoneNumber))
-            this.dispose();
+        if (iWindow.DB.addBranch(branchNumber, branchName, city, country, street, housNumber, phoneNumber.toArray(new String[phoneNumber.size()]) ))
+        System.out.println("Successfully");
     }//GEN-LAST:event_btnAddBranchActionPerformed
 
 
@@ -392,7 +388,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
     private E_Cities city;
     private String street;
     private int housNumber;
-    private String[] phoneNumber = new String[1];
+    private ArrayList<String> phoneNumber;
     //Manual variables declaration 
     
     
