@@ -6,10 +6,13 @@
 package gui.internal;
 
 import Validators.CharValidator;
+import Validators.PhoneValidator;
 import Validators.PositiveValidator;
 import core.Branch;
 import java.awt.Color;
 import utils.E_Cities;
+import java.lang.Enum.*;
+import javax.swing.JCheckBox;
 
 /**
  *
@@ -105,9 +108,9 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnPhoneNumber.setForeground(new java.awt.Color(255, 255, 255));
         btnPhoneNumber.setText("Phone Number");
         btnPhoneNumber.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        btnPhoneNumber.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPhoneNumberActionPerformed(evt);
+        btnPhoneNumber.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                btnPhoneNumberFocusLost(evt);
             }
         });
         getContentPane().add(btnPhoneNumber);
@@ -125,11 +128,6 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnBranchNum.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btnBranchNumFocusLost(evt);
-            }
-        });
-        btnBranchNum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBranchNumActionPerformed(evt);
             }
         });
         getContentPane().add(btnBranchNum);
@@ -153,9 +151,9 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         slctCity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         slctCity.setForeground(new java.awt.Color(255, 255, 255));
         slctCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select City" }));
-        slctCity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                slctCityActionPerformed(evt);
+        slctCity.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                slctCityFocusLost(evt);
             }
         });
         getContentPane().add(slctCity);
@@ -202,9 +200,10 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnBranchCountry.setForeground(new java.awt.Color(255, 255, 255));
         btnBranchCountry.setText("Country");
         btnBranchCountry.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        btnBranchCountry.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBranchCountryActionPerformed(evt);
+        btnBranchCountry.setEnabled(false);
+        btnBranchCountry.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                btnBranchCountryFocusLost(evt);
             }
         });
         getContentPane().add(btnBranchCountry);
@@ -216,9 +215,9 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnBranchStreet.setForeground(new java.awt.Color(255, 255, 255));
         btnBranchStreet.setText("Street");
         btnBranchStreet.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        btnBranchStreet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBranchStreetActionPerformed(evt);
+        btnBranchStreet.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                btnBranchStreetFocusLost(evt);
             }
         });
         getContentPane().add(btnBranchStreet);
@@ -230,9 +229,9 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnHouseNumber.setForeground(new java.awt.Color(255, 255, 255));
         btnHouseNumber.setText("House Number");
         btnHouseNumber.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        btnHouseNumber.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHouseNumberActionPerformed(evt);
+        btnHouseNumber.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                btnHouseNumberFocusLost(evt);
             }
         });
         getContentPane().add(btnHouseNumber);
@@ -266,59 +265,101 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhoneNumberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPhoneNumberActionPerformed
-
-    private void btnBranchNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBranchNumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBranchNumActionPerformed
-
-    private void btnBranchCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBranchCountryActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBranchCountryActionPerformed
-
-    private void btnBranchStreetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBranchStreetActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBranchStreetActionPerformed
-
-    private void btnHouseNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHouseNumberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnHouseNumberActionPerformed
-
-    private void slctCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slctCityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_slctCityActionPerformed
-
     private void btnAddBranchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddBranchMouseClicked
         // TODO add your handling code here:
         System.out.println(slctCity.getSelectedItem());
     }//GEN-LAST:event_btnAddBranchMouseClicked
 
-    private void btnAddBranchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddBranchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddBranchActionPerformed
-
     private void btnBranchNumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchNumFocusLost
         String str = btnBranchNum.getText();
-        System.err.println("CHeck");
-        if (!CharValidator.isNumber(str) || !PositiveValidator.isPositiveStringNum(str)){
-            numError.setText("Positive numbers only");
+        if (!PositiveValidator.isPositiveStringNum(str) || str.length() !=8){
+            numError.setText("Positive 8 digits only");
+            branchNumber = -1;
             pack();
             return;
         }          
         
         if (!iWindow.DB.getBranches().containsKey(Integer.parseInt(btnBranchNum.getText()))){
-              //numError.setText("OK");
+              numError.setText(" ");
+              branchNumber = Integer.parseInt(str);
            }
-           else numError.setText("Branch num exists");
+           else {
+            numError.setText("Branch number exists");
+            branchNumber = -1;
+        }
         
         pack();
     }//GEN-LAST:event_btnBranchNumFocusLost
 
     private void btnBranchNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchNameFocusLost
-       //TODO
+       branchName = btnBranchName.getText();
     }//GEN-LAST:event_btnBranchNameFocusLost
+
+    private void btnBranchCountryFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchCountryFocusLost
+        String str = btnBranchCountry.getText();
+        if (CharValidator.isWord(str)) {
+            countryError.setText(" ");
+            country = str;
+        }
+        else {
+            countryError.setText("Enter valid name");
+            country = null;
+        }
+    }//GEN-LAST:event_btnBranchCountryFocusLost
+
+    private void btnBranchStreetFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchStreetFocusLost
+        String str = btnBranchStreet.getText();
+        if (CharValidator.isWord(str)) {
+            streetError.setText(" ");
+            street = str;
+        }
+        else {
+            streetError.setText("Enter valid name");
+            street = null;
+        }
+    }//GEN-LAST:event_btnBranchStreetFocusLost
+
+    private void btnHouseNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnHouseNumberFocusLost
+        String str = btnHouseNumber.getText();
+        if (PositiveValidator.isPositiveStringNum(str) && str.length() < 5) {
+            houseError.setText(" ");
+            housNumber = Integer.parseInt(str);
+            return;
+        }
+        else {
+            houseError.setText("up tp 4 digit number");
+            housNumber = -1;
+        }
+    }//GEN-LAST:event_btnHouseNumberFocusLost
+
+    private void btnPhoneNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnPhoneNumberFocusLost
+        String str = btnPhoneNumber.getText();
+        if (PhoneValidator.validatePhone(str)) {
+            phoneError.setText(" ");
+            phoneNumber[0] = str;
+            return;
+        }
+        else {
+            phoneError.setText("Error (example: 972-xxxx)");
+            phoneNumber = null;
+        }
+    }//GEN-LAST:event_btnPhoneNumberFocusLost
+
+    private void slctCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_slctCityFocusLost
+//        try{
+        String str = (String)slctCity.getSelectedItem();
+        city = E_Cities.valueOf(str);
+        btnBranchCountry.setText(city.getCountry());
+//        System.out.println(str);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+    }//GEN-LAST:event_slctCityFocusLost
+
+    private void btnAddBranchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddBranchActionPerformed
+        if (iWindow.DB.addBranch(branchNumber, branchName, city, country, street, housNumber, phoneNumber))
+            this.dispose();
+    }//GEN-LAST:event_btnAddBranchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -344,6 +385,18 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel streetError;
     // End of variables declaration//GEN-END:variables
 
+    //Manual variables declaration 
+    private int branchNumber;
+    private String branchName;
+    private String country;
+    private E_Cities city;
+    private String street;
+    private int housNumber;
+    private String[] phoneNumber = new String[1];
+    //Manual variables declaration 
+    
+    
+    
     public int getWindowID(){
         return this.WindowID;
     }

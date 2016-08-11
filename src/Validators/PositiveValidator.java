@@ -11,12 +11,10 @@ public class PositiveValidator {
         try{
             int num = Integer.parseInt(str2num);
             if (num > 0){
-                System.err.println("is positive ");
                 return true;
             }
         }catch(NumberFormatException nfe){
-            nfe.printStackTrace();
-            System.err.println("failed");
+            //nfe.printStackTrace();
         }
         
         return false;

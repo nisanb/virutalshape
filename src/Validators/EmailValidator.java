@@ -9,7 +9,7 @@ package Validators;
 public class EmailValidator{
 	
 
-	public static boolean validate (String email){	  
+	public static boolean validateEmail (String email){	  
 	    if (email == null)  return false;
 	    
 		    // Assigning the email format regular expression

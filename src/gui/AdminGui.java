@@ -143,7 +143,7 @@ public class AdminGui extends javax.swing.JFrame {
 
     private void btnBranchesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBranchesMouseClicked
         //AddBranchForm add = new AddBranchForm();
-        ManageBranches add = new ManageBranches();
+        AddBranchForm add = new AddBranchForm();
         iWindow.openWin(add, add.getWindowID());
     }//GEN-LAST:event_btnBranchesMouseClicked
 
