@@ -5,6 +5,8 @@
  */
 package gui;
 
+//Nissan Gay
+
 import gui.internal.iStatistics;
 
 /**
@@ -49,7 +51,7 @@ public class AdminGui extends javax.swing.JFrame {
 
         checkbox1.setLabel("checkbox1");
         ContentFrame.add(checkbox1);
-        checkbox1.setBounds(230, 180, 84, 20);
+        checkbox1.setBounds(230, 180, 82, 21);
 
         getContentPane().add(ContentFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 820, 590));
 
