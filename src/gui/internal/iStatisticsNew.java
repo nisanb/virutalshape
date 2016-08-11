@@ -18,8 +18,19 @@ public class iStatisticsNew extends javax.swing.JInternalFrame {
      */
     public iStatisticsNew() {
         initComponents();
+        
+        //Set Vars
+        int branchesCount = iWindow.getDB().getBranches().size();
+        this.lblCountBranches.setText(""+branchesCount);
+        
+        int employeesCount = iWindow.getDB().getEmployees().size();
+        this.lblCountBranches.setText(""+employeesCount);
+        
+        int customersCount = iWindow.getDB().getCustomers().size();
+        this.lblCountBranches.setText(""+customersCount);
+        
+        
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,26 +40,62 @@ public class iStatisticsNew extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new Color(0,0,0,0));
+        lblCustomers = new javax.swing.JLabel();
+        lblBranches = new javax.swing.JLabel();
+        lblEmployees = new javax.swing.JLabel();
+        lblCountCustomers = new javax.swing.JLabel();
+        lblCountBranches = new javax.swing.JLabel();
+        lblCountEmployees = new javax.swing.JLabel();
+
+        setBackground(new Color(255,255,255,85));
         setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
         setAutoscrolls(true);
         setFrameIcon(null);
         setInheritsPopupMenu(true);
         setMaximumSize(new java.awt.Dimension(410, 314));
         setMinimumSize(new java.awt.Dimension(410, 314));
         setName(""); // NOI18N
+        setPreferredSize(new java.awt.Dimension(410, 314));
         getContentPane().setLayout(null);
+
+        lblCustomers.setText("Total Customers");
+        getContentPane().add(lblCustomers);
+        lblCustomers.setBounds(40, 140, 100, 16);
+
+        lblBranches.setText("Total Branches");
+        getContentPane().add(lblBranches);
+        lblBranches.setBounds(40, 60, 100, 16);
+
+        lblEmployees.setText("Total Employees");
+        getContentPane().add(lblEmployees);
+        lblEmployees.setBounds(40, 100, 100, 16);
+
+        lblCountCustomers.setText("asdasd");
+        getContentPane().add(lblCountCustomers);
+        lblCountCustomers.setBounds(170, 140, 130, 20);
+
+        lblCountBranches.setText("asdasdasd");
+        getContentPane().add(lblCountBranches);
+        lblCountBranches.setBounds(170, 60, 130, 20);
+
+        lblCountEmployees.setText("asdasd");
+        getContentPane().add(lblCountEmployees);
+        lblCountEmployees.setBounds(170, 100, 130, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblBranches;
+    private javax.swing.JLabel lblCountBranches;
+    private javax.swing.JLabel lblCountCustomers;
+    private javax.swing.JLabel lblCountEmployees;
+    private javax.swing.JLabel lblCustomers;
+    private javax.swing.JLabel lblEmployees;
     // End of variables declaration//GEN-END:variables
 
     public int getWindowID(){

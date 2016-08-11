@@ -8,6 +8,7 @@ package gui;
 import java.awt.Color;
 import javax.swing.JFrame;
 import gui.AdminGui;
+import init.IShape;
 //TEST
 /**
  *
@@ -15,10 +16,12 @@ import gui.AdminGui;
  */
 public class LoginView extends javax.swing.JFrame {
 
+
     /**
      * Creates new form LoginView
      */
     public LoginView() {
+
         initComponents();
       //Test Commit
     }

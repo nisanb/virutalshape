@@ -1072,6 +1072,7 @@ public class IShape implements Serializable {
 		return potential;
 	}
 
+        
 	// -------------------------------hashCode equals &
 	// toString------------------------------
 

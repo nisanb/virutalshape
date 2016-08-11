@@ -1,0 +1,357 @@
+
+
+addBranch returns: Successfully added Branch 11111111 to IShape
+addBranch returns: Successfully added Branch 22222222 to IShape
+addBranch returns: Successfully added Branch 33333333 to IShape
+addBranch returns: Successfully added Branch 44444444 to IShape
+addBranch returns: Successfully added Branch 55555555 to IShape
+addBranch returns: Successfully added Branch 66666666 to IShape
+addBranch returns: Successfully added Branch 77777777 to IShape
+addBranch returns: Successfully added Branch 88888888 to IShape
+addBranch returns: Successfully added Branch 99999999 to IShape
+addBranch returns: Failed to add new Branch 99999999 to IShape
+addBranch returns: Successfully added Branch 10101010 to IShape
+
+
+
+
+addCoach returns: Successfully added coach 1 to IShape
+addCoach returns: Successfully added coach 2 to IShape
+addCoach returns: Successfully added coach 3 to IShape
+addCoach returns: Successfully added coach 4 to IShape
+addCoach returns: Successfully added coach 5 to IShape
+addCoach returns: Successfully added coach 6 to IShape
+addCoach returns: Successfully added coach 7 to IShape
+addCoach returns: Successfully added coach 8 to IShape
+addCoach returns: Successfully added coach 9 to IShape
+addCoach returns: Failed to add new coach 9 to IShape
+addCoach returns: Successfully added coach 10 to IShape
+
+
+
+
+addReceptionist returns: Successfully added receptionist 11 to IShape
+addReceptionist returns: Successfully added receptionist 12 to IShape
+addReceptionist returns: Successfully added receptionist 13 to IShape
+addReceptionist returns: Successfully added receptionist 14 to IShape
+addReceptionist returns: Failed to add new receptionist 14 to IShape
+addReceptionist returns: Successfully added receptionist 15 to IShape
+addReceptionist returns: Successfully added receptionist 17 to IShape
+
+
+
+
+addCustomer returns: Successfully added Customer with passport 00099991 to IShape
+addCustomer returns: Successfully added Customer with passport 00099992 to IShape
+addCustomer returns: Successfully added Customer with passport 00099993 to IShape
+addCustomer returns: Successfully added Customer with passport 00099994 to IShape
+addCustomer returns: Successfully added Customer with passport 00099995 to IShape
+addCustomer returns: Successfully added Customer with passport 00099996 to IShape
+addCustomer returns: Successfully added Customer with passport 00099997 to IShape
+addCustomer returns: Successfully added Customer with passport 00099998 to IShape
+addCustomer returns: Successfully added Customer with passport 00099999 to IShape
+addCustomer returns: Successfully added Customer with passport 00099910 to IShape
+addCustomer returns: Successfully added Customer with passport 00099911 to IShape
+addCustomer returns: Successfully added Customer with passport 00099912 to IShape
+addCustomer returns: Successfully added Customer with passport 00099913 to IShape
+addCustomer returns: Successfully added Customer with passport 00099914 to IShape
+addCustomer returns: Successfully added Customer with passport 00099915 to IShape
+addCustomer returns: Failed to add new Customer with passport 00099915 to IShape
+addCustomer returns: Successfully added Customer with passport 00099916 to IShape
+addCustomer returns: Successfully added Customer with passport 00099917 to IShape
+addCustomer returns: Successfully added Customer with passport 00099918 to IShape
+addCustomer returns: Successfully added Customer with passport 00099919 to IShape
+addCustomer returns: Successfully added Customer with passport 00099920 to IShape
+addCustomer returns: Successfully added Customer with passport 00099921 to IShape
+
+
+
+
+addSubToCustomer returns: Successfully added subscription 1 to IShape
+addSubToCustomer returns: Successfully added subscription 2 to IShape
+addSubToCustomer returns: Successfully added subscription 3 to IShape
+addSubToCustomer returns: Successfully added subscription 4 to IShape
+addSubToCustomer returns: Successfully added subscription 6 to IShape
+addSubToCustomer returns: Successfully added subscription 7 to IShape
+addSubToCustomer returns: Successfully added subscription 8 to IShape
+addSubToCustomer returns: Successfully added subscription 9 to IShape
+addSubToCustomer returns: Successfully added subscription 10 to IShape
+addSubToCustomer returns: Successfully added subscription 11 to IShape
+addSubToCustomer returns: Successfully added subscription 12 to IShape
+addSubToCustomer returns: Successfully added subscription 13 to IShape
+addSubToCustomer returns: Successfully added subscription 14 to IShape
+addSubToCustomer returns: Successfully added subscription 15 to IShape
+addSubToCustomer returns: Successfully added subscription 16 to IShape
+addSubToCustomer returns: Failed to add new subscription 17 to IShape
+addSubToCustomer returns: Successfully added subscription 19 to IShape
+
+
+
+
+connectCoachToBranch returns: Successfully connected between coach 1 and branch 11111111
+connectCoachToBranch returns: Successfully connected between coach 2 and branch 22222222
+connectCoachToBranch returns: Successfully connected between coach 3 and branch 33333333
+connectCoachToBranch returns: Successfully connected between coach 4 and branch 44444444
+connectCoachToBranch returns: Successfully connected between coach 5 and branch 55555555
+connectCoachToBranch returns: Successfully connected between coach 6 and branch 66666666
+connectCoachToBranch returns: Successfully connected between coach 7 and branch 77777777
+connectCoachToBranch returns: Failed to connected between coach 16 and branch 77777777
+connectCoachToBranch returns: Successfully connected between coach 8 and branch 88888888
+connectCoachToBranch returns: Successfully connected between coach 9 and branch 99999999
+connectCoachToBranch returns: Successfully connected between coach 10 and branch 10101010
+connectCoachToBranch returns: Failed to connected between coach 10 and branch 10101011
+
+
+
+
+connectReceptionistToBranch returns: Successfully connected between receptionist 11 and branch 11111111
+connectReceptionistToBranch returns: Successfully connected between receptionist 12 and branch 22222222
+connectReceptionistToBranch returns: Successfully connected between receptionist 14 and branch 44444444
+connectReceptionistToBranch returns: Successfully connected between receptionist 17 and branch 66666666
+connectReceptionistToBranch returns: Failed to connected between receptionist 19 and branch 99999999
+
+
+
+
+changeCustomerAddress returns: Successfully changed address of customer: 00099991 Customer [ID Number=00099991, firstName=Gilad, lastName=Levi, birthDate=1/1/1988, password=gilad234, email=http:\\gilad@Gmail.com, customerAddress=Address [country=Israel, city=Arad, street=Nahum, housNumber=88, phoneNumber= {052-8090939,054-5121323} ]]	
+changeCustomerAddress returns: Successfully changed address of customer: 00099994 Customer [ID Number=00099994, firstName=Shani, lastName=Iluz, birthDate=5/5/1978, password=shani234, email=http:\\shani@Walla.co.il, customerAddress=Address [country=Israel, city=Ofakim, street=Ezra, housNumber=2, phoneNumber= {052-8088977} ]]	
+changeCustomerAddress returns: Failed to change address of customer with id: 00099981
+changeCustomerAddress returns: Successfully changed address of customer: 00099998 Customer [ID Number=00099998, firstName=Shai, lastName=Alush, birthDate=9/11/1976, password=shai234, email=http:\\shai@Gmail.com, customerAddress=Address [country=Israel, city=Haifa, street=Horev, housNumber=3, phoneNumber= {052-8108880} ]]	
+
+
+addRoomToBranch returns: Successfully added room: 1 to branch 11111111 in IShape
+addRoomToBranch returns: Successfully added room: 2 to branch 11111111 in IShape
+addRoomToBranch returns: Successfully added room: 3 to branch 11111111 in IShape
+addRoomToBranch returns: Successfully added room: 1 to branch 22222222 in IShape
+addRoomToBranch returns: Successfully added room: 2 to branch 22222222 in IShape
+addRoomToBranch returns: Successfully added room: 1 to branch 66666666 in IShape
+addRoomToBranch returns: Failed to add room: 1 to branch 66666666 in IShape
+addRoomToBranch returns: Failed to add room: 1 to branch 66656666 in IShape
+
+
+
+
+addInstrumentToRoom returns: Successfully added instrument: CROSS to room 1 in branch 11111111 in IShape
+addInstrumentToRoom returns: Successfully added instrument: CYCLE to room 1 in branch 11111111 in IShape
+addInstrumentToRoom returns: Successfully added instrument: ROWER to room 1 in branch 11111111 in IShape
+addInstrumentToRoom returns: Successfully added instrument: STEPPER to room 1 in branch 11111111 in IShape
+addInstrumentToRoom returns: Successfully added instrument: BENCH to room 1 in branch 22222222 in IShape
+addInstrumentToRoom returns: Successfully added instrument: WEIGHTLIFTING_BAR to room 1 in branch 22222222 in IShape
+addInstrumentToRoom returns: Successfully added instrument: ROWER to room 1 in branch 22222222 in IShape
+addInstrumentToRoom returns: Successfully added instrument: POWER_STATION to room 1 in branch 22222222 in IShape
+addInstrumentToRoom returns: Failed to add instrument: POWER_STATION to room 2 in branch 22222222 in IShape
+addInstrumentToRoom returns: Successfully added instrument: CROSS to room 1 in branch 22222222 in IShape
+
+
+
+
+addLesson returns: Successfully added lesson: AEROBICS at Fri Aug 05 12:00:00 IDT 2016 to room 3 in branch 11111111 in IShape
+addLesson returns: Successfully added lesson: KICKBOXING at Sat Aug 06 14:00:00 IDT 2016 to room 2 in branch 11111111 in IShape
+addLesson returns: Successfully added lesson: AEROBICS at Fri Aug 05 15:00:00 IDT 2016 to room 3 in branch 11111111 in IShape
+addLesson returns: Successfully added lesson: PILATES at Mon Aug 08 12:00:00 IDT 2016 to room 2 in branch 11111111 in IShape
+addLesson returns: Successfully added lesson: YOGA at Sun Aug 07 12:00:00 IDT 2016 to room 3 in branch 11111111 in IShape
+addLesson returns: Successfully added lesson: TRX at Sat Aug 20 12:00:00 IDT 2016 to room 2 in branch 22222222 in IShape
+addLesson returns: Successfully added lesson: AEROBICS at Mon Aug 22 14:00:00 IDT 2016 to room 2 in branch 22222222 in IShape
+addLesson returns: Failed to add lesson: TRX at Mon Aug 22 14:00:00 IDT 2016 to room 2 in branch 22222222 in IShape
+addLesson returns: Successfully added lesson: PILATES at Sun Aug 23 13:00:00 IDT 2015 to room 2 in branch 22222222 in IShape
+addLesson returns: Failed to add lesson: PILATES at Sun Aug 23 14:00:00 IDT 2015 to room 3 in branch 11111111 in IShape
+addLesson returns: Failed to add lesson: PILATES at Sat Aug 27 14:00:00 IDT 2016 to room 2 in branch 22222222 in IShape
+addLesson returns: Successfully added lesson: YOGA at Fri Aug 26 14:00:00 IDT 2016 to room 2 in branch 11111111 in IShape
+addLesson returns: Successfully added lesson: YOGA at Sun Jun 26 14:00:00 IDT 2016 to room 2 in branch 11111111 in IShape
+addLesson returns: Successfully added lesson: AEROBICS at Sat Aug 27 13:00:00 IDT 2016 to room 2 in branch 22222222 in IShape
+addLesson returns: Successfully added lesson: AEROBICS at Sat Aug 27 16:30:00 IDT 2016 to room 2 in branch 22222222 in IShape
+
+
+
+
+addCustomerToLesson returns: Successfully added customer 00099991 to lesson: 5 in IShape
+addCustomerToLesson returns: Successfully added customer 00099992 to lesson: 2 in IShape
+addCustomerToLesson returns: Successfully added customer 00099992 to lesson: 1 in IShape
+addCustomerToLesson returns: Successfully added customer 00099992 to lesson: 16 in IShape
+addCustomerToLesson returns: Successfully added customer 00099992 to lesson: 5 in IShape
+addCustomerToLesson returns: Successfully added customer 00099993 to lesson: 3 in IShape
+addCustomerToLesson returns: Successfully added customer 00099993 to lesson: 1 in IShape
+addCustomerToLesson returns: Successfully added customer 00099993 to lesson: 2 in IShape
+addCustomerToLesson returns: Successfully added customer 00099994 to lesson: 1 in IShape
+addCustomerToLesson returns: Successfully added customer 00099991 to lesson: 4 in IShape
+addCustomerToLesson returns: Successfully added customer 00099992 to lesson: 4 in IShape
+addCustomerToLesson returns: Successfully added customer 00099993 to lesson: 4 in IShape
+addCustomerToLesson returns: Successfully added customer 00099994 to lesson: 4 in IShape
+addCustomerToLesson returns: Failed to add customer 00099992 to lesson: 15 in IShape
+addCustomerToLesson returns: Failed to add customer 00099991 to lesson: 15 in IShape
+addCustomerToLesson returns: Successfully added customer 00099993 to lesson: 15 in IShape
+addCustomerToLesson returns: Failed to add customer 00099991 to lesson: 15 in IShape
+addCustomerToLesson returns: Successfully added customer 00099991 to lesson: 1 in IShape
+addCustomerToLesson returns: Failed to add customer 00099992 to lesson: 9 in IShape
+addCustomerToLesson returns: Failed to add customer 00099921 to lesson: 5 in IShape
+
+
+
+
+cancelSubscription returns: Successfully canceled subscription 1
+cancelSubscription returns: Successfully canceled subscription 2
+cancelSubscription returns: Successfully canceled subscription 9
+cancelSubscription returns: Failed to cancel subscription 20
+
+
+addWorkout returns: Successfully added workout number 1 to customer number: 00099991
+addWorkout returns: Successfully added workout number 2 to customer number: 00099991
+addWorkout returns: Failed to add workout number 3 to customer number: 00099992
+addWorkout returns: Successfully added workout number 4 to customer number: 00099991
+addWorkout returns: Successfully added workout number 5 to customer number: 00099992
+addWorkout returns: Successfully added workout number 6 to customer number: 00099994
+addWorkout returns: Successfully added workout number 7 to customer number: 00099994
+addWorkout returns: Successfully added workout number 8 to customer number: 00099992
+addWorkout returns: Successfully added workout number 9 to customer number: 00099994
+addWorkout returns: Successfully added workout number 10 to customer number: 00099994
+addWorkout returns: Successfully added workout number 11 to customer number: 00099991
+addWorkout returns: Successfully added workout number 12 to customer number: 00099994
+addWorkout returns: Failed to add workout number 12 to customer number: 00099991
+addWorkout returns: Successfully added workout number 13 to customer number: 00099994
+
+
+addInstrumentToWorkout returns: Successfully added instrument: CROSS to workout: 1 at Tue Aug 02 12:00:00 IDT 2016 to room 1 in branch 11111111 in IShape
+addInstrumentToWorkout returns: Failed to add instrument: CROSS to workout: 15 at Tue Aug 02 12:00:00 IDT 2016 to room 1 in branch 11111111 in IShape
+addInstrumentToWorkout returns: Failed to add instrument: CROSS to workout: 1 at Tue Aug 02 12:00:00 IDT 2016 to room 2 in branch 11111111 in IShape
+addInstrumentToWorkout returns: Failed to add instrument: CROSS to workout: 1 at Thu Aug 04 12:10:00 IDT 2016 to room 1 in branch 11111111 in IShape
+addInstrumentToWorkout returns: Successfully added instrument: CROSS to workout: 7 at Tue Aug 30 12:10:00 IDT 2016 to room 1 in branch 22222222 in IShape
+addInstrumentToWorkout returns: Failed to add instrument: CROSS to workout: 7 at Tue Aug 30 12:16:00 IDT 2016 to room 1 in branch 22222222 in IShape
+addInstrumentToWorkout returns: Successfully added instrument: ROWER to workout: 2 at Tue Aug 02 12:16:00 IDT 2016 to room 1 in branch 11111111 in IShape
+addInstrumentToWorkout returns: Failed to add instrument: ROWER to workout: 3 at Tue Aug 02 12:16:00 IDT 2016 to room 1 in branch 11111111 in IShape
+addInstrumentToWorkout returns: Successfully added instrument: STEPPER to workout: 6 at Mon Aug 08 12:16:00 IDT 2016 to room 1 in branch 11111111 in IShape
+addInstrumentToWorkout returns: Successfully added instrument: CROSS to workout: 6 at Mon Aug 08 12:35:00 IDT 2016 to room 1 in branch 11111111 in IShape
+addInstrumentToWorkout returns: Successfully added instrument: ROWER to workout: 6 at Mon Aug 08 13:01:00 IDT 2016 to room 1 in branch 11111111 in IShape
+addInstrumentToWorkout returns: Successfully added instrument: STEPPER to workout: 6 at Mon Aug 08 13:20:00 IDT 2016 to room 1 in branch 11111111 in IShape
+addInstrumentToWorkout returns: Failed to add instrument: ROWER to workout: 3 at Tue Aug 02 13:01:00 IDT 2016 to room 1 in branch 11111111 in IShape
+addInstrumentToWorkout returns: Failed to add instrument: STEPPER to workout: 3 at Tue Aug 02 13:20:00 IDT 2016 to room 1 in branch 11111111 in IShape
+addInstrumentToWorkout returns: Failed to add instrument: CROSS to workout: 3 at Tue Aug 30 12:10:00 IDT 2016 to room 1 in branch 22222222 in IShape
+addInstrumentToWorkout returns: Successfully added instrument: CROSS to workout: 7 at Tue Aug 30 14:08:00 IDT 2016 to room 1 in branch 22222222 in IShape
+addInstrumentToWorkout returns: Successfully added instrument: POWER_STATION to workout: 7 at Tue Aug 30 13:00:00 IDT 2016 to room 1 in branch 22222222 in IShape
+
+
+cancelWorkout returns: Successfully canceled workout number 12
+cancelWorkout returns: Failed to cancel workout number 14
+
+
+attendLesson returns: Successfully marked customer 00099992 in lesson 2
+attendLesson returns: Failed to mark customer 00099992 in lesson 2
+attendLesson returns: Successfully marked customer 00099992 in lesson 1
+attendLesson returns: Successfully marked customer 00099993 in lesson 3
+attendLesson returns: Successfully marked customer 00099993 in lesson 1
+attendLesson returns: Failed to mark customer 00099991 in lesson 15
+
+
+
+
+=======
+Query_1
+=======
+getAllAttendedLessonsOfMostActiveCustomer returns:
+the following lessons:
+1	- AEROBICS on Fri Aug 05 12:00:00 IDT 2016
+2	- KICKBOXING on Sat Aug 06 14:00:00 IDT 2016
+
+
+
+
+=======
+Query_2
+=======
+getAllCustomersFromBranchXbutNotFromBranchY returns:
+the following customers ed on branch 11111111 (and not in branch 22222222): 
+1	- Customer [ID Number=00099993, firstName=Dor, lastName=Kam, birthDate=7/3/1979, password=dor234, email=http:\\dor@Walla.co.il, customerAddress=Address [country=Israel, city=Modiin_Illit, street=Gidon, housNumber=22, phoneNumber= {052-8020003} ]]	
+
+
+
+
+=======
+Query_3
+=======
+getTheMostPopularLessonType returns:
+The most popular lesson type is: 
+YOGA
+
+
+
+
+=======
+Query_4
+=======
+getReceptionistOfTheMonth returns:
+The receptionist Of the month is: 
+employeeNumber=15, firstName=Rika, lastName=Danon, birthDate=9/12/1983, startWorkingDate= 1/1/2012, password=shimon1234
+
+
+
+
+=======
+Query_5
+=======
+getAllSuperSeniorCoaches returns:
+The super senior coaches of the month is:
+employeeNumber=1, firstName=Eyal, lastName=Haim, birthDate=16/12/1984, startWorkingDate= 1/1/2000, password=eyal1234
+employeeNumber=2, firstName=Yaron, lastName=Levi, birthDate=10/5/1986, startWorkingDate= 1/1/2000, password=yaron1234
+
+
+
+
+=======
+Query_6
+=======
+getTopJanuaryReceptionists returns:
+No top january receptionist for this year
+
+
+=======
+Query_7
+=======
+getTopCustomerOfTheMonth returns:
+getTopCustomerOfTheMonthr is:
+Customer [ID Number=00099992, firstName=Avi, lastName=Vizman, birthDate=2/1/1990, password=avi234, email=http:\\avi@Hotmail.co.il, customerAddress=Address [country=Israel, city=Holon, street=Herzel, housNumber=22, phoneNumber= {052-8198765} ]]	
+
+
+=======
+Query_8
+=======
+getTopIstrumentType returns:
+getTopIstrumentType is:
+CROSS
+
+
+
+
+=======
+Query_9
+=======
+getAllCustomersAttendingMoreThan1City returns:
+getAllCustomersAttendingMoreThan1City is:
+[Customer [ID Number=00099992, firstName=Avi, lastName=Vizman, birthDate=2/1/1990, password=avi234, email=http:\\avi@Hotmail.co.il, customerAddress=Address [country=Israel, city=Holon, street=Herzel, housNumber=22, phoneNumber= {052-8198765} ]]	, Customer [ID Number=00099991, firstName=Gilad, lastName=Levi, birthDate=1/1/1988, password=gilad234, email=http:\\gilad@Gmail.com, customerAddress=Address [country=Israel, city=Arad, street=Nahum, housNumber=88, phoneNumber= {052-8090939,054-5121323} ]]	, Customer [ID Number=00099994, firstName=Shani, lastName=Iluz, birthDate=5/5/1978, password=shani234, email=http:\\shani@Walla.co.il, customerAddress=Address [country=Israel, city=Ofakim, street=Ezra, housNumber=2, phoneNumber= {052-8088977} ]]	]
+
+
+=======
+Query_10
+=======
+getMostActiveDatePerBranchThisMonth returns:
+ActiveDatePerBranchThisMonth is:
+BranchNum = 22222222 active date = Sat Aug 27 13:00:00 IDT 2016
+BranchNum = 11111111 active date = Fri Aug 05 12:00:00 IDT 2016
+
+
+=======
+Query_11
+=======
+getPopularBranches returns:
+getPopularBranches are:
+Branch number 22222222
+
+
+=======
+Query_12
+=======
+getPotentialCustomersPerBranch returns:
+getPotentialCustomersPerBranch are:
+Branch number 77777777 California
+Customer number 00099910 California
+Customer number 00099920 California
+Branch number 88888888 Miami
+Customer number 00099921 Miami

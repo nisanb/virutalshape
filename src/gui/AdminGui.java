@@ -9,17 +9,18 @@ package gui;
 import java.awt.Color;
 import javax.swing.JDesktopPane;
 import gui.internal.*;
+import init.IShape;
 /**
  *
  * @author nisan
  */
 public class AdminGui extends javax.swing.JFrame {
     
+ 
     /**
      * Creates new form MainGui
      */
     public AdminGui() {
-        
         initComponents();
         iWindow.setPanel(ContentFrame);
       
@@ -130,7 +131,6 @@ public class AdminGui extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Open Internal JFrame
         iStatisticsNew tmp = new iStatisticsNew();
-        
         iWindow.openWin(tmp, tmp.getWindowID());
     }//GEN-LAST:event_btnStatisticsMouseClicked
 

@@ -3,6 +3,7 @@
  * Other windows will remain active but at hide state;
  */
 package gui.internal;
+import init.IShape;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
@@ -12,11 +13,18 @@ import javax.swing.JPanel;
  */
 public class iWindow {
     protected static int WindowID = 0;
+    protected static IShape DB;
     protected static boolean isInternalOpened = false;
     protected static JInternalFrame currentWindow = null;
     protected static JPanel panel = null;
     
+    public static void setDB(IShape tmp){
+        DB=tmp;
+    }
     
+    public static IShape getDB(){
+        return DB;
+    }
     
     //================================= Setters and Getters ==================================
     public static void setWindowState(boolean state){

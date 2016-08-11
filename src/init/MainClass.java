@@ -26,6 +26,8 @@ import core.Coach;
 import core.Customer;
 import core.Lesson;
 import core.Receptionist;
+import gui.LoginView;
+import gui.internal.iWindow;
 import utils.E_Cities;
 import utils.E_Lessons;
 import utils.E_Levels;
@@ -87,6 +89,9 @@ public class MainClass {
      */
     public static void main(String[] args) throws IOException, ParseException,
             ClassNotFoundException {
+        
+        //Activate Login GUI
+       
         
         input = new Scanner(new File("input.txt")); // Create Scanner for the
         // text file named
@@ -891,8 +896,12 @@ public class MainClass {
         System.out.println("\n NOTICE:\n\t\"End of process\" "
                 + "does NOT mean that all your methods are correct.\n"
                 + "\n==>\t You NEED to check the \"output.txt\" file");
-        ;
-        exportData();
+        
+        //Set IShape DB to GUI
+        iWindow.setDB(IShape);
+         LoginView login = new LoginView();
+        login.setVisible(true);
+        //exportData();
     }// END OF ~ main
     private static IShape importData() {
         // TODO Auto-generated method stub
