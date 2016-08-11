@@ -90,7 +90,7 @@ public class AdminGui extends javax.swing.JFrame {
             .addGap(0, 670, Short.MAX_VALUE)
         );
 
-        getContentPane().add(ContentFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 820, 670));
+        getContentPane().add(ContentFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 820, 670));
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/Admin.jpg"))); // NOI18N
         Background.addMouseListener(new java.awt.event.MouseAdapter() {
