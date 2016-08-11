@@ -41,6 +41,7 @@ public class iWindow {
      * This method controls the opened internal windows by hiding and showing desired windows
      * @param frame 
      */
+    //Commit
     public static void openWin(JInternalFrame frame){
         
         frame.setOpaque(true);
