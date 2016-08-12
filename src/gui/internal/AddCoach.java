@@ -13,7 +13,7 @@ import core.Branch;
 import core.Coach;
 import java.awt.Color;
 import utils.E_Cities;
-import java.lang.Enum.*;
+import java.lang.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -34,11 +34,18 @@ public class AddCoach extends javax.swing.JInternalFrame {
      */
     public AddCoach() {
         initComponents();
-
         //Finished Loading
         for (E_Cities city : E_Cities.values()) {
             slctCity.addItem(city.toString());
         }
+        
+//        types = new E_Lessons[E_Lessons.values().length];
+//        int i = 0;
+//        for (E_Lessons l:E_Lessons.values()){
+//            types[i] = l;
+//            System.out.println(types[i].toString());
+//            i++;
+//        }
 
     }
 
@@ -68,7 +75,6 @@ public class AddCoach extends javax.swing.JInternalFrame {
         btnHouseNumber = new javax.swing.JTextField();
         numError = new javax.swing.JLabel();
         phoneError = new javax.swing.JLabel();
-        countryError = new javax.swing.JLabel();
         streetError = new javax.swing.JLabel();
         houseError = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -84,8 +90,6 @@ public class AddCoach extends javax.swing.JInternalFrame {
         Password1 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
         jPasswordField2 = new javax.swing.JPasswordField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        selected = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         list = new javax.swing.JList<>();
         day = new javax.swing.JComboBox<>();
@@ -96,6 +100,8 @@ public class AddCoach extends javax.swing.JInternalFrame {
         year1 = new javax.swing.JComboBox<>();
         jComboBox1 = new javax.swing.JComboBox<>();
         copy = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        list1 = new javax.swing.JList<>();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -274,11 +280,6 @@ public class AddCoach extends javax.swing.JInternalFrame {
         getContentPane().add(phoneError);
         phoneError.setBounds(350, 440, 180, 20);
 
-        countryError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        countryError.setForeground(new java.awt.Color(255, 0, 0));
-        getContentPane().add(countryError);
-        countryError.setBounds(350, 320, 180, 20);
-
         streetError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         streetError.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(streetError);
@@ -377,15 +378,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
         getContentPane().add(jPasswordField2);
         jPasswordField2.setBounds(380, 290, 170, 20);
 
-        selected.setBackground(new java.awt.Color(0, 0, 0));
-        selected.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        selected.setForeground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setViewportView(selected);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(380, 200, 170, 70);
-
-        list = new javax.swing.JList(E_Types.values());
+        list = new javax.swing.JList(E_Lessons.values());
         list.setBackground(new java.awt.Color(0, 0, 0));
         list.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         list.setForeground(new java.awt.Color(255, 255, 255));
@@ -393,7 +386,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(list);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(140, 200, 170, 70);
+        jScrollPane2.setBounds(140, 190, 170, 80);
 
         day.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         day.setToolTipText("");
@@ -417,7 +410,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(year);
-        year.setBounds(270, 100, 50, 20);
+        year.setBounds(270, 100, 60, 20);
 
         day1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         day1.setName(""); // NOI18N
@@ -435,7 +428,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(year1);
-        year1.setBounds(270, 130, 50, 20);
+        year1.setBounds(270, 130, 60, 20);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Level", "1", "2", "3", "4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -444,7 +437,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(200, 160, 50, 20);
+        jComboBox1.setBounds(190, 160, 70, 20);
 
         copy.setText(">>");
         copy.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -454,6 +447,16 @@ public class AddCoach extends javax.swing.JInternalFrame {
         });
         getContentPane().add(copy);
         copy.setBounds(320, 220, 50, 23);
+
+        list1 = new javax.swing.JList(E_Lessons.values());
+        list1.setBackground(new java.awt.Color(0, 0, 0));
+        list1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        list1.setForeground(new java.awt.Color(255, 255, 255));
+        list1.setToolTipText("");
+        jScrollPane3.setViewportView(list1);
+
+        getContentPane().add(jScrollPane3);
+        jScrollPane3.setBounds(380, 190, 170, 80);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -625,8 +628,14 @@ public class AddCoach extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_monthActionPerformed
 
     private void copyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_copyMouseClicked
-        //TODO - not working
-        System.out.println("Clicked");
+
+        
+        
+        
+
+        //selected = new javax.swing.JList(types);
+        pack();
+
     }//GEN-LAST:event_copyMouseClicked
 
 
@@ -646,7 +655,6 @@ public class AddCoach extends javax.swing.JInternalFrame {
     private javax.swing.JTextField btnHouseNumber;
     private javax.swing.JTextField btnPhoneNumber;
     private javax.swing.JButton copy;
-    private javax.swing.JLabel countryError;
     private javax.swing.JComboBox<String> day;
     private javax.swing.JComboBox<String> day1;
     private javax.swing.JLabel houseError;
@@ -663,15 +671,15 @@ public class AddCoach extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JList<String> list;
+    private javax.swing.JList<String> list1;
     private javax.swing.JComboBox<String> month;
     private javax.swing.JComboBox<String> month1;
     private javax.swing.JLabel numError;
     private javax.swing.JLabel numError2;
     private javax.swing.JLabel phoneError;
-    private javax.swing.JList<String> selected;
     private javax.swing.JComboBox<String> slctCity;
     private javax.swing.JLabel streetError;
     private javax.swing.JComboBox<String> year;
@@ -686,7 +694,6 @@ public class AddCoach extends javax.swing.JInternalFrame {
     private Date startWorkingDate;
     private String password;
     int level;
-    private String[] temp;
     private E_Lessons[] types;
 //    for (int i = 0; i < temp.length; i++)
 //    types[i] = E_Lessons.valueOf(temp[i]);
