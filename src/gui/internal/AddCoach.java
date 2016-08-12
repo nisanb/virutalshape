@@ -17,7 +17,9 @@ import java.lang.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Vector;
 import javax.swing.JCheckBox;
+import javax.swing.JList;
 import utils.E_Lessons;
 import utils.E_Types;
 
@@ -38,15 +40,6 @@ public class AddCoach extends javax.swing.JInternalFrame {
         for (E_Cities city : E_Cities.values()) {
             slctCity.addItem(city.toString());
         }
-        
-//        types = new E_Lessons[E_Lessons.values().length];
-//        int i = 0;
-//        for (E_Lessons l:E_Lessons.values()){
-//            types[i] = l;
-//            System.out.println(types[i].toString());
-//            i++;
-//        }
-
     }
 
     /**
@@ -222,11 +215,6 @@ public class AddCoach extends javax.swing.JInternalFrame {
                 btnAddCoachMouseClicked(evt);
             }
         });
-        btnAddCoach.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddCoachActionPerformed(evt);
-            }
-        });
         getContentPane().add(btnAddCoach);
         btnAddCoach.setBounds(440, 470, 110, 23);
 
@@ -378,10 +366,14 @@ public class AddCoach extends javax.swing.JInternalFrame {
         getContentPane().add(jPasswordField2);
         jPasswordField2.setBounds(380, 290, 170, 20);
 
-        list = new javax.swing.JList(E_Lessons.values());
         list.setBackground(new java.awt.Color(0, 0, 0));
         list.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         list.setForeground(new java.awt.Color(255, 255, 255));
+        list.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "YOGA", "KICKBOXING", "PILATES", "TRX", "ABS", "AEROBICS", "BODYWEIGHT", "BOXFIT", "CIRCUITS", "COMBAT", "SPINNING", "DANCE", "FAT_BURN", "STEP_TONE", "STRETCH", "ZUMBA", "RAVE", "BROGA", "FITBOXING", "TRAPEZE", "DYNAMIC_WORKOUT", "POWER", "HOOP" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
         list.setToolTipText("");
         jScrollPane2.setViewportView(list);
 
@@ -395,11 +387,6 @@ public class AddCoach extends javax.swing.JInternalFrame {
         day.setBounds(140, 100, 50, 20);
 
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        month.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                monthActionPerformed(evt);
-            }
-        });
         getContentPane().add(month);
         month.setBounds(200, 100, 60, 20);
 
@@ -448,7 +435,6 @@ public class AddCoach extends javax.swing.JInternalFrame {
         getContentPane().add(copy);
         copy.setBounds(320, 220, 50, 23);
 
-        list1 = new javax.swing.JList(E_Lessons.values());
         list1.setBackground(new java.awt.Color(0, 0, 0));
         list1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         list1.setForeground(new java.awt.Color(255, 255, 255));
@@ -462,8 +448,15 @@ public class AddCoach extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddCoachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddCoachMouseClicked
-        // TODO add your handling code here:
-        System.out.println(slctCity.getSelectedItem());
+        Address address = new Address(country, city, street,
+                housNumber, phoneNumber.toArray(new String[phoneNumber.size()]));
+        
+        Coach coach = new Coach(employeeNumber, firstName, lastName,
+                birthDate, startWorkingDate, password, level, address,
+                types);
+        
+        if (iWindow.DB.addEmployee(coach))
+            System.out.println("Successfully added coach");;
     }//GEN-LAST:event_btnAddCoachMouseClicked
 
     private void IDfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDfieldFocusLost
@@ -558,19 +551,6 @@ public class AddCoach extends javax.swing.JInternalFrame {
         //        }
     }//GEN-LAST:event_slctCityFocusLost
 
-    private void btnAddCoachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCoachActionPerformed
-        Address address = new Address(country, city, street,
-                housNumber, phoneNumber.toArray(new String[phoneNumber.size()]));
-
-        Coach coach = new Coach(employeeNumber, firstName, lastName,
-                birthDate, startWorkingDate, password, level, address,
-                types);
-        if (iWindow.DB.addEmployee(coach)) {
-            System.out.println("Successfully added");
-            this.dispose();
-        }
-    }//GEN-LAST:event_btnAddCoachActionPerformed
-
     private void LastFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LastFieldFocusLost
         String str = NameField.getText();
         if (!CharValidator.isWord(str) || str.length() < 2) {
@@ -623,19 +603,13 @@ public class AddCoach extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void monthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monthActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_monthActionPerformed
-
     private void copyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_copyMouseClicked
-
-        
-        
-        
-
-        //selected = new javax.swing.JList(types);
-        pack();
-
+        String[] str = new String[list.getSelectedValues().length];
+        list1.setListData(list.getSelectedValuesList().toArray(str));
+        types = new E_Lessons[str.length];
+        for (int i = 0; i < str.length; i++){
+            types[i] = E_Lessons.valueOf(str[i]);      
+        }
     }//GEN-LAST:event_copyMouseClicked
 
 
@@ -695,8 +669,6 @@ public class AddCoach extends javax.swing.JInternalFrame {
     private String password;
     int level;
     private E_Lessons[] types;
-//    for (int i = 0; i < temp.length; i++)
-//    types[i] = E_Lessons.valueOf(temp[i]);
     private String country;
     private E_Cities city;
     private String street;

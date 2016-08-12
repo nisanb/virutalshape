@@ -365,7 +365,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
 
     private void btnAddBranchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddBranchActionPerformed
         if (iWindow.DB.addBranch(branchNumber, branchName, city, country, street, housNumber, phoneNumber.toArray(new String[phoneNumber.size()]) ))
-        System.out.println("Successfully");
+        System.out.println("Successfully added branch");
     }//GEN-LAST:event_btnAddBranchActionPerformed
 
 
