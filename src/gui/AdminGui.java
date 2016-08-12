@@ -37,6 +37,7 @@ public class AdminGui extends javax.swing.JFrame {
     private void initComponents() {
 
         btnStatistics = new javax.swing.JLabel();
+        btnCustomers = new javax.swing.JLabel();
         btnBranches = new javax.swing.JLabel();
         btnExit = new javax.swing.JLabel();
         btnDisconnect = new javax.swing.JLabel();
@@ -54,6 +55,13 @@ public class AdminGui extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnStatistics, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 190, 50));
+
+        btnCustomers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCustomersMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnCustomers, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 190, 50));
 
         btnBranches.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -147,6 +155,12 @@ public class AdminGui extends javax.swing.JFrame {
         iWindow.openWin(add, add.getWindowID());
     }//GEN-LAST:event_btnBranchesMouseClicked
 
+    private void btnCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomersMouseClicked
+        // TODO add your handling code here:
+        ManageCustomers add = new ManageCustomers();
+        iWindow.openWin(add, add.getWindowID());
+    }//GEN-LAST:event_btnCustomersMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -189,6 +203,7 @@ public class AdminGui extends javax.swing.JFrame {
     private javax.swing.JLabel Background;
     private javax.swing.JPanel ContentFrame;
     private javax.swing.JLabel btnBranches;
+    private javax.swing.JLabel btnCustomers;
     private javax.swing.JLabel btnDisconnect;
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnStatistics;

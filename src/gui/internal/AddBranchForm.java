@@ -21,6 +21,7 @@ import javax.swing.JCheckBox;
  */
 public class AddBranchForm extends javax.swing.JInternalFrame {
     private int WindowID = 2;
+    private Branch branch=null;
     /**
      * Creates new form NewJInternalFrame
      */
@@ -34,6 +35,16 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
             slctCity.addItem(city.toString());
         
     }
+    
+    /**
+     * Constructor as editor
+     * @param branch 
+     */
+    public AddBranchForm(Branch branch){
+        initComponents();
+        this.branch=branch;
+    }
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -399,5 +410,15 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
 
     public void setWindowID(int id){
         this.WindowID=id;
+    }
+    public Branch getBranch(){
+        return this.branch;
+    }
+
+    public boolean isEdit(){
+        if(getBranch()==null){
+            return false;
+        }
+        return true;
     }
 }
