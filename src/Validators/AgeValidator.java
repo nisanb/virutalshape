@@ -29,9 +29,5 @@ public class AgeValidator {
 		
 		return false;
 	}
-        
-        public static void main(String[] args){
-  
-        }
 	
 }
