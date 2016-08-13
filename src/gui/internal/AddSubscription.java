@@ -282,19 +282,17 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 9) {
             recpError.setText("Positive 9 digits only");
             receptNumber = -1;
-            pack();
             return;
         }
 
-        if (!iWindow.DB.getEmployees().containsKey(Integer.parseInt(str))) {
+        if (iWindow.DB.getEmployees().containsKey(Integer.parseInt(str))) {
             recpError.setText(" ");
             receptNumber = Integer.parseInt(str);
         } else {
-            recpError.setText("Emlpyee number exists");
+            recpError.setText("Emlpyee number doesn't exists");
             receptNumber = -1;
         }
 
-        pack();
     }//GEN-LAST:event_recpFocusLost
 
     private void subFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_subFocusLost
@@ -331,11 +329,11 @@ public class AddSubscription extends javax.swing.JInternalFrame {
 
     //Manual variables declaration
     // create and add new Flight to IFly
-    int subNumber;
-    String ID;
-    int receptNumber;
-    E_Periods period;
-    Date startDate;
+    private int subNumber;
+    private String ID;
+    private int receptNumber;
+    private E_Periods period;
+    private Date startDate;
     
 
     //Manual variables declaration 

@@ -200,7 +200,7 @@ public class AdminGui extends javax.swing.JFrame  {
     }//GEN-LAST:event_iReturnMouseClicked
 
     private void btnEmployeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmployeesMouseClicked
-        AddRcp add = new AddRcp();
+        EmpToBranch add = new EmpToBranch();
         iWindow.openWin(add, add.getWindowID());
     }//GEN-LAST:event_btnEmployeesMouseClicked
 
