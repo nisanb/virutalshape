@@ -127,6 +127,7 @@ getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints
         // TODO add your handling code here:
         if(loginPass.getText().equals("Password"))
             loginPass.setText("");
+            
     }//GEN-LAST:event_loginPassKeyPressed
 
     private void loginPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginPassActionPerformed

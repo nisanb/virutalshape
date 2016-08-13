@@ -10,6 +10,11 @@ import java.awt.Color;
 import javax.swing.JDesktopPane;
 import gui.internal.*;
 import init.IShape;
+import java.awt.Desktop;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 /**
  *
@@ -47,6 +52,7 @@ public class AdminGui extends javax.swing.JFrame  {
         btnBranches = new javax.swing.JLabel();
         btnExit = new javax.swing.JLabel();
         btnDisconnect = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         iReturn = new javax.swing.JLabel();
         ContentFrame = new javax.swing.JPanel();
         Background = new javax.swing.JLabel();
@@ -102,6 +108,15 @@ public class AdminGui extends javax.swing.JFrame  {
             }
         });
         getContentPane().add(btnDisconnect, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 180, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/facebook-3-24.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 30, 30));
 
         iReturn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/return.png"))); // NOI18N
         iReturn.setToolTipText("Return");
@@ -204,6 +219,26 @@ public class AdminGui extends javax.swing.JFrame  {
         iWindow.openWin(add, add.getWindowID());
     }//GEN-LAST:event_btnEmployeesMouseClicked
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+        URI uri = null;
+        try {
+            uri = new URI("https://www.facebook.com/Virtual-IShape-1076392832409754/");
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(AdminGui.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+        try {
+            desktop.browse(uri);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -252,5 +287,6 @@ public class AdminGui extends javax.swing.JFrame  {
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnStatistics;
     private javax.swing.JLabel iReturn;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,7 @@
 package gui.internal;
 
 import core.Branch;
+import core.Employee;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -14,6 +15,7 @@ import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListCellRenderer;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
  *
@@ -37,6 +39,8 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         for(Branch branch : iWindow.DB.getBranches().values()){
             chooseCustoemr.addItem(branch.toString());
         }
+        
+       
 
     }
     /**
@@ -51,6 +55,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         chooseCustoemr = new javax.swing.JComboBox<>();
         statisticsPanel = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
+        btnEdit = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
@@ -73,9 +78,9 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         lblBranchName = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
         txtAddress = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,70));
         setBorder(null);
@@ -84,6 +89,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setAutoscrolls(true);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setFrameIcon(null);
         setInheritsPopupMenu(true);
         setMaximumSize(new java.awt.Dimension(1073, 500));
@@ -111,6 +117,15 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         statisticsPanel.setLayout(null);
         statisticsPanel.add(jSeparator2);
         jSeparator2.setBounds(30, 50, 210, 0);
+
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/edit-11-24.png"))); // NOI18N
+        btnEdit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditMouseClicked(evt);
+            }
+        });
+        statisticsPanel.add(btnEdit);
+        btnEdit.setBounds(340, 50, 30, 30);
 
         jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator4.setEnabled(false);
@@ -239,24 +254,24 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         getContentPane().add(statisticsPanel);
         statisticsPanel.setBounds(10, 110, 420, 340);
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/add.png"))); // NOI18N
-        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel15MouseClicked(evt);
-            }
-        });
-        getContentPane().add(jLabel15);
-        jLabel15.setBounds(380, 30, 32, 40);
-
         jLabel16.setBackground(new Color(0,0,0,0));
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("You may choose a branch by using the selector.");
         getContentPane().add(jLabel16);
         jLabel16.setBounds(10, 10, 510, 16);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/search.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/search-3-24.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 30, 30, 40);
+        jLabel1.setBounds(30, 30, 30, 40);
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/plus-5-24.png"))); // NOI18N
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel15MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel15);
+        jLabel15.setBounds(330, 30, 40, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -275,10 +290,6 @@ public class ManageBranches extends javax.swing.JInternalFrame {
           String str = item.toString().substring(8, 16);
           Branch branch = new Branch(Integer.parseInt(str));
           
-          AddBranchForm br = new AddBranchForm(branch);
-          br.setVisible(true);
-          br.setBounds(100, 100, br.getWidth(), br.getWidth());
-             System.err.println("Sending Branch #"+branch.getBranchNumber());
           updateData(branch);
           
           
@@ -293,8 +304,18 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         iWindow.openWin(frm, frm.getWindowID());
     }//GEN-LAST:event_jLabel15MouseClicked
 
+    private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
+        // TODO add your handling code here:
+        String str = chooseCustoemr.getSelectedItem().toString().substring(8, 16);
+        Branch branch = iWindow.DB.getBranches().get(Integer.parseInt(str));
+        AddBranchForm add = new AddBranchForm(branch);
+     
+        iWindow.openWin(add, add.getWindowID());
+    }//GEN-LAST:event_btnEditMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnEdit;
     private javax.swing.JComboBox<String> chooseCustoemr;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
@@ -352,9 +373,17 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         lblBranchID.setText(""+tmp.getBranchNumber());
         lblBranchName.setText(""+tmp.getBranchName());
         lblTotalEmployees.setText(""+tmp.getCoaches().size()+tmp.getRespt().size());
+        
         lblTotalLessons.setText(""+tmp.getLessonsCount());
         lblVisitedCustomers.setText(""+tmp.getUniqueVisitors());
         lblTotalWorkouts.setText(""+iWindow.DB.getTotalWorkoutsByBranch(tmp.getBranchNumber()));
         statisticsPanel.show();
+        for(Employee emp : tmp.getCoaches()){
+            System.err.println(emp);
+        }
+        for(Employee emp : tmp.getRespt()){
+            System.err.println(emp);
+        }
+        return;
     }
 }

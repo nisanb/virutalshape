@@ -8,6 +8,7 @@ import init.IShape;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
  * @author mickey shalev
@@ -65,6 +66,8 @@ public class iWindow {
             
             return;
         }
+         BasicInternalFrameUI bi = (BasicInternalFrameUI)frame.getUI();
+        bi.setNorthPane(null);
         System.err.println(WindowID + " " + getWindowID());
         frame.setOpaque(true);
         if (!getWindowState()){
