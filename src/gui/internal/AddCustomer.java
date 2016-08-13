@@ -34,7 +34,7 @@ import utils.E_Types;
  */
 public class AddCustomer extends javax.swing.JInternalFrame {
 
-    private int WindowID = 3;
+    private int WindowID = 5;
 
     /**
      * Creates new form NewJInternalFrame
@@ -410,7 +410,6 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 8) {
             numError.setText("Positive 8 digits only");
             id = "-1";
-            pack();
             return;
         }
 
@@ -422,7 +421,6 @@ public class AddCustomer extends javax.swing.JInternalFrame {
             id = "-1";
         }
 
-        pack();
     }//GEN-LAST:event_IDfieldFocusLost
 
     private void NameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NameFieldFocusLost
