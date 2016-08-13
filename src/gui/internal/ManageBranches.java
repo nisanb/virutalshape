@@ -372,7 +372,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         lblBranchAddress.setText(""+tmp.getBranchAddress().toString());
         lblBranchID.setText(""+tmp.getBranchNumber());
         lblBranchName.setText(""+tmp.getBranchName());
-        lblTotalEmployees.setText(""+tmp.getCoaches().size()+tmp.getRespt().size());
+        lblTotalEmployees.setText(""+(tmp.getCoaches().size()+tmp.getRespt().size()));
         
         lblTotalLessons.setText(""+tmp.getLessonsCount());
         lblVisitedCustomers.setText(""+tmp.getUniqueVisitors());

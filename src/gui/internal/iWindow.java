@@ -66,6 +66,7 @@ public class iWindow {
             
             return;
         }
+       
          BasicInternalFrameUI bi = (BasicInternalFrameUI)frame.getUI();
         bi.setNorthPane(null);
         System.err.println(WindowID + " " + getWindowID());

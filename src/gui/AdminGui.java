@@ -53,6 +53,7 @@ public class AdminGui extends javax.swing.JFrame  {
         btnExit = new javax.swing.JLabel();
         btnDisconnect = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jtitle = new javax.swing.JLabel();
         iReturn = new javax.swing.JLabel();
         ContentFrame = new javax.swing.JPanel();
         Background = new javax.swing.JLabel();
@@ -117,6 +118,12 @@ public class AdminGui extends javax.swing.JFrame  {
             }
         });
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 30, 30));
+
+        jtitle.setFont(new java.awt.Font("Times New Roman", 3, 48)); // NOI18N
+        jtitle.setForeground(new java.awt.Color(255, 255, 255));
+        jtitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jtitle.setText("Home Screen");
+        getContentPane().add(jtitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 530, 60));
 
         iReturn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/return.png"))); // NOI18N
         iReturn.setToolTipText("Return");
@@ -288,5 +295,6 @@ public class AdminGui extends javax.swing.JFrame  {
     private javax.swing.JLabel btnStatistics;
     private javax.swing.JLabel iReturn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jtitle;
     // End of variables declaration//GEN-END:variables
 }
