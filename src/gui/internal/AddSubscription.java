@@ -71,6 +71,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         length = new javax.swing.JComboBox<>();
         subError = new javax.swing.JLabel();
         dateError = new javax.swing.JLabel();
+        MessageBox = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -225,12 +226,25 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         getContentPane().add(dateError);
         dateError.setBounds(360, 100, 240, 20);
 
+        MessageBox.setBackground(new Color (0,0,0,90));
+        MessageBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        MessageBox.setForeground(new java.awt.Color(0, 255, 0));
+        getContentPane().add(MessageBox);
+        MessageBox.setBounds(30, 230, 330, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddCustomerMouseClicked
-   if(iWindow.DB.addSubToCustomer(subNumber, ID, receptNumber, period, startDate))
-            System.out.println("Successfully added subscription");
+   if(iWindow.DB.addSubToCustomer(subNumber, ID, receptNumber, period, startDate)){
+            MessageBox.setForeground(Color.GREEN);
+            MessageBox.setText("Subscription was added successfully");
+        }       
+        else{
+            MessageBox.setForeground(Color.RED);
+            MessageBox.setText("Failed to add Subscription");
+        }
+        update();
             
     }//GEN-LAST:event_btnAddCustomerMouseClicked
 
@@ -239,7 +253,6 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 8) {
             cusrError.setText("Positive 8 digits only");
             ID = "-1";
-            return;
         }
 
         if (!iWindow.DB.getCustomers().containsKey(Integer.parseInt(str))) {
@@ -251,6 +264,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
             cusrError.setText("Custonrt ID exists");
             ID = "-1";
         }
+        update();
 
     }//GEN-LAST:event_custFocusLost
 
@@ -273,6 +287,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
                 startDate = null;
                 dateError.setText("Can't add sub more than week ahead");
         }
+        update();
         
     }//GEN-LAST:event_yearFocusLost
 
@@ -282,7 +297,6 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 9) {
             recpError.setText("Positive 9 digits only");
             receptNumber = -1;
-            return;
         }
 
         if (iWindow.DB.getEmployees().containsKey(Integer.parseInt(str))) {
@@ -292,6 +306,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
             recpError.setText("Emlpyee number doesn't exists");
             receptNumber = -1;
         }
+        update();
 
     }//GEN-LAST:event_recpFocusLost
 
@@ -304,10 +319,12 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         else if (length.getSelectedIndex() == 0) period = E_Periods.valueOf("QUATER");
         else if (length.getSelectedIndex() == 0) period = E_Periods.valueOf("HALF");
         else if (length.getSelectedIndex() == 0) period = E_Periods.valueOf("YEAR");
+        update();
     }//GEN-LAST:event_lengthFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel MessageBox;
     private javax.swing.JButton btnAddCustomer;
     private javax.swing.JLabel cusrError;
     private javax.swing.JTextField cust;
@@ -343,5 +360,12 @@ public class AddSubscription extends javax.swing.JInternalFrame {
 
     public void setWindowID(int id) {
         this.WindowID = id;
+    }
+    
+    public void update(){
+        
+        hide();
+        repaint();
+        show();
     }
 }

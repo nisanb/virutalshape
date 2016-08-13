@@ -5,10 +5,13 @@
 package gui.internal;
 import gui.AdminGui;
 import init.IShape;
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import jdk.nashorn.internal.scripts.JO;
 
 /**
  * @author mickey shalev
@@ -117,5 +120,6 @@ public class iWindow {
     public static JFrame getMainFrame(){
         return mainFrame;
     }
+    
     
 }

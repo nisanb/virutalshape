@@ -88,6 +88,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         day1 = new javax.swing.JComboBox<>();
         month1 = new javax.swing.JComboBox<>();
         year1 = new javax.swing.JComboBox<>();
+        MessageBox = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -383,6 +384,12 @@ public class AddRcp extends javax.swing.JInternalFrame {
         getContentPane().add(year1);
         year1.setBounds(270, 130, 60, 20);
 
+        MessageBox.setBackground(new Color (0,0,0,90));
+        MessageBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        MessageBox.setForeground(new java.awt.Color(0, 255, 0));
+        getContentPane().add(MessageBox);
+        MessageBox.setBounds(30, 350, 330, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -395,8 +402,16 @@ public class AddRcp extends javax.swing.JInternalFrame {
                 password, address);
        
         System.out.println(respt);
-        if (iWindow.DB.addEmployee(respt))
-            System.out.println("Successfully added Receptionost");
+        if (iWindow.DB.addEmployee(respt)){
+            MessageBox.setForeground(Color.GREEN);
+            MessageBox.setText("Receptionist was added successfully");
+        }       
+        else{
+            MessageBox.setForeground(Color.RED);
+            MessageBox.setText("Failed to add receptionist");
+        }
+        update();
+        update();
     }//GEN-LAST:event_btnAddCoachMouseClicked
 
     private void IDfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDfieldFocusLost
@@ -404,8 +419,6 @@ public class AddRcp extends javax.swing.JInternalFrame {
         if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 9) {
             numError.setText("Positive 9 digits only");
             employeeNumber = -1;
-            pack();
-            return;
         }
 
         if (!iWindow.DB.getEmployees().containsKey(Integer.parseInt(IDfield.getText()))) {
@@ -416,7 +429,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             employeeNumber = -1;
         }
 
-        pack();
+        update();
     }//GEN-LAST:event_IDfieldFocusLost
 
     private void NameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NameFieldFocusLost
@@ -428,6 +441,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             Ferror.setText(" ");
             firstName = str;
         }
+        update();
     }//GEN-LAST:event_NameFieldFocusLost
 
     private void btnBranchCountryFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchCountryFocusLost
@@ -451,6 +465,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             streetError.setText("Enter valid name");
             street = null;
         }
+        update();
     }//GEN-LAST:event_btnBranchStreetFocusLost
 
     private void btnHouseNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnHouseNumberFocusLost
@@ -463,6 +478,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             houseError.setText("up tp 4 digit number");
             housNumber = -1;
         }
+        update();
     }//GEN-LAST:event_btnHouseNumberFocusLost
 
     private void btnPhoneNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnPhoneNumberFocusLost
@@ -477,6 +493,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         } else {
             phoneError.setText("Error (example: 972-xxxx)");
         }
+        update();
     }//GEN-LAST:event_btnPhoneNumberFocusLost
 
     private void slctCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_slctCityFocusLost
@@ -485,10 +502,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         city = E_Cities.valueOf(str);
         btnBranchCountry.setText(city.getCountry());
         country = city.getCountry();
-        //        System.out.println(str);
-        //        }catch (Exception e){
-        //            e.printStackTrace();
-        //        }
+        update();
     }//GEN-LAST:event_slctCityFocusLost
 
     private void LastFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LastFieldFocusLost
@@ -500,6 +514,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             Lerror.setText(" ");
             lastName = str;
         }
+        update();
     }//GEN-LAST:event_LastFieldFocusLost
 
     private void yearFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_yearFocusLost
@@ -510,6 +525,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
 
             birthDate = new Date(y, m, d);
         }
+        update();
     }//GEN-LAST:event_yearFocusLost
 
     private void year1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_year1FocusLost
@@ -520,6 +536,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
 
             startWorkingDate = new Date(y, m, d);
         }
+        update();
     }//GEN-LAST:event_year1FocusLost
 
     private void jPasswordField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField2FocusLost
@@ -532,6 +549,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             Password1.setForeground(Color.WHITE);
             password = jPasswordField1.getText();;
         }
+        update();
 
     }//GEN-LAST:event_jPasswordField2FocusLost
 
@@ -541,6 +559,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
     private javax.swing.JTextField IDfield;
     private javax.swing.JTextField LastField;
     private javax.swing.JLabel Lerror;
+    private javax.swing.JLabel MessageBox;
     private javax.swing.JTextField NameField;
     private javax.swing.JLabel Password;
     private javax.swing.JLabel Password1;
@@ -603,5 +622,11 @@ public class AddRcp extends javax.swing.JInternalFrame {
 
     public void setWindowID(int id) {
         this.WindowID = id;
+    }
+        public void update(){
+        
+        hide();
+        repaint();
+        show();
     }
 }

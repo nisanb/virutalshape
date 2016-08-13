@@ -20,9 +20,9 @@ import javax.swing.JList;
  * @author nisans
  */
 public class EmpToBranch extends javax.swing.JInternalFrame {
-
+    
     private int WindowID = 7;
-
+    
     /**
      * Creates new form NewJInternalFrame
      */
@@ -32,7 +32,7 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
         
         //Finished Loading
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,6 +51,7 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         subError = new javax.swing.JLabel();
         selectBranch = new javax.swing.JComboBox<>();
+        MessageBox = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -151,15 +152,28 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
             selectBranch.addItem(b.getBranchNumber() + " " + b.getBranchName());
         }
 
+        MessageBox.setBackground(new Color (0,0,0,90));
+        MessageBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        MessageBox.setForeground(new java.awt.Color(0, 255, 0));
+        getContentPane().add(MessageBox);
+        MessageBox.setBounds(30, 150, 330, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void ConnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConnectMouseClicked
-   if(iWindow.DB.connectEmloyeeToBranch(empNumber, branchNum))
-            System.out.println("Successfully connected to new branch");
-            
+        if(iWindow.DB.connectEmloyeeToBranch(empNumber, branchNum)){
+            MessageBox.setForeground(Color.GREEN);
+            MessageBox.setText("Successfully connected employee to new branch");
+        }       
+        else{
+            MessageBox.setForeground(Color.RED);
+            MessageBox.setText("Failed connected employee to new branch");
+        }
+        update();
+        
     }//GEN-LAST:event_ConnectMouseClicked
-
+    
     private void EmpNumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EmpNumFocusLost
         String str = EmpNum.getText();
         if (!PositiveValidator.isPositiveStringNum(str)/* || str.length() != 9*/) {
@@ -167,21 +181,22 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
             empNumber = -1;
             return;
         }
-
+        
         if (iWindow.DB.getEmployees().containsKey(Integer.parseInt(str))) {
             empError.setText(" ");
             empNumber = Integer.parseInt(str);
             if (iWindow.DB.getEmployees().get(empNumber) !=null)
-            CurrentBranch.setText(new Integer(
-                    iWindow.DB.getEmployees().get(empNumber).getWorkBranch().getBranchNumber()).toString());
+                CurrentBranch.setText(new Integer(
+                        iWindow.DB.getEmployees().get(empNumber).getWorkBranch().getBranchNumber()).toString());
         } else {
             empError.setText("Emlpyee number doesn't exists");
             empNumber = -1;
         }
-
-
+        update();
+        
+        
     }//GEN-LAST:event_EmpNumFocusLost
-
+    
     private void selectBranchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectBranchFocusLost
         String str = (String) selectBranch.getSelectedItem();
         for (int i = 0; i < str.length(); i++){
@@ -192,17 +207,19 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
         }
         branchNum = Integer.parseInt(str);
         System.out.println(branchNum);
+        update();
     }//GEN-LAST:event_selectBranchFocusLost
-
+    
     private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_formFocusLost
-
-
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Connect;
     private javax.swing.JTextField CurrentBranch;
     private javax.swing.JTextField EmpNum;
+    private javax.swing.JLabel MessageBox;
     private javax.swing.JLabel empError;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -210,19 +227,26 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> selectBranch;
     private javax.swing.JLabel subError;
     // End of variables declaration//GEN-END:variables
-
+    
     //Manual variables declaration
     // create and add new Flight to IFly
     int empNumber;
     int branchNum;
     
-
-    //Manual variables declaration 
+    
+    //Manual variables declaration
     public int getWindowID() {
         return this.WindowID;
     }
-
+    
     public void setWindowID(int id) {
         this.WindowID = id;
+    }
+    
+    public void update(){
+        
+        hide();
+        repaint();
+        show();
     }
 }

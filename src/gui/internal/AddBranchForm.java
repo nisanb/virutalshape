@@ -381,12 +381,12 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         lblfailed.setForeground(new java.awt.Color(255, 0, 51));
         lblfailed.setText("Failed adding Branch!");
         getContentPane().add(lblfailed);
-        lblfailed.setBounds(30, 230, 190, 16);
+        lblfailed.setBounds(30, 230, 190, 14);
 
         lblsuccess.setForeground(new java.awt.Color(51, 255, 0));
         lblsuccess.setText("Successfully added Branch!");
         getContentPane().add(lblsuccess);
-        lblsuccess.setBounds(30, 230, 190, 16);
+        lblsuccess.setBounds(30, 230, 190, 14);
 
         btnBranchStreet1.setBackground(new java.awt.Color(0, 0, 0));
         btnBranchStreet1.setColumns(20);
