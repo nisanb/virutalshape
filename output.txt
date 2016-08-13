@@ -113,10 +113,10 @@ connectReceptionistToBranch returns: Failed to connected between receptionist 19
 
 
 
-changeCustomerAddress returns: Successfully changed address of customer: 00099991 Customer [ID Number=00099991, firstName=Gilad, lastName=Levi, birthDate=1/1/1988, password=gilad234, email=http:\\gilad@Gmail.com, customerAddress=Israel, Nahum 88]	
-changeCustomerAddress returns: Successfully changed address of customer: 00099994 Customer [ID Number=00099994, firstName=Shani, lastName=Iluz, birthDate=5/5/1978, password=shani234, email=http:\\shani@Walla.co.il, customerAddress=Israel, Ezra 2]	
+changeCustomerAddress returns: Successfully changed address of customer: 00099991 Customer [ID Number=00099991, firstName=Gilad, lastName=Levi, birthDate=1/1/1988, password=gilad234, email=http:\\gilad@Gmail.com, customerAddress=Address [country=Israel, city=Arad, street=Nahum, housNumber=88, phoneNumber= {052-8090939,054-5121323} ]]	
+changeCustomerAddress returns: Successfully changed address of customer: 00099994 Customer [ID Number=00099994, firstName=Shani, lastName=Iluz, birthDate=5/5/1978, password=shani234, email=http:\\shani@Walla.co.il, customerAddress=Address [country=Israel, city=Ofakim, street=Ezra, housNumber=2, phoneNumber= {052-8088977} ]]	
 changeCustomerAddress returns: Failed to change address of customer with id: 00099981
-changeCustomerAddress returns: Successfully changed address of customer: 00099998 Customer [ID Number=00099998, firstName=Shai, lastName=Alush, birthDate=9/11/1976, password=shai234, email=http:\\shai@Gmail.com, customerAddress=Israel, Horev 3]	
+changeCustomerAddress returns: Successfully changed address of customer: 00099998 Customer [ID Number=00099998, firstName=Shai, lastName=Alush, birthDate=9/11/1976, password=shai234, email=http:\\shai@Gmail.com, customerAddress=Address [country=Israel, city=Haifa, street=Horev, housNumber=3, phoneNumber= {052-8108880} ]]	
 
 
 addRoomToBranch returns: Successfully added room: 1 to branch 11111111 in IShape
@@ -259,7 +259,7 @@ Query_2
 =======
 getAllCustomersFromBranchXbutNotFromBranchY returns:
 the following customers ed on branch 11111111 (and not in branch 22222222): 
-1	- Customer [ID Number=00099993, firstName=Dor, lastName=Kam, birthDate=7/3/1979, password=dor234, email=http:\\dor@Walla.co.il, customerAddress=Israel, Gidon 22]	
+1	- Customer [ID Number=00099993, firstName=Dor, lastName=Kam, birthDate=7/3/1979, password=dor234, email=http:\\dor@Walla.co.il, customerAddress=Address [country=Israel, city=Modiin_Illit, street=Gidon, housNumber=22, phoneNumber= {052-8020003} ]]	
 
 
 
@@ -307,7 +307,7 @@ Query_7
 =======
 getTopCustomerOfTheMonth returns:
 getTopCustomerOfTheMonthr is:
-Customer [ID Number=00099992, firstName=Avi, lastName=Vizman, birthDate=2/1/1990, password=avi234, email=http:\\avi@Hotmail.co.il, customerAddress=Israel, Herzel 22]	
+Customer [ID Number=00099992, firstName=Avi, lastName=Vizman, birthDate=2/1/1990, password=avi234, email=http:\\avi@Hotmail.co.il, customerAddress=Address [country=Israel, city=Holon, street=Herzel, housNumber=22, phoneNumber= {052-8198765} ]]	
 
 
 =======
@@ -325,7 +325,7 @@ Query_9
 =======
 getAllCustomersAttendingMoreThan1City returns:
 getAllCustomersAttendingMoreThan1City is:
-[Customer [ID Number=00099992, firstName=Avi, lastName=Vizman, birthDate=2/1/1990, password=avi234, email=http:\\avi@Hotmail.co.il, customerAddress=Israel, Herzel 22]	, Customer [ID Number=00099991, firstName=Gilad, lastName=Levi, birthDate=1/1/1988, password=gilad234, email=http:\\gilad@Gmail.com, customerAddress=Israel, Nahum 88]	, Customer [ID Number=00099994, firstName=Shani, lastName=Iluz, birthDate=5/5/1978, password=shani234, email=http:\\shani@Walla.co.il, customerAddress=Israel, Ezra 2]	]
+[Customer [ID Number=00099992, firstName=Avi, lastName=Vizman, birthDate=2/1/1990, password=avi234, email=http:\\avi@Hotmail.co.il, customerAddress=Address [country=Israel, city=Holon, street=Herzel, housNumber=22, phoneNumber= {052-8198765} ]]	, Customer [ID Number=00099991, firstName=Gilad, lastName=Levi, birthDate=1/1/1988, password=gilad234, email=http:\\gilad@Gmail.com, customerAddress=Address [country=Israel, city=Arad, street=Nahum, housNumber=88, phoneNumber= {052-8090939,054-5121323} ]]	, Customer [ID Number=00099994, firstName=Shani, lastName=Iluz, birthDate=5/5/1978, password=shani234, email=http:\\shani@Walla.co.il, customerAddress=Address [country=Israel, city=Ofakim, street=Ezra, housNumber=2, phoneNumber= {052-8088977} ]]	]
 
 
 =======

@@ -6,6 +6,7 @@
 package gui.internal;
 
 import Validators.CharValidator;
+import Validators.EmailValidator;
 import Validators.PhoneValidator;
 import Validators.PositiveValidator;
 import core.Address;
@@ -14,10 +15,14 @@ import core.Coach;
 import java.awt.Color;
 import utils.E_Cities;
 import java.lang.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JCheckBox;
 import javax.swing.JList;
 import utils.E_Lessons;
@@ -27,14 +32,14 @@ import utils.E_Types;
  *
  * @author nisans
  */
-public class AddCoach extends javax.swing.JInternalFrame {
+public class AddCustomer extends javax.swing.JInternalFrame {
 
     private int WindowID = 3;
 
     /**
      * Creates new form NewJInternalFrame
      */
-    public AddCoach() {
+    public AddCustomer() {
         initComponents();
         //Finished Loading
         for (E_Cities city : E_Cities.values()) {
@@ -62,7 +67,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        btnAddCoach = new javax.swing.JButton();
+        btnAddCustomer = new javax.swing.JButton();
         btnBranchCountry = new javax.swing.JTextField();
         btnBranchStreet = new javax.swing.JTextField();
         btnHouseNumber = new javax.swing.JTextField();
@@ -76,25 +81,16 @@ public class AddCoach extends javax.swing.JInternalFrame {
         numError2 = new javax.swing.JLabel();
         Ferror = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        CoachLevel1 = new javax.swing.JLabel();
-        LessonTypes1 = new javax.swing.JLabel();
         Password = new javax.swing.JLabel();
         Password1 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
         jPasswordField2 = new javax.swing.JPasswordField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        list = new javax.swing.JList<>();
         day = new javax.swing.JComboBox<>();
         month = new javax.swing.JComboBox<>();
         year = new javax.swing.JComboBox<>();
-        day1 = new javax.swing.JComboBox<>();
-        month1 = new javax.swing.JComboBox<>();
-        year1 = new javax.swing.JComboBox<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        copy = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        list1 = new javax.swing.JList<>();
+        jLabel11 = new javax.swing.JLabel();
+        emailfield = new javax.swing.JTextField();
+        mailError = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -113,11 +109,11 @@ public class AddCoach extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("Phone Number");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 440, 110, 20);
+        jLabel2.setBounds(30, 310, 110, 20);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel3.setText("Employee ID");
+        jLabel3.setText("Customer ID");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 10, 110, 20);
 
@@ -131,7 +127,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Country");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(30, 320, 110, 20);
+        jLabel5.setBounds(30, 190, 110, 20);
 
         btnPhoneNumber.setBackground(new java.awt.Color(0, 0, 0));
         btnPhoneNumber.setColumns(15);
@@ -144,7 +140,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnPhoneNumber);
-        btnPhoneNumber.setBounds(140, 440, 170, 21);
+        btnPhoneNumber.setBounds(140, 310, 170, 21);
 
         IDfield.setBackground(new java.awt.Color(0, 0, 0));
         IDfield.setColumns(10);
@@ -185,37 +181,37 @@ public class AddCoach extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(slctCity);
-        slctCity.setBounds(140, 350, 170, 20);
+        slctCity.setBounds(140, 220, 170, 20);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 204));
         jLabel6.setText("City");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(30, 350, 110, 20);
+        jLabel6.setBounds(30, 220, 110, 20);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setText("Street");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(30, 380, 110, 20);
+        jLabel7.setBounds(30, 250, 110, 20);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setText("House Number");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(30, 410, 110, 20);
+        jLabel8.setBounds(30, 280, 110, 20);
 
-        btnAddCoach.setBackground(new java.awt.Color(102, 102, 102));
-        btnAddCoach.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnAddCoach.setForeground(new java.awt.Color(255, 255, 255));
-        btnAddCoach.setText("Add Coach");
-        btnAddCoach.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAddCustomer.setBackground(new java.awt.Color(102, 102, 102));
+        btnAddCustomer.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAddCustomer.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddCustomer.setText("Add Customer");
+        btnAddCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAddCoachMouseClicked(evt);
+                btnAddCustomerMouseClicked(evt);
             }
         });
-        getContentPane().add(btnAddCoach);
-        btnAddCoach.setBounds(440, 470, 110, 23);
+        getContentPane().add(btnAddCustomer);
+        btnAddCustomer.setBounds(430, 350, 120, 23);
 
         btnBranchCountry.setBackground(new java.awt.Color(0, 0, 0));
         btnBranchCountry.setColumns(20);
@@ -229,7 +225,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnBranchCountry);
-        btnBranchCountry.setBounds(140, 320, 170, 21);
+        btnBranchCountry.setBounds(140, 190, 170, 21);
 
         btnBranchStreet.setBackground(new java.awt.Color(0, 0, 0));
         btnBranchStreet.setColumns(20);
@@ -242,7 +238,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnBranchStreet);
-        btnBranchStreet.setBounds(140, 380, 170, 21);
+        btnBranchStreet.setBounds(140, 250, 170, 21);
 
         btnHouseNumber.setBackground(new java.awt.Color(0, 0, 0));
         btnHouseNumber.setColumns(4);
@@ -255,7 +251,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnHouseNumber);
-        btnHouseNumber.setBounds(140, 410, 170, 21);
+        btnHouseNumber.setBounds(140, 280, 170, 21);
 
         numError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         numError.setForeground(new java.awt.Color(255, 0, 0));
@@ -265,17 +261,17 @@ public class AddCoach extends javax.swing.JInternalFrame {
         phoneError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         phoneError.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(phoneError);
-        phoneError.setBounds(350, 440, 180, 20);
+        phoneError.setBounds(350, 310, 180, 20);
 
         streetError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         streetError.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(streetError);
-        streetError.setBounds(350, 380, 180, 20);
+        streetError.setBounds(350, 250, 180, 20);
 
         houseError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         houseError.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(houseError);
-        houseError.setBounds(350, 410, 180, 20);
+        houseError.setBounds(350, 280, 180, 20);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(204, 204, 204));
@@ -317,42 +313,24 @@ public class AddCoach extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel10);
         jLabel10.setBounds(30, 100, 110, 20);
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel12.setText("Hire Date");
-        getContentPane().add(jLabel12);
-        jLabel12.setBounds(30, 130, 110, 20);
-
-        CoachLevel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        CoachLevel1.setForeground(new java.awt.Color(204, 204, 204));
-        CoachLevel1.setText("Coach Level");
-        getContentPane().add(CoachLevel1);
-        CoachLevel1.setBounds(30, 160, 110, 20);
-
-        LessonTypes1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        LessonTypes1.setForeground(new java.awt.Color(204, 204, 204));
-        LessonTypes1.setText("Lesson Types");
-        getContentPane().add(LessonTypes1);
-        LessonTypes1.setBounds(30, 190, 110, 20);
-
         Password.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Password.setForeground(new java.awt.Color(204, 204, 204));
         Password.setText("Password");
         getContentPane().add(Password);
-        Password.setBounds(30, 290, 110, 20);
+        Password.setBounds(30, 160, 110, 20);
 
         Password1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Password1.setForeground(new java.awt.Color(204, 204, 204));
         Password1.setText("Retype");
         getContentPane().add(Password1);
-        Password1.setBounds(320, 290, 60, 20);
+        Password1.setBounds(320, 160, 60, 20);
 
         jPasswordField1.setBackground(new java.awt.Color(0, 0, 0));
         jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setToolTipText("");
         getContentPane().add(jPasswordField1);
-        jPasswordField1.setBounds(140, 290, 170, 20);
+        jPasswordField1.setBounds(140, 160, 170, 20);
 
         jPasswordField2.setBackground(new java.awt.Color(0, 0, 0));
         jPasswordField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -363,31 +341,17 @@ public class AddCoach extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jPasswordField2);
-        jPasswordField2.setBounds(380, 290, 170, 20);
-
-        list.setBackground(new java.awt.Color(0, 0, 0));
-        list.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        list.setForeground(new java.awt.Color(255, 255, 255));
-        list.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "YOGA", "KICKBOXING", "PILATES", "TRX", "ABS", "AEROBICS", "BODYWEIGHT", "BOXFIT", "CIRCUITS", "COMBAT", "SPINNING", "DANCE", "FAT_BURN", "STEP_TONE", "STRETCH", "ZUMBA", "RAVE", "BROGA", "FITBOXING", "TRAPEZE", "DYNAMIC_WORKOUT", "POWER", "HOOP" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        list.setToolTipText("");
-        jScrollPane2.setViewportView(list);
-
-        getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(140, 190, 170, 80);
+        jPasswordField2.setBounds(380, 160, 170, 20);
 
         day.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         day.setToolTipText("");
         day.setName(""); // NOI18N
         getContentPane().add(day);
-        day.setBounds(140, 100, 50, 22);
+        day.setBounds(140, 100, 50, 20);
 
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(month);
-        month.setBounds(200, 100, 60, 22);
+        month.setBounds(200, 100, 60, 20);
 
         year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yeay", "1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938", "1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
         year.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -396,84 +360,66 @@ public class AddCoach extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(year);
-        year.setBounds(270, 100, 60, 22);
+        year.setBounds(270, 100, 60, 20);
 
-        day1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        day1.setName(""); // NOI18N
-        getContentPane().add(day1);
-        day1.setBounds(140, 130, 50, 22);
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel11.setText("Email");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(30, 130, 110, 20);
 
-        month1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        getContentPane().add(month1);
-        month1.setBounds(200, 130, 60, 22);
-
-        year1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yeay", "1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938", "1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
-        year1.addFocusListener(new java.awt.event.FocusAdapter() {
+        emailfield.setBackground(new java.awt.Color(0, 0, 0));
+        emailfield.setColumns(20);
+        emailfield.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        emailfield.setForeground(new java.awt.Color(255, 255, 255));
+        emailfield.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        emailfield.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                year1FocusLost(evt);
+                emailfieldFocusLost(evt);
             }
         });
-        getContentPane().add(year1);
-        year1.setBounds(270, 130, 60, 22);
+        getContentPane().add(emailfield);
+        emailfield.setBounds(140, 130, 170, 21);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Level", "1", "2", "3", "4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(190, 160, 70, 22);
-
-        copy.setText(">>");
-        copy.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                copyMouseClicked(evt);
-            }
-        });
-        getContentPane().add(copy);
-        copy.setBounds(320, 220, 50, 25);
-
-        list1.setBackground(new java.awt.Color(0, 0, 0));
-        list1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        list1.setForeground(new java.awt.Color(255, 255, 255));
-        list1.setToolTipText("");
-        jScrollPane3.setViewportView(list1);
-
-        getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(380, 190, 170, 80);
+        mailError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        mailError.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(mailError);
+        mailError.setBounds(350, 130, 170, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddCoachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddCoachMouseClicked
-        Address address = new Address(country, city, street,
-                housNumber, phoneNumber.toArray(new String[phoneNumber.size()]));
-        
-        Coach coach = new Coach(employeeNumber, firstName, lastName,
-                birthDate, startWorkingDate, password, level, address,
-                types);
-        
-        System.out.println(coach);
-        if (iWindow.DB.addEmployee(coach))
-            System.out.println("Successfully added coach");;
-    }//GEN-LAST:event_btnAddCoachMouseClicked
+    private void btnAddCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddCustomerMouseClicked
+    Address address = new Address(country, city, street,
+            housNumber, phoneNumber.toArray(new String[phoneNumber.size()]));
+    
+    if (iWindow.DB.addCustomer(id, firstName, lastName, birthDate, password, email, address))
+        System.out.println("Successfully added Customer");
+    
+    System.out.println("Customer [ID Number=" + id + ", firstName=" + firstName
+            + ", lastName=" + lastName + ", birthDate="
+            + birthDate.getDate() + "/" + (birthDate.getMonth() + 1) + "/"
+            + (birthDate.getYear() + 1900) + ", password=" + password
+            + ", email=" + email + ", customerAddress=" + address
+            + "]");
+            
+    }//GEN-LAST:event_btnAddCustomerMouseClicked
 
     private void IDfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDfieldFocusLost
         String str = IDfield.getText();
-        if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 9) {
-            numError.setText("Positive 9 digits only");
-            employeeNumber = -1;
+        if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 8) {
+            numError.setText("Positive 8 digits only");
+            id = "-1";
             pack();
             return;
         }
 
-        if (!iWindow.DB.getEmployees().containsKey(Integer.parseInt(IDfield.getText()))) {
+        if (!iWindow.DB.getCustomers().containsKey(Integer.parseInt(IDfield.getText()))) {
             numError.setText(" ");
-            employeeNumber = Integer.parseInt(str);
+            id = str;
         } else {
-            numError.setText("Emlpyee number exists");
-            employeeNumber = -1;
+            numError.setText("Custonrt ID exists");
+            id = "-1";
         }
 
         pack();
@@ -572,16 +518,6 @@ public class AddCoach extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_yearFocusLost
 
-    private void year1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_year1FocusLost
-        if (day1.getSelectedIndex() != 0 && month1.getSelectedIndex() != 0 && year1.getSelectedIndex() != 0) {
-            int d = day.getSelectedIndex();
-            int m = month.getSelectedIndex()-1;
-            int y =  year.getSelectedIndex()+29;
-
-            startWorkingDate = new Date(y, m, d);
-        }
-    }//GEN-LAST:event_year1FocusLost
-
     private void jPasswordField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField2FocusLost
         if (!jPasswordField2.getText().equals(jPasswordField1.getText())) {
             Password.setForeground(Color.RED);
@@ -590,52 +526,50 @@ public class AddCoach extends javax.swing.JInternalFrame {
         } else {
             Password.setForeground(Color.WHITE);
             Password1.setForeground(Color.WHITE);
-            password = jPasswordField1.getText();;
+            password = jPasswordField1.getText();
             
         }
 
     }//GEN-LAST:event_jPasswordField2FocusLost
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        if (jComboBox1.getSelectedIndex() != 0) {
-            level = jComboBox1.getSelectedIndex();
-        } else {
-            level = 1;
+    private void emailfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailfieldFocusLost
+        String str = emailfield.getText();
+        if (EmailValidator.validateEmail(str)){
+            str = "http:\\"+"\\"+str;
+            try {
+                email = new URL(str);
+                jLabel11.setText(" ");
+            } catch (MalformedURLException ex) {
+                mailError.setText("username@domain.xx");
+            }
+            
         }
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void copyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_copyMouseClicked
-        String[] str = new String[list.getSelectedValues().length];
-        list1.setListData(list.getSelectedValuesList().toArray(str));
-        types = new E_Lessons[str.length];
-        for (int i = 0; i < str.length; i++){
-            types[i] = E_Lessons.valueOf(str[i]);      
+        else{
+            mailError.setText("username@domain.xx");
+            email = null;
         }
-    }//GEN-LAST:event_copyMouseClicked
+        
+    }//GEN-LAST:event_emailfieldFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel CoachLevel1;
     private javax.swing.JLabel Ferror;
     private javax.swing.JTextField IDfield;
     private javax.swing.JTextField LastField;
     private javax.swing.JLabel Lerror;
-    private javax.swing.JLabel LessonTypes1;
     private javax.swing.JTextField NameField;
     private javax.swing.JLabel Password;
     private javax.swing.JLabel Password1;
-    private javax.swing.JButton btnAddCoach;
+    private javax.swing.JButton btnAddCustomer;
     private javax.swing.JTextField btnBranchCountry;
     private javax.swing.JTextField btnBranchStreet;
     private javax.swing.JTextField btnHouseNumber;
     private javax.swing.JTextField btnPhoneNumber;
-    private javax.swing.JButton copy;
     private javax.swing.JComboBox<String> day;
-    private javax.swing.JComboBox<String> day1;
+    private javax.swing.JTextField emailfield;
     private javax.swing.JLabel houseError;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -646,43 +580,35 @@ public class AddCoach extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JList<String> list;
-    private javax.swing.JList<String> list1;
+    private javax.swing.JLabel mailError;
     private javax.swing.JComboBox<String> month;
-    private javax.swing.JComboBox<String> month1;
     private javax.swing.JLabel numError;
     private javax.swing.JLabel numError2;
     private javax.swing.JLabel phoneError;
     private javax.swing.JComboBox<String> slctCity;
     private javax.swing.JLabel streetError;
     private javax.swing.JComboBox<String> year;
-    private javax.swing.JComboBox<String> year1;
     // End of variables declaration//GEN-END:variables
 
     //Manual variables declaration 
-    private int employeeNumber;
+    private String id;
     private String firstName;
     private String lastName;
     private Date birthDate;
-    private Date startWorkingDate;
     private String password;
-    int level;
-    private E_Lessons[] types;
+    private URL email;
     private String country;
     private E_Cities city;
     private String street;
     private int housNumber;
-    private ArrayList<String> phoneNumber;
-//    String[] phoneNumber;
-
+    private ArrayList<String> phoneNumber = new ArrayList<String>(); 
+    
 //    Address address = new Address(country, city, street,
 //            housNumber, phoneNumber);
 //    
-//    Coach coach = new Coach(employeeNumber, firstName, lastName,
-//            birthDate, startWorkingDate, password, level, address,
-//            types);
+//    isUpdated = IShape.addCustomer(id, firstName, lastName,
+//            birthDate, password, email, address);
+    
     //Manual variables declaration 
     public int getWindowID() {
         return this.WindowID;

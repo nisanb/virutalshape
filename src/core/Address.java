@@ -137,11 +137,13 @@ public class Address implements Serializable {
 	// -------------------------------hashCode equals &
 	// toString------------------------------
 
-	@Override
-        public String toString(){
+	
+        public String toString2(){
             return country+", "+street+" "+housNumber;
         }
-	public String toString2() {
+        
+        @Override
+	public String toString() {
 		return "Address [country="
 				+ country
 				+ ", city="

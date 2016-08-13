@@ -43,6 +43,7 @@ public class AdminGui extends javax.swing.JFrame  {
 
         btnStatistics = new javax.swing.JLabel();
         btnCustomers = new javax.swing.JLabel();
+        btnEmployees = new javax.swing.JLabel();
         btnBranches = new javax.swing.JLabel();
         btnExit = new javax.swing.JLabel();
         btnDisconnect = new javax.swing.JLabel();
@@ -68,6 +69,13 @@ public class AdminGui extends javax.swing.JFrame  {
             }
         });
         getContentPane().add(btnCustomers, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 190, 50));
+
+        btnEmployees.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEmployeesMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnEmployees, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 190, 50));
 
         btnBranches.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -173,7 +181,7 @@ public class AdminGui extends javax.swing.JFrame  {
 
     private void btnCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomersMouseClicked
         // TODO add your handling code here:
-        ManageBranches add = new ManageBranches();
+        AddCustomer add = new AddCustomer();
         iWindow.openWin(add, add.getWindowID());
     }//GEN-LAST:event_btnCustomersMouseClicked
 
@@ -190,6 +198,11 @@ public class AdminGui extends javax.swing.JFrame  {
             
         }
     }//GEN-LAST:event_iReturnMouseClicked
+
+    private void btnEmployeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmployeesMouseClicked
+        AddRcp add = new AddRcp();
+        iWindow.openWin(add, add.getWindowID());
+    }//GEN-LAST:event_btnEmployeesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -235,6 +248,7 @@ public class AdminGui extends javax.swing.JFrame  {
     private javax.swing.JLabel btnBranches;
     private javax.swing.JLabel btnCustomers;
     private javax.swing.JLabel btnDisconnect;
+    private javax.swing.JLabel btnEmployees;
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnStatistics;
     private javax.swing.JLabel iReturn;
