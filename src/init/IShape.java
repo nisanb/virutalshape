@@ -1034,7 +1034,7 @@ public class IShape implements Serializable {
             }
         }
         for (Map.Entry<Branch, Integer> entry : branchAndTime.entrySet()) {
-            System.out.println("Branch "+ entry.getKey().getBranchNumber() + " " + entry.getValue());
+            System.out.println("Branch "+ (long) entry.getKey().getBranchNumber() + " " + entry.getValue());
             if (entry.getValue() >= 120) {
                 popular.add(entry.getKey());
             }
@@ -1070,6 +1070,17 @@ public class IShape implements Serializable {
         if (potential.isEmpty())
             return null;
         return potential;
+    }
+    
+    
+    public int getTotalWorkoutsByBranch(int branchNum){
+        int count=0;
+        for(Workout w : getWorkouts().values()){
+            if(branchNum==w.getBranchNum())
+                count++;
+        }
+        
+        return count;
     }
     
     

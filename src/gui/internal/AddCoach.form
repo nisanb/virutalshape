@@ -13,7 +13,6 @@
         </EtchetBorder>
       </Border>
     </Property>
-    <Property name="defaultCloseOperation" type="int" value="1"/>
     <Property name="iconifiable" type="boolean" value="true"/>
     <Property name="maximizable" type="boolean" value="true"/>
     <Property name="autoscrolls" type="boolean" value="true"/>

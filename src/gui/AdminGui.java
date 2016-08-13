@@ -10,22 +10,27 @@ import java.awt.Color;
 import javax.swing.JDesktopPane;
 import gui.internal.*;
 import init.IShape;
+import javax.swing.JInternalFrame;
 /**
  *
  * @author nisan
  */
-public class AdminGui extends javax.swing.JFrame {
+public class AdminGui extends javax.swing.JFrame  {
     
  
     /**
      * Creates new form MainGui
      */
     public AdminGui() {
+        
         initComponents();
+        iWindow.setMainFrame(this);
         iWindow.setPanel(ContentFrame);
-      
+     
         
     }
+    
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,6 +46,7 @@ public class AdminGui extends javax.swing.JFrame {
         btnBranches = new javax.swing.JLabel();
         btnExit = new javax.swing.JLabel();
         btnDisconnect = new javax.swing.JLabel();
+        iReturn = new javax.swing.JLabel();
         ContentFrame = new javax.swing.JPanel();
         Background = new javax.swing.JLabel();
 
@@ -89,6 +95,15 @@ public class AdminGui extends javax.swing.JFrame {
         });
         getContentPane().add(btnDisconnect, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 180, 40));
 
+        iReturn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/return.png"))); // NOI18N
+        iReturn.setToolTipText("Return");
+        iReturn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iReturnMouseClicked(evt);
+            }
+        });
+        getContentPane().add(iReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 60, 60));
+
         ContentFrame.setForeground(new java.awt.Color(255, 51, 102));
         ;
         ContentFrame.setAutoscrolls(true);
@@ -120,7 +135,7 @@ public class AdminGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackgroundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackgroundMouseClicked
-    
+        
     }//GEN-LAST:event_BackgroundMouseClicked
 
     private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
@@ -151,15 +166,30 @@ public class AdminGui extends javax.swing.JFrame {
 
     private void btnBranchesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBranchesMouseClicked
         //AddBranchForm add = new AddBranchForm();
-        AddCoach add = new AddCoach();
+        //AddCoach add = new AddCoach();
+        ManageBranches add = new ManageBranches();
         iWindow.openWin(add, add.getWindowID());
     }//GEN-LAST:event_btnBranchesMouseClicked
 
     private void btnCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomersMouseClicked
         // TODO add your handling code here:
-        ManageCustomers add = new ManageCustomers();
+        ManageBranches add = new ManageBranches();
         iWindow.openWin(add, add.getWindowID());
     }//GEN-LAST:event_btnCustomersMouseClicked
+
+    private void iReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iReturnMouseClicked
+        // TODO add your handling code here:
+        try {
+            
+        
+        iWindow.getCurrentWindow().hide();
+        JInternalFrame frm = iWindow.getLastWindow();
+        frm.setVisible(true);
+        }
+        catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_iReturnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -207,5 +237,6 @@ public class AdminGui extends javax.swing.JFrame {
     private javax.swing.JLabel btnDisconnect;
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnStatistics;
+    private javax.swing.JLabel iReturn;
     // End of variables declaration//GEN-END:variables
 }

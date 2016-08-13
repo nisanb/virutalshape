@@ -138,7 +138,10 @@ public class Address implements Serializable {
 	// toString------------------------------
 
 	@Override
-	public String toString() {
+        public String toString(){
+            return country+", "+street+" "+housNumber;
+        }
+	public String toString2() {
 		return "Address [country="
 				+ country
 				+ ", city="

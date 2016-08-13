@@ -1,16 +1,22 @@
 package core;
 
+import init.IShape;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
 import utils.CoachComperator;
 import utils.Constants;
+import utils.E_Rooms;
+import utils.E_Types;
 
 /**
  * Class Branch ~ represent a single branch of the company
@@ -88,7 +94,7 @@ public class Branch implements Serializable {
 	/**
 	 * @return the branch number
 	 */
-	public long getBranchNumber() {
+	public int getBranchNumber() {
 		return branchNumber;
 	}
 
@@ -182,7 +188,50 @@ public class Branch implements Serializable {
 	}
 
 	// -------------------------------More Methods------------------------------
-
+        
+        /**
+         * Get Number of Lessons in Branchs' Rooms
+         * @return 
+         */
+        public int getLessonsCount(){
+            int count=0;
+            for(Room r : getRooms()){
+                count+=r.getLessons().size();
+            }
+            return count;
+        }
+        
+        /**
+         * Get number of unique customers visited this branch
+         * @return 
+         */
+        public int getUniqueVisitors(){
+            Map<String, Customer> tmp = new HashMap<String, Customer>();
+            
+            //Go through rooms
+            for(Room r : getRooms()){
+                //Go through each lesson
+                for(Lesson l : r.getLessons()){
+                    //Check if lesson has not occured yet
+                    if(l.getStartDate().after(new Date())) 
+                        continue;
+                    
+                    //Go through each customer
+                    for(Customer c : l.getRegistered().keySet()){
+                        tmp.put(c.getId(), c);
+                    }
+                }
+            }
+            return tmp.size();
+            
+        }
+        
+      
+            
+            
+            
+            
+          
 	// ------- DEAL WITH COACHES -------
 
 	/**
@@ -282,6 +331,9 @@ public class Branch implements Serializable {
 
 	// ------------------------hashCode equals & toString-----------------------
 
+        
+        
+        
 	@Override
 	public String toString() {		
 		return "Branch #"+getBranchNumber()+" "+getBranchName();
