@@ -26,8 +26,10 @@ import core.Coach;
 import core.Customer;
 import core.Lesson;
 import core.Receptionist;
+import gui.AdminGui;
 import gui.LoginView;
 import gui.internal.iWindow;
+import javax.swing.JFrame;
 import utils.E_Cities;
 import utils.E_Lessons;
 import utils.E_Levels;
@@ -58,6 +60,10 @@ public class MainClass {
      */
     private static DateFormat df;
     
+    /**
+     * Skip Log IN Window
+     */
+    private static boolean skipLogin = true;
     /**
      * The date & time format
      */
@@ -812,7 +818,7 @@ public class MainClass {
                             .entrySet()) {
                         MyFileLogWriter
                                 .writeToFileInSeparateLine("BranchNum = "
-                                        + entry.getKey().getBranchNumber()
+                                        + (long) entry.getKey().getBranchNumber()
                                         + " active date = " + entry.getValue());
                         
                     }
@@ -898,7 +904,12 @@ public class MainClass {
         
         //Set IShape DB to GUI
         iWindow.setDB(IShape);
-         LoginView login = new LoginView();
+        JFrame login = null;
+        if(skipLogin)
+            login = new AdminGui();
+        else
+            login = new LoginView();
+        
         login.setVisible(true);
         //exportData();
     }// END OF ~ main

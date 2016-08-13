@@ -14,6 +14,7 @@ import utils.E_Cities;
 import java.lang.Enum.*;
 import java.util.ArrayList;
 import javax.swing.JCheckBox;
+import javax.swing.JInternalFrame;
 
 /**
  *
