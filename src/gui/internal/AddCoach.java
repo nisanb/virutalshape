@@ -564,9 +564,9 @@ public class AddCoach extends javax.swing.JInternalFrame {
 
     private void yearFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_yearFocusLost
         if (day.getSelectedIndex() != 0 && month.getSelectedIndex() != 0 && year.getSelectedIndex() != 0) {
-            int d = Integer.parseInt(day.getItemAt(day.getSelectedIndex()));
-            int m = Integer.parseInt(month.getItemAt(month.getSelectedIndex()));
-            int y = Integer.parseInt(year.getItemAt(year.getSelectedIndex() + 1930));
+            int d = day.getSelectedIndex();
+            int m = month.getSelectedIndex()-1;
+            int y =  year.getSelectedIndex()+29;
 
             birthDate = new Date(y, m, d);
         }
@@ -574,9 +574,9 @@ public class AddCoach extends javax.swing.JInternalFrame {
 
     private void year1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_year1FocusLost
         if (day1.getSelectedIndex() != 0 && month1.getSelectedIndex() != 0 && year1.getSelectedIndex() != 0) {
-            int d = Integer.parseInt(day1.getItemAt(day1.getSelectedIndex()));
-            int m = Integer.parseInt(month1.getItemAt(month1.getSelectedIndex()));
-            int y = Integer.parseInt(year1.getItemAt(year1.getSelectedIndex() + 1930));
+            int d = day.getSelectedIndex();
+            int m = month.getSelectedIndex()-1;
+            int y =  year.getSelectedIndex()+29;
 
             startWorkingDate = new Date(y, m, d);
         }
