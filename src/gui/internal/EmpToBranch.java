@@ -232,8 +232,8 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
     
     //Manual variables declaration
     // create and add new Flight to IFly
-    int empNumber;
-    int branchNum;
+    private int empNumber;
+    private int branchNum;
     
     
     //Manual variables declaration

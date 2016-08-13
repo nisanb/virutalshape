@@ -122,10 +122,6 @@ public class iWindow {
         return mainFrame;
     }
     
-    public static void initiateLog(){
-        MyFileLogWriter.initializeMyFileWriter();
-    }
-    
     public static void log(String message){
         MyFileLogWriter.writeToFileInSeparateLine(message);
     }

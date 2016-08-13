@@ -16,6 +16,7 @@ import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
+import utils.MyFileLogWriter;
 /**
  *
  * @author nisan
@@ -31,6 +32,7 @@ public class AdminGui extends javax.swing.JFrame  {
         initComponents();
         iWindow.setMainFrame(this);
         iWindow.setPanel(ContentFrame);
+        MyFileLogWriter.initializeMyFileWriter();
      
         
     }
