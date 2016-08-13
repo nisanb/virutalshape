@@ -239,10 +239,12 @@ public class AddSubscription extends javax.swing.JInternalFrame {
    if(iWindow.DB.addSubToCustomer(subNumber, ID, receptNumber, period, startDate)){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Subscription was added successfully");
+            iWindow.log(new Date().toString() + " - " + subNumber + " was added successfully");
         }       
         else{
             MessageBox.setForeground(Color.RED);
             MessageBox.setText("Failed to add Subscription");
+            iWindow.log(new Date().toString() + " - " + subNumber + " was failed to be added");
         }
         update();
             

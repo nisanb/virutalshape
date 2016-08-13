@@ -405,10 +405,12 @@ public class AddRcp extends javax.swing.JInternalFrame {
         if (iWindow.DB.addEmployee(respt)){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Receptionist was added successfully");
+            iWindow.log(new Date().toString() + " - " + employeeNumber + " was added successfully");
         }       
         else{
             MessageBox.setForeground(Color.RED);
             MessageBox.setText("Failed to add receptionist");
+            iWindow.log(new Date().toString() + " - " + employeeNumber + " was failed to be added");
         }
         update();
         update();

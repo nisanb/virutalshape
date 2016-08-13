@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import jdk.nashorn.internal.scripts.JO;
+import utils.MyFileLogWriter;
 
 /**
  * @author mickey shalev
@@ -119,6 +120,14 @@ public class iWindow {
     }
     public static JFrame getMainFrame(){
         return mainFrame;
+    }
+    
+    public static void initiateLog(){
+        MyFileLogWriter.initializeMyFileWriter();
+    }
+    
+    public static void log(String message){
+        MyFileLogWriter.writeToFileInSeparateLine(message);
     }
     
     

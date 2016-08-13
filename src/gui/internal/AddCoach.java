@@ -465,10 +465,12 @@ public class AddCoach extends javax.swing.JInternalFrame {
         if (iWindow.DB.addEmployee(coach)){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Coach was added successfully");
+            iWindow.log(new Date().toString() + " - " + employeeNumber + "was added successfully");
         }       
         else{
             MessageBox.setForeground(Color.RED);
             MessageBox.setText("Failed to add coach");
+            iWindow.log(new Date().toString() + " - " + employeeNumber  + " was failed to add");
         }
         update();
     }//GEN-LAST:event_btnAddCoachMouseClicked

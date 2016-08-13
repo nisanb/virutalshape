@@ -165,10 +165,12 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
         if(iWindow.DB.connectEmloyeeToBranch(empNumber, branchNum)){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Successfully connected employee to new branch");
+            iWindow.log(new Date().toString() + " - " + empNumber + " was successfully connected employee to new branch");
         }       
         else{
             MessageBox.setForeground(Color.RED);
             MessageBox.setText("Failed connected employee to new branch");
+            iWindow.log(new Date().toString() + " - " + empNumber + " was failed to be connected to new branch");
         }
         update();
         

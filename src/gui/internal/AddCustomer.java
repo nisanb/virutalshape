@@ -404,10 +404,12 @@ public class AddCustomer extends javax.swing.JInternalFrame {
     if (iWindow.DB.addCustomer(id, firstName, lastName, birthDate, password, email, address)){
         MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Customer was added successfully");
+            iWindow.log(new Date().toString() + " - " + id + " was added successfully");
         }       
         else{
             MessageBox.setForeground(Color.RED);
             MessageBox.setText("Failed to add customer");
+            iWindow.log(new Date().toString() + " - " + id + " was falied to add");
         }
         update();
     
