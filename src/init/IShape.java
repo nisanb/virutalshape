@@ -240,7 +240,7 @@ public class IShape implements Serializable {
     /**
      * This method connects an employee a branch IF the branch and the employee
      * exists.
-     *
+     *the method removes the employee from the old branch and adds him to new branch
      * @param empNumber
      * @param branchNumber
      * @return true if the connection was added successfully, otherwise false
@@ -248,25 +248,26 @@ public class IShape implements Serializable {
     public boolean connectEmloyeeToBranch(int empNumber, int branchNumber) {
         boolean flag = false;
         if (empNumber > 0 && branchNumber > 0)
-            if (employees.containsKey(empNumber)
-                    && branches.containsKey(branchNumber)) {
-                if (employees.get(empNumber) instanceof Coach)
-                    if (branches.get(branchNumber).addCoach(
-                            (Coach) employees.get(empNumber))) {
+            if (employees.containsKey(empNumber) && branches.containsKey(branchNumber)) {
+                if (employees.get(empNumber) instanceof Coach){
+                    if (branches.get(branchNumber).addCoach((Coach) employees.get(empNumber))) {
+                        if (this.employees.get(empNumber).getWorkBranch() !=null)
+                            this.employees.get(empNumber).getWorkBranch().removeCoach((Coach)this.employees.get(empNumber));
                         flag = true;
                     }
-                if (employees.get(empNumber) instanceof Receptionist)
-                    if (branches.get(branchNumber).addReceptionist(
-                            (Receptionist) employees.get(empNumber))) {
-                        flag = true;
-                    }
-                if (flag) {
-                    employees.get(empNumber).setWorkBranch(
-                            branches.get(branchNumber));
-                    return true;
                 }
                 
-                //TODO - REVOME FROM EARLIER BRANCH IF CHANGED
+                if (employees.get(empNumber) instanceof Receptionist){
+                    if (branches.get(branchNumber).addReceptionist((Receptionist) employees.get(empNumber))) {
+                        if (this.employees.get(empNumber).getWorkBranch() !=null)
+                            this.employees.get(empNumber).getWorkBranch().removeReceptionist((Receptionist)this.employees.get(empNumber));
+                        flag = true;
+                    }
+                }
+                if (flag) {
+                    employees.get(empNumber).setWorkBranch(branches.get(branchNumber));
+                    return true;
+                }
             }
         return false;
     }// ~ END OF connectEmloyeeToBranch

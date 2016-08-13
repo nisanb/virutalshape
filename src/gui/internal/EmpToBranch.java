@@ -63,6 +63,11 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
         setMinimumSize(new java.awt.Dimension(600, 600));
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(600, 600));
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                formFocusLost(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -97,7 +102,7 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(Connect);
-        Connect.setBounds(470, 150, 150, 23);
+        Connect.setBounds(390, 150, 150, 23);
 
         empError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         empError.setForeground(new java.awt.Color(255, 0, 0));
@@ -151,7 +156,7 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
 
     private void ConnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConnectMouseClicked
    if(iWindow.DB.connectEmloyeeToBranch(empNumber, branchNum))
-            System.out.println("Successfully added subscription");
+            System.out.println("Successfully connected to new branch");
             
     }//GEN-LAST:event_ConnectMouseClicked
 
@@ -178,8 +183,20 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_EmpNumFocusLost
 
     private void selectBranchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectBranchFocusLost
-        
+        String str = (String) selectBranch.getSelectedItem();
+        for (int i = 0; i < str.length(); i++){
+            if (Character.isDigit(str.charAt(i))) continue;
+            else{
+                str = str.substring(0, i);
+            }
+        }
+        branchNum = Integer.parseInt(str);
+        System.out.println(branchNum);
     }//GEN-LAST:event_selectBranchFocusLost
+
+    private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
