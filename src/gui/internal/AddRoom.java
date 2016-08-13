@@ -221,12 +221,12 @@ public class AddRoom extends javax.swing.JInternalFrame {
         if(iWindow.DB.addRoomToBranch(roomNum, maxNumOfTrainees, maxNumOfInstruments, roomType, branchNum)){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Successfully added room to branch" + branchNum);
-            iWindow.log(new Date().toString() + " - " + roomNum + " was successfully added  to branch " + branchNum);
+            iWindow.log(new Date().toString() + " - " + "Successfully added room to branch" + branchNum);
         }       
         else{
             MessageBox.setForeground(Color.RED);
             MessageBox.setText("Failed connected room to branch" + branchNum);
-            iWindow.log(new Date().toString() + " - " + roomNum + " was failed to be added to new branch " + branchNum);
+            iWindow.log(new Date().toString() + " - " + "Failed connected room to branch" + branchNum);
         }
         update();
         
