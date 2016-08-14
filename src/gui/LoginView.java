@@ -153,7 +153,7 @@ public class LoginView extends javax.swing.JFrame {
 
     private void fldUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fldUsernameKeyPressed
         // TODO add your handling code here:
-        if(fldUsername.getText().equals("Username")){
+        if(fldUsername.getText().equals("User ID")){
             //Wipe
             fldUsername.setText("");
         }
@@ -220,6 +220,22 @@ public class LoginView extends javax.swing.JFrame {
         iWindow.log("Attempting to login using credentials: "+fldUsername.getText()+"/"+fldPassword.getText()+".");
         System.err.println(iWindow.getDB().getCustomers().keySet().toString());
         System.err.println(iWindow.getDB().getEmployees().keySet().toString());
+        int empnum=0;
+        
+        if(fldUsername.getText().toLowerCase().equals("admin") && fldPassword.getText().toLowerCase().equals("admin")){
+            iWindow.setAdmin(3, new Employee(999, "Administrator","Privilige"));
+            dispose();
+            AdminGui tmp = new AdminGui();
+            tmp.setVisible(true);
+            return;
+        }
+        
+        try{
+            empnum = Integer.parseInt(fldUsername.getText());
+        }
+        catch (Exception e){
+            
+        }
         
         //Go through customers first
         if(iWindow.getDB().getCustomers().containsKey(fldUsername.getText())){
@@ -239,10 +255,12 @@ public class LoginView extends javax.swing.JFrame {
                 }
                 iWindow.log("Wrong password given!");
             }
-        } else if(iWindow.getDB().getEmployees().containsKey(fldUsername.getText())){
+        } else if(iWindow.getDB().getEmployees().containsKey(empnum)){
             //Check employees
             iWindow.log("Possibly Employee, verifying..");
-            Employee emp = iWindow.getDB().getEmployees().get(fldUsername.getText());
+            
+        
+            Employee emp = iWindow.getDB().getEmployees().get(empnum);
             if(emp!=null){
                 //Found emp, check password
                 iWindow.log("Found employee by ID");

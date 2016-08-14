@@ -228,6 +228,13 @@ public class iWindow {
         return;
     }
     
+    public static void setAdmin(int AuthType, Employee emp){
+        if(AuthType!=3)
+            return;
+        authLogged=3;
+       employeeLogged=emp;
+        
+    }
     
 }
     

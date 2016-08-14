@@ -83,6 +83,19 @@ public class Employee implements Serializable{
 		this.password = password;
 		this.address = address;
 	}
+        
+        /**
+         * Administrator Employee
+         * @param empNum
+         * @param firstName
+         * @param lastName 
+         */
+        public Employee(int empNum, String firstName, String lastName){
+            super();
+            this.empNum=empNum;
+            this.firstName = firstName;
+            this.lastName=lastName;
+        }
 
 	/**
 	 * Partial Constructor ~ use for initial key fields
