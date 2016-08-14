@@ -6,7 +6,6 @@
 package gui;
 
 
-import java.awt.Color;
 import javax.swing.JDesktopPane;
 import gui.internal.*;
 import init.IShape;
@@ -23,6 +22,7 @@ import utils.MyFileLogWriter;
  */
 public class AdminGui extends javax.swing.JFrame  {
     
+    
  
     /**
      * Creates new form MainGui
@@ -33,7 +33,9 @@ public class AdminGui extends javax.swing.JFrame  {
         iWindow.setMainFrame(this);
         iWindow.setPanel(ContentFrame);
         MyFileLogWriter.initializeMyFileWriter();
-     
+        lblAuthLogged.setText(iWindow.getAuthType());
+        lblAuthLogged.setForeground(iWindow.getAuthColor());
+        lblName.setText(iWindow.getAuthName());
         
     }
     
@@ -54,10 +56,11 @@ public class AdminGui extends javax.swing.JFrame  {
         btnBranches = new javax.swing.JLabel();
         btnExit = new javax.swing.JLabel();
         btnDisconnect = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jtitle = new javax.swing.JLabel();
         iReturn = new javax.swing.JLabel();
+        lblAuthLogged = new javax.swing.JLabel();
         ContentFrame = new javax.swing.JPanel();
+        lblName = new javax.swing.JLabel();
+        btnFB = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,13 +68,19 @@ public class AdminGui extends javax.swing.JFrame  {
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnStatistics.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnStatistics.setForeground(new java.awt.Color(255, 255, 255));
+        btnStatistics.setText("View Statistics");
         btnStatistics.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnStatisticsMouseClicked(evt);
             }
         });
-        getContentPane().add(btnStatistics, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 190, 50));
+        getContentPane().add(btnStatistics, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 190, 50));
 
+        btnCustomers.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnCustomers.setForeground(new java.awt.Color(255, 255, 255));
+        btnCustomers.setText("Manage Customers");
         btnCustomers.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCustomersMouseClicked(evt);
@@ -79,6 +88,9 @@ public class AdminGui extends javax.swing.JFrame  {
         });
         getContentPane().add(btnCustomers, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 190, 50));
 
+        btnEmployees.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnEmployees.setForeground(new java.awt.Color(255, 255, 255));
+        btnEmployees.setText("Manage Employees");
         btnEmployees.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEmployeesMouseClicked(evt);
@@ -86,6 +98,9 @@ public class AdminGui extends javax.swing.JFrame  {
         });
         getContentPane().add(btnEmployees, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 190, 50));
 
+        btnBranches.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnBranches.setForeground(new java.awt.Color(255, 255, 255));
+        btnBranches.setText("Manage Branches");
         btnBranches.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBranchesMouseClicked(evt);
@@ -103,38 +118,28 @@ public class AdminGui extends javax.swing.JFrame  {
                 btnExitPropertyChange(evt);
             }
         });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 710, 180, 40));
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 700, 180, 40));
 
         btnDisconnect.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDisconnectMouseClicked(evt);
             }
         });
-        getContentPane().add(btnDisconnect, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 180, 40));
+        getContentPane().add(btnDisconnect, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, 180, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/facebook-3-24.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
-            }
-        });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 30, 30));
-
-        jtitle.setFont(new java.awt.Font("Times New Roman", 3, 48)); // NOI18N
-        jtitle.setForeground(new java.awt.Color(255, 255, 255));
-        jtitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jtitle.setText("Home Screen");
-        getContentPane().add(jtitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 530, 60));
-
-        iReturn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/return.png"))); // NOI18N
+        iReturn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/arrow-88-24.png"))); // NOI18N
         iReturn.setToolTipText("Return");
         iReturn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 iReturnMouseClicked(evt);
             }
         });
-        getContentPane().add(iReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 60, 60));
+        getContentPane().add(iReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 30, 30));
+
+        lblAuthLogged.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lblAuthLogged.setForeground(new java.awt.Color(255, 0, 0));
+        lblAuthLogged.setText("Administrator");
+        getContentPane().add(lblAuthLogged, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 170, 50));
 
         ContentFrame.setForeground(new java.awt.Color(255, 51, 102));
         ;
@@ -155,7 +160,21 @@ public class AdminGui extends javax.swing.JFrame  {
 
         getContentPane().add(ContentFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 820, 670));
 
-        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/Admin.jpg"))); // NOI18N
+        lblName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblName.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 190, 30));
+
+        btnFB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/facebook-3-24.png"))); // NOI18N
+        btnFB.setText("jLabel1");
+        btnFB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnFBMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnFB, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 580, 30, 30));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MainUI/ishapegui.png"))); // NOI18N
+        Background.setText("A");
         Background.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BackgroundMouseClicked(evt);
@@ -228,7 +247,7 @@ public class AdminGui extends javax.swing.JFrame  {
         iWindow.openWin(add, add.getWindowID());
     }//GEN-LAST:event_btnEmployeesMouseClicked
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void btnFBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFBMouseClicked
         // TODO add your handling code here:
         Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
         URI uri = null;
@@ -246,7 +265,7 @@ public class AdminGui extends javax.swing.JFrame  {
     }
     
 
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_btnFBMouseClicked
 
     /**
      * @param args the command line arguments
@@ -294,9 +313,10 @@ public class AdminGui extends javax.swing.JFrame  {
     private javax.swing.JLabel btnDisconnect;
     private javax.swing.JLabel btnEmployees;
     private javax.swing.JLabel btnExit;
+    private javax.swing.JLabel btnFB;
     private javax.swing.JLabel btnStatistics;
     private javax.swing.JLabel iReturn;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jtitle;
+    private javax.swing.JLabel lblAuthLogged;
+    private javax.swing.JLabel lblName;
     // End of variables declaration//GEN-END:variables
 }
