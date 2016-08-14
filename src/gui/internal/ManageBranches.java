@@ -82,6 +82,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         AddBranch = new javax.swing.JLabel();
         AddRoom = new javax.swing.JLabel();
+        AddIns = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,70));
         setBorder(null);
@@ -281,7 +282,16 @@ public class ManageBranches extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(AddRoom);
-        AddRoom.setBounds(380, 30, 40, 40);
+        AddRoom.setBounds(390, 30, 40, 40);
+
+        AddIns.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/plus-5-24.png"))); // NOI18N
+        AddIns.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddInsMouseClicked(evt);
+            }
+        });
+        getContentPane().add(AddIns);
+        AddIns.setBounds(670, 30, 40, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -329,9 +339,16 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         iWindow.openWin(frm, frm.getWindowID());
     }//GEN-LAST:event_AddRoomMouseClicked
 
+    private void AddInsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddInsMouseClicked
+        hide();
+        AddInstrument frm = new AddInstrument();
+        iWindow.openWin(frm, frm.getWindowID());
+    }//GEN-LAST:event_AddInsMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddBranch;
+    private javax.swing.JLabel AddIns;
     private javax.swing.JLabel AddRoom;
     private javax.swing.JLabel btnEdit;
     private javax.swing.JComboBox<String> chooseCustoemr;
