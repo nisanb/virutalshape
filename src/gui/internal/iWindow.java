@@ -151,10 +151,10 @@ public class iWindow {
         String toReturn;
         switch(authLogged){
             case 1:
-                toReturn = customerLogged.getFirstName()+customerLogged.getLastName()+"";
+                toReturn = customerLogged.getFirstName()+" "+customerLogged.getLastName()+"";
             break;
             default:
-                toReturn = employeeLogged.getFirstName()+employeeLogged.getLastName()+"";
+                toReturn = employeeLogged.getFirstName()+" "+employeeLogged.getLastName()+"";
             break;
             
         }

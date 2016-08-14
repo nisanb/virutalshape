@@ -50,13 +50,14 @@ public class AdminGui extends javax.swing.JFrame  {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnStatistics = new javax.swing.JLabel();
-        btnCustomers = new javax.swing.JLabel();
-        btnEmployees = new javax.swing.JLabel();
+        pnlAdmin = new javax.swing.JPanel();
         btnBranches = new javax.swing.JLabel();
-        btnExit = new javax.swing.JLabel();
+        btnCustomers = new javax.swing.JLabel();
+        btnStatistics = new javax.swing.JLabel();
+        btnEmployees = new javax.swing.JLabel();
         btnDisconnect = new javax.swing.JLabel();
         iReturn = new javax.swing.JLabel();
+        btnExit = new javax.swing.JLabel();
         lblAuthLogged = new javax.swing.JLabel();
         ContentFrame = new javax.swing.JPanel();
         lblName = new javax.swing.JLabel();
@@ -68,35 +69,7 @@ public class AdminGui extends javax.swing.JFrame  {
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnStatistics.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        btnStatistics.setForeground(new java.awt.Color(255, 255, 255));
-        btnStatistics.setText("View Statistics");
-        btnStatistics.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnStatisticsMouseClicked(evt);
-            }
-        });
-        getContentPane().add(btnStatistics, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 190, 50));
-
-        btnCustomers.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        btnCustomers.setForeground(new java.awt.Color(255, 255, 255));
-        btnCustomers.setText("Manage Customers");
-        btnCustomers.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCustomersMouseClicked(evt);
-            }
-        });
-        getContentPane().add(btnCustomers, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 190, 50));
-
-        btnEmployees.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        btnEmployees.setForeground(new java.awt.Color(255, 255, 255));
-        btnEmployees.setText("Manage Employees");
-        btnEmployees.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEmployeesMouseClicked(evt);
-            }
-        });
-        getContentPane().add(btnEmployees, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 190, 50));
+        pnlAdmin.setOpaque(false);
 
         btnBranches.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         btnBranches.setForeground(new java.awt.Color(255, 255, 255));
@@ -106,19 +79,62 @@ public class AdminGui extends javax.swing.JFrame  {
                 btnBranchesMouseClicked(evt);
             }
         });
-        getContentPane().add(btnBranches, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 190, 50));
 
-        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCustomers.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnCustomers.setForeground(new java.awt.Color(255, 255, 255));
+        btnCustomers.setText("Manage Customers");
+        btnCustomers.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnExitMouseClicked(evt);
+                btnCustomersMouseClicked(evt);
             }
         });
-        btnExit.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                btnExitPropertyChange(evt);
+
+        btnStatistics.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnStatistics.setForeground(new java.awt.Color(255, 255, 255));
+        btnStatistics.setText("View Statistics");
+        btnStatistics.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnStatisticsMouseClicked(evt);
             }
         });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 700, 180, 40));
+
+        btnEmployees.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnEmployees.setForeground(new java.awt.Color(255, 255, 255));
+        btnEmployees.setText("Manage Employees");
+        btnEmployees.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEmployeesMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlAdminLayout = new javax.swing.GroupLayout(pnlAdmin);
+        pnlAdmin.setLayout(pnlAdminLayout);
+        pnlAdminLayout.setHorizontalGroup(
+            pnlAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAdminLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBranches, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCustomers, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnStatistics, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlAdminLayout.setVerticalGroup(
+            pnlAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAdminLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnCustomers, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBranches, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnStatistics, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(151, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(pnlAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 190, 410));
 
         btnDisconnect.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -135,6 +151,18 @@ public class AdminGui extends javax.swing.JFrame  {
             }
         });
         getContentPane().add(iReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 30, 30));
+
+        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExitMouseClicked(evt);
+            }
+        });
+        btnExit.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                btnExitPropertyChange(evt);
+            }
+        });
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 700, 180, 40));
 
         lblAuthLogged.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblAuthLogged.setForeground(new java.awt.Color(255, 0, 0));
@@ -318,5 +346,6 @@ public class AdminGui extends javax.swing.JFrame  {
     private javax.swing.JLabel iReturn;
     private javax.swing.JLabel lblAuthLogged;
     private javax.swing.JLabel lblName;
+    private javax.swing.JPanel pnlAdmin;
     // End of variables declaration//GEN-END:variables
 }

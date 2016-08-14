@@ -24,6 +24,7 @@ import core.Address;
 import core.Branch;
 import core.Coach;
 import core.Customer;
+import core.Employee;
 import core.Lesson;
 import core.Receptionist;
 import gui.AdminGui;
@@ -63,7 +64,7 @@ public class MainClass {
     /**
      * Skip Log IN Window
      */
-    private static boolean skipLogin = false;
+    private static boolean skipLogin = true;
     /**
      * The date & time format
      */
@@ -905,8 +906,12 @@ public class MainClass {
         //Set IShape DB to GUI
         iWindow.setDB(IShape);
         JFrame login = null;
-        if(skipLogin)
+        if(skipLogin){
+            iWindow.setAdmin(3, new Employee(999, "Administrator","Privilige"));
             login = new AdminGui();
+            
+        }
+            
         else
             login = new LoginView();
         
