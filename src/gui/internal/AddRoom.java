@@ -23,13 +23,14 @@ import utils.E_Rooms;
 public class AddRoom extends javax.swing.JInternalFrame {
     
     private int WindowID = 8;
-    
+    private Branch branch;
     /**
      * Creates new form NewJInternalFrame
      */
-    public AddRoom() {
+    public AddRoom(Branch branch) {
         initComponents();
-        setTitle("Rooms -> Add Room");
+        this.branch=branch;
+        setTitle(branch.getBranchName()+" -> Add Room");
         
         //Finished Loading
     }
@@ -44,11 +45,9 @@ public class AddRoom extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        people = new javax.swing.JTextField();
         AddRoom = new javax.swing.JButton();
         numError = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        selectBranch = new javax.swing.JComboBox<>();
         MessageBox = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         InsNum = new javax.swing.JTextField();
@@ -58,6 +57,8 @@ public class AddRoom extends javax.swing.JInternalFrame {
         roomNumError = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         selectRoom = new javax.swing.JComboBox<>();
+        people1 = new javax.swing.JTextField();
+        lblbranch = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -83,22 +84,6 @@ public class AddRoom extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 40, 150, 20);
 
-        people.setBackground(new java.awt.Color(0, 0, 0));
-        people.setColumns(10);
-        people.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        people.setForeground(new java.awt.Color(255, 255, 255));
-        people.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        people.setCaretColor(new java.awt.Color(255, 255, 255));
-        people.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        people.setSelectionColor(new java.awt.Color(204, 204, 204));
-        people.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                peopleFocusLost(evt);
-            }
-        });
-        getContentPane().add(people);
-        people.setBounds(180, 40, 170, 21);
-
         AddRoom.setBackground(new java.awt.Color(102, 102, 102));
         AddRoom.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         AddRoom.setForeground(new java.awt.Color(255, 255, 255));
@@ -119,21 +104,9 @@ public class AddRoom extends javax.swing.JInternalFrame {
         jLabel3.setToolTipText("Subscription Number ");
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel13.setText("Select Brnach");
+        jLabel13.setText("Brnach");
         getContentPane().add(jLabel13);
         jLabel13.setBounds(30, 10, 110, 20);
-
-        selectBranch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Branch" }));
-        selectBranch.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                selectBranchFocusLost(evt);
-            }
-        });
-        getContentPane().add(selectBranch);
-        selectBranch.setBounds(180, 10, 170, 20);
-        for(Branch b : iWindow.DB.getBranches().values()){
-            selectBranch.addItem(b.getBranchNumber() + " " + b.getBranchName());
-        }
 
         MessageBox.setBackground(new Color (0,0,0,90));
         MessageBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -209,10 +182,30 @@ public class AddRoom extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(selectRoom);
-        selectRoom.setBounds(180, 130, 170, 20);
+        selectRoom.setBounds(180, 130, 170, 22);
         for(E_Rooms r : E_Rooms.values()){
             selectRoom.addItem(r.toString());
         }
+
+        people1.setBackground(new java.awt.Color(0, 0, 0));
+        people1.setColumns(10);
+        people1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        people1.setForeground(new java.awt.Color(255, 255, 255));
+        people1.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        people1.setCaretColor(new java.awt.Color(255, 255, 255));
+        people1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        people1.setSelectionColor(new java.awt.Color(204, 204, 204));
+        people1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                people1FocusLost(evt);
+            }
+        });
+        getContentPane().add(people1);
+        people1.setBounds(180, 40, 170, 21);
+
+        lblbranch.setText("brandname");
+        getContentPane().add(lblbranch);
+        lblbranch.setBounds(180, 6, 170, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -231,36 +224,7 @@ public class AddRoom extends javax.swing.JInternalFrame {
         update();
         
     }//GEN-LAST:event_AddRoomMouseClicked
-    
-    private void peopleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_peopleFocusLost
-        String str = people.getText();
-        if (!PositiveValidator.isPositiveStringNum(str)) {
-            numError.setText("Positive digits only");
-            maxNumOfTrainees = -1;
-            update();
-            return;
-        }
-        else {
-            numError.setText(" ");
-            maxNumOfTrainees = Integer.parseInt(str);
-        }
-        update();
-        
-    }//GEN-LAST:event_peopleFocusLost
-    
-    private void selectBranchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectBranchFocusLost
-        String str = (String) selectBranch.getSelectedItem();
-        for (int i = 0; i < str.length(); i++){
-            if (Character.isDigit(str.charAt(i))) continue;
-            else{
-                str = str.substring(0, i);
-            }
-        }
-        branchNum = Integer.parseInt(str);
-        System.out.println(branchNum);
-        update();
-    }//GEN-LAST:event_selectBranchFocusLost
-    
+            
     private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_formFocusLost
@@ -300,6 +264,10 @@ public class AddRoom extends javax.swing.JInternalFrame {
         if (selectRoom.getSelectedIndex() == 2) roomType = E_Rooms.MATTRESSES;
             
     }//GEN-LAST:event_selectRoomFocusLost
+
+    private void people1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_people1FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_people1FocusLost
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -312,11 +280,11 @@ public class AddRoom extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lblbranch;
     private javax.swing.JLabel numError;
-    private javax.swing.JTextField people;
+    private javax.swing.JTextField people1;
     private javax.swing.JLabel roomNumError;
     private javax.swing.JTextField roomNumber;
-    private javax.swing.JComboBox<String> selectBranch;
     private javax.swing.JComboBox<String> selectRoom;
     // End of variables declaration//GEN-END:variables
     
