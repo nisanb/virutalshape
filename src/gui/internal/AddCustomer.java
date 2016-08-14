@@ -41,6 +41,8 @@ public class AddCustomer extends javax.swing.JInternalFrame {
      */
     public AddCustomer() {
         initComponents();
+        setTitle("Customers -> Add Customer");
+                
         //Finished Loading
         for (E_Cities city : E_Cities.values()) {
             slctCity.addItem(city.toString());

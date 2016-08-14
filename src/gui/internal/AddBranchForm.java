@@ -32,6 +32,9 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
      */
     public AddBranchForm() {
         initComponents();
+        
+        
+        setTitle("Branches -> Add Branch");
          falseVisible();
         UIManager.put("slctCity.background", new ColorUIResource(UIManager.getColor("TextField.background")));
         UIManager.put("slctCity.foreground", new ColorUIResource(UIManager.getColor("TextField.foreground")));

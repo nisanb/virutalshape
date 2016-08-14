@@ -33,7 +33,7 @@ public class AddInstrument extends javax.swing.JInternalFrame {
      */
     public AddInstrument() {
         initComponents();
-        
+        setTitle("Instruments -> Add Instrument");
         
         //Finished Loading
     }

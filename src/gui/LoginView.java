@@ -12,6 +12,7 @@ import gui.internal.iWindow;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 
 /**
@@ -157,6 +158,10 @@ public class LoginView extends javax.swing.JFrame {
             //Wipe
             fldUsername.setText("");
         }
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            //Start login process
+            doLogin();
+        }
         
     }//GEN-LAST:event_fldUsernameKeyPressed
 
@@ -165,6 +170,11 @@ public class LoginView extends javax.swing.JFrame {
         if(fldPassword.getText().equals("Password")){
             //Wipe
             fldPassword.setText("0");
+        }
+        
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            //Start login process
+            doLogin();
         }
     }//GEN-LAST:event_fldPasswordKeyPressed
 

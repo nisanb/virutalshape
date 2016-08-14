@@ -28,7 +28,7 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
      */
     public EmpToBranch() {
         initComponents();
-        
+        setTitle("Employees -> Connect Employee to Branch");
         
         //Finished Loading
     }

@@ -29,7 +29,7 @@ public class AddRoom extends javax.swing.JInternalFrame {
      */
     public AddRoom() {
         initComponents();
-        
+        setTitle("Rooms -> Add Room");
         
         //Finished Loading
     }

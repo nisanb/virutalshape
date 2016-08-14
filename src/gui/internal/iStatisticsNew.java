@@ -18,7 +18,7 @@ public class iStatisticsNew extends javax.swing.JInternalFrame {
      */
     public iStatisticsNew() {
         initComponents();
-        
+        setTitle("Statistics");
         //Set Vars
         int branchesCount = iWindow.getDB().getBranches().size();
         this.lblCountBranches.setText(""+branchesCount);

@@ -42,6 +42,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
      */
     public AddSubscription() {
         initComponents();
+        setTitle("Subscriptions -> Add Subscription");
         //Finished Loading
     }
 

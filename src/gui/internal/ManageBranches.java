@@ -24,12 +24,13 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 public class ManageBranches extends javax.swing.JInternalFrame {
     private int WindowID = 4;
     private Object obj=null;
+    
     /**
      * Creates new form NewJInternalFrame
      */
     public ManageBranches() {
         initComponents();
-   
+        setTitle("Manage Branches");
         chooseCustoemr.setBackground(Color.black);
         chooseCustoemr.setForeground(Color.white);
         chooseCustoemr.removeAllItems();
@@ -321,7 +322,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         //Create new Branch
         hide();
         AddBranchForm frm = new AddBranchForm();
-        iWindow.openWin(frm, frm.getWindowID());
+        iWindow.openWin(frm, frm.getWindowID(), frm.getTitle());
     }//GEN-LAST:event_AddBranchMouseClicked
 
     private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
@@ -330,19 +331,19 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         Branch branch = iWindow.DB.getBranches().get(Integer.parseInt(str));
         AddBranchForm add = new AddBranchForm(branch);
      
-        iWindow.openWin(add, add.getWindowID());
+        iWindow.openWin(add, add.getWindowID(), add.getTitle());
     }//GEN-LAST:event_btnEditMouseClicked
 
     private void AddRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddRoomMouseClicked
         hide();
         AddRoom frm = new AddRoom();
-        iWindow.openWin(frm, frm.getWindowID());
+        iWindow.openWin(frm, frm.getWindowID(), frm.getTitle());
     }//GEN-LAST:event_AddRoomMouseClicked
 
     private void AddInsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddInsMouseClicked
         hide();
         AddInstrument frm = new AddInstrument();
-        iWindow.openWin(frm, frm.getWindowID());
+        iWindow.openWin(frm, frm.getWindowID(), frm.getTitle());
     }//GEN-LAST:event_AddInsMouseClicked
 
 

@@ -36,6 +36,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
      */
     public AddCoach() {
         initComponents();
+        setTitle("Employees -> Add Coach");
         //Finished Loading
         for (E_Cities city : E_Cities.values()) {
             slctCity.addItem(city.toString());

@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -29,6 +30,9 @@ public class iWindow {
     protected static Customer customerLogged;
     private static Employee employeeLogged;
     
+    
+    //Main 
+    protected static JLabel lblTitle = null;
     
     protected static int WindowID = 0;
     protected static IShape DB;
@@ -75,7 +79,7 @@ public class iWindow {
      * @param frame 
      */
     //Commit
-    public static void openWin(JInternalFrame frame, int WindowID){
+    public static void openWin(JInternalFrame frame, int WindowID, String windowTitle){
         
         if(WindowID==getWindowID()) {
             getCurrentWindow().setVisible(true);
@@ -85,7 +89,7 @@ public class iWindow {
        
          BasicInternalFrameUI bi = (BasicInternalFrameUI)frame.getUI();
         bi.setNorthPane(null);
-        System.err.println(WindowID + " " + getWindowID());
+   
         frame.setOpaque(true);
         if (!getWindowState()){
             //Enable Return Button
@@ -96,6 +100,8 @@ public class iWindow {
             frame.setVisible(true);
             setWindowState(true);
             setWindowID(WindowID);
+            System.err.println(lblTitle.getText());
+            lblTitle.setText(windowTitle);
         }else{
             getCurrentWindow().hide();
             setLastWindow(getCurrentWindow());
@@ -103,8 +109,9 @@ public class iWindow {
             getPanel().add(frame);
             getCurrentWindow().setVisible(true);
             setWindowID(WindowID);
+            lblTitle.setText(windowTitle);
         }
-        System.err.println("test");
+        
         
         return;
     }
@@ -242,6 +249,10 @@ public class iWindow {
         authLogged=3;
        employeeLogged=emp;
         
+    }
+    
+    public static void setLblTitle(JLabel title){
+        lblTitle=title;
     }
     
 }

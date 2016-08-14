@@ -31,6 +31,9 @@ public class AdminGui extends javax.swing.JFrame  {
         setUndecorated(true);
         
         initComponents();
+        
+        
+        iWindow.setLblTitle(lblTitle);
         iWindow.setMainFrame(this);
         iWindow.setPanel(ContentFrame);
         MyFileLogWriter.initializeMyFileWriter();
@@ -81,6 +84,7 @@ public class AdminGui extends javax.swing.JFrame  {
         ContentFrame = new javax.swing.JPanel();
         lblName = new javax.swing.JLabel();
         btnFB = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -223,6 +227,11 @@ public class AdminGui extends javax.swing.JFrame  {
         });
         getContentPane().add(btnFB, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 580, 30, 30));
 
+        lblTitle.setFont(new java.awt.Font("Leelawadee UI", 1, 13)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 153, 0));
+        lblTitle.setText("Welcome to Virtual iShape");
+        getContentPane().add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 220, 20));
+
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MainUI/ishapegui.png"))); // NOI18N
         Background.setText("A");
         Background.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -262,27 +271,27 @@ public class AdminGui extends javax.swing.JFrame  {
         // TODO add your handling code here:
         //Open Internal JFrame
         iStatisticsNew tmp = new iStatisticsNew();
-        iWindow.openWin(tmp, tmp.getWindowID());
+        iWindow.openWin(tmp, tmp.getWindowID(), tmp.getTitle());
     }//GEN-LAST:event_btnStatisticsMouseClicked
 
     private void btnBranchesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBranchesMouseClicked
         //AddBranchForm add = new AddBranchForm();
         //AddCoach add = new AddCoach();
         ManageBranches add = new ManageBranches();
-        iWindow.openWin(add, add.getWindowID());
+        iWindow.openWin(add, add.getWindowID(), add.getTitle());
     }//GEN-LAST:event_btnBranchesMouseClicked
 
     private void btnCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomersMouseClicked
         // TODO add your handling code here:
         AddCustomer add = new AddCustomer();
-        iWindow.openWin(add, add.getWindowID());
+        iWindow.openWin(add, add.getWindowID(), add.getTitle());
     }//GEN-LAST:event_btnCustomersMouseClicked
 
     private void iReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iReturnMouseClicked
         // TODO add your handling code here:
         try {
             
-        
+            
         iWindow.getCurrentWindow().hide();
         JInternalFrame frm = iWindow.getLastWindow();
         frm.setVisible(true);
@@ -294,7 +303,7 @@ public class AdminGui extends javax.swing.JFrame  {
 
     private void btnEmployeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmployeesMouseClicked
         EmpToBranch add = new EmpToBranch();
-        iWindow.openWin(add, add.getWindowID());
+        iWindow.openWin(add, add.getWindowID(), add.getTitle());
     }//GEN-LAST:event_btnEmployeesMouseClicked
 
     private void btnFBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFBMouseClicked
@@ -368,6 +377,7 @@ public class AdminGui extends javax.swing.JFrame  {
     private javax.swing.JLabel iReturn;
     private javax.swing.JLabel lblAuthLogged;
     private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel pnlAdmin;
     // End of variables declaration//GEN-END:variables
 }

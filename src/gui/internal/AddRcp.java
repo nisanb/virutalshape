@@ -37,6 +37,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
      */
     public AddRcp() {
         initComponents();
+        setTitle("Employees -> Add Receptionist");
         //Finished Loading
         for (E_Cities city : E_Cities.values()) {
             slctCity.addItem(city.toString());
