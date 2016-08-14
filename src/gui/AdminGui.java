@@ -28,6 +28,7 @@ public class AdminGui extends javax.swing.JFrame  {
      * Creates new form MainGui
      */
     public AdminGui() {
+        setUndecorated(true);
         
         initComponents();
         iWindow.setMainFrame(this);
@@ -36,7 +37,25 @@ public class AdminGui extends javax.swing.JFrame  {
         lblAuthLogged.setText(iWindow.getAuthType());
         lblAuthLogged.setForeground(iWindow.getAuthColor());
         lblName.setText(iWindow.getAuthName());
+        pnlAdmin.hide();
+         setLocationRelativeTo(null);
         
+        //Get User Panel
+        switch(iWindow.getAuthValue()){
+            case 1:
+                //Customer
+            
+            break;
+            
+            case 2:
+                //Receptionist
+            break;
+            
+            case 3:
+                //Administrator
+                pnlAdmin.show();
+            break;
+        }
     }
     
   
@@ -67,6 +86,9 @@ public class AdminGui extends javax.swing.JFrame  {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 51, 204));
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setMaximumSize(new java.awt.Dimension(1024, 765));
+        setMinimumSize(new java.awt.Dimension(1024, 765));
+        setPreferredSize(new java.awt.Dimension(1024, 765));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlAdmin.setOpaque(false);
@@ -125,9 +147,9 @@ public class AdminGui extends javax.swing.JFrame  {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAdminLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(btnCustomers, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(btnBranches, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnStatistics, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)

@@ -34,10 +34,10 @@ public class LoginView extends javax.swing.JFrame {
        lblErrorLogin.hide();
        errimg.hide();
        
-       
+        setLocationRelativeTo(null);
        
         
-        setLocationRelativeTo(null);
+       
    
        // bg.setSize(600,400);
    

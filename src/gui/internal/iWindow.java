@@ -210,6 +210,14 @@ public class iWindow {
         return color;
     }
     
+    /**
+     * Return AUTH ID
+     * @return 
+     */
+    public static int getAuthValue(){
+        return authLogged;
+    }
+    
     public static void setCustomer(int AuthType, Customer user){
         if(AuthType<=0) return;
         if(user==null) return;
