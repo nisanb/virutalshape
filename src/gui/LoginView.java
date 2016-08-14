@@ -264,7 +264,7 @@ public class LoginView extends javax.swing.JFrame {
             if(emp!=null){
                 //Found emp, check password
                 iWindow.log("Found employee by ID");
-                if(emp.getPassword().equals(fldPassword)){
+                if(emp.getPassword().equals(fldPassword.getText())){
                     //Able to login
                     iWindow.log("Successfully logged in. Loading GUI");
                     dispose();
