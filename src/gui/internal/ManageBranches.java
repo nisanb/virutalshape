@@ -522,9 +522,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_AddRoomMouseClicked
 
     private void AddInsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddInsMouseClicked
-        hide();
-        AddInstrument frm = new AddInstrument();
-        iWindow.openWin(frm, frm.getWindowID(), frm.getTitle());
+        //removed
     }//GEN-LAST:event_AddInsMouseClicked
 
     private void lblNewRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewRoomMouseClicked
@@ -539,7 +537,9 @@ public class ManageBranches extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEdit1MouseClicked
 
     private void lblAddInstrumentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddInstrumentMouseClicked
-        // TODO add your handling code here:
+        //Open Add Instrument GUI
+        AddInstrument add = new AddInstrument(branch, room);
+        iWindow.openWin(add, add.getWindowID(), add.getTitle());
     }//GEN-LAST:event_lblAddInstrumentMouseClicked
 
     private void chooseRoomItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chooseRoomItemStateChanged
