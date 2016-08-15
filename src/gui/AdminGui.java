@@ -157,7 +157,7 @@ public class AdminGui extends javax.swing.JFrame  {
                 .addComponent(btnBranches, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnStatistics, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         getContentPane().add(pnlAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 190, 410));
@@ -209,10 +209,10 @@ public class AdminGui extends javax.swing.JFrame  {
         );
         ContentFrameLayout.setVerticalGroup(
             ContentFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 670, Short.MAX_VALUE)
+            .addGap(0, 650, Short.MAX_VALUE)
         );
 
-        getContentPane().add(ContentFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 820, 670));
+        getContentPane().add(ContentFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 820, 650));
 
         lblName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblName.setForeground(new java.awt.Color(255, 255, 255));
@@ -234,6 +234,7 @@ public class AdminGui extends javax.swing.JFrame  {
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MainUI/ishapegui.png"))); // NOI18N
         Background.setText("A");
+        Background.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Background.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BackgroundMouseClicked(evt);

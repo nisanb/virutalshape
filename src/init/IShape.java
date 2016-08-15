@@ -353,6 +353,10 @@ public class IShape implements Serializable {
     public boolean addLesson(int lessonNum, E_Lessons lessonName,
             Date dateTime, E_Levels level, int coachNum, int maxStudent,
             int branchNum, int roomNum) {
+        if (new Date().after(dateTime)) {
+            System.out.println("Date error");
+            return false;
+        }
         if (lessonNum > 0 && lessonName != null && dateTime != null
                 && level != null && coachNum > 0 && maxStudent > 0
                 && branchNum > 0 && roomNum > 0) {

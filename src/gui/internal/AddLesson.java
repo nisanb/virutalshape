@@ -5,6 +5,7 @@ import Validators.EmailValidator;
 import Validators.PhoneValidator;
 import Validators.PositiveValidator;
 import com.sun.org.apache.xalan.internal.xsltc.compiler.util.IntType;
+import com.sun.org.apache.xerces.internal.impl.dv.xs.DateDV;
 import core.Branch;
 import core.Coach;
 import core.Room;
@@ -12,6 +13,7 @@ import java.awt.Color;
 import utils.E_Cities;
 import java.lang.*;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -29,7 +31,7 @@ import utils.E_Types;
  */
 public class AddLesson extends javax.swing.JInternalFrame {
     
-    private int WindowID = 9;
+    private int WindowID = 10;
     
     /**
      * Creates new form NewJInternalFrame
@@ -78,6 +80,8 @@ public class AddLesson extends javax.swing.JInternalFrame {
         lesNUm = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         lesNumError = new javax.swing.JLabel();
+        DateError = new javax.swing.JLabel();
+        LevelError = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -106,7 +110,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(AddIns);
-        AddIns.setBounds(430, 290, 150, 23);
+        AddIns.setBounds(470, 290, 150, 23);
 
         jLabel3.setToolTipText("Subscription Number ");
         slctBranch.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -239,7 +243,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
         getContentPane().add(month);
         month.setBounds(220, 220, 60, 20);
 
-        year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yeay", "1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938", "1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
+        year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "2016", "2017", "2018", "2019", "2020" }));
         year.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 yearFocusLost(evt);
@@ -249,29 +253,14 @@ public class AddLesson extends javax.swing.JInternalFrame {
         year.setBounds(290, 220, 60, 20);
 
         Hour.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hour", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "18", "20", "21", "22", "23" }));
-        Hour.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                HourFocusLost(evt);
-            }
-        });
         getContentPane().add(Hour);
         Hour.setBounds(160, 250, 50, 20);
 
         Minute.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minute", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "18", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "34", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
-        Minute.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                MinuteFocusLost(evt);
-            }
-        });
         getContentPane().add(Minute);
         Minute.setBounds(220, 250, 60, 20);
 
         Second.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Second", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "18", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "34", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
-        Second.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                SecondFocusLost(evt);
-            }
-        });
         getContentPane().add(Second);
         Second.setBounds(290, 250, 60, 20);
 
@@ -327,10 +316,47 @@ public class AddLesson extends javax.swing.JInternalFrame {
         getContentPane().add(lesNumError);
         lesNumError.setBounds(350, 160, 210, 20);
 
+        DateError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        DateError.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(DateError);
+        DateError.setBounds(370, 230, 250, 20);
+
+        LevelError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LevelError.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(LevelError);
+        LevelError.setBounds(350, 190, 210, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
     private void AddInsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddInsMouseClicked
+        //Create the date
+        if (day.getSelectedIndex() != 0 && month.getSelectedIndex() != 0 
+                && year.getSelectedIndex() != 0 && Hour.getSelectedIndex() !=0
+                && Minute.getSelectedIndex() !=0 && Second.getSelectedIndex() !=0) {
+            int d = day.getSelectedIndex();
+            int m = month.getSelectedIndex()-1;
+            int y =  year.getSelectedIndex()+115;
+            int h = Hour.getSelectedIndex()-1;
+            int min = Minute.getSelectedIndex()-1;
+            int s = Second.getSelectedIndex()-1;
+            
+            dateTime = new Date(y, m, d, h,min,s);
+            if (new Date().before(dateTime)){
+                DateError.setForeground(Color.GREEN);
+                DateError.setText("Date: " + dateTime);
+                update();
+            }
+        }
+        else{
+                DateError.setForeground(Color.red);
+                DateError.setText("Invalid date ");
+                update();
+                return;
+            }
+        
+        
+        //create the lesson
         if(iWindow.DB.addLesson(lessonNum, lessonName, dateTime,
             level, coachNum, maxStudent, branchNum, roomNum)){
             MessageBox.setForeground(Color.GREEN);
@@ -401,7 +427,9 @@ public class AddLesson extends javax.swing.JInternalFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         if (jComboBox1.getSelectedIndex() != 0) {
             level = E_Levels.values()[jComboBox1.getSelectedIndex()];
+            LevelError.setText(" ");
         } else {
+            LevelError.setText("Plese choose level");
             return;
         }
         update();
@@ -413,11 +441,22 @@ public class AddLesson extends javax.swing.JInternalFrame {
                 && Minute.getSelectedIndex() !=0 && Second.getSelectedIndex() !=0) {
             int d = day.getSelectedIndex();
             int m = month.getSelectedIndex()-1;
-            int y =  year.getSelectedIndex()+29;
+            int y =  year.getSelectedIndex()+116;
             int h = Hour.getSelectedIndex()-1;
             int min = Minute.getSelectedIndex()-1;
             int s = Second.getSelectedIndex()-1;
+            
             dateTime = new Date(y, m, d, h,min,s);
+            if (new Date().after(dateTime)){
+                DateError.setForeground(Color.GREEN);
+                DateError.setText("Schedualed: " + dateTime);
+            }
+            else{
+                DateError.setForeground(Color.GREEN);
+                DateError.setText("Please choose valid date");
+                
+            }
+
         }
         update();
     }//GEN-LAST:event_yearFocusLost
@@ -426,6 +465,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
         String str = maxNumStudent.getText();
         if (CharValidator.isNumber(str) && str.length() < 3) {
             maxStudent = Integer.parseInt(str);
+            numstudentserror.setText(" ");
         } else {
             numstudentserror.setText("Positive 2 digit number");
         }
@@ -453,29 +493,17 @@ public class AddLesson extends javax.swing.JInternalFrame {
         
         update();
     }//GEN-LAST:event_lesNUmFocusLost
-
-    private void SecondFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SecondFocusLost
-        yearFocusLost(evt);
-    }//GEN-LAST:event_SecondFocusLost
-
-    private void HourFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_HourFocusLost
-        yearFocusLost(evt);
-        System.out.println(dateTime);
-                
-    }//GEN-LAST:event_HourFocusLost
-
-    private void MinuteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MinuteFocusLost
-        yearFocusLost(evt);
-    }//GEN-LAST:event_MinuteFocusLost
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddIns;
     private javax.swing.JLabel CoachError;
+    private javax.swing.JLabel DateError;
     private javax.swing.JComboBox<String> Hour;
     private javax.swing.JTextField IDfield;
     private javax.swing.JLabel LessonLevel;
     private javax.swing.JComboBox<String> LessonName;
+    private javax.swing.JLabel LevelError;
     private javax.swing.JLabel MessageBox;
     private javax.swing.JComboBox<String> Minute;
     private javax.swing.JComboBox<String> Second;
