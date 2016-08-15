@@ -5,6 +5,7 @@
  */
 package gui.internal;
 
+import gui.iWindow;
 import Validators.CharValidator;
 import Validators.EmailValidator;
 import Validators.PhoneValidator;
@@ -403,7 +404,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
     Address address = new Address(country, city, street,
             housNumber, phoneNumber.toArray(new String[phoneNumber.size()]));
     
-    if (iWindow.DB.addCustomer(id, firstName, lastName, birthDate, password, email, address)){
+    if (iWindow.getDB().addCustomer(id, firstName, lastName, birthDate, password, email, address)){
         MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Customer was added successfully");
             iWindow.log(new Date().toString() + " - " + id + " was added successfully");
@@ -427,7 +428,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
             return;
         }
 
-        if (!iWindow.DB.getCustomers().containsKey(Integer.parseInt(IDfield.getText()))) {
+        if (!iWindow.getDB().getCustomers().containsKey(Integer.parseInt(IDfield.getText()))) {
             numError.setText(" ");
             id = str;
         } else {

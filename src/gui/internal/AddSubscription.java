@@ -5,6 +5,7 @@
  */
 package gui.internal;
 
+import gui.iWindow;
 import Validators.CharValidator;
 import Validators.EmailValidator;
 import Validators.PhoneValidator;
@@ -237,7 +238,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddCustomerMouseClicked
-   if(iWindow.DB.addSubToCustomer(subNumber, ID, receptNumber, period, startDate)){
+   if(iWindow.getDB().addSubToCustomer(subNumber, ID, receptNumber, period, startDate)){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Subscription was added successfully");
             iWindow.log(new Date().toString() + " - " + subNumber + " was added successfully");
@@ -258,10 +259,10 @@ public class AddSubscription extends javax.swing.JInternalFrame {
             ID = "-1";
         }
 
-        if (!iWindow.DB.getCustomers().containsKey(Integer.parseInt(str))) {
+        if (!iWindow.getDB().getCustomers().containsKey(Integer.parseInt(str))) {
             cusrError.setText(" ");
             ID = str;
-            subNumber = iWindow.DB.getCustomers().get(ID).getSubs().size() + 1;
+            subNumber = iWindow.getDB().getCustomers().get(ID).getSubs().size() + 1;
             sub.setText(new Integer(subNumber).toString());
         } else {
             cusrError.setText("Custonrt ID exists");
@@ -302,7 +303,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
             receptNumber = -1;
         }
 
-        if (iWindow.DB.getEmployees().containsKey(Integer.parseInt(str))) {
+        if (iWindow.getDB().getEmployees().containsKey(Integer.parseInt(str))) {
             recpError.setText(" ");
             receptNumber = Integer.parseInt(str);
         } else {

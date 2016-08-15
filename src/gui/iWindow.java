@@ -2,15 +2,16 @@
  * This Class controls the opened windows and prevents more than one shown window
  * Other windows will remain active but at hide state;
  */
-package gui.internal;
+package gui;
 import core.Customer;
 import core.Employee;
 import core.Receptionist;
-import gui.AdminGui;
+import gui.MainGui;
 import init.IShape;
 import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -35,40 +36,44 @@ public class iWindow {
     
     //Main 
     protected static JLabel lblTitle = null;
-    
-    protected static int WindowID = 0;
     protected static IShape DB;
-    protected static boolean isInternalOpened = false;
-    protected static JFrame mainFrame = new JFrame(){
-        public void setReturn(){
-            
-        }
-    };
+    
+    //iWindow Management
     protected static JInternalFrame currentWindow = null;
     protected static JInternalFrame lastWindow = null;
     protected static JPanel panel = null;
+
     
+    //================================= Setters and Getters ==================================
+    
+    /**
+     * Set DB
+     * @param tmp 
+     */
     public static void setDB(IShape tmp){
         DB=tmp;
     }
     
+    /**
+     * Get DB
+     * @return 
+     */
     public static IShape getDB(){
         return DB;
     }
-    
-    //================================= Setters and Getters ==================================
-    public static void setWindowState(boolean state){
-        isInternalOpened = state;
-    }
-    
-    public static boolean getWindowState(){
-        return isInternalOpened;
-    }
-    
+
+    /**
+     * Set the current active frame
+     * @param frame 
+     */
     public static void setCurrentWindow(JInternalFrame frame){
         currentWindow = frame;
     }
     
+    /**
+     * Get the current active frame
+     * @return 
+     */
     public static JInternalFrame getCurrentWindow(){
         return currentWindow;
     }
@@ -78,71 +83,66 @@ public class iWindow {
     
     /**
      * This method controls the opened internal windows by hiding and showing desired windows
-     * @param frame 
+     * @param frame
+     * @param WindowID
+     * @param windowTitle 
      */
-    //Commit
     public static void openWin(JInternalFrame frame, int WindowID, String windowTitle){
+        if(frame==null)
+            return;
         
-        if(WindowID==getWindowID()) {
-            getCurrentWindow().setVisible(true);
+        frame.setSize(800,600);
+        frame.setBorder(null);
+        lblTitle.setText(windowTitle);
+        
+        if(getCurrentWindow()==null){
+            setCurrentWindow(frame);
+
             
+        }
+        else
+        if(frame == getCurrentWindow()){
+            frame.setVisible(true);
             return;
         }
-       
-         BasicInternalFrameUI bi = (BasicInternalFrameUI)frame.getUI();
-        bi.setNorthPane(null);
-   
-        frame.setOpaque(true);
-        if (!getWindowState()){
-            //Enable Return Button
-            
+        else{
+
+            getCurrentWindow().setVisible(false);
+            getCurrentWindow().dispose();
             setCurrentWindow(frame);
-            getPanel().add(frame);
-            getPanel().setVisible(true);
-            frame.setVisible(true);
-            setWindowState(true);
-            setWindowID(WindowID);
-            System.err.println(lblTitle.getText());
-            lblTitle.setText(windowTitle);
-        }else{
-            getCurrentWindow().hide();
-            setLastWindow(getCurrentWindow());
-            setCurrentWindow(frame);
-            getPanel().add(frame);
-            getCurrentWindow().setVisible(true);
-            setWindowID(WindowID);
-            lblTitle.setText(windowTitle);
+
         }
+        
+        
+        
+        getPanel().add(getCurrentWindow());
+        getPanel().setVisible(true);
+        frame.setVisible(true);
+        
         
         
         return;
     }
     
+    /**
+     * Set the content pane panel
+     * @param tmp 
+     */
     public static void setPanel(JPanel tmp){
         panel=tmp;
     }
+    
+    /**
+     * Aquire the content pane panel
+     * @return 
+     */
     public static JPanel getPanel(){
         return panel;
     }
-    public static void setWindowID(int tmp){
-        WindowID=tmp;
-    }
-    public static int getWindowID(){
-        return WindowID;
-    }
-    public static JInternalFrame getLastWindow(){
-        return lastWindow;
-    }
-    public static void setLastWindow(JInternalFrame curr){
-        lastWindow=curr;
-    }
-    public static void setMainFrame(JFrame frm){
-        mainFrame=frm;
-    }
-    public static JFrame getMainFrame(){
-        return mainFrame;
-    }
+
     
+
+  
     /**
      * Log Function
      * @param message 
@@ -227,6 +227,11 @@ public class iWindow {
         return authLogged;
     }
     
+    /**
+     * Sets customer rights
+     * @param AuthType
+     * @param user 
+     */
     public static void setCustomer(int AuthType, Customer user){
         if(AuthType<=0) return;
         if(user==null) return;
@@ -236,6 +241,11 @@ public class iWindow {
         return;
     }
     
+    /**
+     * Sets receptionist rights
+     * @param AuthType
+     * @param user 
+     */
     public static void setReceptionist(int AuthType, Receptionist user){
         if(AuthType<=0) return;
         if(user==null) return;
@@ -245,6 +255,11 @@ public class iWindow {
         return;
     }
     
+    /**
+     * Set administrative rights
+     * @param AuthType
+     * @param emp 
+     */
     public static void setAdmin(int AuthType, Employee emp){
         if(AuthType!=3)
             return;
@@ -253,12 +268,29 @@ public class iWindow {
         
     }
     
+    /**
+     * Sets the title lbl, from main
+     * @param title 
+     */
     public static void setLblTitle(JLabel title){
         lblTitle=title;
     }
     
+    /**
+     * DC Method to clean GUI Vars
+     */
+     public static void clean(){
+       authLogged=0;
+       currentWindow=null;
+       lastWindow=null;
+       customerLogged=null;
+       employeeLogged=null;
+       lblTitle.setText("Welcome to Virutal iShape");
+       
+       
+   }
     
-   
+
     
 }
     

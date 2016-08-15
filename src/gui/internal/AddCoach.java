@@ -5,6 +5,7 @@
  */
 package gui.internal;
 
+import gui.iWindow;
 import Validators.CharValidator;
 import Validators.PhoneValidator;
 import Validators.PositiveValidator;
@@ -463,7 +464,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
                 types);
         
         System.out.println(coach);
-        if (iWindow.DB.addEmployee(coach)){
+        if (iWindow.getDB().addEmployee(coach)){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Coach was added successfully");
             iWindow.log(new Date().toString() + " - " + employeeNumber + "was added successfully");
@@ -484,7 +485,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             update();
         }
 
-        if (!iWindow.DB.getEmployees().containsKey(Integer.parseInt(IDfield.getText()))) {
+        if (!iWindow.getDB().getEmployees().containsKey(Integer.parseInt(IDfield.getText()))) {
             numError.setText(" ");
             employeeNumber = Integer.parseInt(str);
         } else {

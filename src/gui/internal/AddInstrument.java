@@ -1,5 +1,6 @@
 package gui.internal;
 
+import gui.iWindow;
 import Validators.CharValidator;
 import Validators.EmailValidator;
 import Validators.PhoneValidator;
@@ -199,7 +200,7 @@ public class AddInstrument extends javax.swing.JInternalFrame {
         int branchNum = branch.getBranchNumber();
         int roomNum = room.getRoomNum();
         
-        if(iWindow.DB.addInstrumentToRoom(branchNum, roomNum,type, status, amount)){
+        if(iWindow.getDB().addInstrumentToRoom(branchNum, roomNum,type, status, amount)){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Successfully added instrument " + type  +" to branch" + branchNum);
             iWindow.log(new Date().toString() + "Successfully added instrument " + type  +" to branch" + branchNum);

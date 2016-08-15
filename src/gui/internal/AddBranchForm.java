@@ -5,6 +5,7 @@
  */
 package gui.internal;
 
+import gui.iWindow;
 import Validators.CharValidator;
 import Validators.PhoneValidator;
 import Validators.PositiveValidator;
@@ -427,7 +428,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
             return;
         }          
         
-        if (!iWindow.DB.getBranches().containsKey(Integer.parseInt(btnBranchNum.getText()))){
+        if (!iWindow.getDB().getBranches().containsKey(Integer.parseInt(btnBranchNum.getText()))){
               numError.setVisible(false);
               numExists.setVisible(false);
               branchNumber = Integer.parseInt(str);
@@ -552,7 +553,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
             
         }
         
-        if (iWindow.DB.addBranch(branchNumber, branchName, city, country, street, housNumber, phoneNumber.toArray(new String[phoneNumber.size()]) )){
+        if (iWindow.getDB().addBranch(branchNumber, branchName, city, country, street, housNumber, phoneNumber.toArray(new String[phoneNumber.size()]) )){
             //Success
             lblfailed.setVisible(false);
             lblsuccess.setVisible(true);

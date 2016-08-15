@@ -8,7 +8,6 @@ package gui;
 import core.Customer;
 import core.Employee;
 import core.Receptionist;
-import gui.internal.iWindow;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -23,14 +22,14 @@ import javax.swing.JFrame;
  *
  * @author nisan
  */
-public class LoginView extends javax.swing.JFrame {
+public class LoginGui extends javax.swing.JFrame {
 
     private static String username;
     private static String password;
     /**
      * Creates new form LoginView
      */
-    public LoginView() {
+    public LoginGui() {
 
         setUndecorated(true);
         
@@ -67,9 +66,7 @@ public class LoginView extends javax.swing.JFrame {
         bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(600, 400));
         setMinimumSize(new java.awt.Dimension(600, 400));
-        setPreferredSize(new java.awt.Dimension(600, 400));
         getContentPane().setLayout(null);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/quit.png"))); // NOI18N
@@ -211,20 +208,21 @@ public class LoginView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginView().setVisible(true);
+                new LoginGui().setVisible(true);
             }
         });
     }
@@ -240,7 +238,7 @@ public class LoginView extends javax.swing.JFrame {
         if(fldUsername.getText().toLowerCase().equals("admin") && fldPassword.getText().toLowerCase().equals("admin")){
             iWindow.setAdmin(3, new Employee(999, "Administrator","Privilige"));
             dispose();
-            AdminGui tmp = new AdminGui();
+            MainGui tmp = new MainGui();
             tmp.setVisible(true);
          
             return;
@@ -266,7 +264,7 @@ public class LoginView extends javax.swing.JFrame {
                     iWindow.log("Successfully logged in. Loading GUI");
                     dispose();
                     iWindow.setCustomer(1, cust);
-                    AdminGui gui = new AdminGui();
+                    MainGui gui = new MainGui();
                     gui.setVisible(true);
                   
                 }
@@ -286,7 +284,7 @@ public class LoginView extends javax.swing.JFrame {
                     iWindow.log("Successfully logged in. Loading GUI");
                     dispose();
                     iWindow.setReceptionist(2, (Receptionist) emp);
-                    AdminGui gui = new AdminGui();
+                    MainGui gui = new MainGui();
                     gui.setVisible(true);
                     
                 }

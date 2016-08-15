@@ -20,21 +20,20 @@ import utils.MyFileLogWriter;
  *
  * @author nisan
  */
-public class AdminGui extends javax.swing.JFrame  {
+public class MainGui extends javax.swing.JFrame  {
     
     
  
     /**
      * Creates new form MainGui
      */
-    public AdminGui() {
-        //setUndecorated(true);
+    public MainGui() {
+        setUndecorated(true);
         
         initComponents();
         
         
         iWindow.setLblTitle(lblTitle);
-        iWindow.setMainFrame(this);
         iWindow.setPanel(ContentFrame);
         MyFileLogWriter.initializeMyFileWriter();
         lblAuthLogged.setText(iWindow.getAuthType());
@@ -157,7 +156,7 @@ public class AdminGui extends javax.swing.JFrame  {
                 .addComponent(btnBranches, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnStatistics, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
 
         getContentPane().add(pnlAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 190, 410));
@@ -225,7 +224,7 @@ public class AdminGui extends javax.swing.JFrame  {
                 btnFBMouseClicked(evt);
             }
         });
-        getContentPane().add(btnFB, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 580, 30, 30));
+        getContentPane().add(btnFB, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 550, 30, 30));
 
         lblTitle.setFont(new java.awt.Font("Leelawadee UI", 1, 13)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 153, 0));
@@ -257,7 +256,8 @@ public class AdminGui extends javax.swing.JFrame  {
     private void btnDisconnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDisconnectMouseClicked
         // TODO add your handling code here:
         dispose();
-        LoginView tmp = new LoginView();
+        iWindow.clean();
+        LoginGui tmp = new LoginGui();
         tmp.setVisible(true);
         
     }//GEN-LAST:event_btnDisconnectMouseClicked
@@ -271,8 +271,7 @@ public class AdminGui extends javax.swing.JFrame  {
     private void btnStatisticsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStatisticsMouseClicked
         // TODO add your handling code here:
         //Open Internal JFrame
-        iStatisticsNew tmp = new iStatisticsNew();
-        iWindow.openWin(tmp, tmp.getWindowID(), tmp.getTitle());
+   
     }//GEN-LAST:event_btnStatisticsMouseClicked
 
     private void btnBranchesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBranchesMouseClicked
@@ -289,17 +288,7 @@ public class AdminGui extends javax.swing.JFrame  {
     }//GEN-LAST:event_btnCustomersMouseClicked
 
     private void iReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iReturnMouseClicked
-        // TODO add your handling code here:
-        try {
-            
-            
-        iWindow.getCurrentWindow().hide();
-        JInternalFrame frm = iWindow.getLastWindow();
-        frm.setVisible(true);
-        }
-        catch(Exception e){
-            
-        }
+    
     }//GEN-LAST:event_iReturnMouseClicked
 
     private void btnEmployeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmployeesMouseClicked
@@ -314,7 +303,7 @@ public class AdminGui extends javax.swing.JFrame  {
         try {
             uri = new URI("https://www.facebook.com/Virtual-IShape-1076392832409754/");
         } catch (URISyntaxException ex) {
-            Logger.getLogger(AdminGui.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainGui.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
         try {
@@ -346,21 +335,23 @@ public class AdminGui extends javax.swing.JFrame  {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminGui().setVisible(true);
+                new MainGui().setVisible(true);
             }
         });
     }

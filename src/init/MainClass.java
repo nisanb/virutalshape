@@ -27,9 +27,9 @@ import core.Customer;
 import core.Employee;
 import core.Lesson;
 import core.Receptionist;
-import gui.AdminGui;
-import gui.LoginView;
-import gui.internal.iWindow;
+import gui.MainGui;
+import gui.LoginGui;
+import gui.iWindow;
 import javax.swing.JFrame;
 import utils.E_Cities;
 import utils.E_Lessons;
@@ -908,12 +908,12 @@ public class MainClass {
         JFrame login = null;
         if(skipLogin){
             iWindow.setAdmin(3, new Employee(999, "Administrator","Privilige"));
-            login = new AdminGui();
+            login = new MainGui();
             
         }
             
         else
-            login = new LoginView();
+            login = new LoginGui();
         
         login.setVisible(true);
         //exportData();

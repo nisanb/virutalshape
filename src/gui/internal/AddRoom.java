@@ -1,5 +1,6 @@
 package gui.internal;
 
+import gui.iWindow;
 import Validators.CharValidator;
 import Validators.EmailValidator;
 import Validators.PhoneValidator;
@@ -65,6 +66,7 @@ public class AddRoom extends javax.swing.JInternalFrame {
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setIconifiable(true);
         setMaximizable(true);
         setAutoscrolls(true);
@@ -73,6 +75,7 @@ public class AddRoom extends javax.swing.JInternalFrame {
         setMaximumSize(new java.awt.Dimension(600, 600));
         setMinimumSize(new java.awt.Dimension(600, 600));
         setName(""); // NOI18N
+        setOpaque(true);
         setPreferredSize(new java.awt.Dimension(600, 600));
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -187,6 +190,7 @@ public class AddRoom extends javax.swing.JInternalFrame {
         getContentPane().add(selectRoom);
         selectRoom.setBounds(180, 130, 170, 22);
         for(E_Rooms r : E_Rooms.values()){
+            if(!r.equals(E_Rooms.Default))
             selectRoom.addItem(r.toString());
         }
 
@@ -215,7 +219,10 @@ public class AddRoom extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void AddRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddRoomMouseClicked
-        if(iWindow.DB.addRoomToBranch(roomNum, maxNumOfTrainees, maxNumOfInstruments, roomType, branch.getBranchNumber())){
+
+ 
+        if(iWindow.getDB().addRoomToBranch(roomNum, maxNumOfTrainees, maxNumOfInstruments, roomType, branch.getBranchNumber())){
+            
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Successfully added room to branch" + branch.getBranchNumber());
             iWindow.log(new Date().toString() + " - " + "Successfully added room to branch" + branch.getBranchNumber());
@@ -243,8 +250,8 @@ public class AddRoom extends javax.swing.JInternalFrame {
 
         else {
             insNumError.setText(" ");
-            maxNumOfInstruments = Integer.parseInt(str);
-        }
+            maxNumOfInstruments=Integer.parseInt(str);
+             }
         update();
     }//GEN-LAST:event_InsNumFocusLost
 
@@ -263,14 +270,25 @@ public class AddRoom extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_roomNumberFocusLost
 
     private void selectRoomFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectRoomFocusLost
-        if (selectRoom.getSelectedIndex() == 0) roomType = E_Rooms.GYM;
-        if (selectRoom.getSelectedIndex() == 1) roomType = E_Rooms.AEROBIC;
-        if (selectRoom.getSelectedIndex() == 2) roomType = E_Rooms.MATTRESSES;
+        if (selectRoom.getSelectedIndex() == 1) roomType = E_Rooms.GYM;
+        if (selectRoom.getSelectedIndex() == 2) roomType = E_Rooms.AEROBIC;
+        if (selectRoom.getSelectedIndex() == 3) roomType = E_Rooms.MATTRESSES;
             
     }//GEN-LAST:event_selectRoomFocusLost
 
     private void people1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_people1FocusLost
         // TODO add your handling code here:
+         String str = people1.getText();
+        if (!PositiveValidator.isPositiveStringNum(str)) {
+            numError.setText("Positive digits only");
+            maxNumOfTrainees = -1;
+        }
+        
+        else {
+            numError.setText(" ");
+            maxNumOfTrainees=Integer.parseInt(str);
+        }
+        update();
     }//GEN-LAST:event_people1FocusLost
     
     
@@ -315,8 +333,7 @@ public class AddRoom extends javax.swing.JInternalFrame {
     
     public void update(){
         
-        hide();
-        repaint();
-        show();
+        setVisible(false);
+        setVisible(true);
     }
 }

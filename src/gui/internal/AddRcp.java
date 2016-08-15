@@ -5,6 +5,7 @@
  */
 package gui.internal;
 
+import gui.iWindow;
 import Validators.CharValidator;
 import Validators.PhoneValidator;
 import Validators.PositiveValidator;
@@ -403,7 +404,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
                 password, address);
        
         System.out.println(respt);
-        if (iWindow.DB.addEmployee(respt)){
+        if (iWindow.getDB().addEmployee(respt)){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Receptionist was added successfully");
             iWindow.log(new Date().toString() + " - " + employeeNumber + " was added successfully");
@@ -424,7 +425,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             employeeNumber = -1;
         }
 
-        if (!iWindow.DB.getEmployees().containsKey(Integer.parseInt(IDfield.getText()))) {
+        if (!iWindow.getDB().getEmployees().containsKey(Integer.parseInt(IDfield.getText()))) {
             numError.setText(" ");
             employeeNumber = Integer.parseInt(str);
         } else {

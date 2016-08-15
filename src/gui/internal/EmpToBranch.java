@@ -1,5 +1,6 @@
 package gui.internal;
 
+import gui.iWindow;
 import Validators.CharValidator;
 import Validators.EmailValidator;
 import Validators.PhoneValidator;
@@ -147,8 +148,8 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(selectBranch);
-        selectBranch.setBounds(140, 70, 170, 20);
-        for(Branch b : iWindow.DB.getBranches().values()){
+        selectBranch.setBounds(140, 70, 170, 22);
+        for(Branch b : iWindow.getDB().getBranches().values()){
             selectBranch.addItem(b.getBranchNumber() + " " + b.getBranchName());
         }
 
@@ -162,7 +163,7 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void ConnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConnectMouseClicked
-        if(iWindow.DB.connectEmloyeeToBranch(empNumber, branchNum)){
+        if(iWindow.getDB().connectEmloyeeToBranch(empNumber, branchNum)){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Successfully connected employee to new branch");
             iWindow.log(new Date().toString() + " - " + empNumber + " was successfully connected employee to new branch");
@@ -184,12 +185,12 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
             return;
         }
         
-        if (iWindow.DB.getEmployees().containsKey(Integer.parseInt(str))) {
+        if (iWindow.getDB().getEmployees().containsKey(Integer.parseInt(str))) {
             empError.setText(" ");
             empNumber = Integer.parseInt(str);
-            if (iWindow.DB.getEmployees().get(empNumber) !=null)
+            if (iWindow.getDB().getEmployees().get(empNumber) !=null)
                 CurrentBranch.setText(new Integer(
-                        iWindow.DB.getEmployees().get(empNumber).getWorkBranch().getBranchNumber()).toString());
+                        iWindow.getDB().getEmployees().get(empNumber).getWorkBranch().getBranchNumber()).toString());
         } else {
             empError.setText("Emlpyee number doesn't exists");
             empNumber = -1;
@@ -200,7 +201,14 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_EmpNumFocusLost
     
     private void selectBranchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectBranchFocusLost
+        if(selectBranch.getSelectedIndex()==0)
+            return; 
         String str = (String) selectBranch.getSelectedItem();
+        System.err.println("STR: "+str+" Length: "+(str.length())+" Value: "+str);
+        if(str.length()<=0)
+            return;
+        
+        
         for (int i = 0; i < str.length(); i++){
             if (Character.isDigit(str.charAt(i))) continue;
             else{

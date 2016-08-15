@@ -5,6 +5,7 @@
  */
 package gui.internal;
 
+import gui.iWindow;
 import core.Branch;
 import core.Employee;
 import core.Room;
@@ -44,7 +45,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         roomPanel.hide();
         lblAddInstrument.hide();
 
-        for (Branch branch : iWindow.DB.getBranches().values()) {
+        for (Branch branch : iWindow.getDB().getBranches().values()) {
             chooseBranch.addItem(branch.toString());
         }
 
@@ -91,7 +92,6 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         AddBranch = new javax.swing.JLabel();
-        AddRoom = new javax.swing.JLabel();
         roomPanel = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
         btnEdit1 = new javax.swing.JLabel();
@@ -113,7 +113,6 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         txtAddress1 = new javax.swing.JLabel();
         lblAddInstrument = new javax.swing.JLabel();
         AddLesson = new javax.swing.JLabel();
-        AddIns = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,70));
         setBorder(null);
@@ -144,7 +143,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(chooseBranch);
-        chooseBranch.setBounds(60, 40, 260, 20);
+        chooseBranch.setBounds(60, 40, 260, 22);
 
         statisticsPanel.setBackground(new Color(0,0,0,0));
         statisticsPanel.setLayout(null);
@@ -193,7 +192,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
             }
         });
         statisticsPanel.add(chooseRoom);
-        chooseRoom.setBounds(210, 230, 170, 20);
+        chooseRoom.setBounds(210, 230, 170, 22);
 
         jSeparator8.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator8.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -203,7 +202,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         lblBranchID.setForeground(new java.awt.Color(255, 255, 255));
         lblBranchID.setText("id");
         statisticsPanel.add(lblBranchID);
-        lblBranchID.setBounds(210, 60, 70, 14);
+        lblBranchID.setBounds(210, 60, 70, 16);
 
         txtID.setBackground(new java.awt.Color(255, 255, 255));
         txtID.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -215,7 +214,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         lblTotalWorkouts.setForeground(new java.awt.Color(255, 255, 255));
         lblTotalWorkouts.setText("workouts");
         statisticsPanel.add(lblTotalWorkouts);
-        lblTotalWorkouts.setBounds(210, 120, 70, 14);
+        lblTotalWorkouts.setBounds(210, 120, 70, 16);
 
         txtTotalWorkouts.setBackground(new java.awt.Color(255, 255, 255));
         txtTotalWorkouts.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -227,7 +226,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         lblTotalLessons.setForeground(new java.awt.Color(255, 255, 255));
         lblTotalLessons.setText("lessons");
         statisticsPanel.add(lblTotalLessons);
-        lblTotalLessons.setBounds(210, 140, 70, 14);
+        lblTotalLessons.setBounds(210, 140, 70, 16);
 
         txtTotalLessons.setBackground(new java.awt.Color(255, 255, 255));
         txtTotalLessons.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -239,7 +238,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         lblVisitedCustomers.setForeground(new java.awt.Color(255, 255, 255));
         lblVisitedCustomers.setText("customers");
         statisticsPanel.add(lblVisitedCustomers);
-        lblVisitedCustomers.setBounds(210, 160, 70, 14);
+        lblVisitedCustomers.setBounds(210, 160, 70, 16);
 
         txtVisitedCustomers.setBackground(new java.awt.Color(255, 255, 255));
         txtVisitedCustomers.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -251,7 +250,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         lblBranchAddress.setForeground(new java.awt.Color(255, 255, 255));
         lblBranchAddress.setText("address");
         statisticsPanel.add(lblBranchAddress);
-        lblBranchAddress.setBounds(210, 100, 200, 14);
+        lblBranchAddress.setBounds(210, 100, 200, 16);
 
         txtBranchName.setBackground(new java.awt.Color(255, 255, 255));
         txtBranchName.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -263,7 +262,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         lblTotalEmployees.setForeground(new java.awt.Color(255, 255, 255));
         lblTotalEmployees.setText("employees");
         statisticsPanel.add(lblTotalEmployees);
-        lblTotalEmployees.setBounds(210, 180, 70, 14);
+        lblTotalEmployees.setBounds(210, 180, 70, 16);
 
         txtTotalEmployees.setBackground(new java.awt.Color(255, 255, 255));
         txtTotalEmployees.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -275,7 +274,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         lblTotalRooms.setForeground(new java.awt.Color(255, 255, 255));
         lblTotalRooms.setText("rooms");
         statisticsPanel.add(lblTotalRooms);
-        lblTotalRooms.setBounds(210, 200, 70, 14);
+        lblTotalRooms.setBounds(210, 200, 70, 16);
 
         txtTotalRooms.setBackground(new java.awt.Color(255, 255, 255));
         txtTotalRooms.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -326,7 +325,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("You may choose a branch by using the selector.");
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(10, 10, 510, 14);
+        jLabel16.setBounds(10, 10, 510, 16);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/search-3-24.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -340,15 +339,6 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         });
         getContentPane().add(AddBranch);
         AddBranch.setBounds(340, 30, 40, 40);
-
-        AddRoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/plus-5-24.png"))); // NOI18N
-        AddRoom.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddRoomMouseClicked(evt);
-            }
-        });
-        getContentPane().add(AddRoom);
-        AddRoom.setBounds(390, 30, 40, 40);
 
         roomPanel.setBackground(new Color(0,0,0,0));
         roomPanel.setLayout(null);
@@ -390,7 +380,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         lblRoomID.setForeground(new java.awt.Color(255, 255, 255));
         lblRoomID.setText("id");
         roomPanel.add(lblRoomID);
-        lblRoomID.setBounds(210, 60, 70, 14);
+        lblRoomID.setBounds(210, 60, 70, 16);
 
         txtID1.setBackground(new java.awt.Color(255, 255, 255));
         txtID1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -402,7 +392,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         lblRoomInstruments.setForeground(new java.awt.Color(255, 255, 255));
         lblRoomInstruments.setText("insrtuments");
         roomPanel.add(lblRoomInstruments);
-        lblRoomInstruments.setBounds(210, 120, 70, 14);
+        lblRoomInstruments.setBounds(210, 120, 70, 16);
 
         txtTotalWorkouts1.setBackground(new java.awt.Color(255, 255, 255));
         txtTotalWorkouts1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -414,7 +404,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         lblRoomTotalLessons.setForeground(new java.awt.Color(255, 255, 255));
         lblRoomTotalLessons.setText("lessons");
         roomPanel.add(lblRoomTotalLessons);
-        lblRoomTotalLessons.setBounds(210, 140, 70, 14);
+        lblRoomTotalLessons.setBounds(210, 140, 70, 16);
 
         txtTotalLessons1.setBackground(new java.awt.Color(255, 255, 255));
         txtTotalLessons1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -426,7 +416,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         lblRoomMaxTrainees.setForeground(new java.awt.Color(255, 255, 255));
         lblRoomMaxTrainees.setText("mtrainees");
         roomPanel.add(lblRoomMaxTrainees);
-        lblRoomMaxTrainees.setBounds(210, 100, 200, 14);
+        lblRoomMaxTrainees.setBounds(210, 100, 200, 16);
 
         txtBranchName1.setBackground(new java.awt.Color(255, 255, 255));
         txtBranchName1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -463,26 +453,19 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         roomPanel.add(lblAddInstrument);
         lblAddInstrument.setBounds(20, 260, 100, 13);
 
-        getContentPane().add(roomPanel);
-        roomPanel.setBounds(410, 50, 420, 300);
-
-        AddLesson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/plus-5-24.png"))); // NOI18N
+        AddLesson.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        AddLesson.setForeground(new java.awt.Color(51, 102, 255));
+        AddLesson.setText("[Add Lesson]");
         AddLesson.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AddLessonMouseClicked(evt);
             }
         });
-        getContentPane().add(AddLesson);
-        AddLesson.setBounds(680, 10, 40, 40);
+        roomPanel.add(AddLesson);
+        AddLesson.setBounds(120, 250, 70, 30);
 
-        AddIns.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/plus-5-24.png"))); // NOI18N
-        AddIns.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddInsMouseClicked(evt);
-            }
-        });
-        getContentPane().add(AddIns);
-        AddIns.setBounds(580, 10, 40, 40);
+        getContentPane().add(roomPanel);
+        roomPanel.setBounds(410, 50, 420, 300);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -519,21 +502,11 @@ public class ManageBranches extends javax.swing.JInternalFrame {
     private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
         // TODO add your handling code here:
         String str = chooseBranch.getSelectedItem().toString().substring(8, 16);
-        Branch branch = iWindow.DB.getBranches().get(Integer.parseInt(str));
+        Branch branch = iWindow.getDB().getBranches().get(Integer.parseInt(str));
         AddBranchForm add = new AddBranchForm(branch);
 
         iWindow.openWin(add, add.getWindowID(), add.getTitle());
     }//GEN-LAST:event_btnEditMouseClicked
-
-    private void AddRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddRoomMouseClicked
-
-        AddRoom frm = new AddRoom(branch);
-        iWindow.openWin(frm, frm.getWindowID(), frm.getTitle());
-    }//GEN-LAST:event_AddRoomMouseClicked
-
-    private void AddInsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddInsMouseClicked
-        //removed
-    }//GEN-LAST:event_AddInsMouseClicked
 
     private void lblNewRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewRoomMouseClicked
         // Open New Room for Branch
@@ -558,17 +531,26 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         System.err.println("Chosen Room" + chooseRoom.getSelectedIndex());
         if (chooseRoom.getSelectedIndex() <= 0) {
             roomPanel.hide();
+            
             return;
         }
 
         //Get Room Object
         String str = chooseRoom.getSelectedItem().toString();
+        
         str = str.substring(1, str.length());
+      
         int roomNum = Integer.parseInt(str);
+        
         Room tmp = new Room(roomNum, branch.getBranchNumber());
         for(Room r : branch.getRooms()){
             System.err.println("XD Room #"+r.getRoomNum());
             if(r.equals(tmp)){
+                System.err.println("FOUND ROOM");
+                if(r.getRoomType().equals(E_Rooms.GYM))
+                System.err.println(r.getInstruments().size());
+                else
+                    System.err.println("NOT GYM!");
                 room = r;
                 break;
             }
@@ -583,8 +565,10 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         }
         //Update Components
         lblRoomID.setText(""+room.getRoomNum());
-       
+        System.err.println("TP: "+room.getMaxNumOfInstruments());
+        if(room.getRoomType().equals(E_Rooms.GYM))
         lblRoomInstruments.setText(room.getInstruments().size()+"/"+room.getMaxNumOfInstruments());
+        else lblRoomInstruments.setText("Not a GYM");
         lblRoomMaxTrainees.setText(""+room.getMaxNumOfTrainees());
         lblRoomTotalLessons.setText(""+room.getLessons().size());
         lblRoomType.setText(room.getRoomType().toString());
@@ -598,16 +582,14 @@ public class ManageBranches extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_chooseRoomActionPerformed
 
     private void AddLessonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddLessonMouseClicked
-        AddLesson add = new AddLesson();
+        AddLesson add = new AddLesson(branch, room);
         iWindow.openWin(add, add.getWindowID(), add.getTitle());
     }//GEN-LAST:event_AddLessonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddBranch;
-    private javax.swing.JLabel AddIns;
     private javax.swing.JLabel AddLesson;
-    private javax.swing.JLabel AddRoom;
     private javax.swing.JLabel btnEdit;
     private javax.swing.JLabel btnEdit1;
     private javax.swing.JComboBox<String> chooseBranch;
@@ -680,7 +662,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
 
         //Get Branch Variable from HashMap
         branch = iWindow.getDB().getBranches().get(tmp.getBranchNumber());
-
+        
         //setText to Lables
         lblBranchAddress.setText("" + branch.getBranchAddress().toString());
         lblBranchID.setText("" + branch.getBranchNumber());
@@ -689,7 +671,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
 
         lblTotalLessons.setText("" + branch.getLessonsCount());
         lblVisitedCustomers.setText("" + branch.getUniqueVisitors());
-        lblTotalWorkouts.setText("" + iWindow.DB.getTotalWorkoutsByBranch(branch.getBranchNumber()));
+        lblTotalWorkouts.setText("" + iWindow.getDB().getTotalWorkoutsByBranch(branch.getBranchNumber()));
 
         //Room Selector
         chooseRoom.removeAllItems();

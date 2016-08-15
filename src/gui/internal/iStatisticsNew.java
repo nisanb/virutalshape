@@ -5,6 +5,7 @@
  */
 package gui.internal;
 
+import gui.iWindow;
 import java.awt.Color;
 
 /**

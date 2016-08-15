@@ -1,5 +1,6 @@
 package gui.internal;
 
+import gui.iWindow;
 import Validators.CharValidator;
 import Validators.EmailValidator;
 import Validators.PhoneValidator;
@@ -32,12 +33,18 @@ import utils.E_Types;
 public class AddLesson extends javax.swing.JInternalFrame {
     
     private int WindowID = 10;
-    
+    private Branch branch;
+    private Room room;
     /**
      * Creates new form NewJInternalFrame
      */
-    public AddLesson() {
+    public AddLesson(Branch branch, Room room) {
         initComponents();
+        this.branch=branch;
+        this.room=room;
+        
+        lblBranchID.setText(""+branch.getBranchName());
+        lblRoomID.setText(""+room.getRoomNum());
         
         
         //Finished Loading
@@ -54,9 +61,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
 
         AddIns = new javax.swing.JButton();
         slctBranch = new javax.swing.JLabel();
-        selectBranch = new javax.swing.JComboBox<>();
         MessageBox = new javax.swing.JLabel();
-        selectRoom = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
         IDfield = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -82,6 +87,8 @@ public class AddLesson extends javax.swing.JInternalFrame {
         lesNumError = new javax.swing.JLabel();
         DateError = new javax.swing.JLabel();
         LevelError = new javax.swing.JLabel();
+        lblRoomID = new javax.swing.JLabel();
+        lblBranchID = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -115,36 +122,15 @@ public class AddLesson extends javax.swing.JInternalFrame {
         jLabel3.setToolTipText("Subscription Number ");
         slctBranch.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         slctBranch.setForeground(new java.awt.Color(204, 204, 204));
-        slctBranch.setText("Select Brnach");
+        slctBranch.setText("Branch");
         getContentPane().add(slctBranch);
         slctBranch.setBounds(30, 10, 110, 20);
-
-        selectBranch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Branch" }));
-        selectBranch.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                selectBranchFocusLost(evt);
-            }
-        });
-        getContentPane().add(selectBranch);
-        selectBranch.setBounds(160, 10, 170, 20);
-        for(Branch b : iWindow.DB.getBranches().values()){
-            selectBranch.addItem(b.getBranchNumber() + " " + b.getBranchName());
-        }
 
         MessageBox.setBackground(new Color (0,0,0,90));
         MessageBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         MessageBox.setForeground(new java.awt.Color(0, 255, 0));
         getContentPane().add(MessageBox);
         MessageBox.setBounds(30, 290, 370, 20);
-
-        selectRoom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Room" }));
-        selectRoom.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                selectRoomFocusLost(evt);
-            }
-        });
-        getContentPane().add(selectRoom);
-        selectRoom.setBounds(160, 40, 170, 20);
 
         jLabel3.setToolTipText("Subscription Number ");
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -225,7 +211,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(210, 190, 80, 20);
+        jComboBox1.setBounds(210, 190, 80, 22);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(204, 204, 204));
@@ -237,11 +223,11 @@ public class AddLesson extends javax.swing.JInternalFrame {
         day.setToolTipText("");
         day.setName(""); // NOI18N
         getContentPane().add(day);
-        day.setBounds(160, 220, 50, 20);
+        day.setBounds(160, 220, 50, 22);
 
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(month);
-        month.setBounds(220, 220, 60, 20);
+        month.setBounds(220, 220, 60, 22);
 
         year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "2016", "2017", "2018", "2019", "2020" }));
         year.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -250,19 +236,19 @@ public class AddLesson extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(year);
-        year.setBounds(290, 220, 60, 20);
+        year.setBounds(290, 220, 60, 22);
 
         Hour.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hour", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "18", "20", "21", "22", "23" }));
         getContentPane().add(Hour);
-        Hour.setBounds(160, 250, 50, 20);
+        Hour.setBounds(160, 250, 50, 22);
 
         Minute.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minute", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "18", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "34", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         getContentPane().add(Minute);
-        Minute.setBounds(220, 250, 60, 20);
+        Minute.setBounds(220, 250, 60, 22);
 
         Second.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Second", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "18", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "34", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         getContentPane().add(Second);
-        Second.setBounds(290, 250, 60, 20);
+        Second.setBounds(290, 250, 60, 22);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(204, 204, 204));
@@ -273,7 +259,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
         jLabel3.setToolTipText("Subscription Number ");
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel16.setText("Room Number");
+        jLabel16.setText("Room");
         getContentPane().add(jLabel16);
         jLabel16.setBounds(30, 40, 110, 20);
 
@@ -284,7 +270,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(LessonName);
-        LessonName.setBounds(160, 70, 170, 20);
+        LessonName.setBounds(160, 70, 170, 22);
         for (E_Lessons l:E_Lessons.values()){
             LessonName.addItem(l.toString());
         }
@@ -326,6 +312,16 @@ public class AddLesson extends javax.swing.JInternalFrame {
         getContentPane().add(LevelError);
         LevelError.setBounds(350, 190, 210, 20);
 
+        lblRoomID.setForeground(new java.awt.Color(255, 255, 255));
+        lblRoomID.setText("roomid");
+        getContentPane().add(lblRoomID);
+        lblRoomID.setBounds(160, 40, 100, 20);
+
+        lblBranchID.setForeground(new java.awt.Color(255, 255, 255));
+        lblBranchID.setText("branchid");
+        getContentPane().add(lblBranchID);
+        lblBranchID.setBounds(160, 14, 100, 16);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
@@ -357,8 +353,8 @@ public class AddLesson extends javax.swing.JInternalFrame {
         
         
         //create the lesson
-        if(iWindow.DB.addLesson(lessonNum, lessonName, dateTime,
-            level, coachNum, maxStudent, branchNum, roomNum)){
+        if(iWindow.getDB().addLesson(lessonNum, lessonName, dateTime,
+            level, coachNum, maxStudent, branch.getBranchNumber(), room.getRoomNum())){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Successfully added lesson " + lessonNum  +" to branch" + branchNum);
             iWindow.log(new Date().toString() + "Successfully added lesson " + lessonNum  +" to branch" + branchNum);
@@ -371,40 +367,19 @@ public class AddLesson extends javax.swing.JInternalFrame {
         update();
        
     }//GEN-LAST:event_AddInsMouseClicked
-        
-    private void selectBranchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectBranchFocusLost
-        String str = (String) selectBranch.getSelectedItem();
-        for (int i = 0; i < str.length(); i++){
-            if (Character.isDigit(str.charAt(i))) continue;
-            else{
-                str = str.substring(0, i);
-            }
-        }
-        branchNum = Integer.parseInt(str); 
-        selectRoom.removeAllItems();
-        for(Room r:iWindow.DB.getBranches().get(branchNum).getRooms()){
-            selectRoom.addItem(r.getRoomNum() + " - " + r.getRoomType());
-        }
-        update();
-    }//GEN-LAST:event_selectBranchFocusLost
-    
+            
     private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_formFocusLost
 
-    private void selectRoomFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectRoomFocusLost
-        String str = (String) selectRoom.getSelectedItem();
-        for (int i = 0; i < str.length(); i++){
-            if (Character.isDigit(str.charAt(i))) continue;
-            else{
-                str = str.substring(0, i);
-            }
-        }
-        
-        roomNum = Integer.parseInt(str);
-    }//GEN-LAST:event_selectRoomFocusLost
-
     private void IDfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDfieldFocusLost
+        
+        if(IDfield.getText().length()==0){
+            CoachError.setText("Please select coach!");
+            coachNum = -1;
+            update();
+            return;
+        }
         String str = IDfield.getText();
         if (!PositiveValidator.isPositiveStringNum(str)) {
             CoachError.setText("Positive digits only");
@@ -412,8 +387,8 @@ public class AddLesson extends javax.swing.JInternalFrame {
             update();
         }
 
-        if (iWindow.DB.getEmployees().containsKey(Integer.parseInt(str)) && 
-                iWindow.DB.getEmployees().get(Integer.parseInt(str)) instanceof Coach) {
+        if (iWindow.getDB().getEmployees().containsKey(Integer.parseInt(str)) && 
+                iWindow.getDB().getEmployees().get(Integer.parseInt(str)) instanceof Coach) {
             CoachError.setText(" ");
             coachNum = Integer.parseInt(str);
         } else {
@@ -473,6 +448,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_maxNumStudentFocusLost
 
     private void LessonNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LessonNameFocusLost
+
         if (LessonName.getSelectedIndex() !=0){
             lessonName = E_Lessons.valueOf(LessonName.getSelectedItem().toString());
         }
@@ -516,13 +492,13 @@ public class AddLesson extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lblBranchID;
+    private javax.swing.JLabel lblRoomID;
     private javax.swing.JTextField lesNUm;
     private javax.swing.JLabel lesNumError;
     private javax.swing.JTextField maxNumStudent;
     private javax.swing.JComboBox<String> month;
     private javax.swing.JLabel numstudentserror;
-    private javax.swing.JComboBox<String> selectBranch;
-    private javax.swing.JComboBox<String> selectRoom;
     private javax.swing.JLabel slctBranch;
     private javax.swing.JLabel streetError;
     private javax.swing.JComboBox<String> year;
