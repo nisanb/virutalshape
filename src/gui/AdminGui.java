@@ -28,7 +28,7 @@ public class AdminGui extends javax.swing.JFrame  {
      * Creates new form MainGui
      */
     public AdminGui() {
-        setUndecorated(true);
+        //setUndecorated(true);
         
         initComponents();
         
