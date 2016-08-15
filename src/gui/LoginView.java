@@ -13,6 +13,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import javax.swing.JFrame;
 
 /**
@@ -27,6 +31,7 @@ public class LoginView extends javax.swing.JFrame {
      * Creates new form LoginView
      */
     public LoginView() {
+
         setUndecorated(true);
         
         initComponents();
@@ -237,6 +242,7 @@ public class LoginView extends javax.swing.JFrame {
             dispose();
             AdminGui tmp = new AdminGui();
             tmp.setVisible(true);
+         
             return;
         }
         
@@ -262,6 +268,7 @@ public class LoginView extends javax.swing.JFrame {
                     iWindow.setCustomer(1, cust);
                     AdminGui gui = new AdminGui();
                     gui.setVisible(true);
+                  
                 }
                 iWindow.log("Wrong password given!");
             }
@@ -281,6 +288,7 @@ public class LoginView extends javax.swing.JFrame {
                     iWindow.setReceptionist(2, (Receptionist) emp);
                     AdminGui gui = new AdminGui();
                     gui.setVisible(true);
+                    
                 }
                 iWindow.log("Wrong password given!");
                 
@@ -293,6 +301,7 @@ public class LoginView extends javax.swing.JFrame {
         lblErrorLogin.show();
         errimg.show();
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg;

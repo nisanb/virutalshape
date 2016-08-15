@@ -264,10 +264,10 @@ public class ManageBranches extends javax.swing.JInternalFrame {
             }
         });
         statisticsPanel.add(lblRoom);
-        lblRoom.setBounds(20, 230, 70, 13);
+        lblRoom.setBounds(20, 260, 70, 13);
 
         getContentPane().add(statisticsPanel);
-        statisticsPanel.setBounds(10, 110, 420, 340);
+        statisticsPanel.setBounds(0, 50, 420, 300);
 
         jLabel16.setBackground(new Color(0,0,0,0));
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
@@ -439,6 +439,8 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         for(Employee emp : branch.getRespt()){
             System.err.println(emp);
         }
+        lblTotalRooms.setText(""+branch.getRooms().size());
+        
         return;
     }
 }

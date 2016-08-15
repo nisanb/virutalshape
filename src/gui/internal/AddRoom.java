@@ -31,7 +31,7 @@ public class AddRoom extends javax.swing.JInternalFrame {
         initComponents();
         this.branch=branch;
         setTitle(branch.getBranchName()+" -> Add Room");
-        
+        lblbranch.setText(""+branch.getBranchNumber());
         //Finished Loading
     }
     
@@ -80,7 +80,7 @@ public class AddRoom extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel3.setText("Trainees Amount");
+        jLabel3.setText("Max Trainees");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 40, 150, 20);
 
@@ -104,7 +104,7 @@ public class AddRoom extends javax.swing.JInternalFrame {
         jLabel3.setToolTipText("Subscription Number ");
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel13.setText("Brnach");
+        jLabel13.setText("Branch");
         getContentPane().add(jLabel13);
         jLabel13.setBounds(30, 10, 110, 20);
 
@@ -116,7 +116,7 @@ public class AddRoom extends javax.swing.JInternalFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel4.setText("Instruments Amount");
+        jLabel4.setText("Max Instruments");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(30, 70, 150, 20);
 
@@ -203,6 +203,7 @@ public class AddRoom extends javax.swing.JInternalFrame {
         getContentPane().add(people1);
         people1.setBounds(180, 40, 170, 21);
 
+        lblbranch.setForeground(new java.awt.Color(255, 255, 255));
         lblbranch.setText("brandname");
         getContentPane().add(lblbranch);
         lblbranch.setBounds(180, 6, 170, 30);
@@ -211,15 +212,15 @@ public class AddRoom extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void AddRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddRoomMouseClicked
-        if(iWindow.DB.addRoomToBranch(roomNum, maxNumOfTrainees, maxNumOfInstruments, roomType, branchNum)){
+        if(iWindow.DB.addRoomToBranch(roomNum, maxNumOfTrainees, maxNumOfInstruments, roomType, branch.getBranchNumber())){
             MessageBox.setForeground(Color.GREEN);
-            MessageBox.setText("Successfully added room to branch" + branchNum);
-            iWindow.log(new Date().toString() + " - " + "Successfully added room to branch" + branchNum);
+            MessageBox.setText("Successfully added room to branch" + branch.getBranchNumber());
+            iWindow.log(new Date().toString() + " - " + "Successfully added room to branch" + branch.getBranchNumber());
         }       
         else{
             MessageBox.setForeground(Color.RED);
-            MessageBox.setText("Failed connected room to branch" + branchNum);
-            iWindow.log(new Date().toString() + " - " + "Failed connected room to branch" + branchNum);
+            MessageBox.setText("Failed connected room to branch" + branch.getBranchNumber());
+            iWindow.log(new Date().toString() + " - " + "Failed connected room to branch" + branch.getBranchNumber());
         }
         update();
         

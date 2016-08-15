@@ -9,6 +9,7 @@ import core.Receptionist;
 import gui.AdminGui;
 import init.IShape;
 import java.awt.Color;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -23,6 +24,7 @@ import utils.MyFileLogWriter;
  * @author mickey shalev
  */
 public class iWindow {
+
     
     
     //User Decalress
@@ -147,7 +149,7 @@ public class iWindow {
      */
     public static void log(String message){
         System.err.println(message);
-//        MyFileLogWriter.writeToFileInSeparateLine(message);
+        //MyFileLogWriter.writeToFileInSeparateLine(message);
     }
     
     /**
@@ -254,6 +256,9 @@ public class iWindow {
     public static void setLblTitle(JLabel title){
         lblTitle=title;
     }
+    
+    
+   
     
 }
     
