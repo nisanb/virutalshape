@@ -87,8 +87,13 @@ public class Room implements Serializable {
 		super();
 		this.roomNum = roomNum;
 		this.branch = new Branch(branchNum);
-	}
+                this.instruments = new HashSet<Instrument>();
+		this.lessons = new HashSet<Lesson>();
+                 this.roomType = E_Rooms.Default;
+                 this.maxNumOfInstruments=0;
+                 this.maxNumOfTrainees=0;
 
+        }
 	// -------------------------------Getters And
 	// Setters------------------------------
 

@@ -5,6 +5,7 @@ import Validators.EmailValidator;
 import Validators.PhoneValidator;
 import Validators.PositiveValidator;
 import core.Branch;
+import core.Room;
 import java.awt.Color;
 import utils.E_Cities;
 import java.lang.*;
@@ -24,6 +25,8 @@ public class AddRoom extends javax.swing.JInternalFrame {
     
     private int WindowID = 8;
     private Branch branch;
+ 
+ 
     /**
      * Creates new form NewJInternalFrame
      */
