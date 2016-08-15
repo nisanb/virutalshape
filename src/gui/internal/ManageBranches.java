@@ -496,7 +496,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         //Create new Branch
         hide();
         AddBranchForm frm = new AddBranchForm();
-        iWindow.openWin(frm, frm.getWindowID(), frm.getTitle());
+        iWindow.openWin(frm);
     }//GEN-LAST:event_AddBranchMouseClicked
 
     private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
@@ -505,13 +505,13 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         Branch branch = iWindow.getDB().getBranches().get(Integer.parseInt(str));
         AddBranchForm add = new AddBranchForm(branch);
 
-        iWindow.openWin(add, add.getWindowID(), add.getTitle());
+        iWindow.openWin(add);
     }//GEN-LAST:event_btnEditMouseClicked
 
     private void lblNewRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewRoomMouseClicked
         // Open New Room for Branch
         AddRoom add = new AddRoom(branch);
-        iWindow.openWin(add, add.getWindowID(), add.getTitle());
+        iWindow.openWin(add);
 
     }//GEN-LAST:event_lblNewRoomMouseClicked
 
@@ -522,7 +522,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
     private void lblAddInstrumentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddInstrumentMouseClicked
         //Open Add Instrument GUI
         AddInstrument add = new AddInstrument(branch, room);
-        iWindow.openWin(add, add.getWindowID(), add.getTitle());
+        iWindow.openWin(add);
     }//GEN-LAST:event_lblAddInstrumentMouseClicked
 
     private void chooseRoomItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chooseRoomItemStateChanged
@@ -583,7 +583,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
 
     private void AddLessonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddLessonMouseClicked
         AddLesson add = new AddLesson(branch, room);
-        iWindow.openWin(add, add.getWindowID(), add.getTitle());
+        iWindow.openWin(add);
     }//GEN-LAST:event_AddLessonMouseClicked
 
 

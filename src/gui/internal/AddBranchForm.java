@@ -25,7 +25,7 @@ import javax.swing.plaf.ColorUIResource;
  * @author nisans
  */
 public class AddBranchForm extends javax.swing.JInternalFrame {
-    private int WindowID = 2;
+
     private Branch branch=null;
     private boolean editForm = false;
     /**
@@ -50,15 +50,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         
     }
     
-    /**
-     * SWT Update - Bypass Bad Effects
-     */
-    public void update(){
-        
-        hide();
-        repaint();
-        show();
-    }
+  
     
     /**
      * Set All Errors
@@ -84,7 +76,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
             
         }
         
-        update();
+        iWindow.update();
         
     }
     /**
@@ -423,7 +415,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
             branchNumber = -1;
   
             
-            update();
+            iWindow.update();
             
             return;
         }          
@@ -439,13 +431,13 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
             
             branchNumber = -1;
         }
-        update();
+        iWindow.update();
         
     }//GEN-LAST:event_btnBranchNumFocusLost
 
     private void btnBranchNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchNameFocusLost
        branchName = btnBranchName.getText();
-       update();
+       iWindow.update();
     }//GEN-LAST:event_btnBranchNameFocusLost
 
     private void btnBranchCountryFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchCountryFocusLost
@@ -472,7 +464,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
             
             street = null;
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_btnCityEditFocusLost
 
     private void btnHouseNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnHouseNumberFocusLost
@@ -491,7 +483,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
             
             housNumber = -1;
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_btnHouseNumberFocusLost
 
     private void btnPhoneNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnPhoneNumberFocusLost
@@ -510,7 +502,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
             
        
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_btnPhoneNumberFocusLost
 
     private void slctCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_slctCityFocusLost
@@ -523,7 +515,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
             city = E_Cities.valueOf(str);
   
             btnBranchCountry.setText(city.getCountry());
-           update();
+           iWindow.update();
             btnBranchCountry.repaint();
             country = city.getCountry();
             //        System.out.println(str);
@@ -547,7 +539,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
             }
             lblsuccess.setText("Successfully updated Branch");
             lblsuccess.setVisible(true);
-            update();
+            iWindow.update();
             
             return;
             
@@ -564,7 +556,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
           
             
         }
-        update();
+        iWindow.update();
           
         System.out.println("Successfully added branch");
     }//GEN-LAST:event_btnAddBranchActionPerformed
@@ -578,7 +570,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formKeyPressed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        update();
+        iWindow.update();
         // TODO add your handling code here:
     }//GEN-LAST:event_formMouseClicked
 
@@ -626,13 +618,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
     
     
     
-    public int getWindowID(){
-        return this.WindowID;
-    }
 
-    public void setWindowID(int id){
-        this.WindowID=id;
-    }
     public Branch getBranch(){
         return this.branch;
     }

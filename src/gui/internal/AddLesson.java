@@ -31,8 +31,7 @@ import utils.E_Types;
  * @author nisans
  */
 public class AddLesson extends javax.swing.JInternalFrame {
-    
-    private int WindowID = 10;
+
     private Branch branch;
     private Room room;
     /**
@@ -42,7 +41,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
         initComponents();
         this.branch=branch;
         this.room=room;
-        
+        setTitle(branch.getBranchName()+" -> "+room.getRoomType().toString()+" #"+room.getRoomNum()+" -> Add Instrument");
         lblBranchID.setText(""+branch.getBranchName());
         lblRoomID.setText(""+room.getRoomNum());
         
@@ -341,13 +340,13 @@ public class AddLesson extends javax.swing.JInternalFrame {
             if (new Date().before(dateTime)){
                 DateError.setForeground(Color.GREEN);
                 DateError.setText("Date: " + dateTime);
-                update();
+                iWindow.update();
             }
         }
         else{
                 DateError.setForeground(Color.red);
                 DateError.setText("Invalid date ");
-                update();
+                iWindow.update();
                 return;
             }
         
@@ -356,15 +355,15 @@ public class AddLesson extends javax.swing.JInternalFrame {
         if(iWindow.getDB().addLesson(lessonNum, lessonName, dateTime,
             level, coachNum, maxStudent, branch.getBranchNumber(), room.getRoomNum())){
             MessageBox.setForeground(Color.GREEN);
-            MessageBox.setText("Successfully added lesson " + lessonNum  +" to branch" + branchNum);
-            iWindow.log(new Date().toString() + "Successfully added lesson " + lessonNum  +" to branch" + branchNum);
+            MessageBox.setText("Successfully added lesson " + lessonNum  +" to branch" + branch.getBranchNumber());
+            iWindow.log(new Date().toString() + "Successfully added lesson " + lessonNum  +" to branch" + branch.getBranchNumber());
         }       
         else{
             MessageBox.setForeground(Color.RED);
-            MessageBox.setText("Failed to add lesson " + lessonNum  +" to branch" + branchNum);
-            iWindow.log(new Date().toString() + " - " + "Failed to add lesson " + lessonNum  +" to branch" + branchNum);
+            MessageBox.setText("Failed to add lesson " + lessonNum  +" to branch" + branch.getBranchNumber());
+            iWindow.log(new Date().toString() + " - " + "Failed to add lesson " + lessonNum  +" to branch" + branch.getBranchNumber());
         }
-        update();
+        iWindow.update();
        
     }//GEN-LAST:event_AddInsMouseClicked
             
@@ -377,14 +376,14 @@ public class AddLesson extends javax.swing.JInternalFrame {
         if(IDfield.getText().length()==0){
             CoachError.setText("Please select coach!");
             coachNum = -1;
-            update();
+            iWindow.update();
             return;
         }
         String str = IDfield.getText();
         if (!PositiveValidator.isPositiveStringNum(str)) {
             CoachError.setText("Positive digits only");
             coachNum = -1;
-            update();
+            iWindow.update();
         }
 
         if (iWindow.getDB().getEmployees().containsKey(Integer.parseInt(str)) && 
@@ -396,7 +395,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
             coachNum = -1;
         }
 
-        update();
+        iWindow.update();
     }//GEN-LAST:event_IDfieldFocusLost
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -407,7 +406,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
             LevelError.setText("Plese choose level");
             return;
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void yearFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_yearFocusLost
@@ -433,18 +432,20 @@ public class AddLesson extends javax.swing.JInternalFrame {
             }
 
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_yearFocusLost
 
     private void maxNumStudentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_maxNumStudentFocusLost
         String str = maxNumStudent.getText();
+        if(str.length()<=0)
+            return;
         if (CharValidator.isNumber(str) && str.length() < 3) {
             maxStudent = Integer.parseInt(str);
             numstudentserror.setText(" ");
         } else {
             numstudentserror.setText("Positive 2 digit number");
         }
-        update();   
+        iWindow.update();   
     }//GEN-LAST:event_maxNumStudentFocusLost
 
     private void LessonNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LessonNameFocusLost
@@ -453,7 +454,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
             lessonName = E_Lessons.valueOf(LessonName.getSelectedItem().toString());
         }
         
-        update();
+        iWindow.update();
     }//GEN-LAST:event_LessonNameFocusLost
 
     private void lesNUmFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lesNUmFocusLost
@@ -467,7 +468,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
             lesNumError.setText("Psitive 7 digit number only");
         }
         
-        update();
+        iWindow.update();
     }//GEN-LAST:event_lesNUmFocusLost
     
     
@@ -519,19 +520,6 @@ public class AddLesson extends javax.swing.JInternalFrame {
     
 
     
-    //Manual variables declaration
-    public int getWindowID() {
-        return this.WindowID;
-    }
     
-    public void setWindowID(int id) {
-        this.WindowID = id;
-    }
-    
-    public void update(){
-        
-        hide();
-        repaint();
-        show();
-    }
+
 }

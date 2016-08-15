@@ -22,7 +22,7 @@ import jdk.nashorn.internal.scripts.JO;
 import utils.MyFileLogWriter;
 
 /**
- * @author mickey shalev
+ * Main iWindow Class -> Manages all internal jframes and DB connection to GUI
  */
 public class iWindow {
 
@@ -40,7 +40,6 @@ public class iWindow {
     
     //iWindow Management
     protected static JInternalFrame currentWindow = null;
-    protected static JInternalFrame lastWindow = null;
     protected static JPanel panel = null;
 
     
@@ -87,13 +86,16 @@ public class iWindow {
      * @param WindowID
      * @param windowTitle 
      */
-    public static void openWin(JInternalFrame frame, int WindowID, String windowTitle){
+    public static void openWin(JInternalFrame frame){
         if(frame==null)
             return;
+        BasicInternalFrameUI bi = (BasicInternalFrameUI)frame.getUI();
+        bi.setNorthPane(null);
+        frame.setBackground(new Color(255,255,255,5));
         
         frame.setSize(800,600);
         frame.setBorder(null);
-        lblTitle.setText(windowTitle);
+        lblTitle.setText(frame.getTitle());
         
         if(getCurrentWindow()==null){
             setCurrentWindow(frame);
@@ -282,7 +284,6 @@ public class iWindow {
      public static void clean(){
        authLogged=0;
        currentWindow=null;
-       lastWindow=null;
        customerLogged=null;
        employeeLogged=null;
        lblTitle.setText("Welcome to Virutal iShape");
@@ -291,7 +292,10 @@ public class iWindow {
    }
     
 
-    
+    public static void update(){
+        getCurrentWindow().setVisible(false);
+        getCurrentWindow().setVisible(true);
+    }
 }
     
     

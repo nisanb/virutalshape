@@ -21,9 +21,7 @@ import javax.swing.JList;
  * @author nisans
  */
 public class EmpToBranch extends javax.swing.JInternalFrame {
-    
-    private int WindowID = 7;
-    
+
     /**
      * Creates new form NewJInternalFrame
      */
@@ -173,7 +171,7 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
             MessageBox.setText("Failed connected employee to new branch");
             iWindow.log(new Date().toString() + " - " + empNumber + " was failed to be connected to new branch");
         }
-        update();
+        iWindow.update();
         
     }//GEN-LAST:event_ConnectMouseClicked
     
@@ -195,7 +193,7 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
             empError.setText("Emlpyee number doesn't exists");
             empNumber = -1;
         }
-        update();
+        iWindow.update();
         
         
     }//GEN-LAST:event_EmpNumFocusLost
@@ -217,7 +215,7 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
         }
         branchNum = Integer.parseInt(str);
         System.out.println(branchNum);
-        update();
+        iWindow.update();
     }//GEN-LAST:event_selectBranchFocusLost
     
     private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
@@ -244,19 +242,5 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
     private int branchNum;
     
     
-    //Manual variables declaration
-    public int getWindowID() {
-        return this.WindowID;
-    }
-    
-    public void setWindowID(int id) {
-        this.WindowID = id;
-    }
-    
-    public void update(){
-        
-        hide();
-        repaint();
-        show();
-    }
+
 }

@@ -23,8 +23,7 @@ import utils.E_Rooms;
  * @author nisans
  */
 public class AddRoom extends javax.swing.JInternalFrame {
-    
-    private int WindowID = 8;
+ 
     private Branch branch;
  
  
@@ -232,7 +231,7 @@ public class AddRoom extends javax.swing.JInternalFrame {
             MessageBox.setText("Failed connected room to branch" + branch.getBranchNumber());
             iWindow.log(new Date().toString() + " - " + "Failed connected room to branch" + branch.getBranchNumber());
         }
-        update();
+        iWindow.update();
         
     }//GEN-LAST:event_AddRoomMouseClicked
             
@@ -245,14 +244,14 @@ public class AddRoom extends javax.swing.JInternalFrame {
         if (!PositiveValidator.isPositiveStringNum(str)) {
             insNumError.setText("Positive digits only");
             maxNumOfInstruments = -1;
-            update();
+            iWindow.update();
         }
 
         else {
             insNumError.setText(" ");
             maxNumOfInstruments=Integer.parseInt(str);
              }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_InsNumFocusLost
 
     private void roomNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_roomNumberFocusLost
@@ -266,7 +265,7 @@ public class AddRoom extends javax.swing.JInternalFrame {
             roomNumError.setText(" ");
             roomNum = Integer.parseInt(str);
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_roomNumberFocusLost
 
     private void selectRoomFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectRoomFocusLost
@@ -288,7 +287,7 @@ public class AddRoom extends javax.swing.JInternalFrame {
             numError.setText(" ");
             maxNumOfTrainees=Integer.parseInt(str);
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_people1FocusLost
     
     
@@ -322,18 +321,6 @@ public class AddRoom extends javax.swing.JInternalFrame {
 //            maxNumOfInstruments, roomType, branchNum);
     
     
-    //Manual variables declaration
-    public int getWindowID() {
-        return this.WindowID;
-    }
-    
-    public void setWindowID(int id) {
-        this.WindowID = id;
-    }
-    
-    public void update(){
-        
-        setVisible(false);
-        setVisible(true);
-    }
+
+
 }

@@ -474,7 +474,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             MessageBox.setText("Failed to add coach");
             iWindow.log(new Date().toString() + " - " + employeeNumber  + " was failed to add");
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_btnAddCoachMouseClicked
 
     private void IDfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDfieldFocusLost
@@ -482,7 +482,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
         if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 9) {
             numError.setText("Positive 9 digits only");
             employeeNumber = -1;
-            update();
+            iWindow.update();
         }
 
         if (!iWindow.getDB().getEmployees().containsKey(Integer.parseInt(IDfield.getText()))) {
@@ -493,7 +493,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             employeeNumber = -1;
         }
 
-        update();
+        iWindow.update();
     }//GEN-LAST:event_IDfieldFocusLost
 
     private void NameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NameFieldFocusLost
@@ -505,7 +505,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             Ferror.setText(" ");
             firstName = str;
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_NameFieldFocusLost
 
     private void btnBranchCountryFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchCountryFocusLost
@@ -529,7 +529,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             streetError.setText("Enter valid name");
             street = null;
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_btnBranchStreetFocusLost
 
     private void btnHouseNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnHouseNumberFocusLost
@@ -542,7 +542,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             houseError.setText("up tp 4 digit number");
             housNumber = -1;
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_btnHouseNumberFocusLost
 
     private void btnPhoneNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnPhoneNumberFocusLost
@@ -556,7 +556,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
         } else {
             phoneError.setText("Error (example: 972-xxxx)");
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_btnPhoneNumberFocusLost
 
     private void slctCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_slctCityFocusLost
@@ -565,7 +565,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
         city = E_Cities.valueOf(str);
         btnBranchCountry.setText(city.getCountry());
         country = city.getCountry();
-        update();
+        iWindow.update();
     }//GEN-LAST:event_slctCityFocusLost
 
     private void LastFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LastFieldFocusLost
@@ -577,7 +577,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             Lerror.setText(" ");
             lastName = str;
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_LastFieldFocusLost
 
     private void yearFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_yearFocusLost
@@ -588,7 +588,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
 
             birthDate = new Date(y, m, d);
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_yearFocusLost
 
     private void year1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_year1FocusLost
@@ -599,7 +599,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
 
             startWorkingDate = new Date(y, m, d);
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_year1FocusLost
 
     private void jPasswordField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField2FocusLost
@@ -613,7 +613,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             password = jPasswordField1.getText();;
             
         }
-        update();
+        iWindow.update();
 
     }//GEN-LAST:event_jPasswordField2FocusLost
 
@@ -623,7 +623,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
         } else {
             level = 1;
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void copyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_copyMouseClicked
@@ -633,7 +633,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
         for (int i = 0; i < str.length; i++){
             types[i] = E_Lessons.valueOf(str[i]);      
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_copyMouseClicked
 
 
@@ -716,10 +716,5 @@ public class AddCoach extends javax.swing.JInternalFrame {
         this.WindowID = id;
     }
     
-    public void update(){
-        
-        hide();
-        repaint();
-        show();
-    }
+
 }

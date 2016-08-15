@@ -26,8 +26,7 @@ import utils.E_Types;
  * @author nisans
  */
 public class AddInstrument extends javax.swing.JInternalFrame {
-    
-    private int WindowID = 9;
+
     private Branch branch;
     private Room room;
     /**
@@ -210,7 +209,7 @@ public class AddInstrument extends javax.swing.JInternalFrame {
             MessageBox.setText("Failed to add instrument " + type  +" to branch" + branchNum);
             iWindow.log(new Date().toString() + " - " + "Failed to add instrument " + type  +" to branch" + branchNum);
         }
-        update();
+        iWindow.update();
         
     }//GEN-LAST:event_AddInsMouseClicked
             
@@ -223,14 +222,14 @@ public class AddInstrument extends javax.swing.JInternalFrame {
         if (!PositiveValidator.isPositiveStringNum(str) || str.length()>2) {
             insNumError.setText("Positive 2 digits only");
             amount = -1;
-            update();
+            iWindow.update();
         }
 
         else {
             insNumError.setText(" ");
             amount = Integer.parseInt(str);
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_InsNumFocusLost
 
     private void insTypeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_insTypeFocusLost
@@ -273,19 +272,5 @@ public class AddInstrument extends javax.swing.JInternalFrame {
 //            type, status, amount);
 
     
-    //Manual variables declaration
-    public int getWindowID() {
-        return this.WindowID;
-    }
-    
-    public void setWindowID(int id) {
-        this.WindowID = id;
-    }
-    
-    public void update(){
-        
-        hide();
-        repaint();
-        show();
-    }
+
 }

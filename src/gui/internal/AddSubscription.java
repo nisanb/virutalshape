@@ -36,7 +36,7 @@ import utils.E_Types;
  */
 public class AddSubscription extends javax.swing.JInternalFrame {
 
-    private int WindowID = 6;
+
 
     /**
      * Creates new form NewJInternalFrame
@@ -248,7 +248,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
             MessageBox.setText("Failed to add Subscription");
             iWindow.log(new Date().toString() + " - " + subNumber + " was failed to be added");
         }
-        update();
+        iWindow.update();
             
     }//GEN-LAST:event_btnAddCustomerMouseClicked
 
@@ -268,7 +268,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
             cusrError.setText("Custonrt ID exists");
             ID = "-1";
         }
-        update();
+        iWindow.update();
 
     }//GEN-LAST:event_custFocusLost
 
@@ -291,7 +291,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
                 startDate = null;
                 dateError.setText("Can't add sub more than week ahead");
         }
-        update();
+        iWindow.update();
         
     }//GEN-LAST:event_yearFocusLost
 
@@ -310,7 +310,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
             recpError.setText("Emlpyee number doesn't exists");
             receptNumber = -1;
         }
-        update();
+        iWindow.update();
 
     }//GEN-LAST:event_recpFocusLost
 
@@ -323,7 +323,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         else if (length.getSelectedIndex() == 0) period = E_Periods.valueOf("QUATER");
         else if (length.getSelectedIndex() == 0) period = E_Periods.valueOf("HALF");
         else if (length.getSelectedIndex() == 0) period = E_Periods.valueOf("YEAR");
-        update();
+        iWindow.update();
     }//GEN-LAST:event_lengthFocusLost
 
 
@@ -357,19 +357,5 @@ public class AddSubscription extends javax.swing.JInternalFrame {
     private Date startDate;
     
 
-    //Manual variables declaration 
-    public int getWindowID() {
-        return this.WindowID;
-    }
 
-    public void setWindowID(int id) {
-        this.WindowID = id;
-    }
-    
-    public void update(){
-        
-        hide();
-        repaint();
-        show();
-    }
 }

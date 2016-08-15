@@ -229,7 +229,7 @@ public class MainGui extends javax.swing.JFrame  {
         lblTitle.setFont(new java.awt.Font("Leelawadee UI", 1, 13)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 153, 0));
         lblTitle.setText("Welcome to Virtual iShape");
-        getContentPane().add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 220, 20));
+        getContentPane().add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 420, 20));
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MainUI/ishapegui.png"))); // NOI18N
         Background.setText("A");
@@ -278,13 +278,13 @@ public class MainGui extends javax.swing.JFrame  {
         //AddBranchForm add = new AddBranchForm();
         //AddCoach add = new AddCoach();
         ManageBranches add = new ManageBranches();
-        iWindow.openWin(add, add.getWindowID(), add.getTitle());
+        iWindow.openWin(add);
     }//GEN-LAST:event_btnBranchesMouseClicked
 
     private void btnCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomersMouseClicked
         // TODO add your handling code here:
         AddCustomer add = new AddCustomer();
-        iWindow.openWin(add, add.getWindowID(), add.getTitle());
+        iWindow.openWin(add);
     }//GEN-LAST:event_btnCustomersMouseClicked
 
     private void iReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iReturnMouseClicked
@@ -293,7 +293,7 @@ public class MainGui extends javax.swing.JFrame  {
 
     private void btnEmployeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmployeesMouseClicked
         EmpToBranch add = new EmpToBranch();
-        iWindow.openWin(add, add.getWindowID(), add.getTitle());
+        iWindow.openWin(add);
     }//GEN-LAST:event_btnEmployeesMouseClicked
 
     private void btnFBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFBMouseClicked

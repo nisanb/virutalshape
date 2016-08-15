@@ -31,7 +31,6 @@ import utils.E_Types;
  */
 public class AddRcp extends javax.swing.JInternalFrame {
 
-    private int WindowID = 4;
 
     /**
      * Creates new form NewJInternalFrame
@@ -414,8 +413,8 @@ public class AddRcp extends javax.swing.JInternalFrame {
             MessageBox.setText("Failed to add receptionist");
             iWindow.log(new Date().toString() + " - " + employeeNumber + " was failed to be added");
         }
-        update();
-        update();
+        iWindow.update();
+   
     }//GEN-LAST:event_btnAddCoachMouseClicked
 
     private void IDfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDfieldFocusLost
@@ -433,7 +432,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             employeeNumber = -1;
         }
 
-        update();
+        iWindow.update();
     }//GEN-LAST:event_IDfieldFocusLost
 
     private void NameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NameFieldFocusLost
@@ -445,7 +444,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             Ferror.setText(" ");
             firstName = str;
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_NameFieldFocusLost
 
     private void btnBranchCountryFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchCountryFocusLost
@@ -469,7 +468,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             streetError.setText("Enter valid name");
             street = null;
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_btnBranchStreetFocusLost
 
     private void btnHouseNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnHouseNumberFocusLost
@@ -482,7 +481,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             houseError.setText("up tp 4 digit number");
             housNumber = -1;
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_btnHouseNumberFocusLost
 
     private void btnPhoneNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnPhoneNumberFocusLost
@@ -497,7 +496,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         } else {
             phoneError.setText("Error (example: 972-xxxx)");
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_btnPhoneNumberFocusLost
 
     private void slctCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_slctCityFocusLost
@@ -506,7 +505,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         city = E_Cities.valueOf(str);
         btnBranchCountry.setText(city.getCountry());
         country = city.getCountry();
-        update();
+        iWindow.update();
     }//GEN-LAST:event_slctCityFocusLost
 
     private void LastFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LastFieldFocusLost
@@ -518,7 +517,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             Lerror.setText(" ");
             lastName = str;
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_LastFieldFocusLost
 
     private void yearFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_yearFocusLost
@@ -529,7 +528,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
 
             birthDate = new Date(y, m, d);
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_yearFocusLost
 
     private void year1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_year1FocusLost
@@ -540,7 +539,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
 
             startWorkingDate = new Date(y, m, d);
         }
-        update();
+        iWindow.update();
     }//GEN-LAST:event_year1FocusLost
 
     private void jPasswordField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField2FocusLost
@@ -553,7 +552,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             Password1.setForeground(Color.WHITE);
             password = jPasswordField1.getText();;
         }
-        update();
+        iWindow.update();
 
     }//GEN-LAST:event_jPasswordField2FocusLost
 
@@ -619,18 +618,4 @@ public class AddRcp extends javax.swing.JInternalFrame {
 //            password, address);
 //    String[] phoneNumber;
 
-    //Manual variables declaration 
-    public int getWindowID() {
-        return this.WindowID;
-    }
-
-    public void setWindowID(int id) {
-        this.WindowID = id;
-    }
-        public void update(){
-        
-        hide();
-        repaint();
-        show();
-    }
 }
