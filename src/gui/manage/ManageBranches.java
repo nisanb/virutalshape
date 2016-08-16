@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.internal;
+package gui.manage;
 
 import gui.iWindow;
 import core.Branch;
 import core.Employee;
 import core.Room;
+import gui.internal.AddBranchForm;
+import gui.internal.AddInstrument;
+import gui.internal.AddLesson;
+import gui.internal.AddRoom;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -44,6 +48,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         statisticsPanel.hide();
         roomPanel.hide();
         lblAddInstrument.hide();
+        AddLesson.hide();
 
         for (Branch branch : iWindow.getDB().getBranches().values()) {
             chooseBranch.addItem(branch.toString());
@@ -462,7 +467,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
             }
         });
         roomPanel.add(AddLesson);
-        AddLesson.setBounds(120, 250, 70, 30);
+        AddLesson.setBounds(20, 250, 70, 30);
 
         getContentPane().add(roomPanel);
         roomPanel.setBounds(410, 50, 420, 300);
@@ -528,7 +533,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
     private void chooseRoomItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chooseRoomItemStateChanged
         // TODO add your handling code here:
         //Chosen Room
-        System.err.println("Chosen Room" + chooseRoom.getSelectedIndex());
+        
         if (chooseRoom.getSelectedIndex() <= 0) {
             roomPanel.hide();
             
@@ -544,13 +549,9 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         
         Room tmp = new Room(roomNum, branch.getBranchNumber());
         for(Room r : branch.getRooms()){
-            System.err.println("XD Room #"+r.getRoomNum());
+           
             if(r.equals(tmp)){
-                System.err.println("FOUND ROOM");
-                if(r.getRoomType().equals(E_Rooms.GYM))
-                System.err.println(r.getInstruments().size());
-                else
-                    System.err.println("NOT GYM!");
+                //Room found
                 room = r;
                 break;
             }
@@ -561,20 +562,27 @@ public class ManageBranches extends javax.swing.JInternalFrame {
             return;
         }
         if(room.getRoomType().equals(E_Rooms.GYM)){
+            lblRoomInstruments.setText(room.getInstruments().size()+"/"+room.getMaxNumOfInstruments());
             lblAddInstrument.show();
+            AddLesson.hide();
+            lblRoomTotalLessons.setText("N/A");
+        }else{
+            lblRoomInstruments.setText("Not a GYM");
+            AddLesson.show();
+            lblAddInstrument.hide();
+            lblRoomTotalLessons.setText(""+room.getLessons().size());
         }
+        
         //Update Components
         lblRoomID.setText(""+room.getRoomNum());
         System.err.println("TP: "+room.getMaxNumOfInstruments());
-        if(room.getRoomType().equals(E_Rooms.GYM))
-        lblRoomInstruments.setText(room.getInstruments().size()+"/"+room.getMaxNumOfInstruments());
-        else lblRoomInstruments.setText("Not a GYM");
+       
+        
         lblRoomMaxTrainees.setText(""+room.getMaxNumOfTrainees());
-        lblRoomTotalLessons.setText(""+room.getLessons().size());
+        
         lblRoomType.setText(room.getRoomType().toString());
-        roomPanel.hide();
-        roomPanel.repaint();
-        roomPanel.show();
+        roomPanel.setVisible(false);
+        roomPanel.setVisible(true);
     }//GEN-LAST:event_chooseRoomItemStateChanged
 
     private void chooseRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseRoomActionPerformed

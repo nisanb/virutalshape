@@ -6,6 +6,7 @@
 package gui;
 
 
+import gui.manage.ManageBranches;
 import javax.swing.JDesktopPane;
 import gui.internal.*;
 import init.IShape;
