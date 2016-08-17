@@ -223,11 +223,16 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel10);
         jLabel10.setBounds(30, 100, 110, 20);
 
+        lessonChooser.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                lessonChooserFocusLost(evt);
+            }
+        });
         getContentPane().add(lessonChooser);
         lessonChooser.setBounds(140, 160, 190, 20);
 
         details.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        details.setForeground(new java.awt.Color(255, 0, 0));
+        details.setForeground(new java.awt.Color(0, 255, 0));
         getContentPane().add(details);
         details.setBounds(340, 160, 280, 20);
 
@@ -368,6 +373,19 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_Connect2MouseClicked
+
+    private void lessonChooserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lessonChooserFocusLost
+        String str = lessonChooser.getSelectedItem().toString();
+        for (int i = 0; i < str.length(); i++){
+            if (Character.isDigit(str.charAt(i))) continue;
+            else str = str.substring(0,i);
+        }
+        details.setText(str);
+        lesNum.setText(str);
+        lessonNum = Integer.parseInt(str);
+        System.out.println(lessonNum);
+        iWindow.update();
+    }//GEN-LAST:event_lessonChooserFocusLost
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
