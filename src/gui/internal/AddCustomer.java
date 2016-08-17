@@ -214,7 +214,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnAddCustomer);
-        btnAddCustomer.setBounds(430, 350, 120, 23);
+        btnAddCustomer.setBounds(410, 350, 140, 23);
 
         btnBranchCountry.setBackground(new java.awt.Color(0, 0, 0));
         btnBranchCountry.setColumns(20);
