@@ -478,7 +478,8 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         if (PositiveValidator.isPositiveStringNum(str) && str.length() < 5) {
             houseError.setText(" ");
             housNumber = Integer.parseInt(str);
-            return;
+                    
+       
         } else {
             houseError.setText("up tp 4 digit number");
             housNumber = -1;
