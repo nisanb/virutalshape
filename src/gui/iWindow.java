@@ -122,7 +122,7 @@ public class iWindow {
         frame.setVisible(true);
         
         
-        
+        iWindow.update();
         return;
     }
     
@@ -295,6 +295,10 @@ public class iWindow {
     public static void update(){
         getCurrentWindow().setVisible(false);
         getCurrentWindow().setVisible(true);
+    }
+    public static void update(JInternalFrame frame){
+        frame.setVisible(false);
+        frame.setVisible(true);
     }
 }
     

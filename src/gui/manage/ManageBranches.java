@@ -30,7 +30,6 @@ import utils.E_Rooms;
  */
 public class ManageBranches extends javax.swing.JInternalFrame {
 
-    private int WindowID = 4;
     private Object obj = null;
     private static Branch branch;
     private static Room room;
@@ -651,13 +650,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
     private javax.swing.JLabel txtVisitedCustomers;
     // End of variables declaration//GEN-END:variables
 
-    public int getWindowID() {
-        return this.WindowID;
-    }
 
-    public void setWindowID(int id) {
-        this.WindowID = id;
-    }
 
     public void updateData(Branch tmp) {
 

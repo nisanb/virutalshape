@@ -9,6 +9,7 @@ package gui;
 import gui.manage.ManageBranches;
 import javax.swing.JDesktopPane;
 import gui.internal.*;
+import gui.manage.ManageEmployees;
 import init.IShape;
 import java.awt.Desktop;
 import java.net.URI;
@@ -272,7 +273,8 @@ public class MainGui extends javax.swing.JFrame  {
     private void btnStatisticsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStatisticsMouseClicked
         // TODO add your handling code here:
         //Open Internal JFrame
-   
+        iWindow.update();
+        System.err.println("Updated GUI");
     }//GEN-LAST:event_btnStatisticsMouseClicked
 
     private void btnBranchesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBranchesMouseClicked
@@ -293,8 +295,11 @@ public class MainGui extends javax.swing.JFrame  {
     }//GEN-LAST:event_iReturnMouseClicked
 
     private void btnEmployeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmployeesMouseClicked
-        EmpToBranch add = new EmpToBranch();
+//        EmpToBranch add = new EmpToBranch();
+//        iWindow.openWin(add);
+        ManageEmployees add = new ManageEmployees();
         iWindow.openWin(add);
+        iWindow.update();
     }//GEN-LAST:event_btnEmployeesMouseClicked
 
     private void btnFBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFBMouseClicked
