@@ -132,6 +132,10 @@ public class Employee implements Serializable{
 	public Branch getWorkBranch() {
 		return workBranch;
 	}
+        
+        public String getnName(){
+            return this.firstName + " " + this.getLastName();
+        }
 
 	/**
 	 * set the employee work branch

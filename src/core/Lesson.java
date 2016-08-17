@@ -317,6 +317,10 @@ public class Lesson implements Bookable, Serializable {
 			return false;
 		return true;
 	}
+        
+        public String toString2(){
+            return this.name + " - " + this.startDate + ", " + this.coach.getnName();
+        }
 
 	@Override
 	public String toString() {

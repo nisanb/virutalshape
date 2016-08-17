@@ -410,9 +410,10 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         else{
             MessageBox.setForeground(Color.RED);
             MessageBox.setText("Failed to add customer");
-            iWindow.log(new Date().toString() + " - " + id + " was falied to add");
+            iWindow.log(new Date().toString() + " - " + id + " was falied to be add");
         }
-        iWindow.update();
+    
+        System.out.println(iWindow.getDB().getCustomers().get(id));
     
     iWindow.update();
             
@@ -555,7 +556,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
             str = "http:\\"+"\\"+str;
             try {
                 email = new URL(str);
-                jLabel11.setText(" ");
+                mailError.setText(" ");
             } catch (MalformedURLException ex) {
                 mailError.setText("username@domain.xx");
             }
