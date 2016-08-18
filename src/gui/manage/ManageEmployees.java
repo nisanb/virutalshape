@@ -120,8 +120,6 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         infotitle = new javax.swing.JLabel();
         txt3 = new javax.swing.JLabel();
         txt6 = new javax.swing.JLabel();
-        lbl7 = new javax.swing.JLabel();
-        txt7 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         fldEmpID = new javax.swing.JTextField();
         lblError = new javax.swing.JLabel();
@@ -391,14 +389,14 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         txt2.setForeground(new java.awt.Color(255, 255, 255));
         txt2.setText("Lessons Teaching");
         moreInfo.add(txt2);
-        txt2.setBounds(20, 160, 130, 16);
+        txt2.setBounds(20, 130, 130, 16);
 
         lbl2.setForeground(new java.awt.Color(255, 255, 255));
         lbl2.setText("room type");
         lbl2.setToolTipText("");
         lbl2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         moreInfo.add(lbl2);
-        lbl2.setBounds(210, 160, 120, 130);
+        lbl2.setBounds(210, 130, 120, 130);
 
         infotitle.setForeground(new java.awt.Color(255, 255, 255));
         infotitle.setText("Room Statistics");
@@ -418,18 +416,6 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         txt6.setText("Total Lessons");
         moreInfo.add(txt6);
         txt6.setBounds(20, 110, 110, 20);
-
-        lbl7.setForeground(new java.awt.Color(255, 255, 255));
-        lbl7.setText("lessons");
-        moreInfo.add(lbl7);
-        lbl7.setBounds(210, 140, 120, 16);
-
-        txt7.setBackground(new java.awt.Color(255, 255, 255));
-        txt7.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        txt7.setForeground(new java.awt.Color(255, 255, 255));
-        txt7.setText("Total Lessons");
-        moreInfo.add(txt7);
-        txt7.setBounds(20, 140, 110, 16);
 
         getContentPane().add(moreInfo);
         moreInfo.setBounds(410, 90, 370, 400);
@@ -615,7 +601,6 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl3;
     private javax.swing.JLabel lbl4;
     private javax.swing.JLabel lbl5;
-    private javax.swing.JLabel lbl7;
     private javax.swing.JLabel lblBirthDate;
     private javax.swing.JLabel lblEmployeeID;
     private javax.swing.JLabel lblEmployeeName;
@@ -634,7 +619,6 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
     private javax.swing.JLabel txt4;
     private javax.swing.JLabel txt5;
     private javax.swing.JLabel txt6;
-    private javax.swing.JLabel txt7;
     private javax.swing.JLabel txtBirthDate;
     private javax.swing.JLabel txtBranchName;
     private javax.swing.JLabel txtID;
