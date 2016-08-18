@@ -10,9 +10,11 @@ import gui.iWindow;
 import core.Branch;
 import core.Coach;
 import core.Employee;
+import core.Lesson;
 import core.Receptionist;
 import core.Room;
 import gui.internal.AddBranchForm;
+import gui.internal.AddCoach;
 import gui.internal.AddInstrument;
 import gui.internal.AddLesson;
 import gui.internal.AddRoom;
@@ -117,7 +119,6 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         lbl2 = new javax.swing.JLabel();
         infotitle = new javax.swing.JLabel();
         txt3 = new javax.swing.JLabel();
-        lbl6 = new javax.swing.JLabel();
         txt6 = new javax.swing.JLabel();
         lbl7 = new javax.swing.JLabel();
         txt7 = new javax.swing.JLabel();
@@ -297,9 +298,9 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         txt1.setBackground(new java.awt.Color(255, 255, 255));
         txt1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         txt1.setForeground(new java.awt.Color(255, 255, 255));
-        txt1.setText("Room ID");
+        txt1.setText("Subscriptions Sold");
         statisticsPanel.add(txt1);
-        txt1.setBounds(20, 200, 70, 16);
+        txt1.setBounds(20, 200, 170, 16);
 
         lbl1.setForeground(new java.awt.Color(255, 255, 255));
         lbl1.setText("id");
@@ -326,7 +327,7 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(AddBranch);
-        AddBranch.setBounds(530, 30, 40, 40);
+        AddBranch.setBounds(340, 30, 40, 40);
 
         moreInfo.setBackground(new Color(0,0,0,0));
         moreInfo.setLayout(null);
@@ -359,45 +360,45 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         lbl4.setForeground(new java.awt.Color(255, 255, 255));
         lbl4.setText("insrtuments");
         moreInfo.add(lbl4);
-        lbl4.setBounds(210, 100, 70, 16);
+        lbl4.setBounds(210, 80, 70, 16);
 
         txt4.setBackground(new java.awt.Color(255, 255, 255));
         txt4.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         txt4.setForeground(new java.awt.Color(255, 255, 255));
         txt4.setText("Instruments");
         moreInfo.add(txt4);
-        txt4.setBounds(20, 100, 140, 16);
+        txt4.setBounds(20, 80, 140, 16);
 
         lbl5.setForeground(new java.awt.Color(255, 255, 255));
         lbl5.setText("lessons");
         moreInfo.add(lbl5);
-        lbl5.setBounds(210, 120, 70, 16);
+        lbl5.setBounds(210, 100, 70, 16);
 
         txt5.setBackground(new java.awt.Color(255, 255, 255));
         txt5.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         txt5.setForeground(new java.awt.Color(255, 255, 255));
         txt5.setText("Total Lessons");
         moreInfo.add(txt5);
-        txt5.setBounds(20, 120, 110, 16);
+        txt5.setBounds(20, 100, 200, 16);
 
         lbl3.setForeground(new java.awt.Color(255, 255, 255));
         lbl3.setText("mtrainees");
         moreInfo.add(lbl3);
-        lbl3.setBounds(210, 80, 200, 16);
+        lbl3.setBounds(210, 60, 200, 16);
 
         txt2.setBackground(new java.awt.Color(255, 255, 255));
         txt2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         txt2.setForeground(new java.awt.Color(255, 255, 255));
         txt2.setText("Lessons Teaching");
         moreInfo.add(txt2);
-        txt2.setBounds(20, 200, 130, 16);
+        txt2.setBounds(20, 160, 130, 16);
 
         lbl2.setForeground(new java.awt.Color(255, 255, 255));
         lbl2.setText("room type");
         lbl2.setToolTipText("");
         lbl2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         moreInfo.add(lbl2);
-        lbl2.setBounds(210, 200, 120, 130);
+        lbl2.setBounds(210, 160, 120, 130);
 
         infotitle.setForeground(new java.awt.Color(255, 255, 255));
         infotitle.setText("Room Statistics");
@@ -407,40 +408,35 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         txt3.setBackground(new java.awt.Color(255, 255, 255));
         txt3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         txt3.setForeground(new java.awt.Color(255, 255, 255));
-        txt3.setText("Max. Trainees");
+        txt3.setText("Total Lessons");
         moreInfo.add(txt3);
-        txt3.setBounds(20, 80, 120, 16);
-
-        lbl6.setForeground(new java.awt.Color(255, 255, 255));
-        lbl6.setText("lessons");
-        moreInfo.add(lbl6);
-        lbl6.setBounds(210, 140, 70, 16);
+        txt3.setBounds(20, 60, 120, 16);
 
         txt6.setBackground(new java.awt.Color(255, 255, 255));
-        txt6.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        txt6.setFont(new java.awt.Font("Tahoma", 1, 8)); // NOI18N
         txt6.setForeground(new java.awt.Color(255, 255, 255));
         txt6.setText("Total Lessons");
         moreInfo.add(txt6);
-        txt6.setBounds(20, 140, 110, 16);
+        txt6.setBounds(20, 110, 110, 20);
 
         lbl7.setForeground(new java.awt.Color(255, 255, 255));
         lbl7.setText("lessons");
         moreInfo.add(lbl7);
-        lbl7.setBounds(210, 160, 70, 16);
+        lbl7.setBounds(210, 140, 120, 16);
 
         txt7.setBackground(new java.awt.Color(255, 255, 255));
         txt7.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         txt7.setForeground(new java.awt.Color(255, 255, 255));
         txt7.setText("Total Lessons");
         moreInfo.add(txt7);
-        txt7.setBounds(20, 160, 110, 16);
+        txt7.setBounds(20, 140, 110, 16);
 
         getContentPane().add(moreInfo);
         moreInfo.setBounds(410, 90, 370, 400);
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(70, 70, 260, 10);
+        jSeparator1.setBounds(70, 70, 260, 2);
 
         fldEmpID.setBackground(new java.awt.Color(0, 0, 0));
         fldEmpID.setForeground(new java.awt.Color(255, 255, 255));
@@ -517,8 +513,8 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
     private void AddBranchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddBranchMouseClicked
 
         //Create new Branch
-        hide();
-        AddBranchForm frm = new AddBranchForm();
+        
+        AddCoach frm = new AddCoach();
         iWindow.openWin(frm);
     }//GEN-LAST:event_AddBranchMouseClicked
 
@@ -619,7 +615,6 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl3;
     private javax.swing.JLabel lbl4;
     private javax.swing.JLabel lbl5;
-    private javax.swing.JLabel lbl6;
     private javax.swing.JLabel lbl7;
     private javax.swing.JLabel lblBirthDate;
     private javax.swing.JLabel lblEmployeeID;
@@ -706,6 +701,30 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
             }
             types = types.substring(4, types.length());
             lbl2.setText("<html>"+types+"</html>");
+            
+            txt3.setText("Total Lessons");
+            lbl3.setText(""+coach.getLessons().size());
+            
+            txt4.setText("Coach Level");
+            lbl4.setText(""+coach.getLevel());
+            
+            int registered=0, capacity=0;
+            for(Lesson les : coach.getLessons()){
+                capacity+=les.getMaxStudent();
+                registered+=les.getRegistered().size();
+            }
+            System.err.println("Capacity: "+capacity+" Registered: "+registered);
+            if(capacity==0){
+                lbl5.setText("No Data");
+            }else{
+                double coachRatio = ((double)registered/(double)capacity)*100;
+                 lbl5.setText(coachRatio+"%");
+            }
+            
+            txt5.setText("Coach Ratio");
+            txt6.setText("Registered/Total");
+           
+            
             
             
             
