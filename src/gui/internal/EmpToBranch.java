@@ -114,6 +114,8 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
         getContentPane().add(subError);
         subError.setBounds(360, 70, 230, 20);
 
+        selectBranch.setBackground(new java.awt.Color(0, 0, 0));
+        selectBranch.setForeground(new java.awt.Color(255, 255, 255));
         selectBranch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Branch" }));
         selectBranch.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -121,7 +123,7 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(selectBranch);
-        selectBranch.setBounds(140, 70, 170, 22);
+        selectBranch.setBounds(140, 70, 170, 20);
         for(Branch b : iWindow.getDB().getBranches().values()){
             selectBranch.addItem(b.getBranchNumber() + " " + b.getBranchName());
         }
@@ -140,7 +142,7 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
         lblBranchID.setForeground(new java.awt.Color(255, 255, 255));
         lblBranchID.setText("jLabel2");
         getContentPane().add(lblBranchID);
-        lblBranchID.setBounds(150, 40, 130, 16);
+        lblBranchID.setBounds(150, 40, 130, 14);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

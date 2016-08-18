@@ -174,6 +174,8 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel7);
         jLabel7.setBounds(30, 70, 110, 20);
 
+        LessonName.setBackground(new java.awt.Color(0, 0, 0));
+        LessonName.setForeground(new java.awt.Color(255, 255, 255));
         LessonName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Lesson Type" }));
         LessonName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -186,6 +188,8 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
             LessonName.addItem(l.toString());
         }
 
+        selectBranch.setBackground(new Color(0,0,0));
+        selectBranch.setForeground(new java.awt.Color(255, 255, 255));
         selectBranch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Branch" }));
         selectBranch.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -228,6 +232,8 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel10);
         jLabel10.setBounds(30, 100, 110, 20);
 
+        lessonChooser.setBackground(new java.awt.Color(0, 0, 0));
+        lessonChooser.setForeground(new java.awt.Color(255, 255, 255));
         lessonChooser.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 lessonChooserFocusLost(evt);

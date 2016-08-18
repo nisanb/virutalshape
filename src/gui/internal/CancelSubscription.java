@@ -124,6 +124,8 @@ public class CancelSubscription extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(30, 40, 110, 20);
 
+        subChooser.setBackground(new java.awt.Color(0, 0, 0));
+        subChooser.setForeground(new java.awt.Color(255, 255, 255));
         subChooser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Subscription" }));
         subChooser.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {

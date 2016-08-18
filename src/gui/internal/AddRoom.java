@@ -180,6 +180,8 @@ public class AddRoom extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel14);
         jLabel14.setBounds(30, 130, 110, 20);
 
+        selectRoom.setBackground(new java.awt.Color(0, 0, 0));
+        selectRoom.setForeground(new java.awt.Color(255, 255, 255));
         selectRoom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Room Type" }));
         selectRoom.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -187,7 +189,7 @@ public class AddRoom extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(selectRoom);
-        selectRoom.setBounds(180, 130, 170, 22);
+        selectRoom.setBounds(180, 130, 170, 20);
         for(E_Rooms r : E_Rooms.values()){
             if(!r.equals(E_Rooms.Default))
             selectRoom.addItem(r.toString());

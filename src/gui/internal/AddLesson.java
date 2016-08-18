@@ -203,6 +203,8 @@ public class AddLesson extends javax.swing.JInternalFrame {
         getContentPane().add(LessonLevel);
         LessonLevel.setBounds(30, 190, 110, 20);
 
+        jComboBox1.setBackground(new java.awt.Color(0, 0, 0));
+        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Level", "1", "2", "3", "4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,7 +212,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(210, 190, 80, 22);
+        jComboBox1.setBounds(210, 190, 80, 20);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(204, 204, 204));
@@ -218,16 +220,22 @@ public class AddLesson extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel10);
         jLabel10.setBounds(30, 220, 110, 20);
 
+        day.setBackground(new java.awt.Color(0, 0, 0));
+        day.setForeground(new java.awt.Color(255, 255, 255));
         day.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         day.setToolTipText("");
         day.setName(""); // NOI18N
         getContentPane().add(day);
-        day.setBounds(160, 220, 50, 22);
+        day.setBounds(160, 220, 50, 20);
 
+        month.setBackground(new java.awt.Color(0, 0, 0));
+        month.setForeground(new java.awt.Color(255, 255, 255));
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(month);
-        month.setBounds(220, 220, 60, 22);
+        month.setBounds(220, 220, 60, 20);
 
+        year.setBackground(new java.awt.Color(0, 0, 0));
+        year.setForeground(new java.awt.Color(255, 255, 255));
         year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "2016", "2017", "2018", "2019", "2020" }));
         year.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -235,19 +243,25 @@ public class AddLesson extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(year);
-        year.setBounds(290, 220, 60, 22);
+        year.setBounds(290, 220, 60, 20);
 
+        Hour.setBackground(new java.awt.Color(0, 0, 0));
+        Hour.setForeground(new java.awt.Color(255, 255, 255));
         Hour.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hour", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "18", "20", "21", "22", "23" }));
         getContentPane().add(Hour);
-        Hour.setBounds(160, 250, 50, 22);
+        Hour.setBounds(160, 250, 50, 20);
 
+        Minute.setBackground(new java.awt.Color(0, 0, 0));
+        Minute.setForeground(new java.awt.Color(255, 255, 255));
         Minute.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minute", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "18", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "34", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         getContentPane().add(Minute);
-        Minute.setBounds(220, 250, 60, 22);
+        Minute.setBounds(220, 250, 60, 20);
 
+        Second.setBackground(new java.awt.Color(0, 0, 0));
+        Second.setForeground(new java.awt.Color(255, 255, 255));
         Second.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Second", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "18", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "34", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         getContentPane().add(Second);
-        Second.setBounds(290, 250, 60, 22);
+        Second.setBounds(290, 250, 60, 20);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(204, 204, 204));
@@ -262,6 +276,8 @@ public class AddLesson extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel16);
         jLabel16.setBounds(30, 40, 110, 20);
 
+        LessonName.setBackground(new java.awt.Color(0, 0, 0));
+        LessonName.setForeground(new java.awt.Color(255, 255, 255));
         LessonName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Lesson Type" }));
         LessonName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -269,7 +285,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(LessonName);
-        LessonName.setBounds(160, 70, 170, 22);
+        LessonName.setBounds(160, 70, 170, 20);
         for (E_Lessons l:E_Lessons.values()){
             LessonName.addItem(l.toString());
         }
@@ -319,7 +335,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
         lblBranchID.setForeground(new java.awt.Color(255, 255, 255));
         lblBranchID.setText("branchid");
         getContentPane().add(lblBranchID);
-        lblBranchID.setBounds(160, 14, 100, 16);
+        lblBranchID.setBounds(160, 14, 100, 14);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

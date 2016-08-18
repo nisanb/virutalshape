@@ -145,16 +145,22 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel10);
         jLabel10.setBounds(30, 130, 110, 20);
 
+        day.setBackground(new java.awt.Color(0, 0, 0));
+        day.setForeground(new java.awt.Color(255, 255, 255));
         day.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         day.setToolTipText("");
         day.setName(""); // NOI18N
         getContentPane().add(day);
         day.setBounds(140, 100, 50, 20);
 
+        month.setBackground(new java.awt.Color(0, 0, 0));
+        month.setForeground(new java.awt.Color(255, 255, 255));
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(month);
         month.setBounds(200, 100, 60, 20);
 
+        year.setBackground(new java.awt.Color(0, 0, 0));
+        year.setForeground(new java.awt.Color(255, 255, 255));
         year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "2015", "2016", "2017", "2018", "2019", "2020" }));
         year.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -216,6 +222,8 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel11);
         jLabel11.setBounds(30, 100, 110, 20);
 
+        length.setBackground(new java.awt.Color(0, 0, 0));
+        length.setForeground(new java.awt.Color(255, 255, 255));
         length.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 MONTH", "3 MONTHS - QUARTER", "6 MONTHS HALF", "12 MONTHS - YEAR" }));
         length.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -223,7 +231,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(length);
-        length.setBounds(140, 130, 170, 22);
+        length.setBounds(140, 130, 170, 20);
 
         subError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         subError.setForeground(new java.awt.Color(255, 0, 0));

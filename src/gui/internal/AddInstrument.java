@@ -142,6 +142,8 @@ public class AddInstrument extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel14);
         jLabel14.setBounds(30, 70, 140, 20);
 
+        insType.setBackground(new java.awt.Color(0, 0, 0));
+        insType.setForeground(new java.awt.Color(255, 255, 255));
         insType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Instrument Type", "CROSS", "CYCLE", "ROWER", "STEPPER", "BENCH", "KETTLEBELLS", "WEIGHTLIFTING_BAR", "POWER_STATION", "ROPE_CLIMBER", "SHOULDER_PRESS", "MATTRESS;" }));
         insType.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -149,7 +151,7 @@ public class AddInstrument extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(insType);
-        insType.setBounds(180, 70, 170, 22);
+        insType.setBounds(180, 70, 170, 20);
         for(E_Rooms r : E_Rooms.values()){
             insType.addItem(r.toString());
         }
@@ -161,6 +163,8 @@ public class AddInstrument extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel15);
         jLabel15.setBounds(30, 40, 110, 20);
 
+        insStatus.setBackground(new java.awt.Color(0, 0, 0));
+        insStatus.setForeground(new java.awt.Color(255, 255, 255));
         insStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Status", "False", "True" }));
         insStatus.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -168,7 +172,7 @@ public class AddInstrument extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(insStatus);
-        insStatus.setBounds(180, 130, 170, 22);
+        insStatus.setBounds(180, 130, 170, 20);
         for(E_Rooms r : E_Rooms.values()){
             insType.addItem(r.toString());
         }
