@@ -79,6 +79,8 @@ public class MainGui extends javax.swing.JFrame  {
         btnCustomers = new javax.swing.JLabel();
         btnStatistics = new javax.swing.JLabel();
         btnEmployees = new javax.swing.JLabel();
+        test2 = new javax.swing.JLabel();
+        test1 = new javax.swing.JLabel();
         btnDisconnect = new javax.swing.JLabel();
         iReturn = new javax.swing.JLabel();
         btnExit = new javax.swing.JLabel();
@@ -135,6 +137,24 @@ public class MainGui extends javax.swing.JFrame  {
             }
         });
 
+        test2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        test2.setForeground(new java.awt.Color(255, 255, 255));
+        test2.setText("Test 2");
+        test2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                test2MouseClicked(evt);
+            }
+        });
+
+        test1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        test1.setForeground(new java.awt.Color(255, 255, 255));
+        test1.setText("Test 1");
+        test1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                test1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlAdminLayout = new javax.swing.GroupLayout(pnlAdmin);
         pnlAdmin.setLayout(pnlAdminLayout);
         pnlAdminLayout.setHorizontalGroup(
@@ -145,8 +165,14 @@ public class MainGui extends javax.swing.JFrame  {
                     .addComponent(btnBranches, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCustomers, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnStatistics, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnStatistics, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(test2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pnlAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlAdminLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(test1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         pnlAdminLayout.setVerticalGroup(
             pnlAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,7 +185,14 @@ public class MainGui extends javax.swing.JFrame  {
                 .addComponent(btnBranches, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnStatistics, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addComponent(test2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+            .addGroup(pnlAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAdminLayout.createSequentialGroup()
+                    .addContainerGap(278, Short.MAX_VALUE)
+                    .addComponent(test1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(82, 82, 82)))
         );
 
         getContentPane().add(pnlAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 190, 410));
@@ -323,6 +356,18 @@ public class MainGui extends javax.swing.JFrame  {
 
     }//GEN-LAST:event_btnFBMouseClicked
 
+    private void test2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_test2MouseClicked
+        CancelSubscription add = new CancelSubscription();
+        iWindow.openWin(add);
+        iWindow.update();
+    }//GEN-LAST:event_test2MouseClicked
+
+    private void test1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_test1MouseClicked
+        CustomerToLesson add = new CustomerToLesson();
+        iWindow.openWin(add);
+        iWindow.update();
+    }//GEN-LAST:event_test1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -378,5 +423,7 @@ public class MainGui extends javax.swing.JFrame  {
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel pnlAdmin;
+    private javax.swing.JLabel test1;
+    private javax.swing.JLabel test2;
     // End of variables declaration//GEN-END:variables
 }

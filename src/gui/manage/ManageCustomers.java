@@ -613,8 +613,7 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
 
     private void lblNewRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewRoomMouseClicked
         // Open New Room for Branch
-        CustomerToLesson add = new CustomerToLesson(customer);
-        iWindow.openWin(add);
+        
     }//GEN-LAST:event_lblNewRoomMouseClicked
 
     private void lblNewRoom1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewRoom1MouseClicked
