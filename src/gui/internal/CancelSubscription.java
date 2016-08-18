@@ -27,15 +27,31 @@ import utils.E_Lessons;
  * @author nisans
  */
 public class CancelSubscription extends javax.swing.JInternalFrame {
-
+    private Customer customer;
     /**
      * Creates new form NewJInternalFrame
      */
-    public CancelSubscription() {
+    public CancelSubscription(Customer cust) {
         initComponents();
-        setTitle("Employees -> Connect Employee to Branch");
-        
+        this.customer = cust;
+        setTitle("Customer #"+customer.getId()+" -> Cancel Subscription");
+        iWindow.update();
         //Finished Loading
+          String str = customer.getId();
+        subChooser.removeAllItems();
+        
+
+       
+            custError.setForeground(Color.GREEN);
+            custError.setText(customer.getFirstName() +" " + customer.getLastName());
+            custNum = str;
+            for (Subscription sub:cust.getSubs()){
+                subChooser.addItem(sub.getNumber() + " - End date: " + sub.getLastDay());
+            }
+            
+      
+        
+        iWindow.update();
     }
     
     /**
@@ -48,12 +64,12 @@ public class CancelSubscription extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        custID = new javax.swing.JTextField();
         Connect = new javax.swing.JButton();
         custError = new javax.swing.JLabel();
         MessageBox = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         subChooser = new javax.swing.JComboBox<>();
+        lblCustomerID = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -78,22 +94,6 @@ public class CancelSubscription extends javax.swing.JInternalFrame {
         jLabel3.setText("Customer ID");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 10, 110, 20);
-
-        custID.setBackground(new java.awt.Color(0, 0, 0));
-        custID.setColumns(10);
-        custID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        custID.setForeground(new java.awt.Color(255, 255, 255));
-        custID.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        custID.setCaretColor(new java.awt.Color(255, 255, 255));
-        custID.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        custID.setSelectionColor(new java.awt.Color(204, 204, 204));
-        custID.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                custIDFocusLost(evt);
-            }
-        });
-        getContentPane().add(custID);
-        custID.setBounds(140, 10, 250, 21);
 
         Connect.setBackground(new java.awt.Color(102, 102, 102));
         Connect.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -133,7 +133,12 @@ public class CancelSubscription extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(subChooser);
-        subChooser.setBounds(140, 40, 250, 20);
+        subChooser.setBounds(140, 40, 250, 22);
+
+        lblCustomerID.setForeground(new java.awt.Color(255, 255, 255));
+        lblCustomerID.setText("jLabel1");
+        getContentPane().add(lblCustomerID);
+        lblCustomerID.setBounds(140, 10, 41, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -145,49 +150,19 @@ public class CancelSubscription extends javax.swing.JInternalFrame {
         
         if (iWindow.getDB().cancelSubscription(subNum)){
             MessageBox.setForeground(Color.GREEN);
-            MessageBox.setText("Subscription " +subNum + " was successfully deleted from customer " + custNum);
-            iWindow.log(new Date().toString() + " - Subscription " + subNum + " was successfully deleted from customer "+ custNum);
+            MessageBox.setText("Subscription " +subNum + " was successfully deleted from customer " + customer.getId());
+            iWindow.log(new Date().toString() + " - Subscription " + subNum + " was successfully deleted from customer "+ customer.getId());
         }
         else{
             MessageBox.setForeground(Color.RED);
-            MessageBox.setText("Subscription " + subNum + " was failed to be removed from customer "+ custNum);
-            iWindow.log(new Date().toString() + " - Subscription " + subNum + " was failed to be removed from customer "+ custNum);
+            MessageBox.setText("Subscription " + subNum + " was failed to be removed from customer "+ customer.getId());
+            iWindow.log(new Date().toString() + " - Subscription " + subNum + " was failed to be removed from customer "+ customer.getId());
         }
         
         iWindow.update();
         
     }//GEN-LAST:event_ConnectMouseClicked
-    
-    private void custIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_custIDFocusLost
-        String str = custID.getText();
-        subChooser.removeAllItems();
-        if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 8) {
-            custError.setForeground(Color.red);
-            custError.setText("Positive 8 digits only");
-            custNum = "-1";
-            iWindow.update();
-            return;
-        }
-
-        if (iWindow.getDB().getCustomers().containsKey(str)) {
-            Customer cust = iWindow.getDB().getCustomers().get(str);
-            custError.setForeground(Color.GREEN);
-            custError.setText(cust.getFirstName() +" " + cust.getLastName());
-            custNum = str;
-            for (Subscription sub:cust.getSubs()){
-                subChooser.addItem(sub.getNumber() + " - End date: " + sub.getLastDay());
-            }
-            
-        } else {
-            custError.setForeground(Color.red);
-            custError.setText("Customer ID does not exists");
-            custNum = "-1";
-        }
-        iWindow.update();
         
-        
-    }//GEN-LAST:event_custIDFocusLost
-    
     private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_formFocusLost
@@ -214,9 +189,9 @@ public class CancelSubscription extends javax.swing.JInternalFrame {
     private javax.swing.JButton Connect;
     private javax.swing.JLabel MessageBox;
     private javax.swing.JLabel custError;
-    private javax.swing.JTextField custID;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lblCustomerID;
     private javax.swing.JComboBox<String> subChooser;
     // End of variables declaration//GEN-END:variables
     

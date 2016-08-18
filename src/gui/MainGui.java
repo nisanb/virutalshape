@@ -6,6 +6,7 @@
 package gui;
 
 
+import core.Customer;
 import gui.manage.ManageBranches;
 import javax.swing.JDesktopPane;
 import gui.internal.*;
@@ -357,7 +358,7 @@ public class MainGui extends javax.swing.JFrame  {
     }//GEN-LAST:event_btnFBMouseClicked
 
     private void test2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_test2MouseClicked
-        CancelSubscription add = new CancelSubscription();
+        CancelSubscription add = new CancelSubscription(new Customer("2"));
         iWindow.openWin(add);
         iWindow.update();
     }//GEN-LAST:event_test2MouseClicked
