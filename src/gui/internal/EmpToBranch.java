@@ -21,14 +21,17 @@ import javax.swing.JList;
  * @author nisans
  */
 public class EmpToBranch extends javax.swing.JInternalFrame {
-
+    private int EmployeeID=0, BranchID=0;
     /**
      * Creates new form NewJInternalFrame
      */
-    public EmpToBranch() {
+    public EmpToBranch(int e, int b) {
         initComponents();
-        setTitle("Employees -> Connect Employee to Branch");
-        
+        this.EmployeeID=e;
+        this.BranchID=b;
+        setTitle("Employee #"+e+" -> Connect Employee to Branch");
+        lblEmployeeID.setText(EmployeeID+"");
+        lblBranchID.setText(BranchID+"");
         //Finished Loading
     }
     
@@ -42,15 +45,15 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        EmpNum = new javax.swing.JTextField();
         Connect = new javax.swing.JButton();
         empError = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        CurrentBranch = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         subError = new javax.swing.JLabel();
         selectBranch = new javax.swing.JComboBox<>();
         MessageBox = new javax.swing.JLabel();
+        lblEmployeeID = new javax.swing.JLabel();
+        lblBranchID = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -76,22 +79,6 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 10, 110, 20);
 
-        EmpNum.setBackground(new java.awt.Color(0, 0, 0));
-        EmpNum.setColumns(10);
-        EmpNum.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        EmpNum.setForeground(new java.awt.Color(255, 255, 255));
-        EmpNum.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        EmpNum.setCaretColor(new java.awt.Color(255, 255, 255));
-        EmpNum.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        EmpNum.setSelectionColor(new java.awt.Color(204, 204, 204));
-        EmpNum.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                EmpNumFocusLost(evt);
-            }
-        });
-        getContentPane().add(EmpNum);
-        EmpNum.setBounds(140, 10, 170, 21);
-
         Connect.setBackground(new java.awt.Color(102, 102, 102));
         Connect.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Connect.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,18 +101,6 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
         jLabel12.setText("Current Branch");
         getContentPane().add(jLabel12);
         jLabel12.setBounds(30, 40, 110, 20);
-
-        CurrentBranch.setBackground(new java.awt.Color(0, 0, 0));
-        CurrentBranch.setColumns(10);
-        CurrentBranch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        CurrentBranch.setForeground(new java.awt.Color(255, 255, 255));
-        CurrentBranch.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        CurrentBranch.setCaretColor(new java.awt.Color(255, 255, 255));
-        CurrentBranch.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        CurrentBranch.setEnabled(false);
-        CurrentBranch.setSelectionColor(new java.awt.Color(204, 204, 204));
-        getContentPane().add(CurrentBranch);
-        CurrentBranch.setBounds(140, 40, 170, 21);
 
         jLabel3.setToolTipText("Subscription Number ");
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -157,47 +132,34 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
         getContentPane().add(MessageBox);
         MessageBox.setBounds(30, 150, 330, 20);
 
+        lblEmployeeID.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmployeeID.setText("jLabel1");
+        getContentPane().add(lblEmployeeID);
+        lblEmployeeID.setBounds(150, 10, 160, 20);
+
+        lblBranchID.setForeground(new java.awt.Color(255, 255, 255));
+        lblBranchID.setText("jLabel2");
+        getContentPane().add(lblBranchID);
+        lblBranchID.setBounds(150, 40, 130, 16);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
     private void ConnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConnectMouseClicked
-        if(iWindow.getDB().connectEmloyeeToBranch(empNumber, branchNum)){
+        if(iWindow.getDB().connectEmloyeeToBranch(EmployeeID, branchNum)){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Successfully connected employee to new branch");
-            iWindow.log(new Date().toString() + " - " + empNumber + " was successfully connected employee to new branch");
+            iWindow.log(new Date().toString() + " - " + EmployeeID + " was successfully connected employee to new branch");
         }       
         else{
             MessageBox.setForeground(Color.RED);
             MessageBox.setText("Failed connected employee to new branch");
-            iWindow.log(new Date().toString() + " - " + empNumber + " was failed to be connected to new branch");
+            iWindow.log(new Date().toString() + " - " + EmployeeID + " was failed to be connected to new branch");
         }
         iWindow.update();
         
     }//GEN-LAST:event_ConnectMouseClicked
-    
-    private void EmpNumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EmpNumFocusLost
-        String str = EmpNum.getText();
-        if (!PositiveValidator.isPositiveStringNum(str)/* || str.length() != 9*/) {
-            empError.setText("Positive digits only");
-            empNumber = -1;
-            return;
-        }
         
-        if (iWindow.getDB().getEmployees().containsKey(Integer.parseInt(str))) {
-            empError.setText(" ");
-            empNumber = Integer.parseInt(str);
-            if (iWindow.getDB().getEmployees().get(empNumber) !=null)
-                CurrentBranch.setText(new Integer(
-                        iWindow.getDB().getEmployees().get(empNumber).getWorkBranch().getBranchNumber()).toString());
-        } else {
-            empError.setText("Emlpyee number doesn't exists");
-            empNumber = -1;
-        }
-        iWindow.update();
-        
-        
-    }//GEN-LAST:event_EmpNumFocusLost
-    
     private void selectBranchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectBranchFocusLost
         if(selectBranch.getSelectedIndex()==0)
             return; 
@@ -225,13 +187,13 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Connect;
-    private javax.swing.JTextField CurrentBranch;
-    private javax.swing.JTextField EmpNum;
     private javax.swing.JLabel MessageBox;
     private javax.swing.JLabel empError;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblBranchID;
+    private javax.swing.JLabel lblEmployeeID;
     private javax.swing.JComboBox<String> selectBranch;
     private javax.swing.JLabel subError;
     // End of variables declaration//GEN-END:variables

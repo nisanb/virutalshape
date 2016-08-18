@@ -21,6 +21,8 @@ import gui.internal.AddCustomer;
 import gui.internal.AddInstrument;
 import gui.internal.AddLesson;
 import gui.internal.AddRoom;
+import gui.internal.AddSubscription;
+import gui.internal.CustomerToLesson;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -105,6 +107,8 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         lblActiveSubs = new javax.swing.JLabel();
         txt7 = new javax.swing.JLabel();
         lblSubs = new javax.swing.JLabel();
+        lblNewRoom = new javax.swing.JLabel();
+        lblNewRoom1 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         AddCustomer = new javax.swing.JLabel();
@@ -321,6 +325,28 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         lblSubs.setText("id");
         statisticsPanel.add(lblSubs);
         lblSubs.setBounds(210, 200, 70, 16);
+
+        lblNewRoom.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblNewRoom.setForeground(new java.awt.Color(51, 102, 255));
+        lblNewRoom.setText("[Add Lesson]");
+        lblNewRoom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNewRoomMouseClicked(evt);
+            }
+        });
+        statisticsPanel.add(lblNewRoom);
+        lblNewRoom.setBounds(130, 260, 70, 13);
+
+        lblNewRoom1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblNewRoom1.setForeground(new java.awt.Color(51, 102, 255));
+        lblNewRoom1.setText("[Add Subscription]");
+        lblNewRoom1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNewRoom1MouseClicked(evt);
+            }
+        });
+        statisticsPanel.add(lblNewRoom1);
+        lblNewRoom1.setBounds(20, 260, 100, 13);
 
         getContentPane().add(statisticsPanel);
         statisticsPanel.setBounds(0, 90, 420, 300);
@@ -585,6 +611,16 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_lblShowMouseClicked
 
+    private void lblNewRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewRoomMouseClicked
+        // Open New Room for Branch
+        CustomerToLesson add = new CustomerToLesson(customer);
+        iWindow.openWin(add);
+    }//GEN-LAST:event_lblNewRoomMouseClicked
+
+    private void lblNewRoom1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewRoom1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblNewRoom1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddCustomer;
@@ -620,6 +656,8 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblCustomerID;
     private javax.swing.JLabel lblEmployeeName;
     private javax.swing.JLabel lblError;
+    private javax.swing.JLabel lblNewRoom;
+    private javax.swing.JLabel lblNewRoom1;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblShow;
     private javax.swing.JLabel lblSubs;

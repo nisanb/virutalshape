@@ -26,13 +26,16 @@ import utils.E_Lessons;
  */
 public class CustomerToLesson extends javax.swing.JInternalFrame {
 
+    private Customer customer;
     /**
      * Creates new form NewJInternalFrame
      */
-    public CustomerToLesson() {
+    public CustomerToLesson(Customer cust) {
         initComponents();
-        setTitle("Employees -> Connect Employee to Branch");
-        
+        this.customer = cust;
+        setTitle("Customer #"+customer.getId()+" -> Connect Customer to Lesson");
+        lblCustomerID.setText(customer.getId());
+        iWindow.update();
         //Finished Loading
     }
     
@@ -46,7 +49,6 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        custID = new javax.swing.JTextField();
         Connect = new javax.swing.JButton();
         custError = new javax.swing.JLabel();
         lesError = new javax.swing.JLabel();
@@ -65,6 +67,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         lessonChooser = new javax.swing.JComboBox<>();
         details = new javax.swing.JLabel();
         Connect2 = new javax.swing.JButton();
+        lblCustomerID = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -89,22 +92,6 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         jLabel3.setText("Customer ID");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 10, 110, 20);
-
-        custID.setBackground(new java.awt.Color(0, 0, 0));
-        custID.setColumns(10);
-        custID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        custID.setForeground(new java.awt.Color(255, 255, 255));
-        custID.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        custID.setCaretColor(new java.awt.Color(255, 255, 255));
-        custID.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        custID.setSelectionColor(new java.awt.Color(204, 204, 204));
-        custID.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                custIDFocusLost(evt);
-            }
-        });
-        getContentPane().add(custID);
-        custID.setBounds(140, 10, 190, 21);
 
         Connect.setBackground(new java.awt.Color(102, 102, 102));
         Connect.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -181,7 +168,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(LessonName);
-        LessonName.setBounds(140, 70, 190, 20);
+        LessonName.setBounds(140, 70, 190, 22);
         for (E_Lessons l:E_Lessons.values()){
             LessonName.addItem(l.toString());
         }
@@ -193,7 +180,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(selectBranch);
-        selectBranch.setBounds(140, 40, 190, 20);
+        selectBranch.setBounds(140, 40, 190, 22);
         for(Branch b : iWindow.getDB().getBranches().values()){
             selectBranch.addItem(b.getBranchNumber() + " " + b.getBranchName());
         }
@@ -205,17 +192,17 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(year);
-        year.setBounds(270, 100, 60, 20);
+        year.setBounds(270, 100, 60, 22);
 
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(month);
-        month.setBounds(200, 100, 60, 20);
+        month.setBounds(200, 100, 60, 22);
 
         day.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         day.setToolTipText("");
         day.setName(""); // NOI18N
         getContentPane().add(day);
-        day.setBounds(140, 100, 50, 20);
+        day.setBounds(140, 100, 50, 22);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(204, 204, 204));
@@ -248,50 +235,31 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         getContentPane().add(Connect2);
         Connect2.setBounds(140, 130, 190, 23);
 
+        lblCustomerID.setForeground(new java.awt.Color(255, 255, 255));
+        lblCustomerID.setText("jLabel1");
+        getContentPane().add(lblCustomerID);
+        lblCustomerID.setBounds(140, 10, 120, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
     private void ConnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConnectMouseClicked
-        if (iWindow.getDB().addCustomerToLesson(custNum, lessonNum)){
+        
+        if (iWindow.getDB().addCustomerToLesson(customer.getId(), lessonNum)){
             MessageBox.setForeground(Color.GREEN);
-            MessageBox.setText("Customer " +custNum + "was added successfully to lesson " + lesNum);
-            iWindow.log(new Date().toString() + " - Customer " + custNum + " was added successfully to lesson "+ lessonNum);
+            MessageBox.setText("Customer " +customer.getId() + "was added successfully to lesson " + lesNum);
+            iWindow.log(new Date().toString() + " - Customer " + customer.getId() + " was added successfully to lesson "+ lessonNum);
         }
         else{
             MessageBox.setForeground(Color.RED);
-            MessageBox.setText("Customer " + custNum + " was failed to be added to lesson "+ lessonNum);
-            iWindow.log(new Date().toString() + " - Customer " + custNum + " was failed to be added to lesson "+ lessonNum);
+            MessageBox.setText("Customer " + customer.getId() + " was failed to be added to lesson "+ lessonNum);
+            iWindow.log(new Date().toString() + " - Customer " + customer.getId() + " was failed to be added to lesson "+ lessonNum);
         }
         
         iWindow.update();
         
     }//GEN-LAST:event_ConnectMouseClicked
-    
-    private void custIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_custIDFocusLost
-        String str = custID.getText();
-        if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 8) {
-            custError.setForeground(Color.red);
-            custError.setText("Positive 8 digits only");
-            custNum = "-1";
-            iWindow.update();
-            return;
-        }
-
-        if (iWindow.getDB().getCustomers().containsKey(str)) {
-            Customer cust = iWindow.getDB().getCustomers().get(str);
-            custError.setForeground(Color.GREEN);
-            custError.setText(cust.getFirstName() +" " + cust.getLastName());
-            custNum = str;
-        } else {
-            custError.setForeground(Color.red);
-            custError.setText("Customer ID does not exists");
-            custNum = "-1";
-        }
-        iWindow.update();
-
-
-    }//GEN-LAST:event_custIDFocusLost
-        
+            
     private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_formFocusLost
@@ -303,7 +271,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
             lesError.setText("Positive digits only");
             lessonNum = -1;
         }
-        iWindow.update();
+        
         if (iWindow.getDB().getLessons().containsKey(Integer.parseInt(str))) {
             Lesson les = iWindow.getDB().getLessons().get(Integer.parseInt(str));
             lesError.setForeground(Color.green);
@@ -394,7 +362,6 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> LessonName;
     private javax.swing.JLabel MessageBox;
     private javax.swing.JLabel custError;
-    private javax.swing.JTextField custID;
     private javax.swing.JComboBox<String> day;
     private javax.swing.JLabel details;
     private javax.swing.JLabel jLabel10;
@@ -403,6 +370,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel lblCustomerID;
     private javax.swing.JLabel lesError;
     private javax.swing.JTextField lesNum;
     private javax.swing.JComboBox<String> lessonChooser;

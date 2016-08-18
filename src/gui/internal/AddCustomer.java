@@ -350,11 +350,11 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         day.setToolTipText("");
         day.setName(""); // NOI18N
         getContentPane().add(day);
-        day.setBounds(140, 100, 50, 20);
+        day.setBounds(140, 100, 50, 22);
 
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(month);
-        month.setBounds(200, 100, 60, 20);
+        month.setBounds(200, 100, 60, 22);
 
         year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yeay", "1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938", "1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
         year.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -363,7 +363,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(year);
-        year.setBounds(270, 100, 60, 20);
+        year.setBounds(270, 100, 60, 22);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(204, 204, 204));
@@ -424,6 +424,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 8) {
             numError.setText("Positive 8 digits only");
             id = "-1";
+            iWindow.update();
             return;
         }
 
@@ -504,8 +505,11 @@ public class AddCustomer extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnPhoneNumberFocusLost
 
     private void slctCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_slctCityFocusLost
-        //        try{
+        
         String str = (String) slctCity.getSelectedItem();
+        if(str.equals("Select City"))
+            return;
+        
         city = E_Cities.valueOf(str);
         btnBranchCountry.setText(city.getCountry());
         country = city.getCountry();

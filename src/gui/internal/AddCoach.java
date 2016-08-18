@@ -450,12 +450,13 @@ public class AddCoach extends javax.swing.JInternalFrame {
         MessageBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         MessageBox.setForeground(new java.awt.Color(0, 255, 0));
         getContentPane().add(MessageBox);
-        MessageBox.setBounds(30, 470, 330, 20);
+        MessageBox.setBounds(30, 470, 330, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddCoachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddCoachMouseClicked
+           try{
         Address address = new Address(country, city, street,
                 housNumber, phoneNumber.toArray(new String[phoneNumber.size()]));
         
@@ -475,10 +476,19 @@ public class AddCoach extends javax.swing.JInternalFrame {
             iWindow.log(new Date().toString() + " - " + employeeNumber  + " was failed to add");
         }
         iWindow.update();
+           }
+           catch(Exception e){
+                MessageBox.setForeground(Color.RED);
+                MessageBox.setText("<html>Failed to add coach<br>Please review fields</html>");
+                iWindow.log(new Date().toString() + " - " + employeeNumber  + " was failed to add");
+                iWindow.update();
+           }
     }//GEN-LAST:event_btnAddCoachMouseClicked
 
     private void IDfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDfieldFocusLost
         String str = IDfield.getText();
+        if(str.length()==0)
+            return;
         if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 9) {
             numError.setText("Positive 9 digits only");
             employeeNumber = -1;
@@ -551,11 +561,13 @@ public class AddCoach extends javax.swing.JInternalFrame {
         }
         String str = btnPhoneNumber.getText();
         if (PhoneValidator.validatePhone(str)) {
-            phoneError.setText(" ");
+            phoneError.setVisible(false);
             phoneNumber.add(str);
         } else {
             phoneError.setText("Error (example: 972-xxxx)");
+            phoneError.setVisible(true);
         }
+        
         iWindow.update();
     }//GEN-LAST:event_btnPhoneNumberFocusLost
 

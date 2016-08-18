@@ -17,7 +17,9 @@ import gui.internal.AddBranchForm;
 import gui.internal.AddCoach;
 import gui.internal.AddInstrument;
 import gui.internal.AddLesson;
+import gui.internal.AddRcp;
 import gui.internal.AddRoom;
+import gui.internal.EmpToBranch;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -92,7 +94,7 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         txtBranchName = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         txtPassword = new javax.swing.JLabel();
-        lblTotalRooms = new javax.swing.JLabel();
+        lblAddress = new javax.swing.JLabel();
         lblEmployeeName = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
         txtBirthDate = new javax.swing.JLabel();
@@ -100,9 +102,10 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         lblShow = new javax.swing.JLabel();
         txt1 = new javax.swing.JLabel();
         lbl1 = new javax.swing.JLabel();
+        lblChangeBranch = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        AddBranch = new javax.swing.JLabel();
+        AddCoach = new javax.swing.JLabel();
         moreInfo = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
@@ -123,6 +126,7 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         jSeparator1 = new javax.swing.JSeparator();
         fldEmpID = new javax.swing.JTextField();
         lblError = new javax.swing.JLabel();
+        AddReceptionist = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setBackground(new Color(0,0,0,70));
@@ -251,12 +255,12 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         txtPassword.setForeground(new java.awt.Color(255, 255, 255));
         txtPassword.setText("Password");
         statisticsPanel.add(txtPassword);
-        txtPassword.setBounds(20, 160, 140, 20);
+        txtPassword.setBounds(20, 160, 70, 20);
 
-        lblTotalRooms.setForeground(new java.awt.Color(255, 255, 255));
-        lblTotalRooms.setText("lblAddress");
-        statisticsPanel.add(lblTotalRooms);
-        lblTotalRooms.setBounds(210, 180, 70, 16);
+        lblAddress.setForeground(new java.awt.Color(255, 255, 255));
+        lblAddress.setText("lblAddress");
+        statisticsPanel.add(lblAddress);
+        lblAddress.setBounds(210, 180, 190, 16);
 
         lblEmployeeName.setForeground(new java.awt.Color(255, 255, 255));
         lblEmployeeName.setText("name");
@@ -291,7 +295,7 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
             }
         });
         statisticsPanel.add(lblShow);
-        lblShow.setBounds(100, 160, 40, 20);
+        lblShow.setBounds(180, 160, 40, 20);
 
         txt1.setBackground(new java.awt.Color(255, 255, 255));
         txt1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -304,6 +308,17 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         lbl1.setText("id");
         statisticsPanel.add(lbl1);
         lbl1.setBounds(210, 200, 70, 16);
+
+        lblChangeBranch.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblChangeBranch.setForeground(new java.awt.Color(51, 102, 255));
+        lblChangeBranch.setText("[Change Branch]");
+        lblChangeBranch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblChangeBranchMouseClicked(evt);
+            }
+        });
+        statisticsPanel.add(lblChangeBranch);
+        lblChangeBranch.setBounds(20, 270, 140, 13);
 
         getContentPane().add(statisticsPanel);
         statisticsPanel.setBounds(0, 90, 420, 300);
@@ -318,14 +333,15 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(30, 30, 30, 40);
 
-        AddBranch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/plus-5-24.png"))); // NOI18N
-        AddBranch.addMouseListener(new java.awt.event.MouseAdapter() {
+        AddCoach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/plus-5-24.png"))); // NOI18N
+        AddCoach.setToolTipText("Add Coach");
+        AddCoach.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddBranchMouseClicked(evt);
+                AddCoachMouseClicked(evt);
             }
         });
-        getContentPane().add(AddBranch);
-        AddBranch.setBounds(340, 30, 40, 40);
+        getContentPane().add(AddCoach);
+        AddCoach.setBounds(340, 30, 30, 40);
 
         moreInfo.setBackground(new Color(0,0,0,0));
         moreInfo.setLayout(null);
@@ -454,6 +470,16 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         lblError.setBounds(340, 80, 290, 20);
         lblError.getAccessibleContext().setAccessibleName("Employee Found!");
 
+        AddReceptionist.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/plus-5-24.png"))); // NOI18N
+        AddReceptionist.setToolTipText("Add Receptionist");
+        AddReceptionist.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddReceptionistMouseClicked(evt);
+            }
+        });
+        getContentPane().add(AddReceptionist);
+        AddReceptionist.setBounds(380, 30, 30, 40);
+
         jMenuBar1.setBackground(new Color(0,0,0,0));
         jMenuBar1.setBorder(null);
         jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
@@ -496,13 +522,13 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_chooseBranchItemStateChanged
 
-    private void AddBranchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddBranchMouseClicked
+    private void AddCoachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddCoachMouseClicked
 
         //Create new Branch
         
         AddCoach frm = new AddCoach();
         iWindow.openWin(frm);
-    }//GEN-LAST:event_AddBranchMouseClicked
+    }//GEN-LAST:event_AddCoachMouseClicked
 
     private void fldEmpIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fldEmpIDActionPerformed
         // TODO add your handling code here:
@@ -573,9 +599,22 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_lblShowMouseClicked
 
+    private void AddReceptionistMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddReceptionistMouseClicked
+        // TODO add your handling code here:
+        AddRcp add = new AddRcp();
+        iWindow.openWin(add);
+    }//GEN-LAST:event_AddReceptionistMouseClicked
+
+    private void lblChangeBranchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblChangeBranchMouseClicked
+        // Open New Room for Branch
+        EmpToBranch add = new EmpToBranch(emp.getEmployeeNumber(), emp.getWorkBranch().getBranchNumber());
+        iWindow.openWin(add);
+    }//GEN-LAST:event_lblChangeBranchMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AddBranch;
+    private javax.swing.JLabel AddCoach;
+    private javax.swing.JLabel AddReceptionist;
     private javax.swing.JLabel btnEdit;
     private javax.swing.JComboBox<String> chooseBranch;
     private javax.swing.JTextField fldEmpID;
@@ -601,7 +640,9 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl3;
     private javax.swing.JLabel lbl4;
     private javax.swing.JLabel lbl5;
+    private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblBirthDate;
+    private javax.swing.JLabel lblChangeBranch;
     private javax.swing.JLabel lblEmployeeID;
     private javax.swing.JLabel lblEmployeeName;
     private javax.swing.JLabel lblError;
@@ -609,7 +650,6 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblShow;
     private javax.swing.JLabel lblStartWorkingDate;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JLabel lblTotalRooms;
     private javax.swing.JLabel lblWorkingBranch;
     private javax.swing.JPanel moreInfo;
     private javax.swing.JPanel statisticsPanel;
@@ -645,6 +685,7 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         String strWorkingDate = new SimpleDateFormat("dd/MM/yyyy").format(emp.getStartWorkingDate());
         
         //setText to Lables
+        lblAddress.setText(emp.getAddress().toString());
         lblBirthDate.setText("" + strBirthDate);
         lblEmployeeID.setText("" + emp.getEmployeeNumber());
         lblEmployeeName.setText("" + emp.getFirstName()+" "+emp.getLastName());

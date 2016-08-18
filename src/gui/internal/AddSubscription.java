@@ -13,6 +13,7 @@ import Validators.PositiveValidator;
 import core.Address;
 import core.Branch;
 import core.Coach;
+import core.Customer;
 import java.awt.Color;
 import utils.E_Cities;
 import java.lang.*;
@@ -36,14 +37,35 @@ import utils.E_Types;
  */
 public class AddSubscription extends javax.swing.JInternalFrame {
 
-
+    private Customer customer;
+    private int receptionist;
 
     /**
-     * Creates new form NewJInternalFrame
+     * New Form by Customer Only
      */
-    public AddSubscription() {
+    public AddSubscription(Customer cust) {
         initComponents();
-        setTitle("Subscriptions -> Add Subscription");
+        this.receptionist=0;
+        this.customer = customer;
+        setTitle("Customer #"+cust.getId()+" -> Add Subscription");
+        lblCustomerID.setText(cust.getId());
+        lblRespID.setVisible(false);
+        recp.setVisible(true);
+        //Finished Loading
+    }
+
+    /**
+     * New Form by Receptionist & Customer
+     */
+    public AddSubscription(Customer cust, int respID) {
+        initComponents();
+        this.customer = customer;
+        this.receptionist=respID;
+        setTitle("Customer #"+cust.getId()+" -> Add Subscription");
+        lblCustomerID.setText(cust.getId());
+        lblRespID.setText(""+respID);
+        lblRespID.setVisible(true);
+        recp.setVisible(false);
         //Finished Loading
     }
 
@@ -57,7 +79,6 @@ public class AddSubscription extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        cust = new javax.swing.JTextField();
         btnAddCustomer = new javax.swing.JButton();
         cusrError = new javax.swing.JLabel();
         recpError = new javax.swing.JLabel();
@@ -74,6 +95,8 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         subError = new javax.swing.JLabel();
         dateError = new javax.swing.JLabel();
         MessageBox = new javax.swing.JLabel();
+        lblCustomerID = new javax.swing.JLabel();
+        lblRespID = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -93,22 +116,6 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         jLabel3.setText("Customer ID");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 10, 110, 20);
-
-        cust.setBackground(new java.awt.Color(0, 0, 0));
-        cust.setColumns(10);
-        cust.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cust.setForeground(new java.awt.Color(255, 255, 255));
-        cust.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        cust.setCaretColor(new java.awt.Color(255, 255, 255));
-        cust.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        cust.setSelectionColor(new java.awt.Color(204, 204, 204));
-        cust.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                custFocusLost(evt);
-            }
-        });
-        getContentPane().add(cust);
-        cust.setBounds(140, 10, 170, 21);
 
         btnAddCustomer.setBackground(new java.awt.Color(102, 102, 102));
         btnAddCustomer.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -216,7 +223,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(length);
-        length.setBounds(140, 130, 170, 20);
+        length.setBounds(140, 130, 170, 22);
 
         subError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         subError.setForeground(new java.awt.Color(255, 0, 0));
@@ -234,11 +241,21 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         getContentPane().add(MessageBox);
         MessageBox.setBounds(30, 230, 330, 20);
 
+        lblCustomerID.setForeground(new java.awt.Color(255, 255, 255));
+        lblCustomerID.setText("jLabel1");
+        getContentPane().add(lblCustomerID);
+        lblCustomerID.setBounds(140, 0, 160, 40);
+
+        lblRespID.setForeground(new java.awt.Color(255, 255, 255));
+        lblRespID.setText("jLabel1");
+        getContentPane().add(lblRespID);
+        lblRespID.setBounds(140, 30, 160, 40);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddCustomerMouseClicked
-   if(iWindow.getDB().addSubToCustomer(subNumber, ID, receptNumber, period, startDate)){
+   if(iWindow.getDB().addSubToCustomer(subNumber, customer.getId(), receptNumber, period, startDate)){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Subscription was added successfully");
             iWindow.log(new Date().toString() + " - " + subNumber + " was added successfully");
@@ -251,26 +268,6 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         iWindow.update();
             
     }//GEN-LAST:event_btnAddCustomerMouseClicked
-
-    private void custFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_custFocusLost
-        String str = cust.getText();
-        if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 8) {
-            cusrError.setText("Positive 8 digits only");
-            ID = "-1";
-        }
-
-        if (!iWindow.getDB().getCustomers().containsKey(Integer.parseInt(str))) {
-            cusrError.setText(" ");
-            ID = str;
-            subNumber = iWindow.getDB().getCustomers().get(ID).getSubs().size() + 1;
-            sub.setText(new Integer(subNumber).toString());
-        } else {
-            cusrError.setText("Custonrt ID exists");
-            ID = "-1";
-        }
-        iWindow.update();
-
-    }//GEN-LAST:event_custFocusLost
 
     private void yearFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_yearFocusLost
         if (day.getSelectedIndex() != 0 && month.getSelectedIndex() != 0 && year.getSelectedIndex() != 0) {
@@ -331,7 +328,6 @@ public class AddSubscription extends javax.swing.JInternalFrame {
     private javax.swing.JLabel MessageBox;
     private javax.swing.JButton btnAddCustomer;
     private javax.swing.JLabel cusrError;
-    private javax.swing.JTextField cust;
     private javax.swing.JLabel dateError;
     private javax.swing.JComboBox<String> day;
     private javax.swing.JLabel jLabel10;
@@ -339,6 +335,8 @@ public class AddSubscription extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblCustomerID;
+    private javax.swing.JLabel lblRespID;
     private javax.swing.JComboBox<String> length;
     private javax.swing.JComboBox<String> month;
     private javax.swing.JTextField recp;
