@@ -139,7 +139,7 @@ public class Address implements Serializable {
 
 	@Override
         public String toString(){
-            return country+", "+street+" "+housNumber;
+            return street+" "+housNumber+", "+city+" ("+country+")";
         }
         
         

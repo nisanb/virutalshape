@@ -249,6 +249,18 @@ public class Subscription implements Serializable {
 				return this.lessons.remove(lessonToCancel);
 		return false;
 	}
+        
+        /**
+         * Checks if a subscription is valid right now
+         * @return 
+         */
+        public boolean isValid(){
+            if(getStartDate().before(new Date())
+                        && getLastDay().after(new Date())){
+                return true;
+            }
+            return false;
+        }
 
 	/**
 	 * This method adds a workout to the subscription's workouts set IF its new

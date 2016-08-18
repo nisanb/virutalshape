@@ -9,6 +9,7 @@ package gui;
 import gui.manage.ManageBranches;
 import javax.swing.JDesktopPane;
 import gui.internal.*;
+import gui.manage.ManageCustomers;
 import gui.manage.ManageEmployees;
 import init.IShape;
 import java.awt.Desktop;
@@ -286,7 +287,7 @@ public class MainGui extends javax.swing.JFrame  {
 
     private void btnCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomersMouseClicked
         // TODO add your handling code here:
-        AddCustomer add = new AddCustomer();
+        ManageCustomers add = new ManageCustomers();
         iWindow.openWin(add);
     }//GEN-LAST:event_btnCustomersMouseClicked
 
