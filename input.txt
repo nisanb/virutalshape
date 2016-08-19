@@ -58,7 +58,7 @@ addCustomer 00099920  Meira   Levi   24/09/1983 meira234  hTTp:\\meira@Gmail.com
 addCustomer 00099921  Meira   Zahavi 24/09/1983 meira123  hTTp:\\meira1@Gmail.com  USA     Miami	      Fifth-evn   18 052-8455122
 // ===============================================================================================================
 // add new Subscription To an existing Customer(subNumber, custNumber, receptNumber, period, startDate)
-addSubToCustomer   000001   00099991 000011  MONTH    20/08/2016
+addSubToCustomer   000001   00099991 000011  MONTH    15/08/2016
 addSubToCustomer   000002   00099992 000017  YEAR     22/08/2016
 addSubToCustomer   000003   00099993 000014  YEAR     20/08/2016
 addSubToCustomer   000004   00099994 000017  HALF     19/08/2016
