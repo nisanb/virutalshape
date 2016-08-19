@@ -404,6 +404,11 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * this method adds the customer to ishape
+     * @param evt 
+     */
+    
     private void btnAddCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddCustomerMouseClicked
     Address address = new Address(country, city, street,
             housNumber, phoneNumber.toArray(new String[phoneNumber.size()]));
@@ -425,6 +430,10 @@ public class AddCustomer extends javax.swing.JInternalFrame {
             
     }//GEN-LAST:event_btnAddCustomerMouseClicked
 
+    /**
+     * this method validates user id validity
+     * @param evt 
+     */
     private void IDfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDfieldFocusLost
         String str = IDfield.getText();
         if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 8) {
@@ -444,7 +453,11 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         iWindow.update();
 
     }//GEN-LAST:event_IDfieldFocusLost
-
+    
+    /**
+     * this method validates customer's name
+     * @param evt
+     */
     private void NameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NameFieldFocusLost
         String str = NameField.getText();
         if (!CharValidator.isWord(str) || str.length() < 2) {
@@ -457,18 +470,14 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_NameFieldFocusLost
 
+    
     private void btnBranchCountryFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchCountryFocusLost
-//        String str = btnBranchCountry.getText();
-//        if (CharValidator.isWord(str)) {
-//            countryError.setText(" ");
-//            country = str;
-//        }
-//        else {
-//            countryError.setText("Enter valid name");
-//            country = null;
-//        }
     }//GEN-LAST:event_btnBranchCountryFocusLost
 
+    /**
+     * this method validates the street name input
+     * @param evt 
+     */
     private void btnBranchStreetFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchStreetFocusLost
         String str = btnBranchStreet.getText();
         if (CharValidator.isWord(str)) {
@@ -481,6 +490,10 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_btnBranchStreetFocusLost
 
+    /**
+     * this method validates the house number input
+     * @param evt 
+     */
     private void btnHouseNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnHouseNumberFocusLost
         String str = btnHouseNumber.getText();
         if (PositiveValidator.isPositiveStringNum(str) && str.length() < 5) {
@@ -495,6 +508,10 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_btnHouseNumberFocusLost
 
+    /**
+     * this method validates phone number using validator
+     * @param evt 
+     */
     private void btnPhoneNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnPhoneNumberFocusLost
         if (phoneNumber == null) {
             phoneNumber = new ArrayList<String>();
@@ -510,6 +527,10 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_btnPhoneNumberFocusLost
 
+    /**
+     * this method checks user's city selection and sets the city and country
+     * @param evt 
+     */
     private void slctCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_slctCityFocusLost
         
         String str = (String) slctCity.getSelectedItem();
@@ -522,6 +543,11 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_slctCityFocusLost
 
+    
+    /**
+     * this method validates customer's name
+     * @param evt
+     */
     private void LastFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LastFieldFocusLost
         String str = NameField.getText();
         if (!CharValidator.isWord(str) || str.length() < 2) {
@@ -534,6 +560,10 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_LastFieldFocusLost
 
+    /**
+     * this method sets the date after year was selected
+     * @param evt 
+     */
     private void yearFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_yearFocusLost
         if (day.getSelectedIndex() != 0 && month.getSelectedIndex() != 0 && year.getSelectedIndex() != 0) {
             int d = day.getSelectedIndex();
@@ -545,6 +575,10 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_yearFocusLost
 
+    /**
+     * this method validates both passwords are equal
+     * @param evt 
+     */
     private void jPasswordField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField2FocusLost
         if (!jPasswordField2.getText().equals(jPasswordField1.getText())) {
             Password.setForeground(Color.RED);
@@ -560,6 +594,10 @@ public class AddCustomer extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jPasswordField2FocusLost
 
+    /**
+     * this method validates user email using validator
+     * @param evt 
+     */
     private void emailfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailfieldFocusLost
         String str = emailfield.getText();
         if (EmailValidator.validateEmail(str)){

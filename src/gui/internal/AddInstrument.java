@@ -197,9 +197,12 @@ public class AddInstrument extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    /**
+     * this method adds instrument to ishape
+     * @param evt 
+     */
     private void AddInsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddInsMouseClicked
-//    isUpdated = IShape.addInstrumentToRoom(branchNum, roomNum,
-//            type, status, amount);
+
         int branchNum = branch.getBranchNumber();
         int roomNum = room.getRoomNum();
         
@@ -216,11 +219,16 @@ public class AddInstrument extends javax.swing.JInternalFrame {
         iWindow.update();
         
     }//GEN-LAST:event_AddInsMouseClicked
-            
+           
+    
     private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_formFocusLost
 
+    /**
+     * this method validates the number of instruments inserted
+     * @param evt 
+     */
     private void InsNumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsNumFocusLost
        String str = InsNum.getText();
         if (!PositiveValidator.isPositiveStringNum(str) || str.length()>2) {
@@ -236,11 +244,19 @@ public class AddInstrument extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_InsNumFocusLost
 
+    /**
+     * this method gets the instrument type
+     * @param evt 
+     */
     private void insTypeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_insTypeFocusLost
         type = E_Types.valueOf((String)insType.getSelectedItem());
             
     }//GEN-LAST:event_insTypeFocusLost
 
+    /**
+     * this method gets the instrument status
+     * @param evt 
+     */
     private void insStatusFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_insStatusFocusLost
         if (insStatus.getSelectedIndex() == 2) status = true;
         else if (insStatus.getSelectedIndex() == 1) status = false;

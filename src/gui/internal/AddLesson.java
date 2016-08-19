@@ -323,6 +323,10 @@ public class AddLesson extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    /**
+     * this method adds the lesson to ishape
+     * @param evt 
+     */
     private void AddLesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddLesMouseClicked
         //Create the date
         if (day.getSelectedIndex() != 0 && month.getSelectedIndex() != 0
@@ -374,7 +378,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
             return;
         }
 
-        //create the lesson
+        //create the lesson and add it to ishape
         if(iWindow.getDB().addLesson(lessonNum, lessonName, dateTime,
                 level, coachNum, maxStudent, branch.getBranchNumber(), room.getRoomNum())){
             MessageBox.setForeground(Color.GREEN);
@@ -394,6 +398,10 @@ public class AddLesson extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_formFocusLost
 
+    /**
+     * this method checks the validity of coach
+     * @param evt 
+     */
     private void IDfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDfieldFocusLost
         
         if(IDfield.getText().length()==0){
@@ -423,6 +431,10 @@ public class AddLesson extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_IDfieldFocusLost
 
+    /**
+     * this method checks and sets the level of the lesson
+     * @param evt 
+     */
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         if (jComboBox1.getSelectedIndex() != 0) {
             level = E_Levels.values()[jComboBox1.getSelectedIndex()-1];
@@ -460,6 +472,10 @@ public class AddLesson extends javax.swing.JInternalFrame {
 //        iWindow.update();
     }//GEN-LAST:event_yearFocusLost
 
+    /**
+     * this method checks and sets the number of people can participate on the lesson
+     * @param evt 
+     */
     private void maxNumStudentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_maxNumStudentFocusLost
         String str = maxNumStudent.getText();
         if(str.length()<=0)
@@ -473,6 +489,10 @@ public class AddLesson extends javax.swing.JInternalFrame {
         iWindow.update();   
     }//GEN-LAST:event_maxNumStudentFocusLost
 
+    /**
+     * this method allows the user choose lesson type from a list
+     * @param evt 
+     */
     private void LessonNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LessonNameFocusLost
 
         if (LessonName.getSelectedIndex() !=0){

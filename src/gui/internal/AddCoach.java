@@ -39,6 +39,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
         initComponents();
         setTitle("Employees -> Add Coach");
         //Finished Loading
+        //Add cities to the city chooser
         for (E_Cities city : E_Cities.values()) {
             slctCity.addItem(city.toString());
         }
@@ -469,6 +470,10 @@ public class AddCoach extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * this method adds coach to ishape if all parameters are checked
+     * @param evt 
+     */
     private void btnAddCoachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddCoachMouseClicked
            try{
         Address address = new Address(country, city, street,
@@ -499,6 +504,10 @@ public class AddCoach extends javax.swing.JInternalFrame {
            }
     }//GEN-LAST:event_btnAddCoachMouseClicked
 
+    /**
+     * this method checks the validity of the id number
+     * @param evt 
+     */
     private void IDfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDfieldFocusLost
         String str = IDfield.getText();
         if(str.length()==0)
@@ -520,6 +529,10 @@ public class AddCoach extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_IDfieldFocusLost
 
+    /**
+     * this method check if coach's name is valid (letters only)
+     * @param evt 
+     */
     private void NameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NameFieldFocusLost
         String str = NameField.getText();
         if (!CharValidator.isWord(str) || str.length() < 2) {
@@ -532,18 +545,14 @@ public class AddCoach extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_NameFieldFocusLost
 
+    
     private void btnBranchCountryFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchCountryFocusLost
-//        String str = btnBranchCountry.getText();
-//        if (CharValidator.isWord(str)) {
-//            countryError.setText(" ");
-//            country = str;
-//        }
-//        else {
-//            countryError.setText("Enter valid name");
-//            country = null;
-//        }
     }//GEN-LAST:event_btnBranchCountryFocusLost
 
+    /**
+     * this method checks if the street is valid name
+     * @param evt 
+     */
     private void btnBranchStreetFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchStreetFocusLost
         String str = btnBranchStreet.getText();
         if (CharValidator.isWord(str)) {
@@ -556,6 +565,10 @@ public class AddCoach extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_btnBranchStreetFocusLost
 
+    /**
+     * this method checks if house number is a valid number
+     * @param evt 
+     */
     private void btnHouseNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnHouseNumberFocusLost
         String str = btnHouseNumber.getText();
         if (PositiveValidator.isPositiveStringNum(str) && str.length() < 5) {
@@ -569,6 +582,10 @@ public class AddCoach extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_btnHouseNumberFocusLost
 
+    /**
+     * this method checks if a phone number is valid (using validator)
+     * @param evt 
+     */
     private void btnPhoneNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnPhoneNumberFocusLost
         if (phoneNumber == null) {
             phoneNumber = new ArrayList<String>();
@@ -585,6 +602,10 @@ public class AddCoach extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_btnPhoneNumberFocusLost
 
+    /**
+     * this method gets the city selected by user (country selected automatically)
+     * @param evt 
+     */
     private void slctCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_slctCityFocusLost
         //        try{
         String str = (String) slctCity.getSelectedItem();
@@ -594,6 +615,10 @@ public class AddCoach extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_slctCityFocusLost
 
+       /**
+     * this method check if coach's name is valid (letters only)
+     * @param evt 
+     */
     private void LastFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LastFieldFocusLost
         String str = NameField.getText();
         if (!CharValidator.isWord(str) || str.length() < 2) {
@@ -606,6 +631,10 @@ public class AddCoach extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_LastFieldFocusLost
 
+    /**
+     * this method sets the date after year is selected
+     * @param evt 
+     */
     private void yearFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_yearFocusLost
         if (day.getSelectedIndex() != 0 && month.getSelectedIndex() != 0 && year.getSelectedIndex() != 0) {
             int d = day.getSelectedIndex();
@@ -617,6 +646,10 @@ public class AddCoach extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_yearFocusLost
 
+        /**
+     * this method sets the date after year is selected
+     * @param evt 
+     */
     private void year1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_year1FocusLost
         if (day1.getSelectedIndex() != 0 && month1.getSelectedIndex() != 0 && year1.getSelectedIndex() != 0) {
             int d = day.getSelectedIndex();
@@ -628,6 +661,10 @@ public class AddCoach extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_year1FocusLost
 
+    /**
+     * this method validates both passwords are the same
+     * @param evt 
+     */
     private void jPasswordField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField2FocusLost
         if (!jPasswordField2.getText().equals(jPasswordField1.getText())) {
             Password.setForeground(Color.RED);
@@ -643,6 +680,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jPasswordField2FocusLost
 
+    
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         if (jComboBox1.getSelectedIndex() != 0) {
             level = jComboBox1.getSelectedIndex();
@@ -652,6 +690,11 @@ public class AddCoach extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    /**
+     * this method copies the types selected by user and adds it to array
+     * @param evt 
+     */
+    
     private void copyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_copyMouseClicked
         String[] str = new String[list.getSelectedValues().length];
         list1.setListData(list.getSelectedValuesList().toArray(str));
