@@ -64,7 +64,9 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         lessonChooser = new javax.swing.JComboBox<>();
         details = new javax.swing.JLabel();
-        Connect2 = new javax.swing.JButton();
+        Search = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        freeSpace = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -116,23 +118,23 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(Connect);
-        Connect.setBounds(480, 240, 150, 23);
+        Connect.setBounds(510, 270, 150, 23);
 
         custError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         custError.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(custError);
-        custError.setBounds(360, 10, 290, 20);
+        custError.setBounds(360, 10, 320, 20);
 
         lesError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lesError.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(lesError);
-        lesError.setBounds(360, 190, 290, 20);
+        lesError.setBounds(360, 190, 320, 20);
 
         MessageBox.setBackground(new Color (0,0,0,90));
         MessageBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         MessageBox.setForeground(new java.awt.Color(0, 255, 0));
         getContentPane().add(MessageBox);
-        MessageBox.setBounds(40, 240, 430, 20);
+        MessageBox.setBounds(40, 270, 430, 20);
 
         lesNum.setBackground(new java.awt.Color(0, 0, 0));
         lesNum.setColumns(10);
@@ -164,9 +166,9 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel6.setText("Select Lesson");
+        jLabel6.setText("Registered");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(30, 160, 110, 20);
+        jLabel6.setBounds(30, 220, 110, 20);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(204, 204, 204));
@@ -204,7 +206,8 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
 
         year.setBackground(new java.awt.Color(0, 0, 0));
         year.setForeground(new java.awt.Color(255, 255, 255));
-        year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yeay", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
+        year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "2016", "2017", "2018", "2019", "2020" }));
+        year.setToolTipText("");
         year.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 yearFocusLost(evt);
@@ -240,6 +243,11 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
 
         lessonChooser.setBackground(new java.awt.Color(0, 0, 0));
         lessonChooser.setForeground(new java.awt.Color(255, 255, 255));
+        lessonChooser.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                lessonChooserItemStateChanged(evt);
+            }
+        });
         lessonChooser.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 lessonChooserFocusLost(evt);
@@ -251,24 +259,39 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         details.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         details.setForeground(new java.awt.Color(0, 255, 0));
         getContentPane().add(details);
-        details.setBounds(360, 160, 290, 20);
+        details.setBounds(360, 160, 320, 20);
 
-        Connect2.setBackground(new java.awt.Color(102, 102, 102));
-        Connect2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        Connect2.setForeground(new java.awt.Color(255, 255, 255));
-        Connect2.setText("Search Lesson");
-        Connect2.addMouseListener(new java.awt.event.MouseAdapter() {
+        Search.setBackground(new java.awt.Color(102, 102, 102));
+        Search.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Search.setForeground(new java.awt.Color(255, 255, 255));
+        Search.setText("Search Lesson");
+        Search.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Connect2MouseClicked(evt);
+                SearchMouseClicked(evt);
             }
         });
-        getContentPane().add(Connect2);
-        Connect2.setBounds(140, 130, 210, 23);
+        getContentPane().add(Search);
+        Search.setBounds(140, 130, 210, 23);
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel8.setText("Select Lesson");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(30, 160, 110, 20);
+
+        freeSpace.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        freeSpace.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(freeSpace);
+        freeSpace.setBounds(140, 220, 80, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
     private void ConnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConnectMouseClicked
+        if (!custNum.equals("-1") && lessonNum > 0 && iWindow.getDB().getLessons().get(lessonNum).getRegistered().containsKey(custNum)){
+            MessageBox.setForeground(Color.RED);
+            MessageBox.setText("Customer is already registered to this lesson");
+        }
         if (iWindow.getDB().addCustomerToLesson(custNum, lessonNum)){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Customer " +custNum + "was added successfully to lesson " + lessonNum);
@@ -324,8 +347,6 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
     private void selectBranchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectBranchFocusLost
         String str = (String) selectBranch.getSelectedItem();
         //System.err.println("STR: "+str+" Length: "+(str.length())+" Value: "+str);
-        if(str.length()<=0)
-            return;
         
         for (int i = 0; i < str.length(); i++){
             if (Character.isDigit(str.charAt(i))) continue;
@@ -333,6 +354,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
                 str = str.substring(0, i);
             }
         }
+        if(str.length()<1) return;
         branchNum = Integer.parseInt(str);
         
         
@@ -344,20 +366,21 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         if (day.getSelectedIndex() != 0 && month.getSelectedIndex() != 0 && year.getSelectedIndex() != 0) {
             int d = day.getSelectedIndex();
             int m = month.getSelectedIndex()-1;
-            int y =  year.getSelectedIndex()+110;
+            int y =  year.getSelectedIndex()+115;
             
             start = new Date(y, m, d);
         }
         iWindow.update();
     }//GEN-LAST:event_yearFocusLost
     
-    private void Connect2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Connect2MouseClicked
+    private void SearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SearchMouseClicked
         if (branchNum ==0 || start == null || les == null){
             MessageBox.setText("Please choose all categories");
             iWindow.update();
             return;
         }
         
+        lessonChooser.removeAllItems();
         Branch branch = iWindow.getDB().getBranches().get(branchNum);
         for (Room r:branch.getRooms()){
             for (Lesson l:r.getLessons()){
@@ -366,24 +389,28 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
                 }
             }
         }
-    }//GEN-LAST:event_Connect2MouseClicked
+    }//GEN-LAST:event_SearchMouseClicked
     
     private void lessonChooserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lessonChooserFocusLost
-        String str = lessonChooser.getSelectedItem().toString();
-        for (int i = 0; i < str.length(); i++){
-            if (Character.isDigit(str.charAt(i))) continue;
-            else str = str.substring(0,i);
-        }
-        details.setText(lessonChooser.getSelectedItem().toString());
-        lesError.setText(lessonChooser.getSelectedItem().toString());
-        lesNum.setText(str);
-        lessonNum = Integer.parseInt(str);
-        iWindow.update();
+//        String str = lessonChooser.getSelectedItem().toString();
+//        if (str == null) return;
+//        for (int i = 0; i < str.length(); i++){
+//            if (Character.isDigit(str.charAt(i))) continue;
+//            else str = str.substring(0,i);
+//        }
+//        
+//        Lesson les = iWindow.getDB().getLessons().get(lessonNum);
+//        details.setText(lessonChooser.getSelectedItem().toString());
+//        lesError.setText(lessonChooser.getSelectedItem().toString());
+//        lesNum.setText(str);
+//        lessonNum = Integer.parseInt(str);
+//        freeSpace.setText(new Integer(les.getMaxStudent()-les.getRegistered().size()).toString() + "/" + les.getMaxStudent());
+//        iWindow.update();
     }//GEN-LAST:event_lessonChooserFocusLost
     
     private void lesNumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lesNumFocusLost
         String str = lesNum.getText();
-        if (!PositiveValidator.isPositiveStringNum(str) || !CharValidator.isNumber(str)) {
+        if (!PositiveValidator.isPositiveStringNum(str) || !CharValidator.isNumber(str) || str.length() < 1) {
             lesError.setForeground(Color.red);
             lesError.setText("Positive digits only");
             lessonNum = -1;
@@ -395,10 +422,12 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
             lesError.setText(les.toString2());
             details.setText(les.toString2());
             lessonNum =Integer.parseInt(str);
+            freeSpace.setText(les.getRegistered().size() + "/" + les.getMaxStudent());
         } else {
             lesError.setForeground(Color.red);
             lesError.setText("Lesson Number does not exists");
             lessonNum = -1;
+            freeSpace.setText("0");
         }
         iWindow.update();
     }//GEN-LAST:event_lesNumFocusLost
@@ -407,29 +436,48 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         if (day.getSelectedIndex() != 0 && month.getSelectedIndex() != 0 && year.getSelectedIndex() != 0) {
             int d = day.getSelectedIndex();
             int m = month.getSelectedIndex()-1;
-            int y =  year.getSelectedIndex()+100;
+            int y =  year.getSelectedIndex()+115;
             
             start = new Date(y, m, d);
         }
         iWindow.update();
     }//GEN-LAST:event_dayFocusLost
+
+    private void lessonChooserItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_lessonChooserItemStateChanged
+        String str = lessonChooser.getSelectedItem().toString();
+        if (str == null) return;
+        for (int i = 0; i < str.length(); i++){
+            if (Character.isDigit(str.charAt(i))) continue;
+            else str = str.substring(0,i);
+        }
+        
+        Lesson les = iWindow.getDB().getLessons().get(lessonNum);
+        details.setText(lessonChooser.getSelectedItem().toString());
+        lesError.setText(lessonChooser.getSelectedItem().toString());
+        lesNum.setText(str);
+        lessonNum = Integer.parseInt(str);
+        freeSpace.setText(les.getRegistered().size() + "/" + les.getMaxStudent());
+        iWindow.update();
+    }//GEN-LAST:event_lessonChooserItemStateChanged
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Connect;
-    private javax.swing.JButton Connect2;
     private javax.swing.JComboBox<String> LessonName;
     private javax.swing.JLabel MessageBox;
+    private javax.swing.JButton Search;
     private javax.swing.JLabel custError;
     private javax.swing.JTextField custID;
     private javax.swing.JComboBox<String> day;
     private javax.swing.JLabel details;
+    private javax.swing.JLabel freeSpace;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lesError;
     private javax.swing.JTextField lesNum;
     private javax.swing.JComboBox<String> lessonChooser;
