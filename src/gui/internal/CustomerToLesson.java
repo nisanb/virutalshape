@@ -31,7 +31,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
      */
     public CustomerToLesson() {
         initComponents();
-        setTitle("Employees -> Connect Employee to Branch");
+        setTitle("Customer -> Add Customer to Lesson");
         
         //Finished Loading
     }
@@ -202,6 +202,8 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
             selectBranch.addItem(b.getBranchNumber() + " " + b.getBranchName());
         }
 
+        year.setBackground(new java.awt.Color(0, 0, 0));
+        year.setForeground(new java.awt.Color(255, 255, 255));
         year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yeay", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
         year.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -211,10 +213,14 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         getContentPane().add(year);
         year.setBounds(290, 100, 60, 20);
 
+        month.setBackground(new java.awt.Color(0, 0, 0));
+        month.setForeground(new java.awt.Color(255, 255, 255));
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(month);
         month.setBounds(210, 100, 60, 20);
 
+        day.setBackground(new java.awt.Color(0, 0, 0));
+        day.setForeground(new java.awt.Color(255, 255, 255));
         day.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         day.setToolTipText("");
         day.setName(""); // NOI18N
