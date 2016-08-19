@@ -293,7 +293,7 @@ public class iWindow {
     
 
     public static void update(){
-        if (getCurrentWindow() == null) return;
+        if (getCurrentWindow() == null) return; 
         getCurrentWindow().setVisible(false);
         getCurrentWindow().setVisible(true);
     }
