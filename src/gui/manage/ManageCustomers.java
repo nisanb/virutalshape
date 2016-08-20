@@ -22,6 +22,7 @@ import gui.internal.AddInstrument;
 import gui.internal.AddLesson;
 import gui.internal.AddRoom;
 import gui.internal.AddSubscription;
+import gui.internal.CancelSubscription;
 import gui.internal.CustomerToLesson;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -109,6 +110,7 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         lblSubs = new javax.swing.JLabel();
         lblNewRoom = new javax.swing.JLabel();
         lblNewRoom1 = new javax.swing.JLabel();
+        lblCancelSub = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         AddCustomer = new javax.swing.JLabel();
@@ -347,6 +349,17 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         });
         statisticsPanel.add(lblNewRoom1);
         lblNewRoom1.setBounds(20, 260, 100, 13);
+
+        lblCancelSub.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblCancelSub.setForeground(new java.awt.Color(51, 102, 255));
+        lblCancelSub.setText("[Cancel Subscription]");
+        lblCancelSub.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCancelSubMouseClicked(evt);
+            }
+        });
+        statisticsPanel.add(lblCancelSub);
+        lblCancelSub.setBounds(210, 260, 140, 13);
 
         getContentPane().add(statisticsPanel);
         statisticsPanel.setBounds(0, 90, 420, 300);
@@ -620,6 +633,12 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lblNewRoom1MouseClicked
 
+    private void lblCancelSubMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCancelSubMouseClicked
+        // TODO add your handling code here:
+        CancelSubscription add = new CancelSubscription(customer);
+        iWindow.openWin(add);
+    }//GEN-LAST:event_lblCancelSubMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddCustomer;
@@ -650,6 +669,7 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblActiveSubs;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblBirthDate;
+    private javax.swing.JLabel lblCancelSub;
     private javax.swing.JLabel lblCountLessons;
     private javax.swing.JLabel lblCountWorkouts;
     private javax.swing.JLabel lblCustomerID;
