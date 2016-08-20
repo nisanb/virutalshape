@@ -34,12 +34,28 @@ import utils.E_Types;
  */
 public class CancelWorkout extends javax.swing.JInternalFrame {
     
+    private Customer customer;
     /**
      * Creates new form NewJInternalFrame
      */
-    public CancelWorkout() {
+    public CancelWorkout(Customer cust) {
         initComponents();
-        setTitle("Customer -> Add Intrument to Workout");
+        this.customer = cust;
+        
+          setTitle("Customer #"+customer.getId()+"-> Add Intrument to Workout");
+        lblCustomerID.setText(customer.getFirstName()+" "+customer.getLastName()+" ("+customer.getId()+")");
+        
+        
+        
+        selectWorkout.removeAllItems();
+        selectWorkout.addItem("Select Workout");
+            for (Subscription s:customer.getSubs()){
+                for (Workout w:s.getWorkouts()){
+                    if (w.getDate().after(new Date())) 
+                        selectWorkout.addItem(w.toString2());
+                }
+            }
+      
         
         //Finished Loading
     }
@@ -53,7 +69,6 @@ public class CancelWorkout extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        custID = new javax.swing.JTextField();
         Connect = new javax.swing.JButton();
         custError = new javax.swing.JLabel();
         MessageBox = new javax.swing.JLabel();
@@ -62,6 +77,7 @@ public class CancelWorkout extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         details = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        lblCustomerID = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -80,22 +96,6 @@ public class CancelWorkout extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().setLayout(null);
-
-        custID.setBackground(new java.awt.Color(0, 0, 0));
-        custID.setColumns(10);
-        custID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        custID.setForeground(new java.awt.Color(255, 255, 255));
-        custID.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        custID.setCaretColor(new java.awt.Color(255, 255, 255));
-        custID.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        custID.setSelectionColor(new java.awt.Color(204, 204, 204));
-        custID.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                custIDFocusLost(evt);
-            }
-        });
-        getContentPane().add(custID);
-        custID.setBounds(160, 10, 190, 21);
 
         Connect.setBackground(new java.awt.Color(102, 102, 102));
         Connect.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -135,7 +135,7 @@ public class CancelWorkout extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(selectWorkout);
-        selectWorkout.setBounds(160, 40, 190, 20);
+        selectWorkout.setBounds(160, 40, 320, 22);
         for(Branch b : iWindow.getDB().getBranches().values()){
             selectWorkout.addItem(b.getBranchNumber() + " " + b.getBranchName());
         }
@@ -153,69 +153,48 @@ public class CancelWorkout extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(700, 0, 10, 10);
 
+        lblCustomerID.setForeground(new java.awt.Color(255, 255, 255));
+        lblCustomerID.setText("jLabel1");
+        getContentPane().add(lblCustomerID);
+        lblCustomerID.setBounds(160, 10, 400, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
     private void ConnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConnectMouseClicked
 
+        if(selectWorkout.getSelectedItem().equals("Select Workout"))
+            return;
+        
+        
         if (JOptionPane.showConfirmDialog(this, "Are you sure you want to cancel workout? "
                 + "\nNOTE: Action can't be resotred", "Remove subsription confirmation",
                 JOptionPane.YES_NO_OPTION) == JOptionPane.NO_OPTION) return;
         //remove from ishape
         if (iWindow.getDB().cancelWorkout(workoutNum)){
             MessageBox.setForeground(Color.GREEN);
-            MessageBox.setText("Workout " + workoutNum + " was removed successfully from customer " + cust.getId());
-            iWindow.log(new Date().toString() + " - Workout " + workoutNum + " was removed successfully from customer " + cust.getId());
+            MessageBox.setText("Workout " + workoutNum + " was removed successfully from customer " + customer.getId());
+            iWindow.log(new Date().toString() + " - Workout " + workoutNum + " was removed successfully from customer " + customer.getId());
         }
         else{
             MessageBox.setForeground(Color.RED);
-            MessageBox.setText("Workout " + workoutNum + " was failed to be removed from customer " + cust.getId());
-            iWindow.log(new Date().toString() + " - Workout " + workoutNum + " was failed to be removed from customer " + cust.getId());
+            MessageBox.setText("Workout " + workoutNum + " was failed to be removed from customer " + customer.getId());
+            iWindow.log(new Date().toString() + " - Workout " + workoutNum + " was failed to be removed from customer " + customer.getId());
         }
         
-        iWindow.update();
+        CancelWorkout add = new CancelWorkout(customer);
+        iWindow.openWin(add);
         
     }//GEN-LAST:event_ConnectMouseClicked
-    
-    private void custIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_custIDFocusLost
-        String str = custID.getText();
-        if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 8) {
-            custError.setForeground(Color.red);
-            custError.setText("Positive 8 digits only");
-            custNum = "-1";
-            iWindow.update();
-            return;
-        }
         
-        if (iWindow.getDB().getCustomers().containsKey(str)) {
-            cust = iWindow.getDB().getCustomers().get(str);
-            custError.setForeground(Color.GREEN);
-            custError.setText(cust.getFirstName() +" " + cust.getLastName());
-            custNum = str;
-            
-            selectWorkout.removeAllItems();
-            for (Subscription s:cust.getSubs()){
-                for (Workout w:s.getWorkouts()){
-                    if (w.getDate().after(new Date())) 
-                        selectWorkout.addItem(w.toString2());
-                }
-            }
-        } else {
-            custError.setForeground(Color.red);
-            custError.setText("Customer ID does not exists");
-            custNum = "-1";
-        }
-        iWindow.update();
-        
-        
-    }//GEN-LAST:event_custIDFocusLost
-    
     private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_formFocusLost
         
     private void selectWorkoutFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectWorkoutFocusLost
         String str = (String) selectWorkout.getSelectedItem();
+        if(str.equals("Select Workout"))
+            return;
         if(str.length()<=0)
             return;
         
@@ -228,7 +207,7 @@ public class CancelWorkout extends javax.swing.JInternalFrame {
         workoutNum = Integer.parseInt(str);
         details.setText(selectWorkout.getSelectedItem().toString());
         Workout w = iWindow.getDB().getWorkouts().get(workoutNum);
-        if (w !=null) cust = w.getSub().getCustomer();
+        if (w !=null) customer = w.getSub().getCustomer();
 
         iWindow.update();
     }//GEN-LAST:event_selectWorkoutFocusLost
@@ -238,17 +217,16 @@ public class CancelWorkout extends javax.swing.JInternalFrame {
     private javax.swing.JButton Connect;
     private javax.swing.JLabel MessageBox;
     private javax.swing.JLabel custError;
-    private javax.swing.JTextField custID;
     private javax.swing.JLabel details;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lblCustomerID;
     private javax.swing.JComboBox<String> selectWorkout;
     // End of variables declaration//GEN-END:variables
     
     //Manual variables declaration
-    private String custNum = null;
-    private Customer cust = null;
+ 
     private int workoutNum = -1;
 
     

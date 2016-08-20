@@ -210,6 +210,8 @@ public class AddWorkout extends javax.swing.JInternalFrame {
         
     private void selectBranchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectBranchFocusLost
         String str = (String) selectBranch.getSelectedItem();
+        if(str.equals("Select Branch"))
+            return;
         if(str.length()<=0)
             return;
         
