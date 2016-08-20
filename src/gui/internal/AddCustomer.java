@@ -212,6 +212,9 @@ public class AddCustomer extends javax.swing.JInternalFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAddCustomerMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAddCustomerMouseEntered(evt);
+            }
         });
         getContentPane().add(btnAddCustomer);
         btnAddCustomer.setBounds(410, 350, 140, 23);
@@ -352,13 +355,13 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         day.setToolTipText("");
         day.setName(""); // NOI18N
         getContentPane().add(day);
-        day.setBounds(140, 100, 50, 20);
+        day.setBounds(140, 100, 50, 22);
 
         month.setBackground(new java.awt.Color(0, 0, 0));
         month.setForeground(new java.awt.Color(255, 255, 255));
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(month);
-        month.setBounds(200, 100, 60, 20);
+        month.setBounds(200, 100, 60, 22);
 
         year.setBackground(new java.awt.Color(0, 0, 0));
         year.setForeground(new java.awt.Color(255, 255, 255));
@@ -369,7 +372,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(year);
-        year.setBounds(270, 100, 60, 20);
+        year.setBounds(270, 100, 60, 22);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(204, 204, 204));
@@ -513,17 +516,22 @@ public class AddCustomer extends javax.swing.JInternalFrame {
      * @param evt 
      */
     private void btnPhoneNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnPhoneNumberFocusLost
-        if (phoneNumber == null) {
-            phoneNumber = new ArrayList<String>();
-        }
+        phoneNumber = new ArrayList<String>();
+        
+        
         String str = btnPhoneNumber.getText();
-        if (PhoneValidator.validatePhone(str)) {
-            phoneError.setText(" ");
-            phoneNumber.add(str);
-            return;
-        } else {
-            phoneError.setText("Error (example: 972-xxxx)");
+        String[] array = str.split(",");
+        for(String substr : array){
+            if(!PhoneValidator.validatePhone(substr)){
+                phoneError.setForeground(Color.red);
+                phoneError.setText("Error (example: 972-507556988)");
+                iWindow.update();
+                return;
+            }
+            phoneNumber.add(substr);
         }
+        phoneError.setText("Received "+phoneNumber.size()+" Phone Numbers.");
+        phoneError.setForeground(Color.green);
         iWindow.update();
     }//GEN-LAST:event_btnPhoneNumberFocusLost
 
@@ -617,6 +625,10 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         iWindow.update();
         
     }//GEN-LAST:event_emailfieldFocusLost
+
+    private void btnAddCustomerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddCustomerMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddCustomerMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -64,13 +64,14 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         moreInfo.hide();
 
         lblError.setVisible(false);
-    
+       
+        
 
         for (Customer cust : iWindow.getDB().getCustomers().values()) {
             chooseCustomer.addItem("#"+cust.getId()+" - "+cust.getFirstName()+" "+cust.getLastName());
         }
         
-        iWindow.update(this);
+        iWindow.update();
     }
 
     /**
@@ -101,11 +102,9 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         txtBranchName = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         txtPassword = new javax.swing.JLabel();
-        lblAddress = new javax.swing.JLabel();
         lblEmployeeName = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
         txtBirthDate = new javax.swing.JLabel();
-        txtTotalRooms1 = new javax.swing.JLabel();
         lblShow = new javax.swing.JLabel();
         txt1 = new javax.swing.JLabel();
         lblActiveSubs = new javax.swing.JLabel();
@@ -127,16 +126,9 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         jSeparator11 = new javax.swing.JSeparator();
         jSeparator12 = new javax.swing.JSeparator();
         jSeparator13 = new javax.swing.JSeparator();
-        lbl4 = new javax.swing.JLabel();
-        txt4 = new javax.swing.JLabel();
-        lbl5 = new javax.swing.JLabel();
-        txt5 = new javax.swing.JLabel();
-        lbl3 = new javax.swing.JLabel();
-        txt2 = new javax.swing.JLabel();
-        lbl2 = new javax.swing.JLabel();
         infotitle = new javax.swing.JLabel();
-        txt3 = new javax.swing.JLabel();
-        txt6 = new javax.swing.JLabel();
+        txtTotalRooms1 = new javax.swing.JLabel();
+        lblAddress = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         fldCustID = new javax.swing.JTextField();
         lblError = new javax.swing.JLabel();
@@ -270,11 +262,6 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         statisticsPanel.add(txtPassword);
         txtPassword.setBounds(20, 160, 140, 20);
 
-        lblAddress.setForeground(new java.awt.Color(255, 255, 255));
-        lblAddress.setText("lblAddress");
-        statisticsPanel.add(lblAddress);
-        lblAddress.setBounds(210, 180, 170, 16);
-
         lblEmployeeName.setForeground(new java.awt.Color(255, 255, 255));
         lblEmployeeName.setText("name");
         statisticsPanel.add(lblEmployeeName);
@@ -292,13 +279,6 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         statisticsPanel.add(txtBirthDate);
         txtBirthDate.setBounds(20, 100, 140, 16);
 
-        txtTotalRooms1.setBackground(new java.awt.Color(255, 255, 255));
-        txtTotalRooms1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        txtTotalRooms1.setForeground(new java.awt.Color(255, 255, 255));
-        txtTotalRooms1.setText("Address");
-        statisticsPanel.add(txtTotalRooms1);
-        txtTotalRooms1.setBounds(20, 180, 100, 16);
-
         lblShow.setFont(new java.awt.Font("Tahoma", 1, 8)); // NOI18N
         lblShow.setForeground(new java.awt.Color(255, 255, 255));
         lblShow.setText("[show]");
@@ -315,24 +295,24 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         txt1.setForeground(new java.awt.Color(255, 255, 255));
         txt1.setText("Active Subscriptions");
         statisticsPanel.add(txt1);
-        txt1.setBounds(20, 220, 170, 16);
+        txt1.setBounds(20, 200, 170, 16);
 
         lblActiveSubs.setForeground(new java.awt.Color(255, 255, 255));
         lblActiveSubs.setText("id");
         statisticsPanel.add(lblActiveSubs);
-        lblActiveSubs.setBounds(210, 220, 70, 16);
+        lblActiveSubs.setBounds(210, 200, 70, 16);
 
         txt7.setBackground(new java.awt.Color(255, 255, 255));
         txt7.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         txt7.setForeground(new java.awt.Color(255, 255, 255));
         txt7.setText("Subscriptions");
         statisticsPanel.add(txt7);
-        txt7.setBounds(20, 200, 170, 16);
+        txt7.setBounds(20, 180, 170, 16);
 
         lblSubs.setForeground(new java.awt.Color(255, 255, 255));
         lblSubs.setText("id");
         statisticsPanel.add(lblSubs);
-        lblSubs.setBounds(210, 200, 70, 16);
+        lblSubs.setBounds(210, 180, 70, 16);
 
         lblNewLesson.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         lblNewLesson.setForeground(new java.awt.Color(51, 102, 255));
@@ -443,74 +423,29 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
 
         jSeparator12.setForeground(new java.awt.Color(255, 255, 255));
         moreInfo.add(jSeparator12);
-        jSeparator12.setBounds(140, 40, 200, 10);
+        jSeparator12.setBounds(160, 40, 180, 10);
 
         jSeparator13.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator13.setOrientation(javax.swing.SwingConstants.VERTICAL);
         moreInfo.add(jSeparator13);
         jSeparator13.setBounds(340, 40, 10, 310);
 
-        lbl4.setForeground(new java.awt.Color(255, 255, 255));
-        lbl4.setText("insrtuments");
-        moreInfo.add(lbl4);
-        lbl4.setBounds(210, 80, 70, 16);
-
-        txt4.setBackground(new java.awt.Color(255, 255, 255));
-        txt4.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        txt4.setForeground(new java.awt.Color(255, 255, 255));
-        txt4.setText("Instruments");
-        moreInfo.add(txt4);
-        txt4.setBounds(20, 80, 140, 16);
-
-        lbl5.setForeground(new java.awt.Color(255, 255, 255));
-        lbl5.setText("lessons");
-        moreInfo.add(lbl5);
-        lbl5.setBounds(210, 100, 70, 16);
-
-        txt5.setBackground(new java.awt.Color(255, 255, 255));
-        txt5.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        txt5.setForeground(new java.awt.Color(255, 255, 255));
-        txt5.setText("Total Lessons");
-        moreInfo.add(txt5);
-        txt5.setBounds(20, 100, 200, 16);
-
-        lbl3.setForeground(new java.awt.Color(255, 255, 255));
-        lbl3.setText("mtrainees");
-        moreInfo.add(lbl3);
-        lbl3.setBounds(210, 60, 200, 16);
-
-        txt2.setBackground(new java.awt.Color(255, 255, 255));
-        txt2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        txt2.setForeground(new java.awt.Color(255, 255, 255));
-        txt2.setText("Lessons Teaching");
-        moreInfo.add(txt2);
-        txt2.setBounds(20, 130, 130, 16);
-
-        lbl2.setForeground(new java.awt.Color(255, 255, 255));
-        lbl2.setText("room type");
-        lbl2.setToolTipText("");
-        lbl2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        moreInfo.add(lbl2);
-        lbl2.setBounds(210, 130, 120, 130);
-
         infotitle.setForeground(new java.awt.Color(255, 255, 255));
-        infotitle.setText("Room Statistics");
+        infotitle.setText("Contact Information");
         moreInfo.add(infotitle);
-        infotitle.setBounds(40, 20, 100, 40);
+        infotitle.setBounds(40, 20, 160, 40);
 
-        txt3.setBackground(new java.awt.Color(255, 255, 255));
-        txt3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        txt3.setForeground(new java.awt.Color(255, 255, 255));
-        txt3.setText("Total Lessons");
-        moreInfo.add(txt3);
-        txt3.setBounds(20, 60, 120, 16);
+        txtTotalRooms1.setBackground(new java.awt.Color(255, 255, 255));
+        txtTotalRooms1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        txtTotalRooms1.setForeground(new java.awt.Color(255, 255, 255));
+        txtTotalRooms1.setText("Address");
+        moreInfo.add(txtTotalRooms1);
+        txtTotalRooms1.setBounds(20, 60, 100, 16);
 
-        txt6.setBackground(new java.awt.Color(255, 255, 255));
-        txt6.setFont(new java.awt.Font("Tahoma", 1, 8)); // NOI18N
-        txt6.setForeground(new java.awt.Color(255, 255, 255));
-        txt6.setText("Total Lessons");
-        moreInfo.add(txt6);
-        txt6.setBounds(20, 110, 110, 20);
+        lblAddress.setForeground(new java.awt.Color(255, 255, 255));
+        lblAddress.setText("lblAddress");
+        moreInfo.add(lblAddress);
+        lblAddress.setBounds(210, 60, 170, 16);
 
         getContentPane().add(moreInfo);
         moreInfo.setBounds(410, 90, 370, 400);
@@ -727,10 +662,6 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JLabel lbl2;
-    private javax.swing.JLabel lbl3;
-    private javax.swing.JLabel lbl4;
-    private javax.swing.JLabel lbl5;
     private javax.swing.JLabel lblActiveSubs;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblBirthDate;
@@ -752,11 +683,6 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
     private javax.swing.JPanel moreInfo;
     private javax.swing.JPanel statisticsPanel;
     private javax.swing.JLabel txt1;
-    private javax.swing.JLabel txt2;
-    private javax.swing.JLabel txt3;
-    private javax.swing.JLabel txt4;
-    private javax.swing.JLabel txt5;
-    private javax.swing.JLabel txt6;
     private javax.swing.JLabel txt7;
     private javax.swing.JLabel txtBirthDate;
     private javax.swing.JLabel txtBranchName;
@@ -803,12 +729,18 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         
         lblCountLessons.setText("" + lessonsCount);
         lblCountWorkouts.setText("" + countWorkout);
-        lblAddress.setText(customer.getCustomerAddress().toString());
+        lblAddress.setText(
+             "<html>"
+                     + customer.getCustomerAddress().getHousNumber()
+                     + " " +customer.getCustomerAddress().getStreet()
+                     + ", "+customer.getCustomerAddress().getCountry()
+                     + "</html>"
+        );
         lblSubs.setText(""+subsCount);
         lblActiveSubs.setText(""+countActiveSubs);
 
         statisticsPanel.show();
-        
+        moreInfo.setVisible(true);
         
         
    
