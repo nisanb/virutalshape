@@ -235,6 +235,10 @@ public class Workout implements Serializable {
 				+ timeAndinstruments.toString().replace("[", "{").replace("]", "}") 
 				+ ", date=" + date + ", sub=" + sub + "]";
 	}
+        
+        public String toString2(){
+            return this.number + " - " + this.branchNum + " " + this.date + ", Total time: " + this.getTotalWorkoutTime();
+        }
 	
 //	@Override
 //	public String toString() {
