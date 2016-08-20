@@ -42,13 +42,19 @@ public class CancelSubscription extends javax.swing.JInternalFrame {
         subChooser.removeAllItems();
         
 
-       
+            subChooser.addItem("Select Subscription");
             custError.setForeground(Color.GREEN);
             custError.setText(customer.getFirstName() +" " + customer.getLastName());
             custNum = str;
+            int counter=0;
             for (Subscription sub:cust.getSubs()){
+                counter++;
                 subChooser.addItem(sub.getNumber() + " - End date: " + sub.getLastDay());
             }
+            
+            if(counter==0)
+                Connect.setEnabled(false);
+    
             
       
         
@@ -145,6 +151,13 @@ public class CancelSubscription extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void ConnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConnectMouseClicked
+        if(!Connect.isEnabled()){
+            JOptionPane.showMessageDialog(null, "Customer has no subscriptions.");
+            return;
+        }
+        if(subNum<=0 || subChooser.getSelectedIndex()==0)
+            return;
+        System.err.println(subChooser.getSelectedIndex()+"");
         if (JOptionPane.showConfirmDialog(this, "Are you sure you want to remove subscription? "
                 + "\nNOTE: Action can't be resotred", "Remove subsription confirmation",
                 JOptionPane.YES_NO_OPTION) == JOptionPane.NO_OPTION) return;
@@ -153,6 +166,10 @@ public class CancelSubscription extends javax.swing.JInternalFrame {
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Subscription " +subNum + " was successfully deleted from customer " + customer.getId());
             iWindow.log(new Date().toString() + " - Subscription " + subNum + " was successfully deleted from customer "+ customer.getId());
+            //Update Window
+            
+            CancelSubscription cancel = new CancelSubscription(customer);
+            iWindow.openWin(cancel);
         }
         else{
             MessageBox.setForeground(Color.RED);
@@ -170,6 +187,8 @@ public class CancelSubscription extends javax.swing.JInternalFrame {
     
     private void subChooserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_subChooserFocusLost
         String str = (String) subChooser.getSelectedItem();
+        if(str.equals("Select Subscription"))
+                return;
         //System.err.println("STR: "+str+" Length: "+(str.length())+" Value: "+str);
         if(str.length()<=0)
             return;
