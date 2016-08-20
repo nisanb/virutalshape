@@ -451,20 +451,22 @@ public class Customer implements Serializable {
             for (Subscription s : this.subs)
                 for (Workout w : s.getWorkouts())
                     if (w.equals(workoutToCancel)) {
+                        Subscription sub = s;
                         if (!workoutToCancel.getTimeAndinstruments().isEmpty()) {
-                            Subscription sub = this.subs.get(this.subs
-                                    .indexOf(s));// /
-                            for (Practice p : workoutToCancel
-                                    .getTimeAndinstruments().keySet()) {
-                                Instrument ins = workoutToCancel
-                                        .getTimeAndinstruments().get(p);
-                                if (ins.cancelCustomer(sub, p))
+                            sub = this.subs.get(this.subs.indexOf(s));
+                            for (Practice p : workoutToCancel.getTimeAndinstruments().keySet()) {
+                                Instrument ins = workoutToCancel.getTimeAndinstruments().get(p);
+                                if (ins.cancelCustomer(sub, p)){
                                     flag = true;
+                                }
                             }
                         } else
                             flag = true;
-                        if (flag)
+                        if (flag){
+                            sub.cancelWorkout(w);
                             return true;
+                        }
+                            
                     }
         return false;
     }
