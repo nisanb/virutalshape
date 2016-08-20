@@ -85,6 +85,7 @@ public class MainGui extends javax.swing.JFrame  {
         btnCustomers = new javax.swing.JLabel();
         btnStatistics = new javax.swing.JLabel();
         btnEmployees = new javax.swing.JLabel();
+        btnInst2Work = new javax.swing.JLabel();
         btnDisconnect = new javax.swing.JLabel();
         iReturn = new javax.swing.JLabel();
         btnExit = new javax.swing.JLabel();
@@ -184,6 +185,15 @@ public class MainGui extends javax.swing.JFrame  {
             }
         });
 
+        btnInst2Work.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnInst2Work.setForeground(new java.awt.Color(255, 255, 255));
+        btnInst2Work.setText("Inst to Wrk");
+        btnInst2Work.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInst2WorkMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlAdminLayout = new javax.swing.GroupLayout(pnlAdmin);
         pnlAdmin.setLayout(pnlAdminLayout);
         pnlAdminLayout.setHorizontalGroup(
@@ -196,6 +206,10 @@ public class MainGui extends javax.swing.JFrame  {
                     .addComponent(btnEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnStatistics, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAdminLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnInst2Work, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         pnlAdminLayout.setVerticalGroup(
             pnlAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +222,9 @@ public class MainGui extends javax.swing.JFrame  {
                 .addComponent(btnBranches, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnStatistics, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnInst2Work, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         getContentPane().add(pnlAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 190, 410));
@@ -384,6 +400,12 @@ public class MainGui extends javax.swing.JFrame  {
         iWindow.openWin(add);
     }//GEN-LAST:event_btnEmployees1MouseClicked
 
+    private void btnInst2WorkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInst2WorkMouseClicked
+        // TODO add your handling code here:
+        AddInstrumentToWorkout add = new AddInstrumentToWorkout();
+        iWindow.openWin(add);
+    }//GEN-LAST:event_btnInst2WorkMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -435,6 +457,7 @@ public class MainGui extends javax.swing.JFrame  {
     private javax.swing.JLabel btnEmployees1;
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnFB;
+    private javax.swing.JLabel btnInst2Work;
     private javax.swing.JLabel btnStatistics;
     private javax.swing.JLabel iReturn;
     private javax.swing.JLabel lblAuthLogged;
