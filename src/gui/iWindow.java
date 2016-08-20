@@ -187,7 +187,11 @@ public class iWindow {
             case 2:
                 toReturn = "Receptionist";
             break;
-            case 3:
+            case 3: 
+                toReturn = "Coach";
+            break;
+
+            case 4:
                 toReturn = "Administrator";
             break;
             default:
@@ -207,12 +211,15 @@ public class iWindow {
         Color color = Color.white;
         switch(authLogged){
             case 1:
-                color = Color.blue;
+                color = Color.green;
             break;
             case 2:
                 color = Color.orange;
             break;
             case 3:
+                color = Color.blue;
+            break;
+            case 4:
                 color = Color.red;
             break;
         
@@ -263,6 +270,14 @@ public class iWindow {
         lblTitle=title;
     }
     
+    public static Employee getEmployeeLogged(){
+        return employeeLogged;
+    }
+    
+    public static Customer getCustomerLogged(){
+        return customerLogged;
+    }
+    
     /**
      * DC Method to clean GUI Vars
      */
@@ -286,6 +301,8 @@ public class iWindow {
         frame.setVisible(false);
         frame.setVisible(true);
     }
+    
+    
 }
     
     

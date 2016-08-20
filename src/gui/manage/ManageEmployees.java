@@ -59,7 +59,8 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
             jSeparator1.hide();
             fldEmpID.hide();
             lblError.hide();
-            
+            emp = iWindow.getEmployeeLogged();
+            updateData();
             return;
             
         }

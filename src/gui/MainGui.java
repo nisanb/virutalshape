@@ -50,15 +50,16 @@ public class MainGui extends javax.swing.JFrame  {
         switch(iWindow.getAuthValue()){
             case 1:
                 //Customer
-            
+              
             break;
             
             case 2:
+            case 3:
                 //Receptionist
                 pnlRcp.show();
             break;
             
-            case 3:
+            case 4:
                 //Administrator
                 pnlAdmin.show();
             break;
