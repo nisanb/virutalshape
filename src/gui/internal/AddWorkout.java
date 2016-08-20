@@ -27,13 +27,15 @@ import utils.E_Types;
  * @author nisans
  */
 public class AddWorkout extends javax.swing.JInternalFrame {
-    
+    private Customer customer;
     /**
      * Creates new form NewJInternalFrame
      */
-    public AddWorkout() {
+    public AddWorkout(Customer cust) {
         initComponents();
-        setTitle("Customer -> Add Customer to Lesson");
+        this.customer = cust;
+        setTitle("Customer #"+customer.getId()+" -> Add Workout");
+        lblCustomerID.setText(customer.getId());
         
         //Finished Loading
     }
@@ -48,7 +50,6 @@ public class AddWorkout extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        custID = new javax.swing.JTextField();
         Connect = new javax.swing.JButton();
         custError = new javax.swing.JLabel();
         MessageBox = new javax.swing.JLabel();
@@ -60,6 +61,7 @@ public class AddWorkout extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         WorkoutNum = new javax.swing.JLabel();
+        lblCustomerID = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -84,22 +86,6 @@ public class AddWorkout extends javax.swing.JInternalFrame {
         jLabel3.setText("Customer ID");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 10, 110, 20);
-
-        custID.setBackground(new java.awt.Color(0, 0, 0));
-        custID.setColumns(10);
-        custID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        custID.setForeground(new java.awt.Color(255, 255, 255));
-        custID.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        custID.setCaretColor(new java.awt.Color(255, 255, 255));
-        custID.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        custID.setSelectionColor(new java.awt.Color(204, 204, 204));
-        custID.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                custIDFocusLost(evt);
-            }
-        });
-        getContentPane().add(custID);
-        custID.setBounds(140, 10, 210, 21);
 
         Connect.setBackground(new java.awt.Color(102, 102, 102));
         Connect.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -139,7 +125,7 @@ public class AddWorkout extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(selectBranch);
-        selectBranch.setBounds(140, 40, 210, 20);
+        selectBranch.setBounds(140, 40, 210, 22);
         for(Branch b : iWindow.getDB().getBranches().values()){
             selectBranch.addItem(b.getBranchNumber() + " " + b.getBranchName());
         }
@@ -153,13 +139,13 @@ public class AddWorkout extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(year);
-        year.setBounds(290, 70, 60, 20);
+        year.setBounds(290, 70, 60, 22);
 
         month.setBackground(new java.awt.Color(0, 0, 0));
         month.setForeground(new java.awt.Color(255, 255, 255));
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(month);
-        month.setBounds(210, 70, 60, 20);
+        month.setBounds(210, 70, 60, 22);
 
         day.setBackground(new java.awt.Color(0, 0, 0));
         day.setForeground(new java.awt.Color(255, 255, 255));
@@ -172,7 +158,7 @@ public class AddWorkout extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(day);
-        day.setBounds(140, 70, 50, 20);
+        day.setBounds(140, 70, 50, 22);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(204, 204, 204));
@@ -192,10 +178,16 @@ public class AddWorkout extends javax.swing.JInternalFrame {
         getContentPane().add(WorkoutNum);
         WorkoutNum.setBounds(140, 100, 210, 20);
 
+        lblCustomerID.setForeground(new java.awt.Color(255, 255, 255));
+        lblCustomerID.setText("jLabel1");
+        getContentPane().add(lblCustomerID);
+        lblCustomerID.setBounds(140, 10, 100, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
     private void ConnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConnectMouseClicked
+        custNum = customer.getId();
         System.out.println(workoutNum+" " +custNum+ " "+ start + " "+ branchNum);
         if (iWindow.getDB().addWorkout(workoutNum, custNum, start, branchNum)){
             MessageBox.setForeground(Color.GREEN);
@@ -211,32 +203,7 @@ public class AddWorkout extends javax.swing.JInternalFrame {
         iWindow.update();
         
     }//GEN-LAST:event_ConnectMouseClicked
-    
-    private void custIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_custIDFocusLost
-        String str = custID.getText();
-        if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 8) {
-            custError.setForeground(Color.red);
-            custError.setText("Positive 8 digits only");
-            custNum = "-1";
-            iWindow.update();
-            return;
-        }
         
-        if (iWindow.getDB().getCustomers().containsKey(str)) {
-            cust = iWindow.getDB().getCustomers().get(str);
-            custError.setForeground(Color.GREEN);
-            custError.setText(cust.getFirstName() +" " + cust.getLastName());
-            custNum = str;
-        } else {
-            custError.setForeground(Color.red);
-            custError.setText("Customer ID does not exists");
-            custNum = "-1";
-        }
-        iWindow.update();
-        
-        
-    }//GEN-LAST:event_custIDFocusLost
-    
     private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_formFocusLost
@@ -265,7 +232,7 @@ public class AddWorkout extends javax.swing.JInternalFrame {
             
             start = new Date(y, m, d);
             
-            if (custID != null && !custID.equals("-1")){
+            if (customer.getId() != null && !customer.getId().equals("-1")){
                 workoutNum = iWindow.getDB().getWorkouts().size()+10;
                 WorkoutNum.setText(new Integer (workoutNum).toString());
             }
@@ -280,7 +247,7 @@ public class AddWorkout extends javax.swing.JInternalFrame {
             int y =  year.getSelectedIndex()+110;
             start = new Date(y, m, d);
             
-            if (custID != null && !custID.equals("-1")){
+            if (customer.getId() != null && !customer.getId().equals("-1")){
                 workoutNum = iWindow.getDB().getWorkouts().size()+10;
                 WorkoutNum.setText(new Integer (workoutNum).toString());
             }
@@ -294,12 +261,12 @@ public class AddWorkout extends javax.swing.JInternalFrame {
     private javax.swing.JLabel MessageBox;
     private javax.swing.JLabel WorkoutNum;
     private javax.swing.JLabel custError;
-    private javax.swing.JTextField custID;
     private javax.swing.JComboBox<String> day;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lblCustomerID;
     private javax.swing.JComboBox<String> month;
     private javax.swing.JComboBox<String> selectBranch;
     private javax.swing.JComboBox<String> year;

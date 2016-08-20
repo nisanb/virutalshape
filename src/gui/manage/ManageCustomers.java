@@ -22,6 +22,7 @@ import gui.internal.AddInstrument;
 import gui.internal.AddLesson;
 import gui.internal.AddRoom;
 import gui.internal.AddSubscription;
+import gui.internal.AddWorkout;
 import gui.internal.CancelSubscription;
 import gui.internal.CustomerToLesson;
 import java.awt.Color;
@@ -34,6 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListCellRenderer;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import utils.E_Lessons;
 import utils.E_Rooms;
@@ -108,9 +110,11 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         lblActiveSubs = new javax.swing.JLabel();
         txt7 = new javax.swing.JLabel();
         lblSubs = new javax.swing.JLabel();
-        lblNewRoom = new javax.swing.JLabel();
-        lblNewRoom1 = new javax.swing.JLabel();
+        lblNewLesson = new javax.swing.JLabel();
+        lblNewWorkout = new javax.swing.JLabel();
         lblCancelSub = new javax.swing.JLabel();
+        lblNewSub = new javax.swing.JLabel();
+        lblNewSub2 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         AddCustomer = new javax.swing.JLabel();
@@ -189,11 +193,11 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
         statisticsPanel.add(jSeparator5);
-        jSeparator5.setBounds(10, 40, 10, 250);
+        jSeparator5.setBounds(10, 40, 10, 280);
 
         jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
         statisticsPanel.add(jSeparator6);
-        jSeparator6.setBounds(10, 290, 390, 10);
+        jSeparator6.setBounds(10, 320, 390, 10);
 
         jSeparator7.setForeground(new java.awt.Color(255, 255, 255));
         statisticsPanel.add(jSeparator7);
@@ -202,7 +206,7 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         jSeparator8.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator8.setOrientation(javax.swing.SwingConstants.VERTICAL);
         statisticsPanel.add(jSeparator8);
-        jSeparator8.setBounds(400, 40, 10, 250);
+        jSeparator8.setBounds(400, 40, 10, 280);
 
         lblCustomerID.setForeground(new java.awt.Color(255, 255, 255));
         lblCustomerID.setText("id");
@@ -328,27 +332,27 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         statisticsPanel.add(lblSubs);
         lblSubs.setBounds(210, 200, 70, 16);
 
-        lblNewRoom.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        lblNewRoom.setForeground(new java.awt.Color(51, 102, 255));
-        lblNewRoom.setText("[Add Lesson]");
-        lblNewRoom.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblNewLesson.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblNewLesson.setForeground(new java.awt.Color(51, 102, 255));
+        lblNewLesson.setText("[Add Lesson]");
+        lblNewLesson.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblNewRoomMouseClicked(evt);
+                lblNewLessonMouseClicked(evt);
             }
         });
-        statisticsPanel.add(lblNewRoom);
-        lblNewRoom.setBounds(130, 260, 70, 13);
+        statisticsPanel.add(lblNewLesson);
+        lblNewLesson.setBounds(170, 260, 70, 13);
 
-        lblNewRoom1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        lblNewRoom1.setForeground(new java.awt.Color(51, 102, 255));
-        lblNewRoom1.setText("[Add Subscription]");
-        lblNewRoom1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblNewWorkout.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblNewWorkout.setForeground(new java.awt.Color(51, 102, 255));
+        lblNewWorkout.setText("[Add Workout]");
+        lblNewWorkout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblNewRoom1MouseClicked(evt);
+                lblNewWorkoutMouseClicked(evt);
             }
         });
-        statisticsPanel.add(lblNewRoom1);
-        lblNewRoom1.setBounds(20, 260, 100, 13);
+        statisticsPanel.add(lblNewWorkout);
+        lblNewWorkout.setBounds(170, 280, 100, 13);
 
         lblCancelSub.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         lblCancelSub.setForeground(new java.awt.Color(51, 102, 255));
@@ -359,10 +363,32 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
             }
         });
         statisticsPanel.add(lblCancelSub);
-        lblCancelSub.setBounds(210, 260, 140, 13);
+        lblCancelSub.setBounds(20, 280, 140, 13);
+
+        lblNewSub.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblNewSub.setForeground(new java.awt.Color(51, 102, 255));
+        lblNewSub.setText("[Add Subscription]");
+        lblNewSub.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNewSubMouseClicked(evt);
+            }
+        });
+        statisticsPanel.add(lblNewSub);
+        lblNewSub.setBounds(20, 260, 100, 13);
+
+        lblNewSub2.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblNewSub2.setForeground(new java.awt.Color(51, 102, 255));
+        lblNewSub2.setText("[Add Subscription]");
+        lblNewSub2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNewSub2MouseClicked(evt);
+            }
+        });
+        statisticsPanel.add(lblNewSub2);
+        lblNewSub2.setBounds(20, 260, 100, 13);
 
         getContentPane().add(statisticsPanel);
-        statisticsPanel.setBounds(0, 90, 420, 300);
+        statisticsPanel.setBounds(0, 90, 420, 350);
 
         jLabel16.setBackground(new Color(0,0,0,0));
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
@@ -624,20 +650,40 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_lblShowMouseClicked
 
-    private void lblNewRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewRoomMouseClicked
-        // Open New Room for Branch
+    private void lblNewLessonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewLessonMouseClicked
+       // New Lesson
+       if(Integer.parseInt(lblActiveSubs.getText())<=0){
+           JOptionPane.showMessageDialog(null, "Customer has no valid subscriptions.\nAdd a subscription first.");
+           return;
+       }
+       
+       CustomerToLesson add = new CustomerToLesson(customer);
+       iWindow.openWin(add);
+       
         
-    }//GEN-LAST:event_lblNewRoomMouseClicked
+    }//GEN-LAST:event_lblNewLessonMouseClicked
 
-    private void lblNewRoom1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewRoom1MouseClicked
+    private void lblNewWorkoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewWorkoutMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_lblNewRoom1MouseClicked
+        AddWorkout add = new AddWorkout(customer);
+        iWindow.openWin(add);
+    }//GEN-LAST:event_lblNewWorkoutMouseClicked
 
     private void lblCancelSubMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCancelSubMouseClicked
         // TODO add your handling code here:
         CancelSubscription add = new CancelSubscription(customer);
         iWindow.openWin(add);
     }//GEN-LAST:event_lblCancelSubMouseClicked
+
+    private void lblNewSubMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewSubMouseClicked
+        // TODO add your handling code here:
+         AddSubscription add = new AddSubscription(customer);
+        iWindow.openWin(add);
+    }//GEN-LAST:event_lblNewSubMouseClicked
+
+    private void lblNewSub2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewSub2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblNewSub2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -675,8 +721,10 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblCustomerID;
     private javax.swing.JLabel lblEmployeeName;
     private javax.swing.JLabel lblError;
-    private javax.swing.JLabel lblNewRoom;
-    private javax.swing.JLabel lblNewRoom1;
+    private javax.swing.JLabel lblNewLesson;
+    private javax.swing.JLabel lblNewSub;
+    private javax.swing.JLabel lblNewSub2;
+    private javax.swing.JLabel lblNewWorkout;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblShow;
     private javax.swing.JLabel lblSubs;

@@ -25,13 +25,17 @@ import utils.E_Lessons;
  * @author nisans
  */
 public class CustomerToLesson extends javax.swing.JInternalFrame {
-    
+    private Customer customer;
     /**
      * Creates new form NewJInternalFrame
      */
-    public CustomerToLesson() {
+    public CustomerToLesson(Customer cust) {
         initComponents();
-        setTitle("Customer -> Add Customer to Lesson");
+        this.customer = cust;
+        setTitle("Customer #"+customer.getId()+" -> Add Lesson");
+        
+        lblCustomerID.setText(customer.getId());
+        
         
         //Finished Loading
     }
@@ -46,7 +50,6 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        custID = new javax.swing.JTextField();
         Connect = new javax.swing.JButton();
         custError = new javax.swing.JLabel();
         lesError = new javax.swing.JLabel();
@@ -67,6 +70,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         Search = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         freeSpace = new javax.swing.JLabel();
+        lblCustomerID = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -91,22 +95,6 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         jLabel3.setText("Customer ID");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 10, 110, 20);
-
-        custID.setBackground(new java.awt.Color(0, 0, 0));
-        custID.setColumns(10);
-        custID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        custID.setForeground(new java.awt.Color(255, 255, 255));
-        custID.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        custID.setCaretColor(new java.awt.Color(255, 255, 255));
-        custID.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        custID.setSelectionColor(new java.awt.Color(204, 204, 204));
-        custID.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                custIDFocusLost(evt);
-            }
-        });
-        getContentPane().add(custID);
-        custID.setBounds(140, 10, 210, 21);
 
         Connect.setBackground(new java.awt.Color(102, 102, 102));
         Connect.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -284,10 +272,16 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         getContentPane().add(freeSpace);
         freeSpace.setBounds(140, 220, 80, 20);
 
+        lblCustomerID.setForeground(new java.awt.Color(255, 255, 255));
+        lblCustomerID.setText("jLabel1");
+        getContentPane().add(lblCustomerID);
+        lblCustomerID.setBounds(140, 10, 200, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
     private void ConnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConnectMouseClicked
+       custNum = customer.getId();
         if (!custNum.equals("-1") && lessonNum > 0 && iWindow.getDB().getLessons().get(lessonNum).getRegistered().containsKey(custNum)){
             MessageBox.setForeground(Color.RED);
             MessageBox.setText("Customer is already registered to this lesson");
@@ -316,32 +310,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         iWindow.update();
         
     }//GEN-LAST:event_ConnectMouseClicked
-    
-    private void custIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_custIDFocusLost
-        String str = custID.getText();
-        if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 8) {
-            custError.setForeground(Color.red);
-            custError.setText("Positive 8 digits only");
-            custNum = "-1";
-            iWindow.update();
-            return;
-        }
         
-        if (iWindow.getDB().getCustomers().containsKey(str)) {
-            Customer cust = iWindow.getDB().getCustomers().get(str);
-            custError.setForeground(Color.GREEN);
-            custError.setText(cust.getFirstName() +" " + cust.getLastName());
-            custNum = str;
-        } else {
-            custError.setForeground(Color.red);
-            custError.setText("Customer ID does not exists");
-            custNum = "-1";
-        }
-        iWindow.update();
-        
-        
-    }//GEN-LAST:event_custIDFocusLost
-    
     private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_formFocusLost
@@ -478,7 +447,6 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
     private javax.swing.JLabel MessageBox;
     private javax.swing.JButton Search;
     private javax.swing.JLabel custError;
-    private javax.swing.JTextField custID;
     private javax.swing.JComboBox<String> day;
     private javax.swing.JLabel details;
     private javax.swing.JLabel freeSpace;
@@ -489,6 +457,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lblCustomerID;
     private javax.swing.JLabel lesError;
     private javax.swing.JTextField lesNum;
     private javax.swing.JComboBox<String> lessonChooser;
