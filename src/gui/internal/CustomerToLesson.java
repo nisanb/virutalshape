@@ -183,7 +183,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(LessonName);
-        LessonName.setBounds(140, 70, 210, 20);
+        LessonName.setBounds(140, 70, 210, 22);
         for (E_Lessons l:E_Lessons.values()){
             LessonName.addItem(l.toString());
         }
@@ -197,7 +197,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(selectBranch);
-        selectBranch.setBounds(140, 40, 210, 20);
+        selectBranch.setBounds(140, 40, 210, 22);
         for(Branch b : iWindow.getDB().getBranches().values()){
             selectBranch.addItem(b.getBranchNumber() + " " + b.getBranchName());
         }
@@ -209,11 +209,11 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(year);
-        year.setBounds(290, 100, 60, 20);
+        year.setBounds(290, 100, 60, 22);
 
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(month);
-        month.setBounds(210, 100, 60, 20);
+        month.setBounds(210, 100, 60, 22);
 
         day.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         day.setToolTipText("");
@@ -224,7 +224,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(day);
-        day.setBounds(140, 100, 50, 20);
+        day.setBounds(140, 100, 50, 22);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(204, 204, 204));
