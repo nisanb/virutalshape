@@ -14,11 +14,14 @@ import core.Address;
 import core.Branch;
 import core.Coach;
 import core.Customer;
+import core.Employee;
+import core.Receptionist;
 import java.awt.Color;
 import utils.E_Cities;
 import java.lang.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -46,11 +49,14 @@ public class AddSubscription extends javax.swing.JInternalFrame {
     public AddSubscription(Customer cust) {
         initComponents();
         this.receptionist=0;
-        this.customer = customer;
+        this.customer = cust;
+        ID = customer.getId();
         setTitle("Customer #"+cust.getId()+" -> Add Subscription");
         lblCustomerID.setText(cust.getId());
         lblRespID.setVisible(false);
         recp.setVisible(true);
+        subNumber = (iWindow.getDB().getCustomers().get(customer.getId()).getNumOfValidSubs()+3)*7;
+        subNum.setText(new Integer(subNumber).toString());
         //Finished Loading
     }
 
@@ -89,7 +95,6 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         jLabel12 = new javax.swing.JLabel();
         recp = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        sub = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         length = new javax.swing.JComboBox<>();
         subError = new javax.swing.JLabel();
@@ -97,6 +102,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         MessageBox = new javax.swing.JLabel();
         lblCustomerID = new javax.swing.JLabel();
         lblRespID = new javax.swing.JLabel();
+        subNum = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -161,12 +167,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
 
         year.setBackground(new java.awt.Color(0, 0, 0));
         year.setForeground(new java.awt.Color(255, 255, 255));
-        year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "2015", "2016", "2017", "2018", "2019", "2020" }));
-        year.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                yearFocusLost(evt);
-            }
-        });
+        year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "2016", "2017", "2018", "2019" }));
         getContentPane().add(year);
         year.setBounds(270, 100, 60, 20);
 
@@ -199,23 +200,6 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel13);
         jLabel13.setBounds(30, 70, 110, 20);
 
-        sub.setBackground(new java.awt.Color(0, 0, 0));
-        sub.setColumns(10);
-        sub.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        sub.setForeground(new java.awt.Color(255, 255, 255));
-        sub.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        sub.setCaretColor(new java.awt.Color(255, 255, 255));
-        sub.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        sub.setEnabled(false);
-        sub.setSelectionColor(new java.awt.Color(204, 204, 204));
-        sub.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                subFocusLost(evt);
-            }
-        });
-        getContentPane().add(sub);
-        sub.setBounds(140, 70, 170, 21);
-
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(204, 204, 204));
         jLabel11.setText("Start Date");
@@ -224,7 +208,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
 
         length.setBackground(new java.awt.Color(0, 0, 0));
         length.setForeground(new java.awt.Color(255, 255, 255));
-        length.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 MONTH", "3 MONTHS - QUARTER", "6 MONTHS HALF", "12 MONTHS - YEAR" }));
+        length.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 MONTH", "3 MONTHS - QUARTER", "6 MONTHS - HALF", "12 MONTHS - YEAR" }));
         length.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 lengthFocusLost(evt);
@@ -252,18 +236,43 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         lblCustomerID.setForeground(new java.awt.Color(255, 255, 255));
         lblCustomerID.setText("jLabel1");
         getContentPane().add(lblCustomerID);
-        lblCustomerID.setBounds(140, 0, 160, 40);
+        lblCustomerID.setBounds(140, 10, 160, 20);
 
         lblRespID.setForeground(new java.awt.Color(255, 255, 255));
         lblRespID.setText("jLabel1");
         getContentPane().add(lblRespID);
         lblRespID.setBounds(140, 30, 160, 40);
 
+        subNum.setBackground(new Color (0,0,0,90));
+        subNum.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(subNum);
+        subNum.setBounds(140, 70, 170, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddCustomerMouseClicked
-   if(iWindow.getDB().addSubToCustomer(subNumber, customer.getId(), receptNumber, period, startDate)){
+        if (day.getSelectedIndex() != 0 && month.getSelectedIndex() != 0 && year.getSelectedIndex() != 0) {
+            int d = day.getSelectedIndex();
+            int m = month.getSelectedIndex()-1;
+            int y =  year.getSelectedIndex()+115;
+            
+            startDate = new Date(y, m, d);
+            Date today = new Date();
+            String strDate = new SimpleDateFormat("dd/MM/yyyy").format(startDate);
+            dateError.setForeground(Color.GREEN);
+            dateError.setText(strDate);
+        }
+        else {
+            dateError.setForeground(Color.red);
+            dateError.setText("Invalid date");
+        }
+        
+        iWindow.update();
+        
+        System.out.println(subNumber + " " +  ID + " " +  receptNumber + " "+ period + " " + startDate);
+        
+        if(iWindow.getDB().addSubToCustomer(subNumber, customer.getId(), receptNumber, period, startDate)){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Subscription was added successfully");
             iWindow.log(new Date().toString() + " - " + subNumber + " was added successfully");
@@ -277,51 +286,29 @@ public class AddSubscription extends javax.swing.JInternalFrame {
             
     }//GEN-LAST:event_btnAddCustomerMouseClicked
 
-    private void yearFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_yearFocusLost
-        if (day.getSelectedIndex() != 0 && month.getSelectedIndex() != 0 && year.getSelectedIndex() != 0) {
-            int d = day.getSelectedIndex();
-            int m = month.getSelectedIndex()-1;
-            int y =  year.getSelectedIndex()+29;
-            
-            startDate = new Date(y, m, d);
-            Date today = new Date();
-            Date ref = new Date(today.getYear(), today.getMonth(), today.getDay()-7);
-          
-            if ((today.getTime() - ref.getTime()) > 6.048e+8){
-                startDate = null;
-                dateError.setText("Can't add sub more than week later"); 
-            }
-            
-            if ((today.getTime() - ref.getTime()) < 6.048e+8)
-                startDate = null;
-                dateError.setText("Can't add sub more than week ahead");
-        }
-        iWindow.update();
-        
-    }//GEN-LAST:event_yearFocusLost
-
     private void recpFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recpFocusLost
         //TODO - GET LOGIN ID AUTHOMATICALLY
         String str = recp.getText();
-        if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 9) {
-            recpError.setText("Positive 9 digits only");
+        if (!PositiveValidator.isPositiveStringNum(str)) {
+            recpError.setText("Positive digits only");
             receptNumber = -1;
+            iWindow.update();
+            return;
         }
 
-        if (iWindow.getDB().getEmployees().containsKey(Integer.parseInt(str))) {
-            recpError.setText(" ");
-            receptNumber = Integer.parseInt(str);
+        receptNumber = Integer.parseInt(str);
+        Employee emp = iWindow.getDB().getEmployees().get(receptNumber);
+        if (emp instanceof Receptionist) {
+            recpError.setForeground(Color.green);
+            recpError.setText(emp.getFirstName() + " " + emp.getLastName());
         } else {
-            recpError.setText("Emlpyee number doesn't exists");
+            recpError.setForeground(Color.red);
+            recpError.setText("Receptionist number doesn't exists");
             receptNumber = -1;
         }
         iWindow.update();
 
     }//GEN-LAST:event_recpFocusLost
-
-    private void subFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_subFocusLost
-        
-    }//GEN-LAST:event_subFocusLost
 
     private void lengthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lengthFocusLost
         if (length.getSelectedIndex() == 0) period = E_Periods.valueOf("MONTH");
@@ -349,8 +336,8 @@ public class AddSubscription extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> month;
     private javax.swing.JTextField recp;
     private javax.swing.JLabel recpError;
-    private javax.swing.JTextField sub;
     private javax.swing.JLabel subError;
+    private javax.swing.JLabel subNum;
     private javax.swing.JComboBox<String> year;
     // End of variables declaration//GEN-END:variables
 

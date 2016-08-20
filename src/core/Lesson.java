@@ -1,6 +1,7 @@
 package core;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -319,7 +320,8 @@ public class Lesson implements Bookable, Serializable {
 	}
         
         public String toString2(){
-            return this.lessonNum + " - " + this.name + ", " + this.startDate + ", " + this.coach.getnName();
+            String strDate = new SimpleDateFormat("dd/MM/yyyy HH:MM:SS").format(startDate);
+            return this.lessonNum + " - " + this.name + ", " + strDate + ", " + this.coach.getnName();
         }
 
 	@Override

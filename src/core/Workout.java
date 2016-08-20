@@ -1,6 +1,7 @@
 package core;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -237,7 +238,8 @@ public class Workout implements Serializable {
 	}
         
         public String toString2(){
-            return this.number + " - " + this.branchNum + " " + this.date + ", Total time: " + this.getTotalWorkoutTime();
+            String strDate = new SimpleDateFormat("dd/MM/yyyy").format(date);
+            return this.number + " - " + this.branchNum + " " + strDate + ", Total time: " + this.getTotalWorkoutTime();
         }
 	
 //	@Override
