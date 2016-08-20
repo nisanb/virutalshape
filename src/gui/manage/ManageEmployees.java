@@ -45,8 +45,25 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
     /**
      * Creates new form NewJInternalFrame
      */
+    
     public ManageEmployees() {
+        
         initComponents();
+        if(iWindow.getAuthValue()==2){
+            setTitle("Vieweing Your Account Details");
+            chooseBranch.hide();
+            jLabel1.hide();
+            jLabel16.hide();
+            AddCoach.hide();
+            AddReceptionist.hide();
+            jSeparator1.hide();
+            fldEmpID.hide();
+            lblError.hide();
+            
+            return;
+            
+        }
+        
         setTitle("Manage Employees");
         chooseBranch.setBackground(Color.black);
         chooseBranch.setForeground(Color.white);
@@ -63,8 +80,13 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
             chooseBranch.addItem("#"+emp.getEmployeeNumber()+" - "+emp.getFirstName()+" "+emp.getLastName());
         }
         
+        
+        
+        
         iWindow.update(this);
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

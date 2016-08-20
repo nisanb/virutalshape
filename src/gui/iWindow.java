@@ -234,41 +234,26 @@ public class iWindow {
      * @param AuthType
      * @param user 
      */
-    public static void setCustomer(int AuthType, Customer user){
+    public static void setUser(int AuthType, Object user){
         if(AuthType<=0) return;
         if(user==null) return;
         authLogged=AuthType;
-        customerLogged=user;
+        switch(AuthType){
+            case 1:
+                
+                customerLogged=(Customer) user;
+                break;
+            default:
+                employeeLogged=(Employee) user;
+                break;
+  
+        }
+        
         
         return;
     }
     
-    /**
-     * Sets receptionist rights
-     * @param AuthType
-     * @param user 
-     */
-    public static void setReceptionist(int AuthType, Receptionist user){
-        if(AuthType<=0) return;
-        if(user==null) return;
-        authLogged=AuthType;
-        employeeLogged=user;
-        
-        return;
-    }
-    
-    /**
-     * Set administrative rights
-     * @param AuthType
-     * @param emp 
-     */
-    public static void setAdmin(int AuthType, Employee emp){
-        if(AuthType!=3)
-            return;
-        authLogged=3;
-       employeeLogged=emp;
-        
-    }
+   
     
     /**
      * Sets the title lbl, from main

@@ -236,7 +236,7 @@ public class LoginGui extends javax.swing.JFrame {
         int empnum=0;
         
         if(fldUsername.getText().toLowerCase().equals("admin") && fldPassword.getText().toLowerCase().equals("admin")){
-            iWindow.setAdmin(3, new Employee(999, "Administrator","Privilige"));
+            iWindow.setUser(3, new Employee(999, "Administrator","Privilige"));
             dispose();
             MainGui tmp = new MainGui();
             tmp.setVisible(true);
@@ -263,7 +263,7 @@ public class LoginGui extends javax.swing.JFrame {
                     //Able to login!
                     iWindow.log("Successfully logged in. Loading GUI");
                     dispose();
-                    iWindow.setCustomer(1, cust);
+                    iWindow.setUser(1, cust);
                     MainGui gui = new MainGui();
                     gui.setVisible(true);
                   
@@ -283,7 +283,7 @@ public class LoginGui extends javax.swing.JFrame {
                     //Able to login
                     iWindow.log("Successfully logged in. Loading GUI");
                     dispose();
-                    iWindow.setReceptionist(2, (Receptionist) emp);
+                    iWindow.setUser(2, (Receptionist) emp);
                     MainGui gui = new MainGui();
                     gui.setVisible(true);
                     
