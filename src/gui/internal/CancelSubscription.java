@@ -34,6 +34,7 @@ public class CancelSubscription extends javax.swing.JInternalFrame {
     public CancelSubscription(Customer cust) {
         initComponents();
         this.customer = cust;
+        lblCustomerID.setText(customer.getId());
         setTitle("Customer #"+customer.getId()+" -> Cancel Subscription");
         iWindow.update();
         //Finished Loading
@@ -138,7 +139,7 @@ public class CancelSubscription extends javax.swing.JInternalFrame {
         lblCustomerID.setForeground(new java.awt.Color(255, 255, 255));
         lblCustomerID.setText("jLabel1");
         getContentPane().add(lblCustomerID);
-        lblCustomerID.setBounds(140, 10, 41, 20);
+        lblCustomerID.setBounds(140, 10, 130, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
