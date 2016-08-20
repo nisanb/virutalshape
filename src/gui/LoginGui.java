@@ -236,7 +236,7 @@ public class LoginGui extends javax.swing.JFrame {
         int empnum=0;
         
         if(fldUsername.getText().toLowerCase().equals("admin") && fldPassword.getText().toLowerCase().equals("admin")){
-            iWindow.setUser(3, new Employee(999, "Administrator","Privilige"));
+            iWindow.setUser(4, new Employee(999, "Administrator","Privilige"));
             dispose();
             MainGui tmp = new MainGui();
             tmp.setVisible(true);

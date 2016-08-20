@@ -64,7 +64,7 @@ public class MainClass {
     /**
      * Skip Log IN Window
      */
-    private static boolean skipLogin = true;
+    private static boolean skipLogin = false;
     /**
      * The date & time format
      */

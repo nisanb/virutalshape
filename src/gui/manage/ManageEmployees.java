@@ -49,7 +49,7 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
     public ManageEmployees() {
         
         initComponents();
-        if(iWindow.getAuthValue()==2){
+        if(iWindow.getAuthValue()==2 || iWindow.getAuthValue()==3){
             setTitle("Vieweing Your Account Details");
             chooseBranch.hide();
             jLabel1.hide();
@@ -101,7 +101,6 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         chooseBranch = new javax.swing.JComboBox<>();
         statisticsPanel = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
-        btnEdit = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
@@ -187,15 +186,6 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         statisticsPanel.setLayout(null);
         statisticsPanel.add(jSeparator2);
         jSeparator2.setBounds(30, 50, 210, 0);
-
-        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/edit-11-24.png"))); // NOI18N
-        btnEdit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEditMouseClicked(evt);
-            }
-        });
-        statisticsPanel.add(btnEdit);
-        btnEdit.setBounds(340, 50, 30, 30);
 
         jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator4.setEnabled(false);
@@ -607,15 +597,6 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_fldEmpIDKeyTyped
 
-    private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
-        // TODO add your handling code here:
-        String str = chooseBranch.getSelectedItem().toString().substring(8, 16);
-        Branch branch = iWindow.getDB().getBranches().get(Integer.parseInt(str));
-        AddBranchForm add = new AddBranchForm(branch);
-
-        iWindow.openWin(add);
-    }//GEN-LAST:event_btnEditMouseClicked
-
     private void lblShowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblShowMouseClicked
         // TODO add your handling code here:
         lblPassword.setText(""+emp.getPassword());
@@ -638,7 +619,6 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddCoach;
     private javax.swing.JLabel AddReceptionist;
-    private javax.swing.JLabel btnEdit;
     private javax.swing.JComboBox<String> chooseBranch;
     private javax.swing.JTextField fldEmpID;
     private javax.swing.JLabel infotitle;
