@@ -64,7 +64,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        btnAddCoach = new javax.swing.JButton();
+        btnAddRsp = new javax.swing.JButton();
         btnBranchCountry = new javax.swing.JTextField();
         btnBranchStreet = new javax.swing.JTextField();
         btnHouseNumber = new javax.swing.JTextField();
@@ -200,17 +200,17 @@ public class AddRcp extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel8);
         jLabel8.setBounds(30, 280, 110, 20);
 
-        btnAddCoach.setBackground(new java.awt.Color(102, 102, 102));
-        btnAddCoach.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnAddCoach.setForeground(new java.awt.Color(255, 255, 255));
-        btnAddCoach.setText("Add Recptionist");
-        btnAddCoach.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAddRsp.setBackground(new java.awt.Color(102, 102, 102));
+        btnAddRsp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAddRsp.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddRsp.setText("Add Recptionist");
+        btnAddRsp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAddCoachMouseClicked(evt);
+                btnAddRspMouseClicked(evt);
             }
         });
-        getContentPane().add(btnAddCoach);
-        btnAddCoach.setBounds(410, 350, 140, 23);
+        getContentPane().add(btnAddRsp);
+        btnAddRsp.setBounds(410, 350, 140, 23);
 
         btnBranchCountry.setBackground(new java.awt.Color(0, 0, 0));
         btnBranchCountry.setColumns(20);
@@ -405,8 +405,11 @@ public class AddRcp extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAddCoachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddCoachMouseClicked
+/**
+ * this method creates the receptionist to ishape
+ * @param evt 
+ */
+    private void btnAddRspMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddRspMouseClicked
         Address address = new Address(country, city, street,
             housNumber, phoneNumber.toArray(new String[phoneNumber.size()]));
 
@@ -427,8 +430,12 @@ public class AddRcp extends javax.swing.JInternalFrame {
         }
         iWindow.update();
    
-    }//GEN-LAST:event_btnAddCoachMouseClicked
+    }//GEN-LAST:event_btnAddRspMouseClicked
 
+    /**
+     * this method validates emp id and gets it from user
+     * @param evt 
+     */
     private void IDfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDfieldFocusLost
         String str = IDfield.getText();
         if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 9) {
@@ -447,6 +454,10 @@ public class AddRcp extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_IDfieldFocusLost
 
+    /**
+     * this method validates employee's name (letters only)
+     * @param evt 
+     */
     private void NameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NameFieldFocusLost
         String str = NameField.getText();
         if (!CharValidator.isWord(str) || str.length() < 2) {
@@ -471,6 +482,10 @@ public class AddRcp extends javax.swing.JInternalFrame {
 //        }
     }//GEN-LAST:event_btnBranchCountryFocusLost
 
+    /**
+     * this method gets the street address
+     * @param evt 
+     */
     private void btnBranchStreetFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchStreetFocusLost
         String str = btnBranchStreet.getText();
         if (CharValidator.isWord(str)) {
@@ -483,6 +498,10 @@ public class AddRcp extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_btnBranchStreetFocusLost
 
+    /**
+     * this method validates the house number
+     * @param evt 
+     */
     private void btnHouseNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnHouseNumberFocusLost
         String str = btnHouseNumber.getText();
         if (PositiveValidator.isPositiveStringNum(str) && str.length() < 5) {
@@ -496,6 +515,10 @@ public class AddRcp extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_btnHouseNumberFocusLost
 
+    /**
+     * this method validates the phone number using phone validator
+     * @param evt 
+     */
     private void btnPhoneNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnPhoneNumberFocusLost
         if (phoneNumber == null) {
             phoneNumber = new ArrayList<String>();
@@ -511,6 +534,10 @@ public class AddRcp extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_btnPhoneNumberFocusLost
 
+    /**
+     * this method get the city and country of the employee
+     * @param evt 
+     */
     private void slctCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_slctCityFocusLost
         //        try{
         String str = (String) slctCity.getSelectedItem();
@@ -520,6 +547,10 @@ public class AddRcp extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_slctCityFocusLost
 
+    /**
+     * this method validates the last name of the employee
+     * @param evt 
+     */
     private void LastFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LastFieldFocusLost
         String str = NameField.getText();
         if (!CharValidator.isWord(str) || str.length() < 2) {
@@ -532,6 +563,10 @@ public class AddRcp extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_LastFieldFocusLost
 
+    /**
+     * this method sets the date after year was selected
+     * @param evt 
+     */
     private void yearFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_yearFocusLost
         if (day.getSelectedIndex() != 0 && month.getSelectedIndex() != 0 && year.getSelectedIndex() != 0) {
             int d = day.getSelectedIndex();
@@ -543,6 +578,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_yearFocusLost
 
+    
     private void year1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_year1FocusLost
         if (day1.getSelectedIndex() != 0 && month1.getSelectedIndex() != 0 && year1.getSelectedIndex() != 0) {
             int d = day.getSelectedIndex();
@@ -554,6 +590,10 @@ public class AddRcp extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_year1FocusLost
 
+    /**
+     * this method validates the password of the employee
+     * @param evt 
+     */
     private void jPasswordField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField2FocusLost
         if (!jPasswordField2.getText().equals(jPasswordField1.getText())) {
             Password.setForeground(Color.RED);
@@ -578,7 +618,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
     private javax.swing.JTextField NameField;
     private javax.swing.JLabel Password;
     private javax.swing.JLabel Password1;
-    private javax.swing.JButton btnAddCoach;
+    private javax.swing.JButton btnAddRsp;
     private javax.swing.JTextField btnBranchCountry;
     private javax.swing.JTextField btnBranchStreet;
     private javax.swing.JTextField btnHouseNumber;
@@ -622,12 +662,5 @@ public class AddRcp extends javax.swing.JInternalFrame {
     int housNumber;
     private ArrayList<String> phoneNumber;
     
-//    Address address = new Address(country, city, street,
-//            housNumber, phoneNumber);
-//    
-//    Receptionist respt = new Receptionist(employeeNumber,
-//            firstName, lastName, birthDate, startWorkingDate,
-//            password, address);
-//    String[] phoneNumber;
 
 }

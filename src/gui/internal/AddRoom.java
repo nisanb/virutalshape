@@ -218,7 +218,10 @@ public class AddRoom extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+    /**
+     * this method adds the room to the selected branch in ishape
+     * @param evt 
+     */
     private void AddRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddRoomMouseClicked
 
  
@@ -236,11 +239,15 @@ public class AddRoom extends javax.swing.JInternalFrame {
         iWindow.update();
         
     }//GEN-LAST:event_AddRoomMouseClicked
-            
+
     private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_formFocusLost
 
+    /**
+     * this method gets and validates the number of instrument allowed in the room
+     * @param evt 
+     */
     private void InsNumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsNumFocusLost
        String str = InsNum.getText();
         if (!PositiveValidator.isPositiveStringNum(str)) {
@@ -256,6 +263,11 @@ public class AddRoom extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_InsNumFocusLost
 
+    /**
+     * this method sets the number of the room
+     * @param evt 
+     */
+    //TODO - auto numbering
     private void roomNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_roomNumberFocusLost
         String str = roomNumber.getText();
         if (!PositiveValidator.isPositiveStringNum(str)) {
@@ -270,6 +282,10 @@ public class AddRoom extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_roomNumberFocusLost
 
+    /**
+     * this method gets the room type  to add
+     * @param evt 
+     */
     private void selectRoomFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectRoomFocusLost
         if (selectRoom.getSelectedIndex() == 1) roomType = E_Rooms.GYM;
         if (selectRoom.getSelectedIndex() == 2) roomType = E_Rooms.AEROBIC;
@@ -277,6 +293,10 @@ public class AddRoom extends javax.swing.JInternalFrame {
             
     }//GEN-LAST:event_selectRoomFocusLost
 
+    /**
+     * this method gets and validates the max number of people allowed to this room
+     * @param evt 
+     */
     private void people1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_people1FocusLost
         // TODO add your handling code here:
          String str = people1.getText();

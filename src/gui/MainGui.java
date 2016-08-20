@@ -270,7 +270,9 @@ public class MainGui extends javax.swing.JFrame  {
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MainUI/ishapegui.png"))); // NOI18N
         Background.setText("A");
+        Background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Background.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Background.setInheritsPopupMenu(false);
         Background.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BackgroundMouseClicked(evt);
@@ -353,12 +355,10 @@ public class MainGui extends javax.swing.JFrame  {
             e.printStackTrace();
         }
     }
-    
-
     }//GEN-LAST:event_btnFBMouseClicked
 
     private void test2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_test2MouseClicked
-        CancelSubscription add = new CancelSubscription(new Customer("2"));
+        AddWorkout add = new AddWorkout();
         iWindow.openWin(add);
         iWindow.update();
     }//GEN-LAST:event_test2MouseClicked
