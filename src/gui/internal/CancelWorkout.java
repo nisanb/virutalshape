@@ -23,6 +23,7 @@ import java.util.Date;
 import javafx.beans.binding.Bindings;
 import javax.swing.JCheckBox;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import utils.E_Lessons;
 import utils.E_Rooms;
 import utils.E_Types;
@@ -157,6 +158,9 @@ public class CancelWorkout extends javax.swing.JInternalFrame {
     
     private void ConnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConnectMouseClicked
 
+        if (JOptionPane.showConfirmDialog(this, "Are you sure you want to cancel workout? "
+                + "\nNOTE: Action can't be resotred", "Remove subsription confirmation",
+                JOptionPane.YES_NO_OPTION) == JOptionPane.NO_OPTION) return;
         //remove from ishape
         if (iWindow.getDB().cancelWorkout(workoutNum)){
             MessageBox.setForeground(Color.GREEN);
