@@ -291,7 +291,17 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         if (!custNum.equals("-1") && lessonNum > 0 && iWindow.getDB().getLessons().get(lessonNum).getRegistered().containsKey(custNum)){
             MessageBox.setForeground(Color.RED);
             MessageBox.setText("Customer is already registered to this lesson");
+            iWindow.update();
+            return;
+          
         }
+        if(!iWindow.getDB().getCustomers().get(custNum).hasValidSub(start)){
+            MessageBox.setForeground(Color.RED);
+            MessageBox.setText("No valid sub for this lesson date");
+            iWindow.update();
+            return;
+        }
+        
         if (iWindow.getDB().addCustomerToLesson(custNum, lessonNum)){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Customer " +custNum + "was added successfully to lesson " + lessonNum);
@@ -414,8 +424,9 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
             lesError.setForeground(Color.red);
             lesError.setText("Positive digits only");
             lessonNum = -1;
+            iWindow.update();
         }
-        iWindow.update();
+        
         if (iWindow.getDB().getLessons().containsKey(Integer.parseInt(str))) {
             Lesson les = iWindow.getDB().getLessons().get(Integer.parseInt(str));
             lesError.setForeground(Color.green);
@@ -450,7 +461,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
             if (Character.isDigit(str.charAt(i))) continue;
             else str = str.substring(0,i);
         }
-        
+        iWindow.update();
         Lesson les = iWindow.getDB().getLessons().get(lessonNum);
         details.setText(lessonChooser.getSelectedItem().toString());
         lesError.setText(lessonChooser.getSelectedItem().toString());

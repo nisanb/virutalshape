@@ -519,6 +519,13 @@ public class Customer implements Serializable {
         return countValid;
     }
     
+    public boolean hasValidSub(Date d){
+        for (Subscription sub:this.getSubs()){
+            if (sub.getLastDay().before(d)) return true;
+        }
+        return false;
+    }
+    
     // -------------------------------hashCode equals &
     // toString------------------------------
     
