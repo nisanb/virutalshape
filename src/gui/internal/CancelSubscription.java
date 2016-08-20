@@ -166,8 +166,9 @@ public class CancelSubscription extends javax.swing.JInternalFrame {
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Subscription " +subNum + " was successfully deleted from customer " + customer.getId());
             iWindow.log(new Date().toString() + " - Subscription " + subNum + " was successfully deleted from customer "+ customer.getId());
-            //Update Window
             
+
+            //Update Window
             CancelSubscription cancel = new CancelSubscription(customer);
             iWindow.openWin(cancel);
         }
