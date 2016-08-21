@@ -23,6 +23,7 @@ addCoach 000008 Dvora  Erez    10/09/1986 01/01/2007 dvora1234  1  BODYWEIGHT,AB
 addCoach 000009 Leon   Nahum   18/07/1985 01/01/2005 leon1234   2  CIRCUITS,DANCE,STRETCH,ZUMBA,RAVE Spain   Madrid       Syonar   77 052-8070707
 addCoach 000009 Leon   Nahum   18/07/1985 01/01/2005 leon1234   2  CIRCUITS,DANCE,STRETCH,ZUMBA,RAVE Spain   Madrid       Syonar   77 052-8070707
 addCoach 000010 Hoze   Soel    22/04/1987 01/01/2004 hoze1234   3  YOGA,KICKBOXING,PILATES,TRX       Israel  Yavne        Dovrim   89 052-8020202
+addCoach 000018 moshe  gever   22/04/1989 01/01/2006 gever123   3  YOGA,KICKBOXING,TRX               USA     Miami        Beach    89 01-55523456
 // ===============================================================================================================
 // add new Receptionist to IShape (employeeNumber, firstName, lastName, birthDate, startWorkingDate, password, address)____ Address(country, city, street, housNumber, phoneNumber)
 addReceptionist 000011 Yarden Haim    16/03/1984 01/01/2006 eyal1234   Israel  Afula        Vizman   7  053-667667
@@ -58,7 +59,7 @@ addCustomer 00099920  Meira   Levi   24/09/1983 meira234  hTTp:\\meira@Gmail.com
 addCustomer 00099921  Meira   Zahavi 24/09/1983 meira123  hTTp:\\meira1@Gmail.com  USA     Miami	      Fifth-evn   18 052-8455122
 // ===============================================================================================================
 // add new Subscription To an existing Customer(subNumber, custNumber, receptNumber, period, startDate)
-addSubToCustomer   000001   00099991 000011  HALF    15/08/2016
+addSubToCustomer   000001   00099991 000011  HALF     01/08/2016
 addSubToCustomer   000002   00099992 000017  YEAR     22/08/2016
 addSubToCustomer   000003   00099993 000014  YEAR     20/08/2016
 addSubToCustomer   000004   00099994 000017  HALF     19/08/2016

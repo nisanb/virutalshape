@@ -12,6 +12,7 @@ import Validators.PositiveValidator;
 import core.Address;
 import core.Branch;
 import core.Coach;
+import core.Employee;
 import java.awt.Color;
 import utils.E_Cities;
 import java.lang.*;
@@ -60,7 +61,6 @@ public class AddCoach extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnPhoneNumber = new javax.swing.JTextField();
-        IDfield = new javax.swing.JTextField();
         NameField = new javax.swing.JTextField();
         slctCity = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
@@ -101,6 +101,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
         list1 = new javax.swing.JList<>();
         MessageBox = new javax.swing.JLabel();
         DateError = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -151,22 +152,6 @@ public class AddCoach extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnPhoneNumber);
         btnPhoneNumber.setBounds(140, 440, 170, 21);
-
-        IDfield.setBackground(new java.awt.Color(0, 0, 0));
-        IDfield.setColumns(10);
-        IDfield.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        IDfield.setForeground(new java.awt.Color(255, 255, 255));
-        IDfield.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        IDfield.setCaretColor(new java.awt.Color(255, 255, 255));
-        IDfield.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        IDfield.setSelectionColor(new java.awt.Color(204, 204, 204));
-        IDfield.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                IDfieldFocusLost(evt);
-            }
-        });
-        getContentPane().add(IDfield);
-        IDfield.setBounds(140, 10, 170, 21);
 
         NameField.setBackground(new java.awt.Color(0, 0, 0));
         NameField.setColumns(20);
@@ -221,7 +206,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnAddCoach);
-        btnAddCoach.setBounds(250, 470, 110, 23);
+        btnAddCoach.setBounds(430, 480, 110, 23);
 
         btnBranchCountry.setBackground(new java.awt.Color(0, 0, 0));
         btnBranchCountry.setColumns(20);
@@ -464,6 +449,17 @@ public class AddCoach extends javax.swing.JInternalFrame {
         getContentPane().add(DateError);
         DateError.setBounds(350, 110, 170, 20);
 
+        jLabel1.setBackground(new Color (0,0,0,90));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(140, 10, 90, 20);
+        int max = 0;
+        for (Employee e:iWindow.getDB().getEmployees().values()){
+            if (e.getEmployeeNumber() > max) max = e.getEmployeeNumber();
+        }
+        employeeNumber = max + 1;
+        jLabel1.setText(new Integer(employeeNumber).toString());
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -514,10 +510,14 @@ public class AddCoach extends javax.swing.JInternalFrame {
         
         
         //create address
+//        System.out.println(employeeNumber + " " +  firstName + " " + lastName+ " " +
+//                birthDate+ " " + startWorkingDate+ " " + password+ " " + level);
+        
         try{
         Address address = new Address(country, city, street,
                 housNumber, phoneNumber.toArray(new String[phoneNumber.size()]));
         
+//            System.out.println(address);
         Coach coach = new Coach(employeeNumber, firstName, lastName,
                 birthDate, startWorkingDate, password, level, address,
                 types);
@@ -542,33 +542,6 @@ public class AddCoach extends javax.swing.JInternalFrame {
                 iWindow.update();
            }
     }//GEN-LAST:event_btnAddCoachMouseClicked
-
-    /**
-     * this method checks the validity of the id number
-     * @param evt 
-     */
-    private void IDfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDfieldFocusLost
-        String str = IDfield.getText();
-        if (!PositiveValidator.isPositiveStringNum(str)) {
-            numError.setText("Positive digits only");
-            employeeNumber = -1;
-            iWindow.update();
-            return;
-        }
-
-        if (!iWindow.getDB().getEmployees().containsKey(Integer.parseInt(IDfield.getText()))) {
-            numError.setText(" ");
-            employeeNumber = Integer.parseInt(str);
-        } else {
-            numError.setText("Emlpyee number exists");
-            employeeNumber = -1;
-        }
-        
-        //auto ID // employeeNumber = iWindow.getDB().getEmployees().size()+1;
-        //don't forget to show it on label
-
-        iWindow.update();
-    }//GEN-LAST:event_IDfieldFocusLost
 
     /**
      * this method check if coach's name is valid (letters only)
@@ -721,7 +694,6 @@ public class AddCoach extends javax.swing.JInternalFrame {
     private javax.swing.JLabel CoachLevel1;
     private javax.swing.JLabel DateError;
     private javax.swing.JLabel Ferror;
-    private javax.swing.JTextField IDfield;
     private javax.swing.JTextField LastField;
     private javax.swing.JLabel Lerror;
     private javax.swing.JLabel LessonTypes1;
@@ -739,6 +711,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> day1;
     private javax.swing.JLabel houseError;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;

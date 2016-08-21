@@ -276,7 +276,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
     
     private void ConnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConnectMouseClicked
        custNum = customer.getId();
-        if (!custNum.equals("-1") && lessonNum > 0 && iWindow.getDB().getLessons().get(lessonNum).getRegistered().containsKey(custNum)){
+        if (!custNum.equals("-1") && lessonNum > 0 && iWindow.getDB().getLessons().get(lessonNum).getRegistered().containsKey(customer)){
             MessageBox.setForeground(Color.RED);
             MessageBox.setText("Customer is already registered to this lesson");
             iWindow.update();
@@ -407,10 +407,14 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
             if (Character.isDigit(str.charAt(i))) continue;
             else str = str.substring(0,i);
         }
+        
+        //get the original lesson
         lessonNum = Integer.parseInt(str);
         iWindow.update();
         Lesson les = iWindow.getDB().getLessons().get(lessonNum);
-        if (les == null) return;
+        start = les.getStartDate();
+        if (les == null) return; //return if lesson is missing
+        //set window messages
         details.setText(lessonChooser.getSelectedItem().toString());
         lesError.setForeground(Color.green);
         lesError.setText(lessonChooser.getSelectedItem().toString());

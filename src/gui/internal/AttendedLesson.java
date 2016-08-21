@@ -283,29 +283,24 @@ public class AttendedLesson extends javax.swing.JInternalFrame {
     
     private void ConnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConnectMouseClicked
         custNum = customer.getId();
-        if (!custNum.equals("-1") && lessonNum > 0 && iWindow.getDB().getLessons().get(lessonNum).getRegistered().containsKey(custNum)){
-            MessageBox.setForeground(Color.RED);
-            MessageBox.setText("Customer is already registered to this lesson");
-            iWindow.update();
-            return;
-            
-        }
-        if(!iWindow.getDB().getCustomers().get(custNum).hasValidSub(start)){
-            MessageBox.setForeground(Color.RED);
-            MessageBox.setText("No valid sub for this lesson date");
+        if (lessonNum < 1 || customer == null) return;
+        if (iWindow.getDB().getLessons().get(lessonNum).getRegistered().get(customer) == true){
+            MessageBox.setForeground(Color.GREEN);
+            MessageBox.setText("Customer " +custNum + "was successfully registered as attended to lesson " + lessonNum);
+            iWindow.log(new Date().toString() + " - Customer " + custNum + " was successfully registred as attended to lesson "+ lessonNum);
             iWindow.update();
             return;
         }
         
-        if (iWindow.getDB().addCustomerToLesson(custNum, lessonNum)){
+        if (iWindow.getDB().attendLesson(custNum, lessonNum)){
             MessageBox.setForeground(Color.GREEN);
-            MessageBox.setText("Customer " +custNum + "was added successfully to lesson " + lessonNum);
-            iWindow.log(new Date().toString() + " - Customer " + custNum + " was added successfully to lesson "+ lessonNum);
+            MessageBox.setText("Customer " +custNum + "was successfully registered as attended to lesson " + lessonNum);
+            iWindow.log(new Date().toString() + " - Customer " + custNum + " was successfully registred as attended to lesson "+ lessonNum);
         }
         else{
             MessageBox.setForeground(Color.RED);
-            MessageBox.setText("Customer " + custNum + " was failed to be added to lesson "+ lessonNum);
-            iWindow.log(new Date().toString() + " - Customer " + custNum + " was failed to be added to lesson "+ lessonNum);
+            MessageBox.setText("Customer " + custNum + " was failed to be registered as attended to lesson "+ lessonNum);
+            iWindow.log(new Date().toString() + " - Customer " + custNum + " was failed to be registered as attended to lesson "+ lessonNum);
         }
         
         iWindow.update();

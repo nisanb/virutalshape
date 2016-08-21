@@ -523,7 +523,7 @@ public class Customer implements Serializable {
     
     public boolean hasValidSub(Date d){
         for (Subscription sub:this.getSubs()){
-            if (sub.getLastDay().before(d)) return true;
+            if (sub.getLastDay().after(d)) return true;
         }
         return false;
     }

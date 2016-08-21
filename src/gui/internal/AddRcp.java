@@ -12,6 +12,7 @@ import Validators.PositiveValidator;
 import core.Address;
 import core.Branch;
 import core.Coach;
+import core.Employee;
 import core.Receptionist;
 import java.awt.Color;
 import utils.E_Cities;
@@ -58,7 +59,6 @@ public class AddRcp extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnPhoneNumber = new javax.swing.JTextField();
-        IDfield = new javax.swing.JTextField();
         NameField = new javax.swing.JTextField();
         slctCity = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
@@ -90,6 +90,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         month1 = new javax.swing.JComboBox<>();
         year1 = new javax.swing.JComboBox<>();
         MessageBox = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -140,22 +141,6 @@ public class AddRcp extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnPhoneNumber);
         btnPhoneNumber.setBounds(140, 310, 170, 21);
-
-        IDfield.setBackground(new java.awt.Color(0, 0, 0));
-        IDfield.setColumns(10);
-        IDfield.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        IDfield.setForeground(new java.awt.Color(255, 255, 255));
-        IDfield.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        IDfield.setCaretColor(new java.awt.Color(255, 255, 255));
-        IDfield.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        IDfield.setSelectionColor(new java.awt.Color(204, 204, 204));
-        IDfield.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                IDfieldFocusLost(evt);
-            }
-        });
-        getContentPane().add(IDfield);
-        IDfield.setBounds(140, 10, 170, 21);
 
         NameField.setBackground(new java.awt.Color(0, 0, 0));
         NameField.setColumns(20);
@@ -403,6 +388,17 @@ public class AddRcp extends javax.swing.JInternalFrame {
         getContentPane().add(MessageBox);
         MessageBox.setBounds(30, 350, 330, 20);
 
+        jLabel1.setBackground(new Color (0,0,0,90));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(140, 10, 90, 20);
+        int max = 0;
+        for (Employee e:iWindow.getDB().getEmployees().values()){
+            if (e.getEmployeeNumber() > max) max = e.getEmployeeNumber();
+        }
+        employeeNumber = max + 1;
+        jLabel1.setText(new Integer(employeeNumber).toString());
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 /**
@@ -431,33 +427,6 @@ public class AddRcp extends javax.swing.JInternalFrame {
         iWindow.update();
    
     }//GEN-LAST:event_btnAddRspMouseClicked
-
-    /**
-     * this method validates emp id and gets it from user
-     * @param evt 
-     */
-    private void IDfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDfieldFocusLost
-        String str = IDfield.getText();
-        if (!PositiveValidator.isPositiveStringNum(str)) {
-            numError.setText("Positive digits only");
-            employeeNumber = -1;
-            iWindow.update();
-            return;
-        }
-
-        if (!iWindow.getDB().getEmployees().containsKey(Integer.parseInt(IDfield.getText()))) {
-            numError.setText(" ");
-            employeeNumber = Integer.parseInt(str);
-        } else {
-            numError.setText("Emlpyee number exists");
-            employeeNumber = -1;
-        }
-
-        //auto ID // employeeNumber = iWindow.getDB().getEmployees().size()+1;
-        //don't forget to show it on label
-
-        iWindow.update();
-    }//GEN-LAST:event_IDfieldFocusLost
 
     /**
      * this method validates employee's name (letters only)
@@ -616,7 +585,6 @@ public class AddRcp extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Ferror;
-    private javax.swing.JTextField IDfield;
     private javax.swing.JTextField LastField;
     private javax.swing.JLabel Lerror;
     private javax.swing.JLabel MessageBox;
@@ -631,6 +599,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> day;
     private javax.swing.JComboBox<String> day1;
     private javax.swing.JLabel houseError;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
