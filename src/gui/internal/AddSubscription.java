@@ -287,7 +287,6 @@ public class AddSubscription extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAddCustomerMouseClicked
 
     private void recpFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recpFocusLost
-        //TODO - GET LOGIN ID AUTHOMATICALLY
         String str = recp.getText();
         if (!PositiveValidator.isPositiveStringNum(str)) {
             recpError.setText("Positive digits only");
@@ -311,6 +310,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_recpFocusLost
 
     private void lengthItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_lengthItemStateChanged
+        if(length.getSelectedIndex() == 0) return;
         if (length.getSelectedIndex() == 1) period = E_Periods.valueOf("MONTH");
         else if (length.getSelectedIndex() == 2) period = E_Periods.valueOf("QUATER");
         else if (length.getSelectedIndex() == 3) period = E_Periods.valueOf("HALF");

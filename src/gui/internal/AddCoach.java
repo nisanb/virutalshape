@@ -549,12 +549,11 @@ public class AddCoach extends javax.swing.JInternalFrame {
      */
     private void IDfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDfieldFocusLost
         String str = IDfield.getText();
-        if(str.length()==0)
-            return;
-        if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 9) {
-            numError.setText("Positive 9 digits only");
+        if (!PositiveValidator.isPositiveStringNum(str)) {
+            numError.setText("Positive digits only");
             employeeNumber = -1;
             iWindow.update();
+            return;
         }
 
         if (!iWindow.getDB().getEmployees().containsKey(Integer.parseInt(IDfield.getText()))) {
