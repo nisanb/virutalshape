@@ -55,7 +55,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         lblCustomerID.setText(cust.getId());
         lblRespID.setVisible(false);
         recp.setVisible(true);
-        subNumber = (iWindow.getDB().getCustomers().get(customer.getId()).getNumOfValidSubs()+3)*7;
+        subNumber = iWindow.getDB().getSubs().size()+2;
         subNum.setText(new Integer(subNumber).toString());
         //Finished Loading
     }
@@ -208,10 +208,10 @@ public class AddSubscription extends javax.swing.JInternalFrame {
 
         length.setBackground(new java.awt.Color(0, 0, 0));
         length.setForeground(new java.awt.Color(255, 255, 255));
-        length.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 MONTH", "3 MONTHS - QUARTER", "6 MONTHS - HALF", "12 MONTHS - YEAR" }));
-        length.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                lengthFocusLost(evt);
+        length.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Period", "1 MONTH", "3 MONTHS - QUARTER", "6 MONTHS - HALF", "12 MONTHS - YEAR" }));
+        length.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                lengthItemStateChanged(evt);
             }
         });
         getContentPane().add(length);
@@ -310,13 +310,14 @@ public class AddSubscription extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_recpFocusLost
 
-    private void lengthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lengthFocusLost
-        if (length.getSelectedIndex() == 0) period = E_Periods.valueOf("MONTH");
-        else if (length.getSelectedIndex() == 0) period = E_Periods.valueOf("QUATER");
-        else if (length.getSelectedIndex() == 0) period = E_Periods.valueOf("HALF");
-        else if (length.getSelectedIndex() == 0) period = E_Periods.valueOf("YEAR");
+    private void lengthItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_lengthItemStateChanged
+        if (length.getSelectedIndex() == 1) period = E_Periods.valueOf("MONTH");
+        else if (length.getSelectedIndex() == 2) period = E_Periods.valueOf("QUATER");
+        else if (length.getSelectedIndex() == 3) period = E_Periods.valueOf("HALF");
+        else if (length.getSelectedIndex() == 4) period = E_Periods.valueOf("YEAR");
+        System.out.println(period);
         iWindow.update();
-    }//GEN-LAST:event_lengthFocusLost
+    }//GEN-LAST:event_lengthItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

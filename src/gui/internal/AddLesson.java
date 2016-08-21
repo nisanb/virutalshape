@@ -14,6 +14,7 @@ import java.awt.Color;
 import utils.E_Cities;
 import java.lang.*;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -341,8 +342,9 @@ public class AddLesson extends javax.swing.JInternalFrame {
             
             dateTime = new Date(y, m, d, h,min,s);
             if (new Date().before(dateTime)){
+                String strDate = new SimpleDateFormat("dd/MM/yyyy HH:MM:SS").format(dateTime);
                 DateError.setForeground(Color.GREEN);
-                DateError.setText("Date: " + dateTime);
+                DateError.setText("Date: " + strDate);
                 iWindow.update();
             }
             else{
@@ -383,7 +385,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
                 level, coachNum, maxStudent, branch.getBranchNumber(), room.getRoomNum())){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Successfully added lesson " + lessonNum  +" to branch" + branch.getBranchNumber());
-            iWindow.log(new Date().toString() + "Successfully added lesson " + lessonNum  +" to branch" + branch.getBranchNumber());
+            iWindow.log(new Date().toString() + " - Successfully added lesson " + lessonNum  +" to branch" + branch.getBranchNumber());
         }
         else{
             MessageBox.setForeground(Color.RED);

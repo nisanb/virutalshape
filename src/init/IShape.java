@@ -72,6 +72,8 @@ public class IShape implements Serializable {
      */
     private HashMap<Integer, Workout> workouts;
     
+    private HashMap<Integer, Subscription> subs;
+    
     private static IShape Data;
     // -------------------------------Constructors------------------------------
     /**
@@ -83,6 +85,7 @@ public class IShape implements Serializable {
         customers = new HashMap<String, Customer>();
         lessons = new HashMap<Integer, Lesson>();
         workouts = new HashMap<Integer, Workout>();
+        subs = new HashMap<Integer,Subscription>();
     }
     
     // -----------------------------------------Getters------------------------------------
@@ -120,6 +123,10 @@ public class IShape implements Serializable {
      */
     public Map<Integer, Workout> getWorkouts() {
         return Collections.unmodifiableMap(workouts);
+    }
+    
+    public Map<Integer,Subscription> getSubs(){
+        return Collections.unmodifiableMap(subs);
     }
     
     // --------------------------Add && Remove Methods-------------------------
@@ -228,8 +235,10 @@ public class IShape implements Serializable {
                             customers.get(custId), (Receptionist) emp, period,
                             startDate);
                     if (customers.get(custId).addSubscription(subToAdd))
-                        if (((Receptionist) emp).addSubscription(subToAdd))
+                        if (((Receptionist) emp).addSubscription(subToAdd)){
+                            this.subs.put(new Integer(subNumber), subToAdd);
                             return true;
+                        }
                         else
                             customers.get(custId).removeSubscription(subToAdd);
                 }
@@ -490,8 +499,10 @@ public class IShape implements Serializable {
                             sub = s;
                             Customer cust = customers.get(customer.getId());
                             // Remove the subscription from the customer
-                            if (cust.removeSubscription(sub))
+                            if (cust.removeSubscription(sub)){
+                                this.subs.remove(new Integer(subNumber));
                                 return true;
+                            }
                         }
         }
         return false;

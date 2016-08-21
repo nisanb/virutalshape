@@ -352,16 +352,17 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="1 MONTH"/>
-            <StringItem index="1" value="3 MONTHS - QUARTER"/>
-            <StringItem index="2" value="6 MONTHS - HALF"/>
-            <StringItem index="3" value="12 MONTHS - YEAR"/>
+          <StringArray count="5">
+            <StringItem index="0" value="Period"/>
+            <StringItem index="1" value="1 MONTH"/>
+            <StringItem index="2" value="3 MONTHS - QUARTER"/>
+            <StringItem index="3" value="6 MONTHS - HALF"/>
+            <StringItem index="4" value="12 MONTHS - YEAR"/>
           </StringArray>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="lengthFocusLost"/>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="lengthItemStateChanged"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

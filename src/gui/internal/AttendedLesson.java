@@ -9,6 +9,7 @@ import core.Branch;
 import core.Customer;
 import core.Lesson;
 import core.Room;
+import core.Subscription;
 import java.awt.Color;
 import utils.E_Cities;
 import java.lang.*;
@@ -24,12 +25,12 @@ import utils.E_Lessons;
  *
  * @author nisans
  */
-public class CustomerToLesson extends javax.swing.JInternalFrame {
+public class AttendedLesson extends javax.swing.JInternalFrame {
     private Customer customer;
     /**
      * Creates new form NewJInternalFrame
      */
-    public CustomerToLesson(Customer cust) {
+    public AttendedLesson(Customer cust) {
         initComponents();
         this.customer = cust;
         setTitle("Customer #"+customer.getId()+" -> Add Lesson");
@@ -71,6 +72,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         freeSpace = new javax.swing.JLabel();
         lblCustomerID = new javax.swing.JLabel();
+        dateError = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -99,7 +101,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         Connect.setBackground(new java.awt.Color(102, 102, 102));
         Connect.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Connect.setForeground(new java.awt.Color(255, 255, 255));
-        Connect.setText("Connect");
+        Connect.setText("Attended");
         Connect.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ConnectMouseClicked(evt);
@@ -271,17 +273,22 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         getContentPane().add(lblCustomerID);
         lblCustomerID.setBounds(140, 10, 200, 20);
 
+        dateError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        dateError.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(dateError);
+        dateError.setBounds(360, 100, 320, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
     private void ConnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConnectMouseClicked
-       custNum = customer.getId();
+        custNum = customer.getId();
         if (!custNum.equals("-1") && lessonNum > 0 && iWindow.getDB().getLessons().get(lessonNum).getRegistered().containsKey(custNum)){
             MessageBox.setForeground(Color.RED);
             MessageBox.setText("Customer is already registered to this lesson");
             iWindow.update();
             return;
-          
+            
         }
         if(!iWindow.getDB().getCustomers().get(custNum).hasValidSub(start)){
             MessageBox.setForeground(Color.RED);
@@ -304,7 +311,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         iWindow.update();
         
     }//GEN-LAST:event_ConnectMouseClicked
-        
+    
     private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_formFocusLost
@@ -347,6 +354,20 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_yearFocusLost
     
     private void SearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SearchMouseClicked
+        if (day.getSelectedIndex() != 0 && month.getSelectedIndex() != 0 && year.getSelectedIndex() != 0) {
+            int d = day.getSelectedIndex();
+            int m = month.getSelectedIndex()-1;
+            int y =  year.getSelectedIndex()+115;
+            
+            start = new Date(y, m, d);
+        }
+        else{
+            dateError.setText("Invalid date");
+            iWindow.update();
+            return;
+        }
+        
+        dateError.setText(" ");
         if (branchNum ==0 || start == null || les == null){
             MessageBox.setText("Please choose all categories");
             iWindow.update();
@@ -354,16 +375,18 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         }
         
         lessonChooser.removeAllItems();
-        Branch branch = iWindow.getDB().getBranches().get(branchNum);
-        for (Room r:branch.getRooms()){
-            for (Lesson l:r.getLessons()){
-                if (l.getStartDate().after(start) && l.getName().equals(les)){
+        Customer cust = iWindow.getDB().getCustomers().get(custNum);
+        Branch branch = iWindow.getDB().getBranches().get(branchNum);{
+        for (Subscription sub:cust.getSubs()){
+            for (Lesson l:sub.getLessons()){
+                if (l.getStartDate().before(start) && l.getName().equals(les) && l.getRegistered().get(custNum) == false){
                     lessonChooser.addItem(l.toString2());
                 }
             }
         }
+    }
     }//GEN-LAST:event_SearchMouseClicked
-        
+    
     private void lesNumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lesNumFocusLost
         String str = lesNum.getText();
         if (!PositiveValidator.isPositiveStringNum(str) || !CharValidator.isNumber(str) || str.length() < 1) {
@@ -399,7 +422,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         }
         iWindow.update();
     }//GEN-LAST:event_dayFocusLost
-
+    
     private void lessonChooserItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_lessonChooserItemStateChanged
         String str = lessonChooser.getSelectedItem().toString();
         if (str == null) return;
@@ -426,6 +449,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
     private javax.swing.JLabel MessageBox;
     private javax.swing.JButton Search;
     private javax.swing.JLabel custError;
+    private javax.swing.JLabel dateError;
     private javax.swing.JComboBox<String> day;
     private javax.swing.JLabel details;
     private javax.swing.JLabel freeSpace;
