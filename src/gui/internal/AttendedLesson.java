@@ -38,7 +38,7 @@ public class AttendedLesson extends javax.swing.JInternalFrame {
         lblCustomerID.setText(customer.getId());
         
         
-        //Finished Loading
+        //Finished Loadingh 
     }
     
     /**

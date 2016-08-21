@@ -453,6 +453,9 @@ public class AddRcp extends javax.swing.JInternalFrame {
             employeeNumber = -1;
         }
 
+        //auto ID // employeeNumber = iWindow.getDB().getEmployees().size()+1;
+        //don't forget to show it on label
+
         iWindow.update();
     }//GEN-LAST:event_IDfieldFocusLost
 
