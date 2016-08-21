@@ -123,7 +123,7 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(selectBranch);
-        selectBranch.setBounds(140, 70, 170, 20);
+        selectBranch.setBounds(150, 70, 170, 20);
         for(Branch b : iWindow.getDB().getBranches().values()){
             selectBranch.addItem(b.getBranchNumber() + " " + b.getBranchName());
         }
@@ -142,7 +142,7 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
         lblBranchID.setForeground(new java.awt.Color(255, 255, 255));
         lblBranchID.setText("jLabel2");
         getContentPane().add(lblBranchID);
-        lblBranchID.setBounds(150, 40, 130, 14);
+        lblBranchID.setBounds(150, 40, 130, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -152,6 +152,7 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Successfully connected employee to new branch");
             iWindow.log(new Date().toString() + " - " + EmployeeID + " was successfully connected employee to new branch");
+            lblBranchID.setText(new Integer(branchNum).toString());
         }       
         else{
             MessageBox.setForeground(Color.RED);

@@ -500,7 +500,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
                 return;
             }
             // do something with object
-            String str = item.toString().substring(8, 16);
+            String str = item.toString().substring(8, 10);
             Branch branch = new Branch(Integer.parseInt(str));
 
             updateData(branch);
@@ -518,7 +518,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
 
     private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
         // TODO add your handling code here:
-        String str = chooseBranch.getSelectedItem().toString().substring(8, 16);
+        String str = chooseBranch.getSelectedItem().toString().substring(8, 10);
         Branch branch = iWindow.getDB().getBranches().get(Integer.parseInt(str));
         AddBranchForm add = new AddBranchForm(branch);
 

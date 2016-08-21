@@ -1,15 +1,15 @@
 // add new Branch to IShape addBranch(branchNumber, branchName, country, city, street, housNumber, phoneNumber)
-addBranch  11111111  QuickIShape     Israel  Afula	     Vizman	  3   054-5773662,052-8111888  
-addBranch  22222222  ExcitingIShape  Israel  Beit_Shemesh Alonim   16  052-8222777,054-5554909 
-addBranch  33333333  ExcellentIShape Israel  Hadera       Hashmal  5   052-8112111,054-5675656 
-addBranch  44444444  EnjoyIShape     Israel  Kfar_Saba	 Nirim    20  052-8243444,054-5666776
-addBranch  55555555  PleasantIShape  Israel  Sderot	     Haruvim  67  052-8771771,054-5998998 
-addBranch  66666666  FunIShape       England London	     Lincoln  29  052-8999333,054-5121323 
-addBranch  77777777  JoyIShape       USA     California	 Edinburg 23  052-8888888,054-5110011 
-addBranch  88888888  GoodIShape      USA     Miami	     Ocean    11  052-8777777,054-5777477 
-addBranch  99999999  CrazyIShape     Spain   Madrid	     Syonar   13  052-8666666,054-5666666 
-addBranch  99999999  CrazyIShape     Spain   Madrid	     Syonar   13  052-8666666,054-5666666  
-addBranch  10101010  FastIShape      Israel  Yavne	     Dovrim   14  052-8101010,054-5222222 
+addBranch  11  QuickIShape     Israel  Afula	     Vizman	  3   054-5773662,052-8111888  
+addBranch  12  ExcitingIShape  Israel  Beit_Shemesh Alonim   16  052-8222777,054-5554909 
+addBranch  13  ExcellentIShape Israel  Hadera       Hashmal  5   052-8112111,054-5675656 
+addBranch  14  EnjoyIShape     Israel  Kfar_Saba	 Nirim    20  052-8243444,054-5666776
+addBranch  15  PleasantIShape  Israel  Sderot	     Haruvim  67  052-8771771,054-5998998 
+addBranch  16  FunIShape       England London	     Lincoln  29  052-8999333,054-5121323 
+addBranch  17  JoyIShape       USA     California	 Edinburg 23  052-8888888,054-5110011 
+addBranch  18  GoodIShape      USA     Miami	     Ocean    11  052-8777777,054-5777477 
+addBranch  19  CrazyIShape     Spain   Madrid	     Syonar   13  052-8666666,054-5666666 
+addBranch  19  CrazyIShape     Spain   Madrid	     Syonar   13  052-8666666,054-5666666  
+addBranch  20  FastIShape      Israel  Yavne	     Dovrim   14  052-8101010,054-5222222 
 // ===============================================================================================================
 // add new Coach to IShape (employeeNumber, firstName, lastName, birthDate, startWorkingDate, password, level, types, address)____ Address(country, city, street, housNumber, phoneNumber)
 addCoach 000001 Eyal   Haim    16/12/1984 01/01/2000 eyal1234   3  YOGA,KICKBOXING,PILATES,AEROBICS  Israel  Afula        Vizman   7  053-667667
@@ -78,25 +78,25 @@ addSubToCustomer   000017   00099922 000014  YEAR     22/08/2016
 addSubToCustomer   000019   00099914 000015  QUARTER  22/08/2016
 // ===============================================================================================================
 // connectCoachToBranch(coachNumber, branchNumber)
-connectCoachToBranch 000001 11111111
-connectCoachToBranch 000002 22222222
-connectCoachToBranch 000003 33333333
-connectCoachToBranch 000004 44444444
-connectCoachToBranch 000005 55555555
-connectCoachToBranch 000006 66666666
-connectCoachToBranch 000007 77777777
-connectCoachToBranch 000016 77777777
-connectCoachToBranch 000008 88888888
-connectCoachToBranch 000009 99999999
-connectCoachToBranch 000010 10101010
+connectCoachToBranch 000001 11
+connectCoachToBranch 000002 12
+connectCoachToBranch 000003 13
+connectCoachToBranch 000004 14
+connectCoachToBranch 000005 15
+connectCoachToBranch 000006 16
+connectCoachToBranch 000007 17
+connectCoachToBranch 000016 17
+connectCoachToBranch 000008 18
+connectCoachToBranch 000009 19
+connectCoachToBranch 000010 20
 connectCoachToBranch 000010 10101011
 // ===============================================================================================================
 // connectReceptionistToBranch(receptionistNumber, branchNumber)
-connectReceptionistToBranch  000011  11111111
-connectReceptionistToBranch  000012  22222222
-connectReceptionistToBranch  000014  44444444
-connectReceptionistToBranch  000017  66666666
-connectReceptionistToBranch  000019  99999999
+connectReceptionistToBranch  000011  11
+connectReceptionistToBranch  000012  12
+connectReceptionistToBranch  000014  14
+connectReceptionistToBranch  000017  16
+connectReceptionistToBranch  000019  19
 // ===============================================================================================================
 // changeCustomerAddress(customerId, country, city, street, housNumber, phoneNumber)
 changeCustomerAddress 00099991 Israel Arad   Nahum 88 052-8090939,054-5121323
@@ -105,44 +105,44 @@ changeCustomerAddress 00099981 Israel Arad   Nahum 88 052-8090939
 changeCustomerAddress 00099998 Israel Haifa  Horev 3  052-8108880
 // ===============================================================================================================
 //addRoomToBranch  (roomNum, maxNumOfTrainers, maxNumOfInstruments, roomType, branchNum)
-addRoomToBranch  00001  20  35	GYM         11111111
-addRoomToBranch  00002  25  0 	AEROBIC     11111111
-addRoomToBranch  00003  35  0	MATTRESSES  11111111
-addRoomToBranch  00001  20  50	GYM         22222222
-addRoomToBranch  00002  30  0 	AEROBIC     22222222
-addRoomToBranch  00001  30  55 	GYM         66666666
-addRoomToBranch  00001  35  0	MATTRESSES  66666666
+addRoomToBranch  00001  20  35	GYM         11
+addRoomToBranch  00002  25  0 	AEROBIC     11
+addRoomToBranch  00003  35  0	MATTRESSES  11
+addRoomToBranch  00001  20  50	GYM         12
+addRoomToBranch  00002  30  0 	AEROBIC     12
+addRoomToBranch  00001  30  55 	GYM         16
+addRoomToBranch  00001  35  0	MATTRESSES  16
 addRoomToBranch  00001  35  0 	MATTRESSES  66656666
 // ===============================================================================================================
 // addInstrumentToRoom  (branchNum, roomNum, type, status, amount)
-addInstrumentToRoom  11111111  00001  CROSS   			true	2   
-addInstrumentToRoom  11111111  00001  CYCLE   			false	5
-addInstrumentToRoom  11111111  00001  ROWER   			true  	2
-addInstrumentToRoom  11111111  00001  STEPPER 			true  	5
-addInstrumentToRoom  22222222  00001  BENCH   			true  	2   
-addInstrumentToRoom  22222222  00001  WEIGHTLIFTING_BAR true  	5
-addInstrumentToRoom  22222222  00001  ROWER   			true  	6
-addInstrumentToRoom  22222222  00001  POWER_STATION		true  	4
-addInstrumentToRoom  22222222  00002  POWER_STATION		true  	4
-addInstrumentToRoom  22222222  00001  CROSS				true  	1
+addInstrumentToRoom  11  00001  CROSS   			true	2   
+addInstrumentToRoom  11  00001  CYCLE   			false	5
+addInstrumentToRoom  11  00001  ROWER   			true  	2
+addInstrumentToRoom  11  00001  STEPPER 			true  	5
+addInstrumentToRoom  12  00001  BENCH   			true  	2   
+addInstrumentToRoom  12  00001  WEIGHTLIFTING_BAR true  	5
+addInstrumentToRoom  12  00001  ROWER   			true  	6
+addInstrumentToRoom  12  00001  POWER_STATION		true  	4
+addInstrumentToRoom  12  00002  POWER_STATION		true  	4
+addInstrumentToRoom  12  00001  CROSS				true  	1
 
 // ===============================================================================================================
 // addLesson (lessonNum, lessonName, dateTime, level, coachNum, maxStudent, branchNum, roomNum
-addLesson 0000001  AEROBICS    05/08/2016;12:00  PROFESSIONAL  000001  35  11111111  00003
-addLesson 0000002  KICKBOXING  06/08/2016;14:00  INTERMEDIATE  000001  20  11111111  00002
-addLesson 0000017  AEROBICS    05/08/2016;15:00  PROFESSIONAL  000001  35  11111111  00003
-addLesson 0000003  PILATES     08/08/2016;12:00  BEGINNERS     000001  20  11111111  00002
-addLesson 0000004  YOGA        07/08/2016;12:00  ADVANCED      000001  35  11111111  00003
-addLesson 0000005  TRX         20/08/2016;12:00  INTERMEDIATE  000002  10  22222222  00002
-addLesson 0000006  AEROBICS    22/08/2016;14:00  BEGINNERS     000002  35  22222222  00002
-addLesson 0000007  TRX         22/08/2016;14:00  BEGINNERS     000002  10  22222222  00002
-addLesson 0000014  PILATES     23/08/2015;13:00  BEGINNERS     000001  35  22222222  00002
-addLesson 0000011  PILATES     23/08/2015;14:00  BEGINNERS     000001  35  11111111  00003
-addLesson 0000012  PILATES     27/08/2016;14:00  PROFESSIONAL  000002  15  22222222  00002
-addLesson 0000013  YOGA        26/08/2016;14:00  PROFESSIONAL  000001  22  11111111  00002
-addLesson 0000015  YOGA        26/06/2016;14:00  PROFESSIONAL  000001  22  11111111  00002
-addLesson 0000016  AEROBICS    27/08/2016;13:00  BEGINNERS     000002  35  22222222  00002
-addLesson 0000018  AEROBICS    27/08/2016;16:30  BEGINNERS     000002  35  22222222  00002
+addLesson 0000001  AEROBICS    05/08/2016;12:00  PROFESSIONAL  000001  35  11  00003
+addLesson 0000002  KICKBOXING  06/08/2016;14:00  INTERMEDIATE  000001  20  11  00002
+addLesson 0000017  AEROBICS    05/08/2016;15:00  PROFESSIONAL  000001  35  11  00003
+addLesson 0000003  PILATES     08/08/2016;12:00  BEGINNERS     000001  20  11  00002
+addLesson 0000004  YOGA        07/08/2016;12:00  ADVANCED      000001  35  11  00003
+addLesson 0000005  TRX         20/08/2016;12:00  INTERMEDIATE  000002  10  12  00002
+addLesson 0000006  AEROBICS    22/08/2016;14:00  BEGINNERS     000002  35  12  00002
+addLesson 0000007  TRX         22/08/2016;14:00  BEGINNERS     000002  10  12  00002
+addLesson 0000014  PILATES     23/08/2015;13:00  BEGINNERS     000001  35  12  00002
+addLesson 0000011  PILATES     23/08/2015;14:00  BEGINNERS     000001  35  11  00003
+addLesson 0000012  PILATES     27/08/2016;14:00  PROFESSIONAL  000002  15  12  00002
+addLesson 0000013  YOGA        26/08/2016;14:00  PROFESSIONAL  000001  22  11  00002
+addLesson 0000015  YOGA        26/06/2016;14:00  PROFESSIONAL  000001  22  11  00002
+addLesson 0000016  AEROBICS    27/08/2016;13:00  BEGINNERS     000002  35  12  00002
+addLesson 0000018  AEROBICS    27/08/2016;16:30  BEGINNERS     000002  35  12  00002
 // ===============================================================================================================
 // addCustomerToLesson  (custNumber, lessonNum)
 addCustomerToLesson  00099991  0000005
@@ -173,39 +173,39 @@ cancelSubscription 000009
 cancelSubscription 000020
 // ===============================================================================================================
 //addWorkout (workoutNum, customerNum, date, branchNum)
-addWorkout	000001	00099991	02/08/2016	11111111
-addWorkout	000002	00099991	02/08/2016	11111111
-addWorkout	000003	00099992	02/05/2016	11111111
-addWorkout	000004	00099991	01/10/2016	11111111
-addWorkout	000005	00099992	02/08/2016	11111111
-addWorkout	000006	00099994	08/08/2016	11111111
-addWorkout	000007	00099994	30/08/2016	22222222
-addWorkout	000008	00099992	15/08/2016	11111111
-addWorkout	000009	00099994	10/08/2016	11111111
-addWorkout	000010	00099994	13/08/2016	11111111
-addWorkout	000011	00099991	05/08/2016	11111111
-addWorkout	000012	00099994	17/08/2016	11111111
-addWorkout	000012	00099991	10/08/2016	11111111
-addWorkout	000013	00099994	08/08/2016	11111111
+addWorkout	000001	00099991	02/08/2016	11
+addWorkout	000002	00099991	02/08/2016	11
+addWorkout	000003	00099992	02/05/2016	11
+addWorkout	000004	00099991	01/10/2016	11
+addWorkout	000005	00099992	02/08/2016	11
+addWorkout	000006	00099994	08/08/2016	11
+addWorkout	000007	00099994	30/08/2016	12
+addWorkout	000008	00099992	15/08/2016	11
+addWorkout	000009	00099994	10/08/2016	11
+addWorkout	000010	00099994	13/08/2016	11
+addWorkout	000011	00099991	05/08/2016	11
+addWorkout	000012	00099994	17/08/2016	11
+addWorkout	000012	00099991	10/08/2016	11
+addWorkout	000013	00099994	08/08/2016	11
 // ===============================================================================================================
 //addInstrumentToWorkout (workoutNum, branchNum, roomNum, type, startTime, minutes)
-addInstrumentToWorkout	000001	11111111  00001  CROSS				02/08/2016;12:00	15
-addInstrumentToWorkout	000015	11111111  00001  CROSS				02/08/2016;12:00	15
-addInstrumentToWorkout	000001	11111111  00002  CROSS				02/08/2016;12:00	15
-addInstrumentToWorkout	000001	11111111  00001  CROSS				04/08/2016;12:10	15
-addInstrumentToWorkout	000007	22222222  00001  CROSS				30/08/2016;12:10	15
-addInstrumentToWorkout	000007	22222222  00001  CROSS				30/08/2016;12:16	15
-addInstrumentToWorkout	000002	11111111  00001  ROWER				02/08/2016;12:16	15
-addInstrumentToWorkout	000003	11111111  00001  ROWER				02/08/2016;12:16	15
-addInstrumentToWorkout	000006	11111111  00001  STEPPER			08/08/2016;12:16	15
-addInstrumentToWorkout	000006	11111111  00001  CROSS				08/08/2016;12:35	20
-addInstrumentToWorkout	000006	11111111  00001  ROWER				08/08/2016;13:01	15
-addInstrumentToWorkout	000006	11111111  00001  STEPPER			08/08/2016;13:20	7
-addInstrumentToWorkout	000003	11111111  00001  ROWER				02/08/2016;13:01	15
-addInstrumentToWorkout	000003	11111111  00001  STEPPER			02/08/2016;13:20	7
-addInstrumentToWorkout	000003	22222222  00001  CROSS				30/08/2016;12:10	15
-addInstrumentToWorkout	000007	22222222  00001  CROSS				30/08/2016;14:08	60
-addInstrumentToWorkout	000007	22222222  00001  POWER_STATION		30/08/2016;13:00	60
+addInstrumentToWorkout	000001	11  00001  CROSS				02/08/2016;12:00	15
+addInstrumentToWorkout	000015	11  00001  CROSS				02/08/2016;12:00	15
+addInstrumentToWorkout	000001	11  00002  CROSS				02/08/2016;12:00	15
+addInstrumentToWorkout	000001	11  00001  CROSS				04/08/2016;12:10	15
+addInstrumentToWorkout	000007	12  00001  CROSS				30/08/2016;12:10	15
+addInstrumentToWorkout	000007	12  00001  CROSS				30/08/2016;12:16	15
+addInstrumentToWorkout	000002	11  00001  ROWER				02/08/2016;12:16	15
+addInstrumentToWorkout	000003	11  00001  ROWER				02/08/2016;12:16	15
+addInstrumentToWorkout	000006	11  00001  STEPPER			08/08/2016;12:16	15
+addInstrumentToWorkout	000006	11  00001  CROSS				08/08/2016;12:35	20
+addInstrumentToWorkout	000006	11  00001  ROWER				08/08/2016;13:01	15
+addInstrumentToWorkout	000006	11  00001  STEPPER			08/08/2016;13:20	7
+addInstrumentToWorkout	000003	11  00001  ROWER				02/08/2016;13:01	15
+addInstrumentToWorkout	000003	11  00001  STEPPER			02/08/2016;13:20	7
+addInstrumentToWorkout	000003	12  00001  CROSS				30/08/2016;12:10	15
+addInstrumentToWorkout	000007	12  00001  CROSS				30/08/2016;14:08	60
+addInstrumentToWorkout	000007	12  00001  POWER_STATION		30/08/2016;13:00	60
 // ===============================================================================================================
 //cancelWorkout (workoutNum)
 cancelWorkout	000012
@@ -223,7 +223,7 @@ attenedLesson   00099991  0000015
 getAllAttendedLessonsOfMostActiveCustomer
 // ===============================================================================================================
 // getAllCustomersFromBranchXbutNotFromBranchY(int branchXnumber,int branchYnumber)
-getAllCustomersFromBranchXbutNotFromBranchY 11111111 22222222
+getAllCustomersFromBranchXbutNotFromBranchY 11 2
 // ===============================================================================================================
 // getTheMostPopularLessonType()
 getTheMostPopularLessonType
