@@ -13,6 +13,7 @@ import gui.internal.AddBranchForm;
 import gui.internal.AddInstrument;
 import gui.internal.AddLesson;
 import gui.internal.AddRoom;
+import gui.internal.ViewRoom;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -117,6 +118,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         txtAddress1 = new javax.swing.JLabel();
         lblAddInstrument = new javax.swing.JLabel();
         AddLesson = new javax.swing.JLabel();
+        lblViewRoom = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,70));
         setBorder(null);
@@ -468,6 +470,17 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         roomPanel.add(AddLesson);
         AddLesson.setBounds(20, 250, 70, 30);
 
+        lblViewRoom.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblViewRoom.setForeground(new java.awt.Color(51, 102, 255));
+        lblViewRoom.setText("[View Room]");
+        lblViewRoom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblViewRoomMouseClicked(evt);
+            }
+        });
+        roomPanel.add(lblViewRoom);
+        lblViewRoom.setBounds(120, 260, 70, 13);
+
         getContentPane().add(roomPanel);
         roomPanel.setBounds(410, 50, 420, 300);
 
@@ -593,6 +606,12 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         iWindow.openWin(add);
     }//GEN-LAST:event_AddLessonMouseClicked
 
+    private void lblViewRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblViewRoomMouseClicked
+        // TODO add your handling code here:
+        ViewRoom add = new ViewRoom(room);
+        iWindow.openWin(add);
+    }//GEN-LAST:event_lblViewRoomMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddBranch;
@@ -631,6 +650,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblTotalLessons;
     private javax.swing.JLabel lblTotalRooms;
     private javax.swing.JLabel lblTotalWorkouts;
+    private javax.swing.JLabel lblViewRoom;
     private javax.swing.JLabel lblVisitedCustomers;
     private javax.swing.JPanel roomPanel;
     private javax.swing.JPanel statisticsPanel;
