@@ -52,11 +52,13 @@ public class MainGui extends javax.swing.JFrame  {
                 //Customer
               
             break;
-            
+                
             case 2:
-            case 3:
-                //Receptionist
                 pnlRcp.show();
+            break;
+            case 3:
+
+                pnlCoach.show();
             break;
             
             case 4:
@@ -77,6 +79,9 @@ public class MainGui extends javax.swing.JFrame  {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlCoach = new javax.swing.JPanel();
+        btnCustomers2 = new javax.swing.JLabel();
+        btnEmployees2 = new javax.swing.JLabel();
         pnlRcp = new javax.swing.JPanel();
         btnCustomers1 = new javax.swing.JLabel();
         btnEmployees1 = new javax.swing.JLabel();
@@ -104,6 +109,49 @@ public class MainGui extends javax.swing.JFrame  {
         setPreferredSize(new java.awt.Dimension(1024, 765));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        pnlCoach.setOpaque(false);
+
+        btnCustomers2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnCustomers2.setForeground(new java.awt.Color(255, 255, 255));
+        btnCustomers2.setText("Manage Customers");
+        btnCustomers2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCustomers2MouseClicked(evt);
+            }
+        });
+
+        btnEmployees2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnEmployees2.setForeground(new java.awt.Color(255, 255, 255));
+        btnEmployees2.setText("My Account");
+        btnEmployees2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEmployees2MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlCoachLayout = new javax.swing.GroupLayout(pnlCoach);
+        pnlCoach.setLayout(pnlCoachLayout);
+        pnlCoachLayout.setHorizontalGroup(
+            pnlCoachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCoachLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlCoachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCustomers2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEmployees2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlCoachLayout.setVerticalGroup(
+            pnlCoachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCoachLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnCustomers2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEmployees2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(281, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(pnlCoach, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 190, 410));
+
         pnlRcp.setOpaque(false);
 
         btnCustomers1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -117,7 +165,7 @@ public class MainGui extends javax.swing.JFrame  {
 
         btnEmployees1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         btnEmployees1.setForeground(new java.awt.Color(255, 255, 255));
-        btnEmployees1.setText("Manage Employees");
+        btnEmployees1.setText("My Account");
         btnEmployees1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEmployees1MouseClicked(evt);
@@ -406,6 +454,18 @@ public class MainGui extends javax.swing.JFrame  {
         iWindow.openWin(add);
     }//GEN-LAST:event_btnInst2WorkMouseClicked
 
+    private void btnCustomers2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomers2MouseClicked
+        // TODO add your handling code here:
+        ManageCustomers add = new ManageCustomers();
+        iWindow.openWin(add);
+    }//GEN-LAST:event_btnCustomers2MouseClicked
+
+    private void btnEmployees2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmployees2MouseClicked
+        // TODO add your handling code here:
+        ManageEmployees add = new ManageEmployees();
+        iWindow.openWin(add);
+    }//GEN-LAST:event_btnEmployees2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -452,9 +512,11 @@ public class MainGui extends javax.swing.JFrame  {
     private javax.swing.JLabel btnBranches;
     private javax.swing.JLabel btnCustomers;
     private javax.swing.JLabel btnCustomers1;
+    private javax.swing.JLabel btnCustomers2;
     private javax.swing.JLabel btnDisconnect;
     private javax.swing.JLabel btnEmployees;
     private javax.swing.JLabel btnEmployees1;
+    private javax.swing.JLabel btnEmployees2;
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnFB;
     private javax.swing.JLabel btnInst2Work;
@@ -464,6 +526,7 @@ public class MainGui extends javax.swing.JFrame  {
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel pnlAdmin;
+    private javax.swing.JPanel pnlCoach;
     private javax.swing.JPanel pnlRcp;
     // End of variables declaration//GEN-END:variables
 }
