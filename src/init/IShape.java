@@ -199,10 +199,10 @@ public class IShape implements Serializable {
      */
     public boolean addEmployee(Employee emp) {
         // Check validity first
+        EMPLOYEES++;
         if (emp != null && emp.getEmployeeNumber() > 0
                 && !employees.containsKey(emp.getEmployeeNumber())) {
             employees.put(emp.getEmployeeNumber(), emp);
-            EMPLOYEES++;
             return true;
         }
         return false;
@@ -256,6 +256,7 @@ public class IShape implements Serializable {
      */
     public boolean addSubToCustomer(int subNumber, String custId,
             int receptNumber, E_Periods period, Date startDate) {
+        SUBSCRIPTIONS++;
         if (subNumber > 0 && custId != null && receptNumber > 0
                 && period != null && startDate != null)
             if (customers.containsKey(custId)
@@ -268,7 +269,6 @@ public class IShape implements Serializable {
                     if (customers.get(custId).addSubscription(subToAdd))
                         if (((Receptionist) emp).addSubscription(subToAdd)){
                             this.subs.put(new Integer(subNumber), subToAdd);
-                            SUBSCRIPTIONS++;
                             return true;
                         }
                         else
@@ -394,6 +394,7 @@ public class IShape implements Serializable {
     public boolean addLesson(int lessonNum, E_Lessons lessonName,
             Date dateTime, E_Levels level, int coachNum, int maxStudent,
             int branchNum, int roomNum) {
+        LESSONS++;
         if (new Date().after(dateTime)) {
             System.out.println("Date error");
             return false;
@@ -421,7 +422,6 @@ public class IShape implements Serializable {
                                             .addLessons(leesonToAdd)) {
                                         lessons.put(leesonToAdd.getLessonNum(),
                                                 leesonToAdd);
-                                        LESSONS++;
                                         return true;
                                     } else
                                         coach.removeLesson(leesonToAdd);
@@ -467,6 +467,7 @@ public class IShape implements Serializable {
      */
     public boolean addWorkout(int workoutNum, String customerNum, Date date,
             int branchNum) {
+        WORKOUTS++;
         if (workoutNum > 0 && customerNum != null && date != null) {
             if (customers.containsKey(customerNum)) {
                 Customer cust = customers.get(customerNum);
