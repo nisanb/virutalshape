@@ -214,7 +214,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnAddCustomer);
-        btnAddCustomer.setBounds(410, 350, 140, 23);
+        btnAddCustomer.setBounds(420, 350, 140, 23);
 
         btnBranchCountry.setBackground(new java.awt.Color(0, 0, 0));
         btnBranchCountry.setColumns(20);
@@ -264,7 +264,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         phoneError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         phoneError.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(phoneError);
-        phoneError.setBounds(350, 310, 180, 20);
+        phoneError.setBounds(330, 310, 360, 20);
 
         streetError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         streetError.setForeground(new java.awt.Color(255, 0, 0));
@@ -404,14 +404,13 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
+    /**b
      * this method adds the customer to ishape
      * @param evt 
      */
     
     private void btnAddCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddCustomerMouseClicked
-    Address address = new Address(country, city, street,
-            housNumber, phoneNumber.toArray(new String[phoneNumber.size()]));
+    Address address = new Address(country, city, street, housNumber, phones);
     
     if (iWindow.getDB().addCustomer(id, firstName, lastName, birthDate, password, email, address)){
         MessageBox.setForeground(Color.GREEN);
@@ -513,17 +512,25 @@ public class AddCustomer extends javax.swing.JInternalFrame {
      * @param evt 
      */
     private void btnPhoneNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnPhoneNumberFocusLost
-        if (phoneNumber == null) {
-            phoneNumber = new ArrayList<String>();
+        
+        if (phones == null) {
+            String[] phones = new String[5];
         }
+        try{
         String str = btnPhoneNumber.getText();
-        if (PhoneValidator.validatePhone(str)) {
-            phoneError.setText(" ");
-            phoneNumber.add(str);
-            return;
-        } else {
-            phoneError.setText("Error (example: 972-xxxx)");
+        phones = str.split(", ");
+        } catch (java.lang.ArrayIndexOutOfBoundsException obe){
+            phoneError.setText("up to 5 phone numbers");
         }
+        
+        for (String s:phones){
+            if (!PhoneValidator.validatePhone(s)) {
+                phoneError.setText("wrong format. example: 972-xxxxxxx, 04-xxxxxxx");
+                iWindow.update();
+                return;
+            }
+        }
+        phoneError.setText(" ");
         iWindow.update();
     }//GEN-LAST:event_btnPhoneNumberFocusLost
 
@@ -669,15 +676,5 @@ public class AddCustomer extends javax.swing.JInternalFrame {
     private E_Cities city;
     private String street;
     private int housNumber;
-    private ArrayList<String> phoneNumber = new ArrayList<String>(); 
-    
-//    Address address = new Address(country, city, street,
-//            housNumber, phoneNumber);
-//    
-//    isUpdated = IShape.addCustomer(id, firstName, lastName,
-//            birthDate, password, email, address);
-    
-
-    
- 
+    private String[] phones;
 }

@@ -71,7 +71,7 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         changeAddr = new javax.swing.JButton();
         btnBranchCountry = new javax.swing.JTextField();
-        btnBranchStreet = new javax.swing.JTextField();
+        btnhStreet = new javax.swing.JTextField();
         btnHouseNumber = new javax.swing.JTextField();
         numError = new javax.swing.JLabel();
         phoneError = new javax.swing.JLabel();
@@ -180,7 +180,7 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(changeAddr);
-        changeAddr.setBounds(400, 210, 140, 23);
+        changeAddr.setBounds(530, 210, 140, 23);
 
         btnBranchCountry.setBackground(new java.awt.Color(0, 0, 0));
         btnBranchCountry.setColumns(20);
@@ -188,26 +188,21 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         btnBranchCountry.setForeground(new java.awt.Color(255, 255, 255));
         btnBranchCountry.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
         btnBranchCountry.setEnabled(false);
-        btnBranchCountry.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                btnBranchCountryFocusLost(evt);
-            }
-        });
         getContentPane().add(btnBranchCountry);
         btnBranchCountry.setBounds(140, 70, 170, 21);
 
-        btnBranchStreet.setBackground(new java.awt.Color(0, 0, 0));
-        btnBranchStreet.setColumns(20);
-        btnBranchStreet.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnBranchStreet.setForeground(new java.awt.Color(255, 255, 255));
-        btnBranchStreet.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        btnBranchStreet.addFocusListener(new java.awt.event.FocusAdapter() {
+        btnhStreet.setBackground(new java.awt.Color(0, 0, 0));
+        btnhStreet.setColumns(20);
+        btnhStreet.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnhStreet.setForeground(new java.awt.Color(255, 255, 255));
+        btnhStreet.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnhStreet.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                btnBranchStreetFocusLost(evt);
+                btnhStreetFocusLost(evt);
             }
         });
-        getContentPane().add(btnBranchStreet);
-        btnBranchStreet.setBounds(140, 100, 170, 21);
+        getContentPane().add(btnhStreet);
+        btnhStreet.setBounds(140, 100, 170, 21);
 
         btnHouseNumber.setBackground(new java.awt.Color(0, 0, 0));
         btnHouseNumber.setColumns(4);
@@ -225,7 +220,7 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         numError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         numError.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(numError);
-        numError.setBounds(350, 10, 170, 20);
+        numError.setBounds(330, 10, 310, 20);
 
         phoneError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         phoneError.setForeground(new java.awt.Color(255, 0, 0));
@@ -235,7 +230,7 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         streetError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         streetError.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(streetError);
-        streetError.setBounds(350, 160, 180, 20);
+        streetError.setBounds(330, 160, 330, 20);
 
         houseError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         houseError.setForeground(new java.awt.Color(255, 0, 0));
@@ -251,21 +246,21 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         MessageBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         MessageBox.setForeground(new java.awt.Color(0, 255, 0));
         getContentPane().add(MessageBox);
-        MessageBox.setBounds(30, 210, 330, 20);
+        MessageBox.setBounds(30, 210, 470, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * this method adds the customer to ishape
+     * this method adds updates customer address on ishape
      * @param evt 
      */
     
     private void changeAddrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeAddrMouseClicked
     Address address = new Address(country, city, street,
-            housNumber, phoneNumber.toArray(new String[phoneNumber.size()]));
+            housNumber, phones);
     
-    if (iWindow.getDB().changeCustomerAddress(id, country, city, street, housNumber, phoneNumber.toArray(new String[phoneNumber.size()]))){
+    if (iWindow.getDB().changeCustomerAddress(id, country, city, street, housNumber, phones)){
         MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Customer was added successfully");
             iWindow.log(new Date().toString() + " - " + id + " was added successfully");
@@ -283,7 +278,7 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_changeAddrMouseClicked
 
     /**
-     * this method validates user id validity
+     * this method validates user id validity before performing an update
      * @param evt 
      */
     private void IDfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDfieldFocusLost
@@ -296,26 +291,22 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         }
 
         if (!iWindow.getDB().getCustomers().containsKey(Integer.parseInt(IDfield.getText()))) {
+            numError.setText("Customer not found ");
+            id = "-1'";
+        } else {
             numError.setText(" ");
             id = str;
-        } else {
-            numError.setText("Custonrt ID exists");
-            id = "-1";
         }
         iWindow.update();
 
     }//GEN-LAST:event_IDfieldFocusLost
     
-    
-    private void btnBranchCountryFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchCountryFocusLost
-    }//GEN-LAST:event_btnBranchCountryFocusLost
-
     /**
      * this method validates the street name input
      * @param evt 
      */
-    private void btnBranchStreetFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchStreetFocusLost
-        String str = btnBranchStreet.getText();
+    private void btnhStreetFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnhStreetFocusLost
+        String str = btnhStreet.getText();
         if (CharValidator.isWord(str)) {
             streetError.setText(" ");
             street = str;
@@ -324,7 +315,7 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
             street = null;
         }
         iWindow.update();
-    }//GEN-LAST:event_btnBranchStreetFocusLost
+    }//GEN-LAST:event_btnhStreetFocusLost
 
     /**
      * this method validates the house number input
@@ -349,20 +340,28 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
      * @param evt 
      */
     private void btnPhoneNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnPhoneNumberFocusLost
-        if (phoneNumber == null) {
-            phoneNumber = new ArrayList<String>();
+      
+        if (phones == null) {
+            String[] phones = new String[5];
         }
+        try{
         String str = btnPhoneNumber.getText();
-        if (PhoneValidator.validatePhone(str)) {
-            phoneError.setText(" ");
-            phoneNumber.add(str);
-            return;
-        } else {
-            phoneError.setText("Error (example: 972-xxxx)");
+        phones = str.split(", ");
+        } catch (java.lang.ArrayIndexOutOfBoundsException obe){
+            phoneError.setText("up to 5 phone numbers");
         }
+        
+        for (String s:phones){
+            if (!PhoneValidator.validatePhone(s)) {
+                phoneError.setText("wrong format. example: 972-xxxxxxx, 04-xxxxxxx");
+                iWindow.update();
+                return;
+            }
+        }
+        phoneError.setText(" ");
         iWindow.update();
     }//GEN-LAST:event_btnPhoneNumberFocusLost
-
+    
     /**
      * this method checks user's city selection and sets the city and country
      * @param evt 
@@ -385,9 +384,9 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
     private javax.swing.JTextField IDfield;
     private javax.swing.JLabel MessageBox;
     private javax.swing.JTextField btnBranchCountry;
-    private javax.swing.JTextField btnBranchStreet;
     private javax.swing.JTextField btnHouseNumber;
     private javax.swing.JTextField btnPhoneNumber;
+    private javax.swing.JTextField btnhStreet;
     private javax.swing.JButton changeAddr;
     private javax.swing.JLabel houseError;
     private javax.swing.JLabel jLabel2;
@@ -409,6 +408,6 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
     private E_Cities city;
     private String street;
     private int housNumber;
-    private ArrayList<String> phoneNumber = new ArrayList<String>(); 
+    private String[] phones = new String[5];
     
 }

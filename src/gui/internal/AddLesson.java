@@ -314,7 +314,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
         lblBranchID.setForeground(new java.awt.Color(255, 255, 255));
         lblBranchID.setText("branchid");
         getContentPane().add(lblBranchID);
-        lblBranchID.setBounds(160, 14, 170, 14);
+        lblBranchID.setBounds(160, 14, 170, 20);
 
         lessonNumAuto.setBackground(new Color(0,0,0,90));
         lessonNumAuto.setForeground(new java.awt.Color(255, 255, 255));
@@ -423,7 +423,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
                 iWindow.getDB().getEmployees().get(Integer.parseInt(str)) instanceof Coach) {
             CoachError.setText(" ");
             coachNum = Integer.parseInt(str);
-            lessonNum = iWindow.getDB().getLessons().size()+20;
+            lessonNum = iWindow.getDB().getNextLes();
             lessonNumAuto.setText(new Integer(lessonNum).toString());
         } else {
             CoachError.setText("Coach number doesn't exist");

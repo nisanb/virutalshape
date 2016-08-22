@@ -235,7 +235,7 @@ public class AddWorkout extends javax.swing.JInternalFrame {
             start = new Date(y, m, d);
             
             if (customer.getId() != null && !customer.getId().equals("-1")){
-                workoutNum = iWindow.getDB().getWorkouts().size()+10;
+                workoutNum = iWindow.getDB().getNextWork();
                 WorkoutNum.setText(new Integer (workoutNum).toString());
             }
         }

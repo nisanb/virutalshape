@@ -72,7 +72,17 @@ public class IShape implements Serializable {
      */
     private HashMap<Integer, Workout> workouts;
     
+    
+    /**
+     * IShape subscriptions
+     */
     private HashMap<Integer, Subscription> subs;
+    
+    
+    /**
+     * This variables are required for auto numbering of new objects
+     */
+    public static int EMPLOYEES=0, SUBSCRIPTIONS=0, WORKOUTS=0, LESSONS=0;
     
     private static IShape Data;
     // -------------------------------Constructors------------------------------
@@ -129,6 +139,26 @@ public class IShape implements Serializable {
         return Collections.unmodifiableMap(subs);
     }
     
+    /**
+     * Next Auto Number getters
+     * @return the numbers of type required
+     */
+    public int getNextEmp(){
+        return EMPLOYEES;
+    }
+    
+    public int getNextWork(){
+        return WORKOUTS;
+    }
+    
+    public int getNextSub(){
+        return SUBSCRIPTIONS;
+    }
+    
+    public int getNextLes(){
+        return LESSONS;
+    }
+    
     // --------------------------Add && Remove Methods-------------------------
     /**
      * This method adds a new branch to our company IFF the branch doesn't
@@ -172,6 +202,7 @@ public class IShape implements Serializable {
         if (emp != null && emp.getEmployeeNumber() > 0
                 && !employees.containsKey(emp.getEmployeeNumber())) {
             employees.put(emp.getEmployeeNumber(), emp);
+            EMPLOYEES++;
             return true;
         }
         return false;
@@ -237,6 +268,7 @@ public class IShape implements Serializable {
                     if (customers.get(custId).addSubscription(subToAdd))
                         if (((Receptionist) emp).addSubscription(subToAdd)){
                             this.subs.put(new Integer(subNumber), subToAdd);
+                            SUBSCRIPTIONS++;
                             return true;
                         }
                         else
@@ -389,6 +421,7 @@ public class IShape implements Serializable {
                                             .addLessons(leesonToAdd)) {
                                         lessons.put(leesonToAdd.getLessonNum(),
                                                 leesonToAdd);
+                                        LESSONS++;
                                         return true;
                                     } else
                                         coach.removeLesson(leesonToAdd);
@@ -443,6 +476,7 @@ public class IShape implements Serializable {
                     if (workoutToAdd != null) {
                         if (!workouts.containsValue(workoutToAdd)) {
                             workouts.put(workoutNum, workoutToAdd);
+                            WORKOUTS++;
                             return true;
                         } else
                             cust.cancleWorkout(workoutToAdd);

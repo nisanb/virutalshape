@@ -206,7 +206,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnAddCoach);
-        btnAddCoach.setBounds(430, 480, 110, 23);
+        btnAddCoach.setBounds(520, 480, 110, 23);
 
         btnBranchCountry.setBackground(new java.awt.Color(0, 0, 0));
         btnBranchCountry.setColumns(20);
@@ -256,7 +256,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
         phoneError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         phoneError.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(phoneError);
-        phoneError.setBounds(350, 440, 180, 20);
+        phoneError.setBounds(330, 440, 300, 20);
 
         streetError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         streetError.setForeground(new java.awt.Color(255, 0, 0));
@@ -442,7 +442,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
         MessageBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         MessageBox.setForeground(new java.awt.Color(0, 255, 0));
         getContentPane().add(MessageBox);
-        MessageBox.setBounds(30, 470, 330, 40);
+        MessageBox.setBounds(30, 470, 480, 40);
 
         DateError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         DateError.setForeground(new java.awt.Color(255, 0, 0));
@@ -453,11 +453,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(140, 10, 90, 20);
-        int max = 0;
-        for (Employee e:iWindow.getDB().getEmployees().values()){
-            if (e.getEmployeeNumber() > max) max = e.getEmployeeNumber();
-        }
-        employeeNumber = max + 1;
+        employeeNumber = iWindow.getDB().getNextEmp();
         jLabel1.setText(new Integer(employeeNumber).toString());
 
         pack();
@@ -514,8 +510,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
 //                birthDate+ " " + startWorkingDate+ " " + password+ " " + level);
         
         try{
-        Address address = new Address(country, city, street,
-                housNumber, phoneNumber.toArray(new String[phoneNumber.size()]));
+        Address address = new Address(country, city, street, housNumber, phones);
         
 //            System.out.println(address);
         Coach coach = new Coach(employeeNumber, firstName, lastName,
@@ -601,18 +596,25 @@ public class AddCoach extends javax.swing.JInternalFrame {
      * @param evt 
      */
     private void btnPhoneNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnPhoneNumberFocusLost
-        if (phoneNumber == null) {
-            phoneNumber = new ArrayList<String>();
+        
+        if (phones == null) {
+            String[] phones = new String[5];
         }
+        try{
         String str = btnPhoneNumber.getText();
-        if (PhoneValidator.validatePhone(str)) {
-            phoneError.setVisible(false);
-            phoneNumber.add(str);
-        } else {
-            phoneError.setText("Error (example: 972-xxxx)");
-            phoneError.setVisible(true);
+        phones = str.split(", ");
+        } catch (java.lang.ArrayIndexOutOfBoundsException obe){
+            phoneError.setText("up to 5 phone numbers");
         }
         
+        for (String s:phones){
+            if (!PhoneValidator.validatePhone(s)) {
+                phoneError.setText("wrong format. example: 972-xxxxxxx, 04-xxxxxxx");
+                iWindow.update();
+                return;
+            }
+        }
+        phoneError.setText(" ");
         iWindow.update();
     }//GEN-LAST:event_btnPhoneNumberFocusLost
 
@@ -621,7 +623,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
      * @param evt 
      */
     private void slctCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_slctCityFocusLost
-        //        try{
+
         String str = (String) slctCity.getSelectedItem();
         city = E_Cities.valueOf(str);
         btnBranchCountry.setText(city.getCountry());
@@ -752,7 +754,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
     private E_Cities city;
     private String street;
     private int housNumber;
-    private ArrayList<String> phoneNumber;
+    private String[] phones;
 //    String[] phoneNumber;
 
 //    Address address = new Address(country, city, street,

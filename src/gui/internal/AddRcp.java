@@ -245,7 +245,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         phoneError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         phoneError.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(phoneError);
-        phoneError.setBounds(350, 310, 180, 20);
+        phoneError.setBounds(350, 310, 300, 20);
 
         streetError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         streetError.setForeground(new java.awt.Color(255, 0, 0));
@@ -392,11 +392,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(140, 10, 90, 20);
-        int max = 0;
-        for (Employee e:iWindow.getDB().getEmployees().values()){
-            if (e.getEmployeeNumber() > max) max = e.getEmployeeNumber();
-        }
-        employeeNumber = max + 1;
+        employeeNumber = iWindow.getDB().getNextEmp();
         jLabel1.setText(new Integer(employeeNumber).toString());
 
         pack();
@@ -407,7 +403,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
  */
     private void btnAddRspMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddRspMouseClicked
         Address address = new Address(country, city, street,
-            housNumber, phoneNumber.toArray(new String[phoneNumber.size()]));
+            housNumber, phones);
 
         Receptionist respt = new Receptionist(employeeNumber,
                 firstName, lastName, birthDate, startWorkingDate,
@@ -445,15 +441,6 @@ public class AddRcp extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_NameFieldFocusLost
 
     private void btnBranchCountryFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchCountryFocusLost
-//        String str = btnBranchCountry.getText();
-//        if (CharValidator.isWord(str)) {
-//            countryError.setText(" ");
-//            country = str;
-//        }
-//        else {
-//            countryError.setText("Enter valid name");
-//            country = null;
-//        }
     }//GEN-LAST:event_btnBranchCountryFocusLost
 
     /**
@@ -494,17 +481,25 @@ public class AddRcp extends javax.swing.JInternalFrame {
      * @param evt 
      */
     private void btnPhoneNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnPhoneNumberFocusLost
-        if (phoneNumber == null) {
-            phoneNumber = new ArrayList<String>();
+        
+        if (phones == null) {
+            String[] phones = new String[5];
         }
+        try{
         String str = btnPhoneNumber.getText();
-        if (PhoneValidator.validatePhone(str)) {
-            phoneError.setText(" ");
-            phoneNumber.add(str);
-            return;
-        } else {
-            phoneError.setText("Error (example: 972-xxxx)");
+        phones = str.split(", ");
+        } catch (java.lang.ArrayIndexOutOfBoundsException obe){
+            phoneError.setText("up to 5 phone numbers");
         }
+        
+        for (String s:phones){
+            if (!PhoneValidator.validatePhone(s)) {
+                phoneError.setText("wrong format. example: 972-xxxxxxx, 04-xxxxxxx");
+                iWindow.update();
+                return;
+            }
+        }
+        phoneError.setText(" ");
         iWindow.update();
     }//GEN-LAST:event_btnPhoneNumberFocusLost
 
@@ -634,7 +629,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
     private E_Cities city;
     private String street;
     int housNumber;
-    private ArrayList<String> phoneNumber;
+    private String[] phones;
     
 
 }
