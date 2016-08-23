@@ -23,8 +23,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 import utils.MyFileLogWriter;
+
+
 /**
- *
+ * Main GUI Template
  * @author nisan
  */
 public class MainGui extends javax.swing.JFrame implements Serializable  {
@@ -36,7 +38,6 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
      */
     public MainGui() {
         setUndecorated(true);
-        
         initComponents();
         
         
@@ -47,11 +48,14 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
         lblAuthLogged.setForeground(iWindow.getAuthColor());
         lblName.setText(iWindow.getAuthName());
       
+        //Hide panels
         pnlAdmin.setVisible(false);
         pnlCoach.setVisible(false);
         pnlRcp.setVisible(false);
         pnlCust.setVisible(false);
-         setLocationRelativeTo(null);
+        
+        //Center the window
+        setLocationRelativeTo(null);
        
         //Get User Panel
         switch(iWindow.getAuthValue()){
@@ -441,15 +445,22 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
 
     private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
         dispose();
+        iWindow.playAudio(3);
         System.exit(0);
     }//GEN-LAST:event_btnExitMouseClicked
 
+    /**
+     * Dispose window and re-initiate login window
+     * Clears variables on iWindow
+     * @param evt 
+     */
     private void btnDisconnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDisconnectMouseClicked
         // TODO add your handling code here:
         dispose();
         iWindow.clean();
         LoginGui tmp = new LoginGui();
         tmp.setVisible(true);
+        iWindow.playAudio(3);
         
     }//GEN-LAST:event_btnDisconnectMouseClicked
 
@@ -466,6 +477,10 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
         iWindow.openWin(add);
     }//GEN-LAST:event_btnStatisticsMouseClicked
 
+    /**
+     * GOTO Manage Branches once clicked the button
+     * @param evt 
+     */
     private void btnBranchesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBranchesMouseClicked
         //AddBranchForm add = new AddBranchForm();
         //AddCoach add = new AddCoach();
@@ -473,6 +488,10 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
         iWindow.openWin(add);
     }//GEN-LAST:event_btnBranchesMouseClicked
 
+    /**
+     * GOTO Manage Customers once clicked the button
+     * @param evt 
+     */
     private void btnCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomersMouseClicked
         // TODO add your handling code here:
         ManageCustomers add = new ManageCustomers();
@@ -491,6 +510,10 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
         iWindow.update();
     }//GEN-LAST:event_btnEmployeesMouseClicked
 
+    /**
+     * FaceBook Click Button -> Open IE/Chrome Window with FB Page
+     * @param evt 
+     */
     private void btnFBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFBMouseClicked
         // TODO add your handling code here:
         Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;

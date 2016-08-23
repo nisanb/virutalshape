@@ -1,9 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * LoginGui
+ * Display login window to Virtual iShape
  */
 package gui;
+  import java.io.*;
+import sun.audio.*;
 
 import core.Customer;
 import core.Employee;
@@ -16,29 +17,36 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
-/**
- *
- * @author nisan
- */
+
 public class LoginGui extends javax.swing.JFrame {
 
+    //Static Username String
     private static String username;
+    
+    //Static Password String
     private static String password;
+    
+    
     /**
      * Creates new form LoginView
      */
     public LoginGui() {
 
+        //Cancel top bar
         setUndecorated(true);
         
+        //Initiate login
         initComponents();
         
         //Hide Error Labels
-       lblErrorLogin.hide();
-       errimg.hide();
+        lblErrorLogin.hide();
+        errimg.hide();
        
+        //Center window
         setLocationRelativeTo(null);
        
         
@@ -145,6 +153,7 @@ public class LoginGui extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void fldUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fldUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fldUsernameActionPerformed
@@ -154,12 +163,18 @@ public class LoginGui extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    /**
+     * Edit username field once user produces a key press
+     * @param evt 
+     */
     private void fldUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fldUsernameKeyPressed
         // TODO add your handling code here:
         if(fldUsername.getText().equals("User ID")){
             //Wipe
             fldUsername.setText("");
         }
+        
+        //Attempt a log in once user clicked ENTER
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             //Start login process
             doLogin();
@@ -167,25 +182,34 @@ public class LoginGui extends javax.swing.JFrame {
         
     }//GEN-LAST:event_fldUsernameKeyPressed
 
+    /**
+     * Edit password field once user produces a key press
+     * @param evt 
+     */
     private void fldPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fldPasswordKeyPressed
         // TODO add your handling code here:
         if(fldPassword.getText().equals("Password")){
             //Wipe
-            fldPassword.setText("0");
+            fldPassword.setText("");
         }
         
+        
+        //Attempt a log in once user clicked ENTER
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             //Start login process
             doLogin();
         }
     }//GEN-LAST:event_fldPasswordKeyPressed
 
+
     private void fldPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fldPasswordFocusGained
-        // TODO add your handling code here:
-        fldPassword.setText("");
-        
+
     }//GEN-LAST:event_fldPasswordFocusGained
 
+    /**
+     * Initiate log in once button is pressed
+     * @param evt 
+     */
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
         doLogin();
@@ -227,6 +251,10 @@ public class LoginGui extends javax.swing.JFrame {
         });
     }
     
+    
+    /**
+     * Do LOGIN Function
+     */
    public void doLogin(){
         //Attempt to log in
         System.err.println("Username: "+fldUsername.getText()+"\nPassword: "+fldPassword.getText());
@@ -234,13 +262,19 @@ public class LoginGui extends javax.swing.JFrame {
         System.err.println(iWindow.getDB().getCustomers().keySet().toString());
         System.err.println(iWindow.getDB().getEmployees().keySet().toString());
         int empnum=0;
-        
+        /**
+         * Attempt to play sound
+         * 
+         */
+      
+         // open the sound file as a Java input stream
+          
         if(fldUsername.getText().toLowerCase().equals("admin") && fldPassword.getText().toLowerCase().equals("admin")){
             iWindow.setUser(4, new Employee(999, "Administrator","Privilige"));
             dispose();
             MainGui tmp = new MainGui();
             tmp.setVisible(true);
-         
+            iWindow.playAudio(1);
             return;
         }
         
@@ -261,6 +295,7 @@ public class LoginGui extends javax.swing.JFrame {
                 //Found customer, checking password
                 if(cust.getPassword().equals(fldPassword.getText())){
                     //Able to login!
+                    iWindow.playAudio(1);
                     iWindow.log("Successfully logged in. Loading GUI");
                     dispose();
                     iWindow.setUser(1, cust);
@@ -295,7 +330,7 @@ public class LoginGui extends javax.swing.JFrame {
             
         }
         
-        
+        iWindow.playAudio(2);
         lblErrorLogin.show();
         errimg.show();
     }

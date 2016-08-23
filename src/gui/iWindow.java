@@ -11,11 +11,16 @@ import init.IShape;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -24,6 +29,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import jdk.nashorn.internal.scripts.JO;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 import utils.MyFileLogWriter;
 
 /**
@@ -366,6 +373,41 @@ public class iWindow {
     public static void update(JInternalFrame frame){
         frame.setVisible(false);
         frame.setVisible(true);
+    }
+    public static void playAudio(int type){
+        String gongFile = "";
+        switch(type){
+            case 1: //logged in
+                  gongFile = "./src/gui/sounds/success.wav";
+            break;
+            case 2: //error
+                 gongFile = "./src/gui/sounds/error.wav";
+            break;
+            case 3:
+                 gongFile = "./src/gui/sounds/quit.wav";
+            break;
+            default:
+                return;
+        }
+         
+            InputStream in = null;
+        try {
+            in = new FileInputStream(gongFile);
+        } catch (FileNotFoundException ex) {
+            System.err.println("WTF");
+            Logger.getLogger(LoginGui.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+            // create an audiostream from the inputstream
+            AudioStream audioStream = null;
+        try {
+            audioStream = new AudioStream(in);
+        } catch (IOException ex) {
+            Logger.getLogger(LoginGui.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+            // play the audio clip with the audioplayer class
+            AudioPlayer.player.start(audioStream);
     }
     
 }
