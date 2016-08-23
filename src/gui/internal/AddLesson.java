@@ -423,7 +423,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
                 iWindow.getDB().getEmployees().get(Integer.parseInt(str)) instanceof Coach) {
             CoachError.setText(" ");
             coachNum = Integer.parseInt(str);
-            lessonNum = iWindow.getDB().getNextLes();
+            lessonNum = iWindow.getDB().getNextLes()+1;
             lessonNumAuto.setText(new Integer(lessonNum).toString());
         } else {
             CoachError.setText("Coach number doesn't exist");
@@ -493,7 +493,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
 
     /**
      * this method allows the user choose lesson type from a list
-     * @param evt 
+     * @param evt
      */
     private void LessonNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LessonNameFocusLost
 
@@ -501,7 +501,6 @@ public class AddLesson extends javax.swing.JInternalFrame {
             lessonName = E_Lessons.valueOf(LessonName.getSelectedItem().toString());
         }
         
-        lessonNum = iWindow.getDB().getLessons().size()+20;
         lessonNumAuto.setText(new Integer(lessonNum).toString());
         
         iWindow.update();

@@ -59,23 +59,23 @@ addCustomer 00099920  Meira   Levi   24/09/1983 meira234  hTTp:\\meira@Gmail.com
 addCustomer 00099921  Meira   Zahavi 24/09/1983 meira123  hTTp:\\meira1@Gmail.com  USA     Miami	      Fifth-evn   18 052-8455122
 // ===============================================================================================================
 // add new Subscription To an existing Customer(subNumber, custNumber, receptNumber, period, startDate)
-addSubToCustomer   000001   00099991 000011  HALF     01/08/2016
-addSubToCustomer   000002   00099992 000017  YEAR     22/08/2016
-addSubToCustomer   000003   00099993 000014  YEAR     20/08/2016
-addSubToCustomer   000004   00099994 000017  HALF     19/08/2016
-addSubToCustomer   000006   00099994 000015  QUARTER  22/08/2016
-addSubToCustomer   000007   00099911 000013  HALF     22/08/2016
-addSubToCustomer   000008   00099912 000014  YEAR     22/08/2016
-addSubToCustomer   000009   00099913 000011  MONTH    22/08/2016
-addSubToCustomer   000010   00099911 000013  HALF     22/04/2016
-addSubToCustomer   000011   00099912 000013  YEAR     22/04/2016
+addSubToCustomer   000001   00099991 000001  HALF     01/08/2016
+addSubToCustomer   000002   00099992 000002  YEAR     22/08/2016
+addSubToCustomer   000003   00099993 000003  YEAR     20/08/2016
+addSubToCustomer   000004   00099994 000004  HALF     19/08/2016
+addSubToCustomer   000006   00099994 000005  QUARTER  22/08/2016
+addSubToCustomer   000007   00099911 000006  HALF     22/08/2016
+addSubToCustomer   000008   00099912 000007  YEAR     22/08/2016
+addSubToCustomer   000009   00099913 000008  MONTH    22/08/2016
+addSubToCustomer   000010   00099911 000009  HALF     22/04/2016
+addSubToCustomer   000011   00099912 000010  YEAR     22/04/2016
 addSubToCustomer   000012   00099913 000011  MONTH    22/04/2016
-addSubToCustomer   000013   00099991 000015  QUARTER  01/08/2016
-addSubToCustomer   000014   00099992 000015  HALF     01/08/2016
-addSubToCustomer   000015   00099993 000015  YEAR     01/05/2016
+addSubToCustomer   000013   00099991 000012  QUARTER  01/08/2016
+addSubToCustomer   000014   00099992 000013  HALF     01/08/2016
+addSubToCustomer   000015   00099993 000014  YEAR     01/05/2016
 addSubToCustomer   000016   00099994 000015  MONTH    01/08/2016
-addSubToCustomer   000017   00099922 000014  YEAR     22/08/2016
-addSubToCustomer   000019   00099914 000015  QUARTER  22/08/2016
+addSubToCustomer   000017   00099922 000016  YEAR     22/08/2016
+addSubToCustomer   000019   00099914 000017  QUARTER  22/08/2016
 // ===============================================================================================================
 // connectCoachToBranch(coachNumber, branchNumber)
 connectCoachToBranch 000001 11
@@ -128,21 +128,21 @@ addInstrumentToRoom  12  00001  CROSS				true  	1
 
 // ===============================================================================================================
 // addLesson (lessonNum, lessonName, dateTime, level, coachNum, maxStudent, branchNum, roomNum
-addLesson 0000001  AEROBICS    05/08/2016;12:00  PROFESSIONAL  000001  35  11  00003
-addLesson 0000002  KICKBOXING  06/08/2016;14:00  INTERMEDIATE  000001  20  11  00002
-addLesson 0000017  AEROBICS    05/08/2016;15:00  PROFESSIONAL  000001  35  11  00003
-addLesson 0000003  PILATES     08/08/2016;12:00  BEGINNERS     000001  20  11  00002
-addLesson 0000004  YOGA        07/08/2016;12:00  ADVANCED      000001  35  11  00003
-addLesson 0000005  TRX         20/08/2016;12:00  INTERMEDIATE  000002  10  12  00002
-addLesson 0000006  AEROBICS    22/08/2016;14:00  BEGINNERS     000002  35  12  00002
-addLesson 0000007  TRX         22/08/2016;14:00  BEGINNERS     000002  10  12  00002
-addLesson 0000014  PILATES     23/08/2015;13:00  BEGINNERS     000001  35  12  00002
-addLesson 0000011  PILATES     23/08/2015;14:00  BEGINNERS     000001  35  11  00003
-addLesson 0000012  PILATES     27/08/2016;14:00  PROFESSIONAL  000002  15  12  00002
-addLesson 0000013  YOGA        26/08/2016;14:00  PROFESSIONAL  000001  22  11  00002
-addLesson 0000015  YOGA        26/06/2016;14:00  PROFESSIONAL  000001  22  11  00002
-addLesson 0000016  AEROBICS    27/08/2016;13:00  BEGINNERS     000002  35  12  00002
-addLesson 0000018  AEROBICS    27/08/2016;16:30  BEGINNERS     000002  35  12  00002
+addLesson 0000001  AEROBICS    29/08/2016;12:00  PROFESSIONAL  000001  35  11  00003
+addLesson 0000002  KICKBOXING  28/08/2016;14:00  INTERMEDIATE  000001  20  11  00002
+addLesson 0000008  AEROBICS    27/08/2016;15:00  PROFESSIONAL  000001  35  11  00003
+addLesson 0000003  PILATES     26/08/2016;12:00  BEGINNERS     000001  20  11  00002
+addLesson 0000004  YOGA        04/09/2016;12:00  ADVANCED      000001  35  11  00003
+addLesson 0000005  TRX         20/09/2016;12:00  INTERMEDIATE  000002  10  12  00002
+addLesson 0000006  AEROBICS    22/09/2016;14:00  BEGINNERS     000002  35  12  00002
+addLesson 0000007  TRX         24/09/2016;14:00  BEGINNERS     000002  10  12  00002
+addLesson 0000009  PILATES     23/09/2015;13:00  BEGINNERS     000001  35  12  00002
+addLesson 0000010  PILATES     26/08/2015;14:00  BEGINNERS     000001  35  11  00003
+addLesson 0000011  PILATES     27/08/2016;14:00  PROFESSIONAL  000002  15  12  00002
+addLesson 0000012  YOGA        26/08/2016;14:00  PROFESSIONAL  000001  22  11  00002
+addLesson 0000013  YOGA        26/09/2016;14:00  PROFESSIONAL  000001  22  11  00002
+addLesson 0000014  AEROBICS    27/09/2016;13:00  BEGINNERS     000002  35  12  00002
+addLesson 0000015  AEROBICS    27/08/2016;16:30  BEGINNERS     000002  35  12  00002
 // ===============================================================================================================
 // addCustomerToLesson  (custNumber, lessonNum)
 addCustomerToLesson  00099991  0000005

@@ -220,7 +220,7 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         houseError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         houseError.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(houseError);
-        houseError.setBounds(350, 190, 180, 20);
+        houseError.setBounds(340, 160, 330, 20);
 
         numError2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         numError2.setForeground(new java.awt.Color(255, 0, 0));
@@ -252,7 +252,7 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
     
     if (iWindow.getDB().changeCustomerAddress(id, country, city, street, housNumber, phones)){
         MessageBox.setForeground(Color.GREEN);
-            MessageBox.setText("Customer was added successfully");
+            MessageBox.setText("Customer's address was added successfully");
             iWindow.log(new Date().toString() + " - " + id + " was added successfully");
         }       
         else{

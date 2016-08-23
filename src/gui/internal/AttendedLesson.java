@@ -218,11 +218,6 @@ public class AttendedLesson extends javax.swing.JInternalFrame {
         day.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         day.setToolTipText("");
         day.setName(""); // NOI18N
-        day.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                dayFocusLost(evt);
-            }
-        });
         getContentPane().add(day);
         day.setBounds(140, 100, 50, 20);
 
@@ -283,6 +278,10 @@ public class AttendedLesson extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void ConnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConnectMouseClicked
+//        for (Lesson l:iWindow.getDB().getLessons().values()){
+//            System.out.println(l.toString2());
+//        }
+        
         custNum = customer.getId();
         if (lessonNum < 1 || customer == null) return;
         if (iWindow.getDB().getLessons().get(lessonNum).getRegistered().get(customer) == true){
@@ -375,7 +374,7 @@ public class AttendedLesson extends javax.swing.JInternalFrame {
         System.out.println(customer.getSubs().size());
         for (Subscription sub:customer.getSubs()){
             for (Lesson l:sub.getLessons()){
-                if (l.getStartDate().before(start) && l.getName().equals(les) && l.getRegistered().get(custNum) == false){
+                if (l.getStartDate().before(start) &&  l.getRegistered().get(custNum) == false){
                     lessonChooser.addItem(l.toString2());
                 }
             }
@@ -387,40 +386,33 @@ public class AttendedLesson extends javax.swing.JInternalFrame {
     
     private void lesNumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lesNumFocusLost
         String str = lesNum.getText();
-        if (!PositiveValidator.isPositiveStringNum(str) || !CharValidator.isNumber(str) || str.length() < 1) {
+        if (!PositiveValidator.isPositiveStringNum(str) || str.length() < 1) {
             lesError.setForeground(Color.red);
             lesError.setText("Positive digits only");
             lessonNum = -1;
             iWindow.update();
+            return;
         }
         
-        if (iWindow.getDB().getLessons().containsKey(Integer.parseInt(str))) {
-            Lesson les = iWindow.getDB().getLessons().get(Integer.parseInt(str));
+        lessonNum =Integer.parseInt(str);
+        if (iWindow.getDB().getLessons().containsKey(lessonNum)) {
+            Lesson les = iWindow.getDB().getLessons().get(lessonNum);
             lesError.setForeground(Color.green);
             lesError.setText(les.toString2());
+            details.setForeground(Color.green);
             details.setText(les.toString2());
-            lessonNum =Integer.parseInt(str);
             freeSpace.setText(les.getRegistered().size() + "/" + les.getMaxStudent());
         } else {
             lesError.setForeground(Color.red);
             lesError.setText("Lesson Number does not exists");
+            details.setForeground(Color.red);
+            details.setText("Lesson Number does not exists");
             lessonNum = -1;
             freeSpace.setText("0");
         }
         iWindow.update();
     }//GEN-LAST:event_lesNumFocusLost
-    
-    private void dayFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dayFocusLost
-        if (day.getSelectedIndex() != 0 && month.getSelectedIndex() != 0 && year.getSelectedIndex() != 0) {
-            int d = day.getSelectedIndex();
-            int m = month.getSelectedIndex()-1;
-            int y =  year.getSelectedIndex()+115;
-            
-            start = new Date(y, m, d);
-        }
-        iWindow.update();
-    }//GEN-LAST:event_dayFocusLost
-    
+        
     private void lessonChooserItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_lessonChooserItemStateChanged
         String str = lessonChooser.getSelectedItem().toString();
         if (str == null) return;

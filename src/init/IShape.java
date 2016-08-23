@@ -477,7 +477,6 @@ public class IShape implements Serializable {
                     if (workoutToAdd != null) {
                         if (!workouts.containsValue(workoutToAdd)) {
                             workouts.put(workoutNum, workoutToAdd);
-                            WORKOUTS++;
                             return true;
                         } else
                             cust.cancleWorkout(workoutToAdd);

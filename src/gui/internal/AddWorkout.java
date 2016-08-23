@@ -14,6 +14,7 @@ import java.awt.Color;
 import utils.E_Cities;
 import java.lang.*;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -34,6 +35,7 @@ public class AddWorkout extends javax.swing.JInternalFrame {
     public AddWorkout(Customer cust) {
         initComponents();
         this.customer = cust;
+        custNum = cust.getId();
         setTitle("Customer #"+customer.getId()+" -> Add Workout");
         lblCustomerID.setText(customer.getId());
         
@@ -62,6 +64,7 @@ public class AddWorkout extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         WorkoutNum = new javax.swing.JLabel();
         lblCustomerID = new javax.swing.JLabel();
+        DateError = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -125,27 +128,22 @@ public class AddWorkout extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(selectBranch);
-        selectBranch.setBounds(140, 40, 210, 22);
+        selectBranch.setBounds(140, 40, 210, 20);
         for(Branch b : iWindow.getDB().getBranches().values()){
             selectBranch.addItem(b.getBranchNumber() + " " + b.getBranchName());
         }
 
         year.setBackground(new java.awt.Color(0, 0, 0));
         year.setForeground(new java.awt.Color(255, 255, 255));
-        year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yeay", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
-        year.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                yearFocusLost(evt);
-            }
-        });
+        year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "2016", "2017", "2018", "2019", "2020" }));
         getContentPane().add(year);
-        year.setBounds(290, 70, 60, 22);
+        year.setBounds(290, 70, 60, 20);
 
         month.setBackground(new java.awt.Color(0, 0, 0));
         month.setForeground(new java.awt.Color(255, 255, 255));
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(month);
-        month.setBounds(210, 70, 60, 22);
+        month.setBounds(210, 70, 60, 20);
 
         day.setBackground(new java.awt.Color(0, 0, 0));
         day.setForeground(new java.awt.Color(255, 255, 255));
@@ -158,7 +156,7 @@ public class AddWorkout extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(day);
-        day.setBounds(140, 70, 50, 22);
+        day.setBounds(140, 70, 50, 20);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(204, 204, 204));
@@ -183,11 +181,49 @@ public class AddWorkout extends javax.swing.JInternalFrame {
         getContentPane().add(lblCustomerID);
         lblCustomerID.setBounds(140, 10, 100, 20);
 
+        DateError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        DateError.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(DateError);
+        DateError.setBounds(370, 70, 250, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
     private void ConnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConnectMouseClicked
+        //Create the date
+        if (day.getSelectedIndex() != 0 && month.getSelectedIndex() != 0
+                && year.getSelectedIndex() != 0) {
+            int d = day.getSelectedIndex();
+            int m = month.getSelectedIndex()-1;
+            int y =  year.getSelectedIndex()+115;
+            
+            start = new Date(y, m, d);
+            if (new Date().before(start)){
+                String strDate = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(start);
+                DateError.setForeground(Color.GREEN);
+                DateError.setText("Date: " + strDate);
+                iWindow.update();
+            }
+            else{
+                start = null;
+                DateError.setForeground(Color.red);
+                DateError.setText("Invalid date or time");
+                iWindow.update();
+                return;
+            }
+        }
+        else{
+            start = null;
+            DateError.setForeground(Color.red);
+            DateError.setText("Invalid date or time");
+            iWindow.update();
+            return;
+        }
+        
+        workoutNum = iWindow.getDB().getNextWork()+1;
+        WorkoutNum.setText(new Integer (workoutNum).toString());
         custNum = customer.getId();
+        
         System.out.println(workoutNum+" " +custNum+ " "+ start + " "+ branchNum);
         if (iWindow.getDB().addWorkout(workoutNum, custNum, start, branchNum)){
             MessageBox.setForeground(Color.GREEN);
@@ -225,23 +261,7 @@ public class AddWorkout extends javax.swing.JInternalFrame {
 
         iWindow.update();
     }//GEN-LAST:event_selectBranchFocusLost
-    
-    private void yearFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_yearFocusLost
-        if (day.getSelectedIndex() != 0 && month.getSelectedIndex() != 0 && year.getSelectedIndex() != 0) {
-            int d = day.getSelectedIndex();
-            int m = month.getSelectedIndex()-1;
-            int y =  year.getSelectedIndex()+110;
-            
-            start = new Date(y, m, d);
-            
-            if (customer.getId() != null && !customer.getId().equals("-1")){
-                workoutNum = iWindow.getDB().getNextWork();
-                WorkoutNum.setText(new Integer (workoutNum).toString());
-            }
-        }
-        iWindow.update();
-    }//GEN-LAST:event_yearFocusLost
-                
+                    
     private void dayFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dayFocusLost
         if (day.getSelectedIndex() != 0 && month.getSelectedIndex() != 0 && year.getSelectedIndex() != 0) {
             int d = day.getSelectedIndex();
@@ -250,7 +270,7 @@ public class AddWorkout extends javax.swing.JInternalFrame {
             start = new Date(y, m, d);
             
             if (customer.getId() != null && !customer.getId().equals("-1")){
-                workoutNum = iWindow.getDB().getWorkouts().size()+10;
+                workoutNum = iWindow.getDB().getNextWork()+1;
                 WorkoutNum.setText(new Integer (workoutNum).toString());
             }
         }
@@ -260,6 +280,7 @@ public class AddWorkout extends javax.swing.JInternalFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Connect;
+    private javax.swing.JLabel DateError;
     private javax.swing.JLabel MessageBox;
     private javax.swing.JLabel WorkoutNum;
     private javax.swing.JLabel custError;
