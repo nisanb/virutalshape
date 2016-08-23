@@ -205,7 +205,6 @@ public class AddInstrument extends javax.swing.JInternalFrame {
 
         int branchNum = branch.getBranchNumber();
         int roomNum = room.getRoomNum();
-        
         if(iWindow.getDB().addInstrumentToRoom(branchNum, roomNum,type, status, amount)){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Successfully added instrument " + type  +" to branch" + branchNum);
@@ -249,6 +248,8 @@ public class AddInstrument extends javax.swing.JInternalFrame {
      * @param evt 
      */
     private void insTypeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_insTypeFocusLost
+        if(insType.getSelectedItem().equals("Select Instrument Type"))
+            return;
         type = E_Types.valueOf((String)insType.getSelectedItem());
             
     }//GEN-LAST:event_insTypeFocusLost

@@ -29,7 +29,7 @@ import utils.E_Rooms;
  *
  * @author nisans
  */
-public class ManageBranches extends javax.swing.JInternalFrame {
+public class rcpManageBranch extends javax.swing.JInternalFrame {
 
     private Object obj = null;
     private static Branch branch;
@@ -37,23 +37,19 @@ public class ManageBranches extends javax.swing.JInternalFrame {
     /**
      * Creates new form NewJInternalFrame
      */
-    public ManageBranches() {
+    public rcpManageBranch() {
         initComponents();
-        setTitle("Manage Branches");
-        chooseBranch.setBackground(Color.black);
-        chooseBranch.setForeground(Color.white);
-        chooseBranch.removeAllItems();
-        chooseBranch.addItem("Edit Branch");
-        chooseBranch.setSelectedIndex(0);
+        this.branch = iWindow.getEmployeeLogged().getWorkBranch();
+        
+        setTitle("Manage "+branch.getBranchName());
+        
+      
         statisticsPanel.hide();
         roomPanel.hide();
         lblAddInstrument.hide();
         AddLesson.hide();
-        lblViewRoom.hide();
-
-        for (Branch branch : iWindow.getDB().getBranches().values()) {
-            chooseBranch.addItem(branch.toString());
-        }
+lblViewRoom.hide();
+        updateData(branch);
 
     }
 
@@ -66,7 +62,6 @@ public class ManageBranches extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        chooseBranch = new javax.swing.JComboBox<>();
         statisticsPanel = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
         btnEdit = new javax.swing.JLabel();
@@ -95,9 +90,6 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         txtAddress = new javax.swing.JLabel();
         lblNewRoom = new javax.swing.JLabel();
         txtTotalRooms1 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        AddBranch = new javax.swing.JLabel();
         roomPanel = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
         btnEdit1 = new javax.swing.JLabel();
@@ -137,20 +129,6 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         setOpaque(true);
         setPreferredSize(new java.awt.Dimension(1073, 768));
         getContentPane().setLayout(null);
-
-        chooseBranch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        chooseBranch.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                chooseBranchItemStateChanged(evt);
-            }
-        });
-        chooseBranch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chooseBranchActionPerformed(evt);
-            }
-        });
-        getContentPane().add(chooseBranch);
-        chooseBranch.setBounds(60, 40, 260, 22);
 
         statisticsPanel.setBackground(new Color(0,0,0,0));
         statisticsPanel.setLayout(null);
@@ -326,26 +304,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         txtTotalRooms1.setBounds(20, 200, 100, 16);
 
         getContentPane().add(statisticsPanel);
-        statisticsPanel.setBounds(0, 50, 420, 300);
-
-        jLabel16.setBackground(new Color(0,0,0,0));
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("You may choose a branch by using the selector.");
-        getContentPane().add(jLabel16);
-        jLabel16.setBounds(10, 10, 510, 16);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/search-3-24.png"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 30, 30, 40);
-
-        AddBranch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/plus-5-24.png"))); // NOI18N
-        AddBranch.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddBranchMouseClicked(evt);
-            }
-        });
-        getContentPane().add(AddBranch);
-        AddBranch.setBounds(340, 30, 40, 40);
+        statisticsPanel.setBounds(0, 0, 420, 300);
 
         roomPanel.setBackground(new Color(0,0,0,0));
         roomPanel.setLayout(null);
@@ -483,44 +442,14 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         lblViewRoom.setBounds(120, 260, 70, 13);
 
         getContentPane().add(roomPanel);
-        roomPanel.setBounds(410, 50, 420, 300);
+        roomPanel.setBounds(410, 0, 420, 300);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void chooseBranchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseBranchActionPerformed
-
-// TODO add your handling code here:
-    }//GEN-LAST:event_chooseBranchActionPerformed
-
-    private void chooseBranchItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chooseBranchItemStateChanged
-        // TODO add your handling code here:
-        if (evt.getStateChange() == ItemEvent.SELECTED) {
-            Object item = evt.getItem();
-            if (item.equals("Edit Branch")) {
-                return;
-            }
-            // do something with object
-            String str = item.toString().substring(8, 10);
-            Branch branch = new Branch(Integer.parseInt(str));
-
-            updateData(branch);
-
-        }
-    }//GEN-LAST:event_chooseBranchItemStateChanged
-
-    private void AddBranchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddBranchMouseClicked
-
-        //Create new Branch
-        hide();
-        AddBranchForm frm = new AddBranchForm();
-        iWindow.openWin(frm);
-    }//GEN-LAST:event_AddBranchMouseClicked
-
     private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
         // TODO add your handling code here:
-        String str = chooseBranch.getSelectedItem().toString().substring(8, 10);
-        Branch branch = iWindow.getDB().getBranches().get(Integer.parseInt(str));
+       
         AddBranchForm add = new AddBranchForm(branch);
 
         iWindow.openWin(add);
@@ -577,13 +506,13 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         if(room.getRoomType().equals(E_Rooms.GYM)){
             lblRoomInstruments.setText(room.getInstruments().size()+"/"+room.getMaxNumOfInstruments());
             lblAddInstrument.show();
+            lblViewRoom.show();
             AddLesson.hide();
             lblRoomTotalLessons.setText("N/A");
-            lblViewRoom.show();
         }else{
             lblRoomInstruments.setText("Not a GYM");
-            lblViewRoom.hide();
             AddLesson.show();
+            lblViewRoom.hide();
             lblAddInstrument.hide();
             lblRoomTotalLessons.setText(""+room.getLessons().size());
         }
@@ -598,6 +527,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
         lblRoomType.setText(room.getRoomType().toString());
         roomPanel.setVisible(false);
         roomPanel.setVisible(true);
+        
     }//GEN-LAST:event_chooseRoomItemStateChanged
 
     private void chooseRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseRoomActionPerformed
@@ -617,14 +547,10 @@ public class ManageBranches extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AddBranch;
     private javax.swing.JLabel AddLesson;
     private javax.swing.JLabel btnEdit;
     private javax.swing.JLabel btnEdit1;
-    private javax.swing.JComboBox<String> chooseBranch;
     private javax.swing.JComboBox<String> chooseRoom;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
@@ -716,7 +642,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
             System.err.println(emp);
         }
         lblTotalRooms.setText("" + branch.getRooms().size());
-
+        
         return;
     }
 }

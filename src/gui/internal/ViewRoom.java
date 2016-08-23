@@ -7,6 +7,7 @@ package gui.internal;
 
 import core.Instrument;
 import core.Room;
+import java.awt.Color;
 import javax.swing.JLabel;
 
 /**
@@ -55,9 +56,16 @@ public class ViewRoom extends javax.swing.JInternalFrame {
         for(Instrument ins : room.getInstruments()){
  
             JLabel tmp = new JLabel("");
+            
             tmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/instruments/"+ins.getType()+".png"))); // NOI18N
             pnlGym.add(tmp);
             System.err.println("test");
+            
+            JLabel err = new JLabel("");
+            err.setBounds(tmp.getBounds());
+        
+            err.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/instruments/fault.png"))); // NOI18N
+            
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

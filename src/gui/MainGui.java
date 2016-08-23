@@ -12,6 +12,7 @@ import javax.swing.JDesktopPane;
 import gui.internal.*;
 import gui.manage.ManageCustomers;
 import gui.manage.ManageEmployees;
+import gui.manage.rcpManageBranch;
 import init.IShape;
 import java.awt.Desktop;
 import java.net.URI;
@@ -81,12 +82,13 @@ public class MainGui extends javax.swing.JFrame  {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlCoach = new javax.swing.JPanel();
-        btnCustomers2 = new javax.swing.JLabel();
-        btnEmployees2 = new javax.swing.JLabel();
         pnlRcp = new javax.swing.JPanel();
         btnCustomers1 = new javax.swing.JLabel();
         btnEmployees1 = new javax.swing.JLabel();
+        btnEmployees3 = new javax.swing.JLabel();
+        pnlCoach = new javax.swing.JPanel();
+        btnCustomers2 = new javax.swing.JLabel();
+        btnEmployees2 = new javax.swing.JLabel();
         pnlAdmin = new javax.swing.JPanel();
         btnBranches = new javax.swing.JLabel();
         btnCustomers = new javax.swing.JLabel();
@@ -109,6 +111,66 @@ public class MainGui extends javax.swing.JFrame  {
         setMinimumSize(new java.awt.Dimension(1024, 765));
         setPreferredSize(new java.awt.Dimension(1024, 765));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlRcp.setOpaque(false);
+
+        btnCustomers1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnCustomers1.setForeground(new java.awt.Color(255, 255, 255));
+        btnCustomers1.setText("Manage Customers");
+        btnCustomers1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCustomers1MouseClicked(evt);
+            }
+        });
+
+        btnEmployees1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnEmployees1.setForeground(new java.awt.Color(255, 255, 255));
+        btnEmployees1.setText("My Account");
+        btnEmployees1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEmployees1MouseClicked(evt);
+            }
+        });
+
+        btnEmployees3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnEmployees3.setForeground(new java.awt.Color(255, 255, 255));
+        btnEmployees3.setText("Manage Branch");
+        btnEmployees3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEmployees3MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlRcpLayout = new javax.swing.GroupLayout(pnlRcp);
+        pnlRcp.setLayout(pnlRcpLayout);
+        pnlRcpLayout.setHorizontalGroup(
+            pnlRcpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRcpLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlRcpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRcpLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnEmployees1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlRcpLayout.createSequentialGroup()
+                        .addGroup(pnlRcpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCustomers1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEmployees3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        pnlRcpLayout.setVerticalGroup(
+            pnlRcpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRcpLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnCustomers1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(btnEmployees3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEmployees1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(219, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(pnlRcp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 190, 410));
 
         pnlCoach.setOpaque(false);
 
@@ -152,49 +214,6 @@ public class MainGui extends javax.swing.JFrame  {
         );
 
         getContentPane().add(pnlCoach, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 190, 410));
-
-        pnlRcp.setOpaque(false);
-
-        btnCustomers1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        btnCustomers1.setForeground(new java.awt.Color(255, 255, 255));
-        btnCustomers1.setText("Manage Customers");
-        btnCustomers1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCustomers1MouseClicked(evt);
-            }
-        });
-
-        btnEmployees1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        btnEmployees1.setForeground(new java.awt.Color(255, 255, 255));
-        btnEmployees1.setText("My Account");
-        btnEmployees1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEmployees1MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlRcpLayout = new javax.swing.GroupLayout(pnlRcp);
-        pnlRcp.setLayout(pnlRcpLayout);
-        pnlRcpLayout.setHorizontalGroup(
-            pnlRcpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRcpLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlRcpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCustomers1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEmployees1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlRcpLayout.setVerticalGroup(
-            pnlRcpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRcpLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(btnCustomers1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEmployees1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(281, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(pnlRcp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 190, 410));
 
         pnlAdmin.setOpaque(false);
 
@@ -446,6 +465,11 @@ public class MainGui extends javax.swing.JFrame  {
         iWindow.openWin(add);
     }//GEN-LAST:event_btnEmployees2MouseClicked
 
+    private void btnEmployees3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmployees3MouseClicked
+        rcpManageBranch add = new rcpManageBranch();
+        iWindow.openWin(add);
+    }//GEN-LAST:event_btnEmployees3MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -497,6 +521,7 @@ public class MainGui extends javax.swing.JFrame  {
     private javax.swing.JLabel btnEmployees;
     private javax.swing.JLabel btnEmployees1;
     private javax.swing.JLabel btnEmployees2;
+    private javax.swing.JLabel btnEmployees3;
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnFB;
     private javax.swing.JLabel btnStatistics;
