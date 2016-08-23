@@ -37,18 +37,19 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         
         setTitle("Branches -> Add Branch");
          falseVisible();
-        UIManager.put("slctCity.background", new ColorUIResource(UIManager.getColor("TextField.background")));
-        UIManager.put("slctCity.foreground", new ColorUIResource(UIManager.getColor("TextField.foreground")));
-        UIManager.put("slctCity.selectionBackground", new ColorUIResource(Color.GREEN));
-        UIManager.put("slctCity.selectionForeground", new ColorUIResource(Color.WHITE));
+//        UIManager.put("slctCity.background", new ColorUIResource(UIManager.getColor("TextField.background")));
+//        UIManager.put("slctCity.foreground", new ColorUIResource(UIManager.getColor("TextField.foreground")));
+//        UIManager.put("slctCity.selectionBackground", new ColorUIResource(Color.GREEN));
+//        UIManager.put("slctCity.selectionForeground", new ColorUIResource(Color.WHITE));
         //Finished Loading
         
         for(E_Cities city : E_Cities.values()){
             slctCity.addItem(city.toString());
         }
         phoneError.setVisible(false);
-        
+         iWindow.update();
     }
+   
     
   
     
@@ -205,7 +206,6 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnPhoneNumber.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnPhoneNumber.setForeground(new java.awt.Color(255, 255, 255));
         btnPhoneNumber.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        btnPhoneNumber.setOpaque(false);
         btnPhoneNumber.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btnPhoneNumberFocusLost(evt);
@@ -221,7 +221,6 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnBranchNum.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         btnBranchNum.setCaretColor(new java.awt.Color(255, 255, 255));
         btnBranchNum.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        btnBranchNum.setOpaque(false);
         btnBranchNum.setSelectionColor(new java.awt.Color(204, 204, 204));
         btnBranchNum.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -236,7 +235,6 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnBranchName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBranchName.setForeground(new java.awt.Color(255, 255, 255));
         btnBranchName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        btnBranchName.setOpaque(false);
         btnBranchName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btnBranchNameFocusLost(evt);
@@ -250,7 +248,6 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         slctCity.setForeground(new java.awt.Color(255, 255, 255));
         slctCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select City" }));
         slctCity.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        slctCity.setOpaque(false);
         slctCity.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 slctCityFocusLost(evt);
@@ -301,7 +298,6 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnBranchCountry.setForeground(new java.awt.Color(255, 255, 255));
         btnBranchCountry.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         btnBranchCountry.setEnabled(false);
-        btnBranchCountry.setOpaque(false);
         btnBranchCountry.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btnBranchCountryFocusLost(evt);
@@ -329,7 +325,6 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnHouseNumber.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnHouseNumber.setForeground(new java.awt.Color(255, 255, 255));
         btnHouseNumber.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        btnHouseNumber.setOpaque(false);
         btnHouseNumber.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btnHouseNumberFocusLost(evt);
@@ -377,19 +372,18 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         lblfailed.setForeground(new java.awt.Color(255, 0, 51));
         lblfailed.setText("Failed adding Branch!");
         getContentPane().add(lblfailed);
-        lblfailed.setBounds(30, 230, 190, 14);
+        lblfailed.setBounds(30, 230, 190, 16);
 
         lblsuccess.setForeground(new java.awt.Color(51, 255, 0));
         lblsuccess.setText("Successfully added Branch!");
         getContentPane().add(lblsuccess);
-        lblsuccess.setBounds(30, 230, 190, 14);
+        lblsuccess.setBounds(30, 230, 190, 16);
 
         btnBranchStreet1.setBackground(new java.awt.Color(0, 0, 0));
         btnBranchStreet1.setColumns(20);
         btnBranchStreet1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBranchStreet1.setForeground(new java.awt.Color(255, 255, 255));
         btnBranchStreet1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        btnBranchStreet1.setOpaque(false);
         btnBranchStreet1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btnBranchStreet1FocusLost(evt);
