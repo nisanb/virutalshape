@@ -10,6 +10,11 @@ import gui.MainGui;
 import init.IShape;
 import java.awt.Color;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -36,29 +41,90 @@ public class iWindow {
     
     //Main 
     protected static JLabel lblTitle = null;
-    protected static IShape DB;
+
+    private static boolean skipLogin = true;
+    private static IShape IShape;
+    
+    
+    public static IShape getIShape(){
+        return IShape;
+    }
     
     //iWindow Management
     protected static JInternalFrame currentWindow = null;
     protected static JPanel panel = null;
 
+    //======================================= Main ==========================================
+    public static void main(String[] args){
+        IShape = importData();
+
+        //Set IShape DB to GUI
+        //iWindow.setDB(IShape);
+        JFrame login = null;
+        if(skipLogin){
+            iWindow.setUser(4, iWindow.getDB().getEmployees().get(11));
+            login = new MainGui();
+            
+        }
+        
+        else
+            login = new LoginGui();
+        
+        login.setVisible(true);
+        //exportData();
+    }// END OF ~ main
+    
+    //=================================== Import & Export ====================================
+    
+        private static IShape importData() {
+        // TODO Auto-generated method stub
+        try {
+            String fileName = "Data.cer";
+            FileInputStream input = new FileInputStream(fileName);
+            ObjectInputStream objInput = new ObjectInputStream(input);
+            IShape Data = (IShape) objInput.readObject();
+            System.err.println("Successfully imported Data.cer");
+            return Data;
+        } catch (Exception e) {
+            System.err.println("Failed to import database");
+            return null;
+        }
+        
+        
+    }
+    
+    public static void exportData() {
+        try {
+            String fileName = "Data.cer";
+            FileOutputStream output = new FileOutputStream(fileName);
+            ObjectOutputStream objoutput = new ObjectOutputStream(output);
+            objoutput.writeObject(IShape);
+            objoutput.close();
+            
+            System.err.println("Exported Data to \"" + fileName + "\"");
+            
+        } catch (Exception e) {
+            System.err.println("Could not export database\n" + e.toString());
+            
+        }
+    }
     
     //================================= Setters and Getters ==================================
-    
-    /**
-     * Set DB
-     * @param tmp 
-     */
-    public static void setDB(IShape tmp){
-        DB=tmp;
-    }
+//    
+//    /**
+//     * Set DB
+//     * @param tmp 
+//     */
+//    public static void setDB(IShape tmp){
+//        DB=tmp;
+//    }
     
     /**
      * Get DB
      * @return 
      */
     public static IShape getDB(){
-        return DB;
+        return IShape;
     }
 
     /**
@@ -301,7 +367,6 @@ public class iWindow {
         frame.setVisible(false);
         frame.setVisible(true);
     }
-    
     
 }
     

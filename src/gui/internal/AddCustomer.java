@@ -451,6 +451,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Customer was added successfully");
             iWindow.log(new Date().toString() + " - " + id + " was added successfully");
+            iWindow.exportData();
         }       
         else{
             MessageBox.setForeground(Color.RED);
@@ -591,7 +592,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
      * @param evt
      */
     private void LastFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LastFieldFocusLost
-        String str = NameField.getText();
+        String str = LastField.getText();
         if (!CharValidator.isWord(str) || str.length() < 2) {
             Lerror.setText("Invalid name");
             lastName = null;

@@ -259,3 +259,4 @@ getPopularBranches
 getPotentialCustomersPerBranch
 
 //IShapeToString
+export
