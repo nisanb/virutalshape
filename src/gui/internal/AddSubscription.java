@@ -311,10 +311,26 @@ public class AddSubscription extends javax.swing.JInternalFrame {
 
     private void lengthItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_lengthItemStateChanged
         if(length.getSelectedIndex() == 0) return;
-        if (length.getSelectedIndex() == 1) period = E_Periods.valueOf("MONTH");
-        else if (length.getSelectedIndex() == 2) period = E_Periods.valueOf("QUATER");
-        else if (length.getSelectedIndex() == 3) period = E_Periods.valueOf("HALF");
-        else if (length.getSelectedIndex() == 4) period = E_Periods.valueOf("YEAR");
+        switch(length.getSelectedIndex()){
+            case 1:
+                period = E_Periods.MONTH; 
+            break;
+             case 2:
+                period = E_Periods.QUARTER; 
+            break;
+             case 3:
+                period = E_Periods.HALF; 
+            break;
+             case 4:
+                period = E_Periods.YEAR; 
+            break;
+             default:
+
+                 return;
+            
+        }
+        
+       
         System.out.println(period);
         iWindow.update();
     }//GEN-LAST:event_lengthItemStateChanged

@@ -223,7 +223,7 @@ public class AddWorkout extends javax.swing.JInternalFrame {
         workoutNum = iWindow.getDB().getNextWork()+1;
         WorkoutNum.setText(new Integer (workoutNum).toString());
         custNum = customer.getId();
-        
+        System.err.println("Checking Add Workout:");
         System.out.println(workoutNum+" " +custNum+ " "+ start + " "+ branchNum);
         if (iWindow.getDB().addWorkout(workoutNum, custNum, start, branchNum)){
             MessageBox.setForeground(Color.GREEN);

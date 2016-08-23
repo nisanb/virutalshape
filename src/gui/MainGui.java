@@ -44,29 +44,31 @@ public class MainGui extends javax.swing.JFrame  {
         lblAuthLogged.setText(iWindow.getAuthType());
         lblAuthLogged.setForeground(iWindow.getAuthColor());
         lblName.setText(iWindow.getAuthName());
-        pnlAdmin.hide();
-        pnlCoach.hide();
-        pnlRcp.hide();
+      
+        pnlAdmin.setVisible(false);
+        pnlCoach.setVisible(false);
+        pnlRcp.setVisible(false);
+        pnlCust.setVisible(false);
          setLocationRelativeTo(null);
-        
+       
         //Get User Panel
         switch(iWindow.getAuthValue()){
             case 1:
                 //Customer
-              
+              pnlCust.setVisible(true);
             break;
                 
             case 2:
-                pnlRcp.show();
+                pnlRcp.setVisible(true);           
             break;
             case 3:
 
-                pnlCoach.show();
+                pnlCoach.setVisible(true);;
             break;
             
             case 4:
                 //Administrator
-                pnlAdmin.show();
+                pnlAdmin.setVisible(true);
             break;
         }
     }
