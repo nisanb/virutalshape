@@ -7,6 +7,7 @@ import Validators.PhoneValidator;
 import Validators.PositiveValidator;
 import core.Branch;
 import core.Customer;
+import core.Instrument;
 import core.Lesson;
 import core.Room;
 import java.awt.Color;
@@ -26,6 +27,7 @@ import utils.E_Lessons;
  */
 public class CustomerToLesson extends javax.swing.JInternalFrame {
     private Customer customer;
+
     /**
      * Creates new form NewJInternalFrame
      */

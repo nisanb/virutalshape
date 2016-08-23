@@ -19,6 +19,7 @@ import gui.internal.AddBranchForm;
 import gui.internal.AddCoach;
 import gui.internal.AddCustomer;
 import gui.internal.AddInstrument;
+import gui.internal.AddInstrumentToWorkout;
 import gui.internal.AddLesson;
 import gui.internal.AddRoom;
 import gui.internal.AddSubscription;
@@ -75,7 +76,28 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         
         iWindow.update();
     }
+    
+    public ManageCustomers(Customer cust){
+         initComponents();
+         setTitle("Manage Your Account");
+         
+         this.customer = cust;
+        jLabel1.hide();
+        chooseCustomer.hide();
+        jLabel16.hide();
+        AddCustomer.hide();
+        lblError.hide();
+        fldCustID.hide();
+        jSeparator1.hide();
 
+
+        lblError.setVisible(false);
+       
+        updateData();
+
+        
+        iWindow.update();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -110,15 +132,8 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         lblShow = new javax.swing.JLabel();
         txt1 = new javax.swing.JLabel();
         lblActiveSubs = new javax.swing.JLabel();
-        lblNewLesson1 = new javax.swing.JLabel();
         txt7 = new javax.swing.JLabel();
         lblSubs = new javax.swing.JLabel();
-        lblNewLesson = new javax.swing.JLabel();
-        lblNewWorkout = new javax.swing.JLabel();
-        lblCancelSub = new javax.swing.JLabel();
-        lblNewSub = new javax.swing.JLabel();
-        lblNewSub2 = new javax.swing.JLabel();
-        lblCancelWorkout = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         AddCustomer = new javax.swing.JLabel();
@@ -133,6 +148,13 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         txtTotalRooms1 = new javax.swing.JLabel();
         lblAddress = new javax.swing.JLabel();
         btnEdit1 = new javax.swing.JLabel();
+        lblAddInsToWork = new javax.swing.JLabel();
+        lblNewLesson = new javax.swing.JLabel();
+        lblNewWorkout = new javax.swing.JLabel();
+        lblNewSub = new javax.swing.JLabel();
+        lblCancelSub = new javax.swing.JLabel();
+        lblNewLesson1 = new javax.swing.JLabel();
+        lblCancelWorkout = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         fldCustID = new javax.swing.JTextField();
         lblError = new javax.swing.JLabel();
@@ -306,17 +328,6 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         statisticsPanel.add(lblActiveSubs);
         lblActiveSubs.setBounds(210, 200, 70, 16);
 
-        lblNewLesson1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        lblNewLesson1.setForeground(new java.awt.Color(51, 102, 255));
-        lblNewLesson1.setText("[Attend Lesson]");
-        lblNewLesson1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblNewLesson1MouseClicked(evt);
-            }
-        });
-        statisticsPanel.add(lblNewLesson1);
-        lblNewLesson1.setBounds(270, 280, 90, 13);
-
         txt7.setBackground(new java.awt.Color(255, 255, 255));
         txt7.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         txt7.setForeground(new java.awt.Color(255, 255, 255));
@@ -328,72 +339,6 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         lblSubs.setText("id");
         statisticsPanel.add(lblSubs);
         lblSubs.setBounds(210, 180, 70, 16);
-
-        lblNewLesson.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        lblNewLesson.setForeground(new java.awt.Color(51, 102, 255));
-        lblNewLesson.setText("[Add Lesson]");
-        lblNewLesson.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblNewLessonMouseClicked(evt);
-            }
-        });
-        statisticsPanel.add(lblNewLesson);
-        lblNewLesson.setBounds(270, 260, 70, 13);
-
-        lblNewWorkout.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        lblNewWorkout.setForeground(new java.awt.Color(51, 102, 255));
-        lblNewWorkout.setText("[Add Workout]");
-        lblNewWorkout.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblNewWorkoutMouseClicked(evt);
-            }
-        });
-        statisticsPanel.add(lblNewWorkout);
-        lblNewWorkout.setBounds(170, 260, 100, 13);
-
-        lblCancelSub.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        lblCancelSub.setForeground(new java.awt.Color(51, 102, 255));
-        lblCancelSub.setText("[Cancel Subscription]");
-        lblCancelSub.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblCancelSubMouseClicked(evt);
-            }
-        });
-        statisticsPanel.add(lblCancelSub);
-        lblCancelSub.setBounds(20, 280, 140, 13);
-
-        lblNewSub.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        lblNewSub.setForeground(new java.awt.Color(51, 102, 255));
-        lblNewSub.setText("[Add Subscription]");
-        lblNewSub.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblNewSubMouseClicked(evt);
-            }
-        });
-        statisticsPanel.add(lblNewSub);
-        lblNewSub.setBounds(20, 260, 100, 13);
-
-        lblNewSub2.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        lblNewSub2.setForeground(new java.awt.Color(51, 102, 255));
-        lblNewSub2.setText("[Add Subscription]");
-        lblNewSub2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblNewSub2MouseClicked(evt);
-            }
-        });
-        statisticsPanel.add(lblNewSub2);
-        lblNewSub2.setBounds(20, 260, 100, 13);
-
-        lblCancelWorkout.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        lblCancelWorkout.setForeground(new java.awt.Color(51, 102, 255));
-        lblCancelWorkout.setText("[Cancel Workout]");
-        lblCancelWorkout.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblCancelWorkoutMouseClicked(evt);
-            }
-        });
-        statisticsPanel.add(lblCancelWorkout);
-        lblCancelWorkout.setBounds(170, 280, 100, 13);
 
         getContentPane().add(statisticsPanel);
         statisticsPanel.setBounds(0, 90, 420, 350);
@@ -470,6 +415,83 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         });
         moreInfo.add(btnEdit1);
         btnEdit1.setBounds(20, 50, 30, 30);
+
+        lblAddInsToWork.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblAddInsToWork.setForeground(new java.awt.Color(51, 102, 255));
+        lblAddInsToWork.setText("[Add Instrument To Workout]");
+        lblAddInsToWork.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAddInsToWorkMouseClicked(evt);
+            }
+        });
+        moreInfo.add(lblAddInsToWork);
+        lblAddInsToWork.setBounds(20, 330, 170, 13);
+
+        lblNewLesson.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblNewLesson.setForeground(new java.awt.Color(51, 102, 255));
+        lblNewLesson.setText("[Add Lesson]");
+        lblNewLesson.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNewLessonMouseClicked(evt);
+            }
+        });
+        moreInfo.add(lblNewLesson);
+        lblNewLesson.setBounds(20, 270, 70, 13);
+
+        lblNewWorkout.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblNewWorkout.setForeground(new java.awt.Color(51, 102, 255));
+        lblNewWorkout.setText("[Add Workout]");
+        lblNewWorkout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNewWorkoutMouseClicked(evt);
+            }
+        });
+        moreInfo.add(lblNewWorkout);
+        lblNewWorkout.setBounds(20, 310, 100, 13);
+
+        lblNewSub.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblNewSub.setForeground(new java.awt.Color(51, 102, 255));
+        lblNewSub.setText("[Add Subscription]");
+        lblNewSub.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNewSubMouseClicked(evt);
+            }
+        });
+        moreInfo.add(lblNewSub);
+        lblNewSub.setBounds(20, 290, 100, 13);
+
+        lblCancelSub.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblCancelSub.setForeground(new java.awt.Color(51, 102, 255));
+        lblCancelSub.setText("[Cancel Subscription]");
+        lblCancelSub.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCancelSubMouseClicked(evt);
+            }
+        });
+        moreInfo.add(lblCancelSub);
+        lblCancelSub.setBounds(130, 290, 140, 13);
+
+        lblNewLesson1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblNewLesson1.setForeground(new java.awt.Color(51, 102, 255));
+        lblNewLesson1.setText("[Attend Lesson]");
+        lblNewLesson1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNewLesson1MouseClicked(evt);
+            }
+        });
+        moreInfo.add(lblNewLesson1);
+        lblNewLesson1.setBounds(130, 270, 90, 13);
+
+        lblCancelWorkout.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblCancelWorkout.setForeground(new java.awt.Color(51, 102, 255));
+        lblCancelWorkout.setText("[Cancel Workout]");
+        lblCancelWorkout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCancelWorkoutMouseClicked(evt);
+            }
+        });
+        moreInfo.add(lblCancelWorkout);
+        lblCancelWorkout.setBounds(130, 310, 100, 13);
 
         getContentPane().add(moreInfo);
         moreInfo.setBounds(410, 90, 370, 400);
@@ -653,10 +675,6 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         iWindow.openWin(add);
     }//GEN-LAST:event_lblNewSubMouseClicked
 
-    private void lblNewSub2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewSub2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lblNewSub2MouseClicked
-
     private void lblCancelWorkoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCancelWorkoutMouseClicked
         // TODO add your handling code here:
         CancelWorkout add = new CancelWorkout(customer);
@@ -674,6 +692,12 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         UpdateCustAddress add = new UpdateCustAddress(customer);
         iWindow.openWin(add);
     }//GEN-LAST:event_btnEdit1MouseClicked
+
+    private void lblAddInsToWorkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddInsToWorkMouseClicked
+        // TODO add your handling code here:
+        AddInstrumentToWorkout add = new AddInstrumentToWorkout(customer);
+        iWindow.openWin(add);
+    }//GEN-LAST:event_lblAddInsToWorkMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -700,6 +724,7 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel lblActiveSubs;
+    private javax.swing.JLabel lblAddInsToWork;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblBirthDate;
     private javax.swing.JLabel lblCancelSub;
@@ -712,7 +737,6 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblNewLesson;
     private javax.swing.JLabel lblNewLesson1;
     private javax.swing.JLabel lblNewSub;
-    private javax.swing.JLabel lblNewSub2;
     private javax.swing.JLabel lblNewWorkout;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblShow;

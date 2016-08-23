@@ -82,6 +82,10 @@ public class MainGui extends javax.swing.JFrame  {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlCust = new javax.swing.JPanel();
+        btnCustomers3 = new javax.swing.JLabel();
+        btnEmployees4 = new javax.swing.JLabel();
+        btnEmployees5 = new javax.swing.JLabel();
         pnlRcp = new javax.swing.JPanel();
         btnCustomers1 = new javax.swing.JLabel();
         btnEmployees1 = new javax.swing.JLabel();
@@ -111,6 +115,66 @@ public class MainGui extends javax.swing.JFrame  {
         setMinimumSize(new java.awt.Dimension(1024, 765));
         setPreferredSize(new java.awt.Dimension(1024, 765));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlCust.setOpaque(false);
+
+        btnCustomers3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnCustomers3.setForeground(new java.awt.Color(255, 255, 255));
+        btnCustomers3.setText("My Account");
+        btnCustomers3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCustomers3MouseClicked(evt);
+            }
+        });
+
+        btnEmployees4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnEmployees4.setForeground(new java.awt.Color(255, 255, 255));
+        btnEmployees4.setText("Test3");
+        btnEmployees4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEmployees4MouseClicked(evt);
+            }
+        });
+
+        btnEmployees5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnEmployees5.setForeground(new java.awt.Color(255, 255, 255));
+        btnEmployees5.setText("Test2");
+        btnEmployees5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEmployees5MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlCustLayout = new javax.swing.GroupLayout(pnlCust);
+        pnlCust.setLayout(pnlCustLayout);
+        pnlCustLayout.setHorizontalGroup(
+            pnlCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCustLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCustLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnEmployees4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlCustLayout.createSequentialGroup()
+                        .addGroup(pnlCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCustomers3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEmployees5, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        pnlCustLayout.setVerticalGroup(
+            pnlCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCustLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnCustomers3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(btnEmployees5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEmployees4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(219, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(pnlCust, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 190, 410));
 
         pnlRcp.setOpaque(false);
 
@@ -470,6 +534,20 @@ public class MainGui extends javax.swing.JFrame  {
         iWindow.openWin(add);
     }//GEN-LAST:event_btnEmployees3MouseClicked
 
+    private void btnCustomers3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomers3MouseClicked
+        // TODO add your handling code here:
+        ManageCustomers add = new ManageCustomers(iWindow.getCustomerLogged());
+        iWindow.openWin(add);
+    }//GEN-LAST:event_btnCustomers3MouseClicked
+
+    private void btnEmployees4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmployees4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEmployees4MouseClicked
+
+    private void btnEmployees5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmployees5MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEmployees5MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -517,11 +595,14 @@ public class MainGui extends javax.swing.JFrame  {
     private javax.swing.JLabel btnCustomers;
     private javax.swing.JLabel btnCustomers1;
     private javax.swing.JLabel btnCustomers2;
+    private javax.swing.JLabel btnCustomers3;
     private javax.swing.JLabel btnDisconnect;
     private javax.swing.JLabel btnEmployees;
     private javax.swing.JLabel btnEmployees1;
     private javax.swing.JLabel btnEmployees2;
     private javax.swing.JLabel btnEmployees3;
+    private javax.swing.JLabel btnEmployees4;
+    private javax.swing.JLabel btnEmployees5;
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnFB;
     private javax.swing.JLabel btnStatistics;
@@ -531,6 +612,7 @@ public class MainGui extends javax.swing.JFrame  {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel pnlAdmin;
     private javax.swing.JPanel pnlCoach;
+    private javax.swing.JPanel pnlCust;
     private javax.swing.JPanel pnlRcp;
     // End of variables declaration//GEN-END:variables
 }

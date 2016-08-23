@@ -33,14 +33,53 @@ import utils.E_Types;
  */
 public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
     
+    private Customer customer;
+    private Instrument instrument;
+    private Branch branch;
     /**
      * Creates new form NewJInternalFrame
      */
-    public AddInstrumentToWorkout() {
+    
+    public AddInstrumentToWorkout(Customer cust) {
+        initComponents();
+        
+        this.customer = cust;
+        lblCustomerID.setVisible(true);
+        lblCustomerID.setText(customer.getId());
+        insType.setVisible(true);
+        lblInstrumentType.setVisible(false);
+        
+        insPanel.hide();
+        //Finished Loading
+        selectRoom.hide();
+        lblSelectRoom.hide();
+        for(Subscription sub : customer.getSubs()){
+            for(Workout wrk : sub.getWorkouts()){
+                selectWorkout.addItem(wrk.getNumber()+"");
+            }
+        }
+        
+        iWindow.update();
+    
+    }
+    public AddInstrumentToWorkout(Customer cust, Instrument ins, int workoutNum) {
         initComponents();
         setTitle("Customer -> Add Intrument to Workout");
+        this.customer = cust;
+        this.workoutNum = workoutNum;
+        lblCustomerID.setVisible(true);
+        lblCustomerID.setText(customer.getId());
+        insType.setVisible(false);
+        lblWorkoutNum.setText(""+workoutNum);
+        selectWorkout.hide();
+        lblInstrumentType.setVisible(true);
+        lblInstrumentType.setText(ins.getType().toString());
         
+         selectRoom.hide();
+        lblSelectRoom.hide();
         //Finished Loading
+        iWindow.update();
+    
     }
     
     /**
@@ -52,28 +91,34 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        custID = new javax.swing.JTextField();
         Connect = new javax.swing.JButton();
-        custError = new javax.swing.JLabel();
-        MessageBox = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         selectWorkout = new javax.swing.JComboBox<>();
-        insType = new javax.swing.JComboBox<>();
-        jLabel14 = new javax.swing.JLabel();
+        custError = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        MessageBox = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        lblWorkoutNum = new javax.swing.JLabel();
         details = new javax.swing.JLabel();
-        duration = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
+        DateError = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lblSelectRoom = new javax.swing.JLabel();
+        selectRoom = new javax.swing.JComboBox<>();
+        lblCustomerID = new javax.swing.JLabel();
+        insPanel = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        insType = new javax.swing.JComboBox<>();
         day = new javax.swing.JComboBox<>();
         month = new javax.swing.JComboBox<>();
         year = new javax.swing.JComboBox<>();
-        Hour = new javax.swing.JComboBox<>();
-        Minute = new javax.swing.JComboBox<>();
         Second = new javax.swing.JComboBox<>();
-        jLabel11 = new javax.swing.JLabel();
-        DateError = new javax.swing.JLabel();
+        Minute = new javax.swing.JComboBox<>();
+        Hour = new javax.swing.JComboBox<>();
+        duration = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        lblInstrumentType = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -93,22 +138,6 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
         });
         getContentPane().setLayout(null);
 
-        custID.setBackground(new java.awt.Color(0, 0, 0));
-        custID.setColumns(10);
-        custID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        custID.setForeground(new java.awt.Color(255, 255, 255));
-        custID.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        custID.setCaretColor(new java.awt.Color(255, 255, 255));
-        custID.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        custID.setSelectionColor(new java.awt.Color(204, 204, 204));
-        custID.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                custIDFocusLost(evt);
-            }
-        });
-        getContentPane().add(custID);
-        custID.setBounds(160, 10, 190, 21);
-
         Connect.setBackground(new java.awt.Color(102, 102, 102));
         Connect.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Connect.setForeground(new java.awt.Color(255, 255, 255));
@@ -121,23 +150,6 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
         getContentPane().add(Connect);
         Connect.setBounds(540, 210, 150, 23);
 
-        custError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        custError.setForeground(new java.awt.Color(255, 0, 0));
-        getContentPane().add(custError);
-        custError.setBounds(370, 10, 290, 20);
-
-        MessageBox.setBackground(new Color (0,0,0,90));
-        MessageBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        MessageBox.setForeground(new java.awt.Color(0, 255, 0));
-        getContentPane().add(MessageBox);
-        MessageBox.setBounds(30, 210, 430, 20);
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel5.setText("Select Workout");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(30, 40, 110, 20);
-
         selectWorkout.setBackground(new Color(0,0,0));
         selectWorkout.setForeground(new java.awt.Color(255, 255, 255));
         selectWorkout.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Workout" }));
@@ -146,11 +158,97 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
                 selectWorkoutFocusLost(evt);
             }
         });
+        selectWorkout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectWorkoutActionPerformed(evt);
+            }
+        });
         getContentPane().add(selectWorkout);
-        selectWorkout.setBounds(160, 40, 190, 20);
-        for(Branch b : iWindow.getDB().getBranches().values()){
-            selectWorkout.addItem(b.getBranchNumber() + " " + b.getBranchName());
-        }
+        selectWorkout.setBounds(160, 40, 190, 22);
+
+        custError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        custError.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(custError);
+        custError.setBounds(370, 10, 290, 20);
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Select Workout");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(30, 40, 110, 20);
+
+        MessageBox.setBackground(new Color (0,0,0,90));
+        MessageBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        MessageBox.setForeground(new java.awt.Color(0, 255, 0));
+        getContentPane().add(MessageBox);
+        MessageBox.setBounds(30, 210, 430, 20);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Customer ID");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(30, 10, 110, 20);
+
+        lblWorkoutNum.setForeground(new java.awt.Color(255, 255, 255));
+        lblWorkoutNum.setText("jLabel1");
+        getContentPane().add(lblWorkoutNum);
+        lblWorkoutNum.setBounds(160, 40, 170, 20);
+
+        details.setBackground(new Color(0,0,0,90));
+        details.setForeground(new java.awt.Color(51, 255, 0));
+        getContentPane().add(details);
+        details.setBounds(370, 40, 330, 20);
+
+        DateError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        DateError.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(DateError);
+        DateError.setBounds(370, 120, 250, 20);
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(700, 0, 10, 10);
+
+        lblSelectRoom.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblSelectRoom.setForeground(new java.awt.Color(255, 255, 255));
+        lblSelectRoom.setText("Select Room");
+        getContentPane().add(lblSelectRoom);
+        lblSelectRoom.setBounds(30, 70, 110, 20);
+
+        selectRoom.setBackground(new Color(0,0,0));
+        selectRoom.setForeground(new java.awt.Color(255, 255, 255));
+        selectRoom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Room" }));
+        selectRoom.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                selectRoomItemStateChanged(evt);
+            }
+        });
+        selectRoom.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                selectRoomFocusLost(evt);
+            }
+        });
+        selectRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectRoomActionPerformed(evt);
+            }
+        });
+        getContentPane().add(selectRoom);
+        selectRoom.setBounds(160, 70, 190, 22);
+
+        lblCustomerID.setForeground(new java.awt.Color(255, 255, 255));
+        lblCustomerID.setText("jLabel2");
+        getContentPane().add(lblCustomerID);
+        lblCustomerID.setBounds(160, 10, 170, 20);
+
+        insPanel.setOpaque(false);
+        insPanel.setLayout(null);
+
+        jLabel3.setToolTipText("Subscription Number ");
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Instrument Type");
+        insPanel.add(jLabel14);
+        jLabel14.setBounds(30, 70, 140, 20);
 
         insType.setBackground(new java.awt.Color(0, 0, 0));
         insType.setForeground(new java.awt.Color(255, 255, 255));
@@ -160,58 +258,23 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
                 insTypeFocusLost(evt);
             }
         });
-        getContentPane().add(insType);
-        insType.setBounds(160, 70, 190, 20);
+        insPanel.add(insType);
+        insType.setBounds(160, 70, 190, 22);
         insType.removeAllItems();
-
-        jLabel3.setToolTipText("Subscription Number ");
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel14.setText("Instrument Type");
-        getContentPane().add(jLabel14);
-        jLabel14.setBounds(30, 70, 140, 20);
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel4.setText("Customer ID");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 10, 110, 20);
-
-        details.setBackground(new Color(0,0,0,90));
-        details.setForeground(new java.awt.Color(51, 255, 0));
-        getContentPane().add(details);
-        details.setBounds(370, 40, 330, 20);
-
-        duration.setBackground(new java.awt.Color(0, 0, 0));
-        duration.setForeground(new java.awt.Color(255, 255, 255));
-        duration.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Duration", "5 min", "10 min", "15 min", "20 min", "25 min", "30 min" }));
-        duration.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                durationItemStateChanged(evt);
-            }
-        });
-        getContentPane().add(duration);
-        duration.setBounds(160, 160, 190, 20);
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel10.setText("Start Date");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(30, 100, 110, 20);
 
         day.setBackground(new java.awt.Color(0, 0, 0));
         day.setForeground(new java.awt.Color(255, 255, 255));
         day.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         day.setToolTipText("");
         day.setName(""); // NOI18N
-        getContentPane().add(day);
-        day.setBounds(160, 100, 50, 20);
+        insPanel.add(day);
+        day.setBounds(160, 100, 50, 22);
 
         month.setBackground(new java.awt.Color(0, 0, 0));
         month.setForeground(new java.awt.Color(255, 255, 255));
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        getContentPane().add(month);
-        month.setBounds(220, 100, 60, 20);
+        insPanel.add(month);
+        month.setBounds(220, 100, 60, 22);
 
         year.setBackground(new java.awt.Color(0, 0, 0));
         year.setForeground(new java.awt.Color(255, 255, 255));
@@ -221,45 +284,69 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
                 yearFocusLost(evt);
             }
         });
-        getContentPane().add(year);
-        year.setBounds(290, 100, 60, 20);
-
-        Hour.setBackground(new java.awt.Color(0, 0, 0));
-        Hour.setForeground(new java.awt.Color(255, 255, 255));
-        Hour.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hour", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "18", "20", "21", "22", "23" }));
-        getContentPane().add(Hour);
-        Hour.setBounds(160, 130, 50, 20);
-
-        Minute.setBackground(new java.awt.Color(0, 0, 0));
-        Minute.setForeground(new java.awt.Color(255, 255, 255));
-        Minute.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minute", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "18", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "34", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
-        getContentPane().add(Minute);
-        Minute.setBounds(220, 130, 60, 20);
+        insPanel.add(year);
+        year.setBounds(290, 100, 60, 22);
 
         Second.setBackground(new java.awt.Color(0, 0, 0));
         Second.setForeground(new java.awt.Color(255, 255, 255));
         Second.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Second", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "18", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "34", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
-        getContentPane().add(Second);
-        Second.setBounds(290, 130, 60, 20);
+        insPanel.add(Second);
+        Second.setBounds(290, 130, 60, 22);
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel11.setText("Start Time");
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(30, 130, 110, 20);
+        Minute.setBackground(new java.awt.Color(0, 0, 0));
+        Minute.setForeground(new java.awt.Color(255, 255, 255));
+        Minute.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minute", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "18", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "34", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        insPanel.add(Minute);
+        Minute.setBounds(220, 130, 60, 22);
 
-        DateError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        DateError.setForeground(new java.awt.Color(255, 0, 0));
-        getContentPane().add(DateError);
-        DateError.setBounds(370, 120, 250, 20);
+        Hour.setBackground(new java.awt.Color(0, 0, 0));
+        Hour.setForeground(new java.awt.Color(255, 255, 255));
+        Hour.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hour", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "18", "20", "21", "22", "23" }));
+        insPanel.add(Hour);
+        Hour.setBounds(160, 130, 50, 22);
+
+        duration.setBackground(new java.awt.Color(0, 0, 0));
+        duration.setForeground(new java.awt.Color(255, 255, 255));
+        duration.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Duration", "5 min", "10 min", "15 min", "20 min", "25 min", "30 min" }));
+        duration.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                durationItemStateChanged(evt);
+            }
+        });
+        insPanel.add(duration);
+        duration.setBounds(160, 160, 190, 22);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Duration");
-        getContentPane().add(jLabel6);
+        insPanel.add(jLabel6);
         jLabel6.setBounds(30, 160, 110, 20);
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(700, 0, 10, 10);
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Start Time");
+        insPanel.add(jLabel11);
+        jLabel11.setBounds(30, 130, 110, 20);
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Start Date");
+        insPanel.add(jLabel10);
+        jLabel10.setBounds(30, 100, 110, 20);
+
+        lblInstrumentType.setForeground(new java.awt.Color(255, 255, 255));
+        lblInstrumentType.setText("jLabel1");
+        insPanel.add(lblInstrumentType);
+        lblInstrumentType.setBounds(160, 70, 190, 20);
+
+        getContentPane().add(insPanel);
+        insPanel.setBounds(0, 0, 430, 350);
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Select Workout");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(30, 40, 110, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -277,7 +364,8 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
             int s = Second.getSelectedIndex()-1;
             
             start = new Date(y, m, d, h,min,s);
-            Date workdate = iWindow.getDB().getWorkouts().get(workoutNum).getDate();
+            System.err.println(this.workoutNum);
+            Date workdate = iWindow.getDB().getWorkouts().get(this.workoutNum).getDate();
             if (new Date().before(start) && start.getYear() == workdate.getYear()
                     && start.getMonth() == workdate.getMonth() && start.getDate() == workdate.getDate()){
                 DateError.setForeground(Color.GREEN);
@@ -299,8 +387,14 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
             iWindow.update();
             return;
         }
-        
+        if(instrument!=null){
+            //I brought an instrument with me
+            roomNum = instrument.getRoom().getRoomNum();
+            branchNum = instrument.getRoom().getBranch().getBranchNumber();
+            
+        }
         //add to ishape
+        
         System.out.println(workoutNum + " " + branchNum + " " + roomNum + " " + start + " " + minutes);
         if (iWindow.getDB().addInstrumentToWorkout(workoutNum,branchNum, roomNum, type, start, minutes)){
             MessageBox.setForeground(Color.GREEN);
@@ -317,40 +411,7 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
         iWindow.update();
         
     }//GEN-LAST:event_ConnectMouseClicked
-    
-    private void custIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_custIDFocusLost
-        String str = custID.getText();
-        if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 8) {
-            custError.setForeground(Color.red);
-            custError.setText("Positive 8 digits only");
-            custNum = "-1";
-            iWindow.update();
-            return;
-        }
         
-        if (iWindow.getDB().getCustomers().containsKey(str)) {
-            cust = iWindow.getDB().getCustomers().get(str);
-            custError.setForeground(Color.GREEN);
-            custError.setText(cust.getFirstName() +" " + cust.getLastName());
-            custNum = str;
-            
-            selectWorkout.removeAllItems();
-            for (Subscription s:cust.getSubs()){
-                for (Workout w:s.getWorkouts()){
-                    if (w.getDate().after(new Date())) 
-                        selectWorkout.addItem(w.toString2());
-                }
-            }
-        } else {
-            custError.setForeground(Color.red);
-            custError.setText("Customer ID does not exists");
-            custNum = "-1";
-        }
-        iWindow.update();
-        
-        
-    }//GEN-LAST:event_custIDFocusLost
-    
     private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_formFocusLost
@@ -401,6 +462,82 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
     private void insTypeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_insTypeFocusLost
         type = E_Types.valueOf((String)insType.getSelectedItem());
     }//GEN-LAST:event_insTypeFocusLost
+
+    private void selectWorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectWorkoutActionPerformed
+        // TODO add your handling code here:
+        if(selectWorkout.getSelectedIndex()==0){
+            return;
+        }
+       
+         String str = (String) selectWorkout.getSelectedItem();
+        if(str.length()<=0)
+            return;
+        
+        for (int i = 0; i < str.length(); i++){
+            if (Character.isDigit(str.charAt(i))) continue;
+            else{
+                str = str.substring(0, i);
+            }
+        }
+        workoutNum = Integer.parseInt(str);
+        Workout wrk = iWindow.getDB().getWorkouts().get(workoutNum);
+        //selectRoom.removeAllItems();
+         selectRoom.removeAllItems();
+        selectRoom.addItem("Select Room");
+        for(Room g : iWindow.getDB().getBranches().get(wrk.getBranchNum()).getRooms()){
+            if(!g.getRoomType().equals(E_Rooms.GYM))
+               continue;
+            selectRoom.addItem(g.getRoomNum()+"");
+            
+            
+        }
+        System.err.println("SHOWING");
+        selectRoom.setVisible(true);
+        selectRoom.show();
+        lblSelectRoom.show();
+        lblSelectRoom.setVisible(true);
+        iWindow.update();
+    }//GEN-LAST:event_selectWorkoutActionPerformed
+
+    private void selectRoomFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectRoomFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectRoomFocusLost
+
+    private void selectRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectRoomActionPerformed
+        // TODO add your handling code here:
+        if(selectRoom.getSelectedIndex()<=0)
+            return;
+       if(selectRoom.getSelectedItem().equals("Select Room"))
+            return;
+           
+       //Aquire Branch
+        branchNum = iWindow.getDB().getWorkouts().get(workoutNum).getBranchNum();
+        Branch branch = iWindow.getDB().getBranches().get(branchNum);
+
+        //Aquire Room
+        int RoomNum = Integer.parseInt((String)selectRoom.getSelectedItem());
+       
+        //Find room and launch View Room
+        for(Room r : branch.getRooms()){
+            if(r.getRoomNum()==RoomNum){
+                ViewRoom add = new ViewRoom(r, workoutNum);
+                iWindow.openWin(add);
+                break;
+            }
+        }
+        
+        
+        
+        
+        
+    
+        
+    }//GEN-LAST:event_selectRoomActionPerformed
+
+    private void selectRoomItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selectRoomItemStateChanged
+       
+        
+    }//GEN-LAST:event_selectRoomItemStateChanged
                         
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -411,25 +548,31 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> Minute;
     private javax.swing.JComboBox<String> Second;
     private javax.swing.JLabel custError;
-    private javax.swing.JTextField custID;
     private javax.swing.JComboBox<String> day;
     private javax.swing.JLabel details;
     private javax.swing.JComboBox<String> duration;
+    private javax.swing.JPanel insPanel;
     private javax.swing.JComboBox<String> insType;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lblCustomerID;
+    private javax.swing.JLabel lblInstrumentType;
+    private javax.swing.JLabel lblSelectRoom;
+    private javax.swing.JLabel lblWorkoutNum;
     private javax.swing.JComboBox<String> month;
+    private javax.swing.JComboBox<String> selectRoom;
     private javax.swing.JComboBox<String> selectWorkout;
     private javax.swing.JComboBox<String> year;
     // End of variables declaration//GEN-END:variables
     
     //Manual variables declaration
-    private String custNum = null;
+
     private Customer cust = null;
     private int workoutNum = -1;
     private int branchNum = -1;

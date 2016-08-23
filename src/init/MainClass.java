@@ -907,7 +907,7 @@ public class MainClass {
         iWindow.setDB(IShape);
         JFrame login = null;
         if(skipLogin){
-            iWindow.setUser(2, iWindow.getDB().getEmployees().get(11));
+            iWindow.setUser(1, iWindow.getDB().getCustomers().get("00099991"));
             login = new MainGui();
             
         }
