@@ -362,6 +362,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
                 }
             }
         }
+        iWindow.update();
     }//GEN-LAST:event_SearchMouseClicked
         
     private void lesNumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lesNumFocusLost

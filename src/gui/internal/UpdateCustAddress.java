@@ -42,7 +42,8 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
     public UpdateCustAddress(Customer cust) {
         id = cust.getId();
         initComponents();
-        setTitle("Customers -> Add Customer");
+        IDfield.setText(id);
+        setTitle("Customers -> Update Customer Address");
                 
         //Finished Loading
         for (E_Cities city : E_Cities.values()) {
@@ -64,7 +65,6 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnPhoneNumber = new javax.swing.JTextField();
-        IDfield = new javax.swing.JTextField();
         slctCity = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -79,6 +79,7 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         houseError = new javax.swing.JLabel();
         numError2 = new javax.swing.JLabel();
         MessageBox = new javax.swing.JLabel();
+        IDfield = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -123,22 +124,6 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnPhoneNumber);
         btnPhoneNumber.setBounds(140, 160, 170, 21);
-
-        IDfield.setBackground(new java.awt.Color(0, 0, 0));
-        IDfield.setColumns(10);
-        IDfield.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        IDfield.setForeground(new java.awt.Color(255, 255, 255));
-        IDfield.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        IDfield.setCaretColor(new java.awt.Color(255, 255, 255));
-        IDfield.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        IDfield.setSelectionColor(new java.awt.Color(204, 204, 204));
-        IDfield.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                IDfieldFocusLost(evt);
-            }
-        });
-        getContentPane().add(IDfield);
-        IDfield.setBounds(140, 10, 170, 21);
 
         slctCity.setBackground(new java.awt.Color(0, 0, 0));
         slctCity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -248,6 +233,11 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         getContentPane().add(MessageBox);
         MessageBox.setBounds(30, 210, 470, 20);
 
+        IDfield.setBackground(new java.awt.Color(0, 0, 0));
+        IDfield.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(IDfield);
+        IDfield.setBounds(140, 10, 160, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -277,30 +267,7 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
             
     }//GEN-LAST:event_changeAddrMouseClicked
 
-    /**
-     * this method validates user id validity before performing an update
-     * @param evt 
-     */
-    private void IDfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDfieldFocusLost
-        String str = IDfield.getText();
-        if (!PositiveValidator.isPositiveStringNum(str) || str.length() != 8) {
-            numError.setText("Positive 8 digits only");
-            id = "-1";
-            iWindow.update();
-            return;
-        }
-
-        if (!iWindow.getDB().getCustomers().containsKey(Integer.parseInt(IDfield.getText()))) {
-            numError.setText("Customer not found ");
-            id = "-1'";
-        } else {
-            numError.setText(" ");
-            id = str;
-        }
-        iWindow.update();
-
-    }//GEN-LAST:event_IDfieldFocusLost
-    
+   
     /**
      * this method validates the street name input
      * @param evt 
@@ -381,7 +348,7 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField IDfield;
+    private javax.swing.JLabel IDfield;
     private javax.swing.JLabel MessageBox;
     private javax.swing.JTextField btnBranchCountry;
     private javax.swing.JTextField btnHouseNumber;

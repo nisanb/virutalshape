@@ -33,7 +33,8 @@ public class AttendedLesson extends javax.swing.JInternalFrame {
     public AttendedLesson(Customer cust) {
         initComponents();
         this.customer = cust;
-        setTitle("Customer #"+customer.getId()+" -> Add Lesson");
+        custNum = cust.getId();
+        setTitle("Customer #"+customer.getId()+" -> Attend Lesson");
         
         lblCustomerID.setText(customer.getId());
         
@@ -370,16 +371,18 @@ public class AttendedLesson extends javax.swing.JInternalFrame {
         }
         
         lessonChooser.removeAllItems();
-        Customer cust = iWindow.getDB().getCustomers().get(custNum);
-        Branch branch = iWindow.getDB().getBranches().get(branchNum);{
-        for (Subscription sub:cust.getSubs()){
+        Branch branch = iWindow.getDB().getBranches().get(branchNum);
+        System.out.println(customer.getSubs().size());
+        for (Subscription sub:customer.getSubs()){
             for (Lesson l:sub.getLessons()){
                 if (l.getStartDate().before(start) && l.getName().equals(les) && l.getRegistered().get(custNum) == false){
                     lessonChooser.addItem(l.toString2());
                 }
             }
         }
-    }
+    
+        
+        iWindow.update();
     }//GEN-LAST:event_SearchMouseClicked
     
     private void lesNumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lesNumFocusLost

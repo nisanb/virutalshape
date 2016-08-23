@@ -342,7 +342,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
             
             dateTime = new Date(y, m, d, h,min,s);
             if (new Date().before(dateTime)){
-                String strDate = new SimpleDateFormat("dd/MM/yyyy HH:MM:SS").format(dateTime);
+                String strDate = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(dateTime);
                 DateError.setForeground(Color.GREEN);
                 DateError.setText("Date: " + strDate);
                 iWindow.update();

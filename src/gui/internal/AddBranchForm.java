@@ -441,15 +441,6 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBranchNameFocusLost
 
     private void btnBranchCountryFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchCountryFocusLost
-//        String str = btnBranchCountry.getText();
-//        if (CharValidator.isWord(str)) {
-//            countryError.setText(" ");
-//            country = str;
-//        }
-//        else {
-//            countryError.setText("Enter valid name");
-//            country = null;
-//        }
     }//GEN-LAST:event_btnBranchCountryFocusLost
 
     private void btnCityEditFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnCityEditFocusLost
@@ -490,17 +481,12 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
      
         String str = btnPhoneNumber.getText();
         if (PhoneValidator.validatePhone(str)) {
-            
             phoneError.setVisible(false);
             phoneNumber.add(str);
-            
-            
+
         }
         else {
             phoneError.setVisible(true);
-           
-            
-       
         }
         iWindow.update();
     }//GEN-LAST:event_btnPhoneNumberFocusLost
@@ -510,18 +496,16 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         if(editForm)
             return;
             String str = (String)slctCity.getSelectedItem();
-            if(str.equals("Select City"))
+            if(str.equals("Select City")){
+                iWindow.update();
                 return;
+            }
             city = E_Cities.valueOf(str);
   
             btnBranchCountry.setText(city.getCountry());
-           iWindow.update();
             btnBranchCountry.repaint();
             country = city.getCountry();
-            //        System.out.println(str);
-            //        }catch (Exception e){
-            //            e.printStackTrace();
-            //        }
+            iWindow.update();
     }//GEN-LAST:event_slctCityFocusLost
 
     private void btnAddBranchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddBranchActionPerformed
@@ -540,9 +524,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
             lblsuccess.setText("Successfully updated Branch");
             lblsuccess.setVisible(true);
             iWindow.update();
-            
-            return;
-            
+            return; 
         }
         
         if (iWindow.getDB().addBranch(branchNumber, branchName, city, country, street, housNumber, phoneNumber.toArray(new String[phoneNumber.size()]) )){
@@ -556,9 +538,8 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
           
             
         }
-        iWindow.update();
-          
-        System.out.println("Successfully added branch");
+        iWindow.update();   
+        //System.out.println("Successfully added branch");
     }//GEN-LAST:event_btnAddBranchActionPerformed
 
     private void formPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_formPropertyChange
