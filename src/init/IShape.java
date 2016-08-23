@@ -36,6 +36,7 @@ import core.Receptionist;
 import core.Room;
 import core.Subscription;
 import core.Workout;
+import java.text.SimpleDateFormat;
 
 
 /**
@@ -682,7 +683,7 @@ public class IShape implements Serializable {
      *
      * @return ordered list of lessons by start date
      */
-    public List<Lesson> getAllAttendedLessonsOfMostActiveCustomer() {
+    public String getAllAttendedLessonsOfMostActiveCustomer() {
         int numberOfLessons = 0;
         Customer profitableCustomer = null;
         
@@ -701,7 +702,15 @@ public class IShape implements Serializable {
                     }
                 });
         System.out.println(profitableCustomer.getId());
-        return profitableCustomer.getAttendedLessons();
+        String toReturn = "";
+        for(Lesson l : profitableCustomer.getAttendedLessons()){
+            
+            toReturn=toReturn+l.getLessonNum()+" - "+l.getName().toString()+"<br>ASD";
+        }
+        String heading = "The most active customers' attended lessons are:<br>";
+        toReturn = "<html>"+heading+toReturn+"</html>";
+        
+        return toReturn;
     } // ~ END OF getAllLessonsOfMostActiveCustomer
     
     /**
@@ -713,7 +722,7 @@ public class IShape implements Serializable {
      * @param branchYnumber
      * @return list of customers
      */
-    public List<Customer> getAllCustomersFromBranchXbutNotFromBranchY(
+    public String getAllCustomersFromBranchXbutNotFromBranchY(
             int branchXnumber, int branchYnumber) {
         List<Customer> customersFromBranchX = new ArrayList<Customer>();
         // Check if branch X and branch Y exist
@@ -762,7 +771,17 @@ public class IShape implements Serializable {
                     }
             }
         }
-        return customersFromBranchX;
+        
+        String str = "";
+        for(Customer x : customersFromBranchX){
+            str = str+x.toString()+"<br>";
+        }
+        if(str.equals("")) return "No customers found.";
+        Branch branchx = getBranches().get(branchXnumber);
+        Branch branchy = getBranches().get(branchYnumber);
+        String heading = "The following customers visited branch "+branchx.getBranchName()+" but not branch "+branchy.getBranchName()+":<br>";
+        str = "<html>"+heading+str+"</html>";
+        return str;
     } // ~ END OF getAllCustomersFromBranchXbutNotFromBranchY
     
     /**
@@ -772,7 +791,7 @@ public class IShape implements Serializable {
      *
      * @return a lesson type
      */
-    public E_Lessons getTheMostPopularLessonType() {
+    public String getTheMostPopularLessonType() {
         //Both ways are ok- this and the next one marked in green
         //first way: lower time complexity, higher space complexity than second way
         //firs way result: AEROBICS
@@ -807,7 +826,7 @@ public class IShape implements Serializable {
         popularLessonType = type;
         }
         }*/
-        return popularLessonType;
+        return "The most popular lesson type is: "+popularLessonType.toString();
     }// ~END OF getTheMostPopularLessonType
     
     /**
@@ -818,7 +837,7 @@ public class IShape implements Serializable {
      *
      * @return the receptionist of the month if it exist, null other
      */
-    public Receptionist getReceptionistOfTheMonth() {
+    public String getReceptionistOfTheMonth() {
         Date today = new Date();
         int count, maxActiveSubs = 0;
         Receptionist recepOfTheMonth = null;
@@ -841,8 +860,8 @@ public class IShape implements Serializable {
                 }
             }
         if (maxActiveSubs >= 2)
-            return recepOfTheMonth;
-        return null;
+            return "Top receptionist of the month is: "+recepOfTheMonth.toString()+" with "+recepOfTheMonth.getSubscriptions().size()+" Subscriptions!";
+        return "There are no receptionists who made it to Receptionist Of The Month";
     }
     
     /**
@@ -852,7 +871,7 @@ public class IShape implements Serializable {
      *
      * @return an array of super senior coaches if found, null other
      */
-    public Coach[] getAllSuperSeniorCoaches() {
+    public String getAllSuperSeniorCoaches() {
         Date today = new Date();
         List<Coach> superCoaches = new ArrayList<Coach>();
         int count = 0;
@@ -869,9 +888,16 @@ public class IShape implements Serializable {
             }
         if (!superCoaches.isEmpty()) {
             ArrayList<Coach> a = (ArrayList<Coach>) superCoaches;
-            return a.toArray(new Coach[a.size()]);
+            Coach[] arr = a.toArray(new Coach[a.size()]);
+            String toReturn = "";
+            for(Coach c : arr){
+                toReturn = toReturn + c.toString() + "<br>";
+            }
+            String heading = "The following coaches have made it to Senior Rank: <br>";
+            toReturn = "<html>"+heading+toReturn+"</html>";
+            return toReturn;
         }
-        return null;
+        return "Currently there are no coaches at senior rank.";
     }
     
     /**
@@ -881,7 +907,7 @@ public class IShape implements Serializable {
      *
      * @return the top receptionist
      */
-    public Receptionist getTopJanuaryReceptionists() {
+    public String getTopJanuaryReceptionists() {
         Receptionist topReceptionist = null;
         int max = 0;
         for (Employee emp : employees.values())
@@ -892,7 +918,9 @@ public class IShape implements Serializable {
                         .getNumberOfThisYearJanuaryAssignments();
                 topReceptionist = (Receptionist) emp;
             }
-        return topReceptionist;
+        if(topReceptionist == null){
+            return "No receptionist found.";
+        } else return "The following employee is our receptionist of this years' January: "+topReceptionist.toString();
     }
     
     /**
@@ -903,7 +931,7 @@ public class IShape implements Serializable {
      *
      * @return the customer who registered to the most time this month
      */
-    public Customer getTopCustomerOfTheMonth() {
+    public String getTopCustomerOfTheMonth() {
         Customer topCust = null;
         int maxTime = 0, count;
         Date today = new Date();
@@ -934,8 +962,8 @@ public class IShape implements Serializable {
             }
         }
         if (topCust != null)
-            return topCust;
-        return null;
+            return "The following customer is our most active customer:<br>"+ topCust.toString();
+        return "There are no customers to display.";
     }
     
     /**
@@ -944,7 +972,7 @@ public class IShape implements Serializable {
      *
      * @return the most ordered type of instrument
      */
-    public E_Types getTopIstrumentType() {
+    public String getTopIstrumentType() {
         HashMap<E_Types, Integer> types = new HashMap<>();
         for (E_Types type : E_Types.values()) {
             types.put(type, 0);
@@ -963,7 +991,7 @@ public class IShape implements Serializable {
                 maxEtype = entry.getKey();
             }
         }
-        return maxEtype;
+        return "Top Instrument and most used is "+maxEtype.toString();
     }
     
     /**
@@ -972,7 +1000,7 @@ public class IShape implements Serializable {
      *
      * @return the list of customers, or null
      */
-    public ArrayList<Customer> getAllCustomersAttendingMoreThan1City() {
+    public String getAllCustomersAttendingMoreThan1City() {
         ArrayList<Customer> customersDiffCities = new ArrayList<Customer>();
         if (!this.customers.isEmpty()) {
             for (Customer c : this.customers.values()) {
@@ -994,8 +1022,14 @@ public class IShape implements Serializable {
             }
         }
         if (customersDiffCities.isEmpty())
-            return null;
-        return customersDiffCities;
+            return "No customers found.";
+        String toReturn = "";
+        for(Customer cust : customersDiffCities){
+            toReturn = toReturn + cust+"<br>";
+        }
+        String heading = "The following customers are attending to more than one city:<br>";
+        toReturn = "<html>"+heading+toReturn+"</html>";
+        return toReturn;
     }
     
     
@@ -1006,7 +1040,7 @@ public class IShape implements Serializable {
      * @return a hashMap with branches and active dates, or null BONUS METHOD!!!
      *         EXTRA 7 POINTS
      */
-    public HashMap<Branch, Date> getMostActiveDatePerBranchThisMonth() {
+    public String getMostActiveDatePerBranchThisMonth() {
         
         HashMap<Branch, Date> active = new HashMap<Branch, Date>();
         if (!this.branches.isEmpty()) {
@@ -1063,8 +1097,16 @@ public class IShape implements Serializable {
             }// end of branch
         }
         if (active.isEmpty())
-            return null;
-        return active;
+            return "There are no branches to display.";
+        String toReturn = "";
+        for(Map.Entry<Branch, Date> entry : active.entrySet()){
+            Branch branch = entry.getKey();
+            Date date = entry.getValue();
+            toReturn = toReturn + branch.getBranchName() + " - " +  new SimpleDateFormat("dd/MM/yyyy").format(date)+"<br>";
+        }
+        String heading = "The following is a list of branches and their most active date:<br>";
+        return "<html>"+heading+toReturn+"</html>";
+        
     }
     
     /**
@@ -1073,7 +1115,7 @@ public class IShape implements Serializable {
      *
      * @return a set with all popular branches
      */
-    public Set<Branch> getPopularBranches() {
+    public String getPopularBranches() {
         Map<Branch, Integer> branchAndTime = new HashMap<Branch, Integer>();
         Set<Branch> popular = new HashSet<Branch>();
         Date today = new Date();
@@ -1096,8 +1138,16 @@ public class IShape implements Serializable {
             }
         }
         if (popular.isEmpty())
-            return null;
-        return popular;
+            return "No popular branches found.";
+        
+        String toReturn = "";
+        for(Branch b : popular){
+            toReturn = toReturn + b.getBranchName()+"<br>";
+        }
+        String heading = "The following branches are our popular branches:<br>";
+        toReturn = "<html>"+heading+toReturn+"</html>";
+     
+        return toReturn;
     }
     
     /**
@@ -1108,7 +1158,7 @@ public class IShape implements Serializable {
      *
      * @return
      */
-    public Map<Branch, ArrayList<Customer>> getPotentialCustomersPerBranch() {
+    public String getPotentialCustomersPerBranch() {
         Map<Branch, ArrayList<Customer>> potential = new HashMap<Branch, ArrayList<Customer>>();
         if (!branches.isEmpty()) {
             for (Branch b : branches.values()) {
@@ -1124,23 +1174,37 @@ public class IShape implements Serializable {
             }
         }
         if (potential.isEmpty())
-            return null;
-        return potential;
+            return "No potential customers found.";
+        String toReturn = "";
+        
+        for(Map.Entry<Branch, ArrayList<Customer>> e : potential.entrySet()){
+            //Go through all branches
+            toReturn = toReturn + "<b><u>Branch "+e.getKey().getBranchName()+"</u></b><br>";
+            int i=1;
+            for(Customer c : e.getValue()){
+                toReturn = toReturn + (i++)+". "+c.getFirstName()+" "+c.getLastName()+" ("+c.getId()+")<br>";
+            }
+        }
+        
+            String heading = "The following list are potential customers among all of our branches:<br>";
+            toReturn = "<html>"+heading+toReturn+"</html>";
+        
+            return toReturn;
     }
     
     
-    public int getTotalWorkoutsByBranch(int branchNum){
+    public String getTotalWorkoutsByBranch(int branchNum){
         int count=0;
         for(Workout w : getWorkouts().values()){
             if(branchNum==w.getBranchNum())
                 count++;
         }
         
-        return count;
+        return "Branch number "+branchNum+" has "+count+" Minutes of total working time.";
     }
     
     
-    // -------------------------------hashCode equals &
+    // -------------------------------hashCode equals11 &
     // toString------------------------------
     
 //	@Override

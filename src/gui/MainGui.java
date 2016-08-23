@@ -12,6 +12,7 @@ import javax.swing.JDesktopPane;
 import gui.internal.*;
 import gui.manage.ManageCustomers;
 import gui.manage.ManageEmployees;
+import gui.manage.ViewStatistics;
 import gui.manage.rcpManageBranch;
 import init.IShape;
 import java.awt.Desktop;
@@ -461,8 +462,8 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
     private void btnStatisticsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStatisticsMouseClicked
         // TODO add your handling code here:
         //Open Internal JFrame
-        iWindow.update();
-        System.err.println("Updated GUI");
+        ViewStatistics add = new ViewStatistics();
+        iWindow.openWin(add);
     }//GEN-LAST:event_btnStatisticsMouseClicked
 
     private void btnBranchesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBranchesMouseClicked
