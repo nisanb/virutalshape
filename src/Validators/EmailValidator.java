@@ -1,4 +1,7 @@
 package Validators;
+
+import java.io.Serializable;
+
 	 /**
 	  * @author Mickey Shalev - 200681872 
 	  * Checks whether the given email address is valid according to format:

@@ -15,6 +15,7 @@ import gui.manage.ManageEmployees;
 import gui.manage.rcpManageBranch;
 import init.IShape;
 import java.awt.Desktop;
+import java.io.Serializable;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
@@ -25,7 +26,7 @@ import utils.MyFileLogWriter;
  *
  * @author nisan
  */
-public class MainGui extends javax.swing.JFrame  {
+public class MainGui extends javax.swing.JFrame implements Serializable  {
     
     
  
