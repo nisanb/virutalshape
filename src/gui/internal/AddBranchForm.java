@@ -525,6 +525,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
             //Success
             lblfailed.setVisible(false);
             lblsuccess.setVisible(true);
+            iWindow.exportData();
             
         }else{
             lblsuccess.setVisible(false);

@@ -451,7 +451,6 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Customer was added successfully");
             iWindow.log(new Date().toString() + " - " + id + " was added successfully");
-            iWindow.exportData();
         }       
         else{
             MessageBox.setForeground(Color.RED);

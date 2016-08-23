@@ -45,6 +45,7 @@ import core.Workout;
  * @author University Of Haifa-Israel
  */
 public class IShape implements Serializable {
+    static final long serialVersionUID = 1;
     
     // --------------------------Class Members---------------------------
     /**
@@ -82,7 +83,7 @@ public class IShape implements Serializable {
     /**
      * This variables are required for auto numbering of new objects
      */
-    public static int EMPLOYEES=0, SUBSCRIPTIONS=0, WORKOUTS=0, LESSONS=0;
+    private int EMPLOYEES=0, SUBSCRIPTIONS=0, WORKOUTS=0, LESSONS=0;
     
     private static IShape Data;
     // -------------------------------Constructors------------------------------

@@ -345,7 +345,6 @@ public class AddLesson extends javax.swing.JInternalFrame {
                 String strDate = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(dateTime);
                 DateError.setForeground(Color.GREEN);
                 DateError.setText("Date: " + strDate);
-                iWindow.update();
             }
             else{
                 dateTime = null;
@@ -386,6 +385,7 @@ public class AddLesson extends javax.swing.JInternalFrame {
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Successfully added lesson " + lessonNum  +" to branch" + branch.getBranchNumber());
             iWindow.log(new Date().toString() + " - Successfully added lesson " + lessonNum  +" to branch" + branch.getBranchNumber());
+            iWindow.exportData();
         }
         else{
             MessageBox.setForeground(Color.RED);

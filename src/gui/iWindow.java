@@ -110,14 +110,14 @@ public class iWindow {
     }
     
     //================================= Setters and Getters ==================================
-//    
-//    /**
-//     * Set DB
-//     * @param tmp 
-//     */
-//    public static void setDB(IShape tmp){
-//        DB=tmp;
-//    }
+    
+    /**
+     * Set DB
+     * @param tmp 
+     */
+    public static void setDB(IShape tmp){
+        IShape=tmp;
+    }
     
     /**
      * Get DB
