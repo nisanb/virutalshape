@@ -45,8 +45,14 @@ public class CancelWorkout extends javax.swing.JInternalFrame {
           setTitle("Customer #"+customer.getId()+"-> Add Intrument to Workout");
         lblCustomerID.setText(customer.getFirstName()+" "+customer.getLastName()+" ("+customer.getId()+")");
         
+        setWorkouts();
         
         
+        //Finished Loading
+    }
+    
+    
+    private void setWorkouts(){
         selectWorkout.removeAllItems();
         selectWorkout.addItem("Select Workout");
             for (Subscription s:customer.getSubs()){
@@ -55,11 +61,7 @@ public class CancelWorkout extends javax.swing.JInternalFrame {
                         selectWorkout.addItem(w.toString2());
                 }
             }
-      
-        
-        //Finished Loading
-    }
-    
+        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -171,10 +173,12 @@ public class CancelWorkout extends javax.swing.JInternalFrame {
                 + "\nNOTE: Action can't be resotred", "Remove subsription confirmation",
                 JOptionPane.YES_NO_OPTION) == JOptionPane.NO_OPTION) return;
         //remove from ishape
+        System.out.println(workoutNum);
         if (iWindow.getDB().cancelWorkout(workoutNum)){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Workout " + workoutNum + " was removed successfully from customer " + customer.getId());
             iWindow.log(new Date().toString() + " - Workout " + workoutNum + " was removed successfully from customer " + customer.getId());
+            setWorkouts();
         }
         else{
             MessageBox.setForeground(Color.RED);

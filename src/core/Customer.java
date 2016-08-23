@@ -456,6 +456,7 @@ public class Customer implements Serializable {
                             sub = this.subs.get(this.subs.indexOf(s));
                             for (Practice p : workoutToCancel.getTimeAndinstruments().keySet()) {
                                 Instrument ins = workoutToCancel.getTimeAndinstruments().get(p);
+                                System.out.println("sub: " + sub +  ", p: " + p);
                                 if (ins.cancelCustomer(sub, p)){
                                     flag = true;
                                 }

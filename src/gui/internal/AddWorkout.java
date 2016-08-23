@@ -220,6 +220,13 @@ public class AddWorkout extends javax.swing.JInternalFrame {
             return;
         }
         
+        if (selectBranch.getSelectedIndex() == 0) if (branchNum < 1){
+            MessageBox.setForeground(Color.red);
+            MessageBox.setText("Please select all fields");
+            iWindow.update();
+            return;
+        }
+        
         workoutNum = iWindow.getDB().getNextWork()+1;
         WorkoutNum.setText(new Integer (workoutNum).toString());
         custNum = customer.getId();

@@ -357,6 +357,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
         
         lessonChooser.removeAllItems();
         Branch branch = iWindow.getDB().getBranches().get(branchNum);
+        if (branch == null) return;
         for (Room r:branch.getRooms()){
             for (Lesson l:r.getLessons()){
                 if (l.getStartDate().after(start) && l.getName().equals(les)){

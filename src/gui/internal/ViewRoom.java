@@ -19,7 +19,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
-import utils.E_Types;
 import utils.ResizeImage;
 
 
@@ -105,8 +104,8 @@ public class ViewRoom extends javax.swing.JInternalFrame {
             tmp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 
-                E_Types instype = ins.getType();
-               AddInstrumentToWorkout add = new AddInstrumentToWorkout(customer, instype, workoutNum);
+
+               AddInstrumentToWorkout add = new AddInstrumentToWorkout(customer, ins, workoutNum);
                 iWindow.openWin(add);
             }
         });
