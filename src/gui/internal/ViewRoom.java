@@ -5,6 +5,7 @@
  */
 package gui.internal;
 
+import core.Customer;
 import core.Instrument;
 import core.Room;
 import gui.iWindow;
@@ -18,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
+import utils.E_Types;
 import utils.ResizeImage;
 
 
@@ -28,13 +30,15 @@ import utils.ResizeImage;
 public class ViewRoom extends javax.swing.JInternalFrame {
     private Room room;
     private int workoutNum;
+    private Customer customer;
     /**
      * Creates new form ViewRoom
      */
-    public ViewRoom(Room r, int wrkNum) {
+    public ViewRoom(Customer cust,Room r, int wrkNum) {
         initComponents();
         this.room = r;
         this.workoutNum = wrkNum;
+        customer = cust;
        updateRoom();
         
     }
@@ -101,9 +105,8 @@ public class ViewRoom extends javax.swing.JInternalFrame {
             tmp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 
-                
-              
-               AddInstrumentToWorkout add = new AddInstrumentToWorkout(iWindow.getCustomerLogged(), ins, workoutNum);
+                E_Types instype = ins.getType();
+               AddInstrumentToWorkout add = new AddInstrumentToWorkout(customer, instype, workoutNum);
                 iWindow.openWin(add);
             }
         });

@@ -200,9 +200,10 @@ public class IShape implements Serializable {
      */
     public boolean addEmployee(Employee emp) {
         // Check validity first
-        EMPLOYEES++;
+        
         if (emp != null && emp.getEmployeeNumber() > 0
                 && !employees.containsKey(emp.getEmployeeNumber())) {
+            EMPLOYEES++;
             employees.put(emp.getEmployeeNumber(), emp);
             return true;
         }
@@ -257,11 +258,11 @@ public class IShape implements Serializable {
      */
     public boolean addSubToCustomer(int subNumber, String custId,
             int receptNumber, E_Periods period, Date startDate) {
-        SUBSCRIPTIONS++;
         if (subNumber > 0 && custId != null && receptNumber > 0
                 && period != null && startDate != null)
             if (customers.containsKey(custId)
                     && employees.containsKey(receptNumber)) {
+                        SUBSCRIPTIONS++;
                 Employee emp = employees.get(receptNumber);
                 if (emp instanceof Receptionist) {
                     Subscription subToAdd = new Subscription(subNumber,
@@ -395,7 +396,7 @@ public class IShape implements Serializable {
     public boolean addLesson(int lessonNum, E_Lessons lessonName,
             Date dateTime, E_Levels level, int coachNum, int maxStudent,
             int branchNum, int roomNum) {
-        LESSONS++;
+        
         if (new Date().after(dateTime)) {
             System.out.println("Date error");
             return false;
@@ -403,6 +404,7 @@ public class IShape implements Serializable {
         if (lessonNum > 0 && lessonName != null && dateTime != null
                 && level != null && coachNum > 0 && maxStudent > 0
                 && branchNum > 0 && roomNum > 0) {
+            LESSONS++;
             // if the coach & branch exists and the lesson is new
             if (employees.containsKey(coachNum)
                     && branches.containsKey(branchNum)
@@ -468,8 +470,9 @@ public class IShape implements Serializable {
      */
     public boolean addWorkout(int workoutNum, String customerNum, Date date,
             int branchNum) {
-        WORKOUTS++;
+        
         if (workoutNum > 0 && customerNum != null && date != null) {
+            WORKOUTS++;
             if (customers.containsKey(customerNum)) {
                 Customer cust = customers.get(customerNum);
                 if (cust != null) {

@@ -62,10 +62,12 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
         iWindow.update();
     
     }
-    public AddInstrumentToWorkout(Customer cust, Instrument ins, int workoutNum) {
+    public AddInstrumentToWorkout(Customer cust, E_Types type, int workoutNum) {
         initComponents();
         setTitle("Customer -> Add Intrument to Workout");
         this.customer = cust;
+        //this.instrument = ins;
+        this.type = type;
         this.workoutNum = workoutNum;
         lblCustomerID.setVisible(true);
         lblCustomerID.setText(customer.getId());
@@ -73,7 +75,7 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
         lblWorkoutNum.setText(""+workoutNum);
         selectWorkout.hide();
         lblInstrumentType.setVisible(true);
-        lblInstrumentType.setText(ins.getType().toString());
+        lblInstrumentType.setText(type.toString());
         
          selectRoom.hide();
         lblSelectRoom.hide();
@@ -364,7 +366,6 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
             int s = Second.getSelectedIndex()-1;
             
             start = new Date(y, m, d, h,min,s);
-            System.err.println(this.workoutNum);
             Date workdate = iWindow.getDB().getWorkouts().get(this.workoutNum).getDate();
             if (new Date().before(start) && start.getYear() == workdate.getYear()
                     && start.getMonth() == workdate.getMonth() && start.getDate() == workdate.getDate()){
@@ -387,14 +388,13 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
             iWindow.update();
             return;
         }
-        if(instrument!=null){
-            //I brought an instrument with me
-            roomNum = instrument.getRoom().getRoomNum();
-            branchNum = instrument.getRoom().getBranch().getBranchNumber();
-            
-        }
-        //add to ishape
+        if(instrument==null) return;
+        //I brought an instrument with me
+        roomNum = instrument.getRoom().getRoomNum();
+        branchNum = instrument.getRoom().getBranch().getBranchNumber();
         
+
+        //add to ishape
         System.out.println(workoutNum + " " + branchNum + " " + roomNum + " " + start + " " + minutes);
         if (iWindow.getDB().addInstrumentToWorkout(workoutNum,branchNum, roomNum, type, start, minutes)){
             MessageBox.setForeground(Color.GREEN);
@@ -491,7 +491,6 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
             
             
         }
-        System.err.println("SHOWING");
         selectRoom.setVisible(true);
         selectRoom.show();
         lblSelectRoom.show();
@@ -520,7 +519,7 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
         //Find room and launch View Room
         for(Room r : branch.getRooms()){
             if(r.getRoomNum()==RoomNum){
-                ViewRoom add = new ViewRoom(r, workoutNum);
+                ViewRoom add = new ViewRoom(customer,r, workoutNum);
                 iWindow.openWin(add);
                 break;
             }

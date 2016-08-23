@@ -101,7 +101,7 @@ public class iWindow {
             objoutput.writeObject(IShape);
             objoutput.close();
             
-            System.err.println("Exported Data to \"" + fileName + "\"");
+            //System.err.println("Exported Data to \"" + fileName + "\"");
             
         } catch (Exception e) {
             System.err.println("Could not export database\n" + e.toString());
@@ -353,8 +353,7 @@ public class iWindow {
        customerLogged=null;
        employeeLogged=null;
        lblTitle.setText("Welcome to Virutal iShape");
-       
-       
+
    }
     
 
@@ -362,6 +361,7 @@ public class iWindow {
         if (getCurrentWindow() == null) return; 
         getCurrentWindow().setVisible(false);
         getCurrentWindow().setVisible(true);
+        exportData();
     }
     public static void update(JInternalFrame frame){
         frame.setVisible(false);
