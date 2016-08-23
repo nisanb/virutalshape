@@ -5,6 +5,7 @@
  */
 package gui.internal;
 
+import Validators.AgeValidator;
 import gui.iWindow;
 import Validators.CharValidator;
 import Validators.EmailValidator;
@@ -94,6 +95,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         emailfield = new javax.swing.JTextField();
         mailError = new javax.swing.JLabel();
         MessageBox = new javax.swing.JLabel();
+        DateError = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -363,11 +365,6 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         year.setBackground(new java.awt.Color(0, 0, 0));
         year.setForeground(new java.awt.Color(255, 255, 255));
         year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yeay", "1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938", "1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
-        year.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                yearFocusLost(evt);
-            }
-        });
         getContentPane().add(year);
         year.setBounds(270, 100, 60, 20);
 
@@ -401,6 +398,11 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         getContentPane().add(MessageBox);
         MessageBox.setBounds(30, 350, 330, 20);
 
+        DateError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        DateError.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(DateError);
+        DateError.setBounds(350, 100, 170, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -410,7 +412,40 @@ public class AddCustomer extends javax.swing.JInternalFrame {
      */
     
     private void btnAddCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddCustomerMouseClicked
-    Address address = new Address(country, city, street, housNumber, phones);
+    //Create the date
+        if (day.getSelectedIndex() != 0 && month.getSelectedIndex() != 0
+                && year.getSelectedIndex() != 0) {
+            int d = day.getSelectedIndex();
+            int m = month.getSelectedIndex()-1;
+            int y =  year.getSelectedIndex()+29;
+
+            birthDate = new Date(y, m, d);
+
+            if ((birthDate !=null) && AgeValidator.ValidateAge(birthDate, 12)){
+                DateError.setText(" ");
+                iWindow.update();
+            }
+            else{
+                birthDate = null;
+                DateError.setForeground(Color.red);
+                DateError.setText("Invalid date or time");
+                MessageBox.setForeground(Color.RED);
+                MessageBox.setText("Failed to add Customer");
+                iWindow.update();
+                return;
+            }
+        }
+        else{
+            birthDate = null;
+            DateError.setForeground(Color.red);
+            DateError.setText("Invalid date or time");
+            MessageBox.setForeground(Color.RED);
+            MessageBox.setText("Failed to add coach");
+            iWindow.update();
+            return;
+        }
+        
+        Address address = new Address(country, city, street, housNumber, phones);
     
     if (iWindow.getDB().addCustomer(id, firstName, lastName, birthDate, password, email, address)){
         MessageBox.setForeground(Color.GREEN);
@@ -568,21 +603,6 @@ public class AddCustomer extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_LastFieldFocusLost
 
     /**
-     * this method sets the date after year was selected
-     * @param evt 
-     */
-    private void yearFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_yearFocusLost
-        if (day.getSelectedIndex() != 0 && month.getSelectedIndex() != 0 && year.getSelectedIndex() != 0) {
-            int d = day.getSelectedIndex();
-            int m = month.getSelectedIndex()-1;
-            int y =  year.getSelectedIndex()+29;
-
-            birthDate = new Date(y, m, d);
-        }
-        iWindow.update();
-    }//GEN-LAST:event_yearFocusLost
-
-    /**
      * this method validates both passwords are equal
      * @param evt 
      */
@@ -627,6 +647,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DateError;
     private javax.swing.JLabel Ferror;
     private javax.swing.JTextField IDfield;
     private javax.swing.JTextField LastField;

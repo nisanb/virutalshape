@@ -6,9 +6,6 @@
 package gui.internal;
 
 import gui.iWindow;
-import Validators.CharValidator;
-import Validators.PhoneValidator;
-import Validators.PositiveValidator;
 import core.Address;
 import core.Branch;
 import core.Coach;
@@ -25,6 +22,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JList;
 import utils.E_Lessons;
 import utils.E_Types;
+import Validators.*;
 
 /**
  *
@@ -478,7 +476,8 @@ public class AddCoach extends javax.swing.JInternalFrame {
             startWorkingDate = new Date(y, m, d);
             birthDate = new Date(y, m, d);
 
-            if (startWorkingDate != null && birthDate !=null && new Date().after(birthDate)){
+            if (startWorkingDate != null && birthDate !=null && new Date().after(birthDate)
+                    && AgeValidator.ValidateAge(birthDate, 16)){
                 DateError.setText(" ");
                 iWindow.update();
             }

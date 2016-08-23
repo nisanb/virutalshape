@@ -6,9 +6,7 @@
 package gui.internal;
 
 import gui.iWindow;
-import Validators.CharValidator;
-import Validators.PhoneValidator;
-import Validators.PositiveValidator;
+import Validators.*;
 import core.Address;
 import core.Branch;
 import core.Coach;
@@ -91,6 +89,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         year1 = new javax.swing.JComboBox<>();
         MessageBox = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        DateError = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -395,6 +394,11 @@ public class AddRcp extends javax.swing.JInternalFrame {
         employeeNumber = iWindow.getDB().getNextEmp();
         jLabel1.setText(new Integer(employeeNumber).toString());
 
+        DateError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        DateError.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(DateError);
+        DateError.setBounds(350, 110, 170, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 /**
@@ -402,6 +406,47 @@ public class AddRcp extends javax.swing.JInternalFrame {
  * @param evt 
  */
     private void btnAddRspMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddRspMouseClicked
+        //Create the date
+        if (day.getSelectedIndex() != 0 && month.getSelectedIndex() != 0
+                && year.getSelectedIndex() != 0 && day1.getSelectedIndex() != 0 
+                && month1.getSelectedIndex() != 0 && year1.getSelectedIndex() != 0) {
+            int d = day.getSelectedIndex();
+            int m = month.getSelectedIndex()-1;
+            int y =  year.getSelectedIndex()+29;
+            int day = day1.getSelectedIndex();
+            int month = month1.getSelectedIndex()-1;
+            int year =  year1.getSelectedIndex()+29;
+
+            startWorkingDate = new Date(y, m, d);
+            birthDate = new Date(y, m, d);
+
+            if (startWorkingDate != null && birthDate !=null && new Date().after(birthDate)
+                    && AgeValidator.ValidateAge(birthDate, 16)){
+                DateError.setText(" ");
+                iWindow.update();
+            }
+            else{
+                birthDate = null;
+                startWorkingDate = null;
+                DateError.setForeground(Color.red);
+                DateError.setText("Invalid date or time");
+                MessageBox.setForeground(Color.RED);
+                MessageBox.setText("Failed to add coach");
+                iWindow.update();
+                return;
+            }
+        }
+        else{
+            birthDate = null;
+            startWorkingDate = null;
+            DateError.setForeground(Color.red);
+            DateError.setText("Invalid date or time");
+            MessageBox.setForeground(Color.RED);
+            MessageBox.setText("Failed to add coach");
+            iWindow.update();
+            return;
+        }
+        
         Address address = new Address(country, city, street,
             housNumber, phones);
 
@@ -579,6 +624,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DateError;
     private javax.swing.JLabel Ferror;
     private javax.swing.JTextField LastField;
     private javax.swing.JLabel Lerror;
