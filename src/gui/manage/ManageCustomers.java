@@ -23,9 +23,11 @@ import gui.internal.AddLesson;
 import gui.internal.AddRoom;
 import gui.internal.AddSubscription;
 import gui.internal.AddWorkout;
+import gui.internal.AttendedLesson;
 import gui.internal.CancelSubscription;
 import gui.internal.CancelWorkout;
 import gui.internal.CustomerToLesson;
+import gui.internal.UpdateCustAddress;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -86,7 +88,6 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         chooseCustomer = new javax.swing.JComboBox<>();
         statisticsPanel = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
-        btnEdit = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
@@ -99,6 +100,7 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         lblCountLessons = new javax.swing.JLabel();
         txtWorkBranch = new javax.swing.JLabel();
         lblBirthDate = new javax.swing.JLabel();
+        btnEdit = new javax.swing.JLabel();
         txtBranchName = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         txtPassword = new javax.swing.JLabel();
@@ -108,6 +110,7 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         lblShow = new javax.swing.JLabel();
         txt1 = new javax.swing.JLabel();
         lblActiveSubs = new javax.swing.JLabel();
+        lblNewLesson1 = new javax.swing.JLabel();
         txt7 = new javax.swing.JLabel();
         lblSubs = new javax.swing.JLabel();
         lblNewLesson = new javax.swing.JLabel();
@@ -129,6 +132,7 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         infotitle = new javax.swing.JLabel();
         txtTotalRooms1 = new javax.swing.JLabel();
         lblAddress = new javax.swing.JLabel();
+        btnEdit1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         fldCustID = new javax.swing.JTextField();
         lblError = new javax.swing.JLabel();
@@ -169,15 +173,6 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         statisticsPanel.setLayout(null);
         statisticsPanel.add(jSeparator2);
         jSeparator2.setBounds(30, 50, 210, 0);
-
-        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/edit-11-24.png"))); // NOI18N
-        btnEdit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEditMouseClicked(evt);
-            }
-        });
-        statisticsPanel.add(btnEdit);
-        btnEdit.setBounds(340, 50, 30, 30);
 
         jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator4.setEnabled(false);
@@ -243,6 +238,15 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         statisticsPanel.add(lblBirthDate);
         lblBirthDate.setBounds(210, 100, 200, 16);
 
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/edit-11-24.png"))); // NOI18N
+        btnEdit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditMouseClicked(evt);
+            }
+        });
+        statisticsPanel.add(btnEdit);
+        btnEdit.setBounds(340, 50, 30, 30);
+
         txtBranchName.setBackground(new java.awt.Color(255, 255, 255));
         txtBranchName.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         txtBranchName.setForeground(new java.awt.Color(255, 255, 255));
@@ -301,6 +305,17 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         lblActiveSubs.setText("id");
         statisticsPanel.add(lblActiveSubs);
         lblActiveSubs.setBounds(210, 200, 70, 16);
+
+        lblNewLesson1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblNewLesson1.setForeground(new java.awt.Color(51, 102, 255));
+        lblNewLesson1.setText("[Attend Lesson]");
+        lblNewLesson1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNewLesson1MouseClicked(evt);
+            }
+        });
+        statisticsPanel.add(lblNewLesson1);
+        lblNewLesson1.setBounds(270, 280, 90, 13);
 
         txt7.setBackground(new java.awt.Color(255, 255, 255));
         txt7.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -440,12 +455,21 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         txtTotalRooms1.setForeground(new java.awt.Color(255, 255, 255));
         txtTotalRooms1.setText("Address");
         moreInfo.add(txtTotalRooms1);
-        txtTotalRooms1.setBounds(20, 60, 100, 16);
+        txtTotalRooms1.setBounds(50, 60, 100, 16);
 
         lblAddress.setForeground(new java.awt.Color(255, 255, 255));
         lblAddress.setText("lblAddress");
         moreInfo.add(lblAddress);
         lblAddress.setBounds(210, 60, 170, 16);
+
+        btnEdit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/edit-11-24.png"))); // NOI18N
+        btnEdit1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEdit1MouseClicked(evt);
+            }
+        });
+        moreInfo.add(btnEdit1);
+        btnEdit1.setBounds(20, 50, 30, 30);
 
         getContentPane().add(moreInfo);
         moreInfo.setBounds(410, 90, 370, 400);
@@ -639,10 +663,23 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         iWindow.openWin(add);
     }//GEN-LAST:event_lblCancelWorkoutMouseClicked
 
+    private void lblNewLesson1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewLesson1MouseClicked
+        // TODO add your handling code here:
+        AttendedLesson add = new AttendedLesson(customer);
+        iWindow.openWin(add);
+    }//GEN-LAST:event_lblNewLesson1MouseClicked
+
+    private void btnEdit1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEdit1MouseClicked
+        // TODO add your handling code here:
+        UpdateCustAddress add = new UpdateCustAddress(customer);
+        iWindow.openWin(add);
+    }//GEN-LAST:event_btnEdit1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddCustomer;
     private javax.swing.JLabel btnEdit;
+    private javax.swing.JLabel btnEdit1;
     private javax.swing.JComboBox<String> chooseCustomer;
     private javax.swing.JTextField fldCustID;
     private javax.swing.JLabel infotitle;
@@ -673,6 +710,7 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblEmployeeName;
     private javax.swing.JLabel lblError;
     private javax.swing.JLabel lblNewLesson;
+    private javax.swing.JLabel lblNewLesson1;
     private javax.swing.JLabel lblNewSub;
     private javax.swing.JLabel lblNewSub2;
     private javax.swing.JLabel lblNewWorkout;
