@@ -7,8 +7,19 @@ package gui.internal;
 
 import core.Instrument;
 import core.Room;
+import gui.iWindow;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.image.WritableRaster;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JLabel;
+import utils.ResizeImage;
+
 
 /**
  * This class displays the instruments in the room!
@@ -16,12 +27,21 @@ import javax.swing.JLabel;
  */
 public class ViewRoom extends javax.swing.JInternalFrame {
     private Room room;
+    private int workoutNum;
     /**
      * Creates new form ViewRoom
      */
-    public ViewRoom(Room r) {
+    public ViewRoom(Room r, int wrkNum) {
         initComponents();
         this.room = r;
+        this.workoutNum = wrkNum;
+       updateRoom();
+        
+    }
+     public ViewRoom(Room r) {
+        initComponents();
+        this.room = r;
+        this.workoutNum = 0;
        updateRoom();
         
     }
@@ -51,21 +71,42 @@ public class ViewRoom extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+     private static BufferedImage colorImage(BufferedImage image) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+        WritableRaster raster = image.getRaster();
 
+        for (int xx = 0; xx < width; xx++) {
+            for (int yy = 0; yy < height; yy++) {
+                int[] pixels = raster.getPixel(xx, yy, (int[]) null);
+                pixels[0] = 0;
+                pixels[1] = 0;
+                pixels[2] = 255;
+                raster.setPixel(xx, yy, pixels);
+            }
+        }
+        return image;
+    }
     public void updateRoom(){
         for(Instrument ins : room.getInstruments()){
- 
-            JLabel tmp = new JLabel("");
-            
-            tmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/instruments/"+ins.getType()+".png"))); // NOI18N
+            String ext = "";
+            if(!ins.getStatus()){
+                 ext = "_1";
+            }
+            JLabel tmp = new JLabel();
+            tmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/instruments/"+ins.getType()+ext+".png"))); // NOI18N
             pnlGym.add(tmp);
-            System.err.println("test");
             
-            JLabel err = new JLabel("");
-            err.setBounds(tmp.getBounds());
-        
-            err.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/instruments/fault.png"))); // NOI18N
             
+            tmp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                
+                
+              
+               AddInstrumentToWorkout add = new AddInstrumentToWorkout(iWindow.getCustomerLogged(), ins, workoutNum);
+                iWindow.openWin(add);
+            }
+        });
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
