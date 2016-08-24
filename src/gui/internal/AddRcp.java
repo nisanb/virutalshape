@@ -553,7 +553,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
      * @param evt 
      */
     private void slctCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_slctCityFocusLost
-        //        try{
+        if (slctCity.getSelectedIndex() == 0) return;
         String str = (String) slctCity.getSelectedItem();
         city = E_Cities.valueOf(str);
         btnBranchCountry.setText(city.getCountry());

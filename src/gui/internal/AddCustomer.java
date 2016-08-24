@@ -574,7 +574,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
      * @param evt 
      */
     private void slctCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_slctCityFocusLost
-        
+        if (slctCity.getSelectedIndex() == 0) return;
         String str = (String) slctCity.getSelectedItem();
         if(str.equals("Select City"))
             return;

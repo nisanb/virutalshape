@@ -624,6 +624,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
      */
     private void slctCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_slctCityFocusLost
 
+        if (slctCity.getSelectedIndex() == 0) return;
         String str = (String) slctCity.getSelectedItem();
         city = E_Cities.valueOf(str);
         btnBranchCountry.setText(city.getCountry());
