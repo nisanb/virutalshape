@@ -18,6 +18,7 @@ import java.lang.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Random;
 import java.util.Vector;
 import javax.swing.JCheckBox;
 import javax.swing.JList;
@@ -41,6 +42,15 @@ public class AddRcp extends javax.swing.JInternalFrame {
         for (E_Cities city : E_Cities.values()) {
             slctCity.addItem(city.toString());
         }
+        
+        
+        Random rand = new Random();
+        while (employeeNumber < 1){
+            int temp = rand.nextInt(99999);
+            if (temp > 10000 && !iWindow.getDB().getEmployees().containsKey(temp))
+                employeeNumber = temp;
+        }
+        jLabel1.setText(employeeNumber+"");
     }
 
     /**
@@ -391,8 +401,6 @@ public class AddRcp extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(140, 10, 90, 20);
-        employeeNumber = iWindow.getDB().getNextEmp();
-        jLabel1.setText(new Integer(employeeNumber).toString());
 
         DateError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         DateError.setForeground(new java.awt.Color(255, 0, 0));

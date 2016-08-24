@@ -23,6 +23,7 @@ import javax.swing.JList;
 import utils.E_Lessons;
 import utils.E_Types;
 import Validators.*;
+import java.util.Random;
 
 /**
  *
@@ -38,14 +39,20 @@ public class AddCoach extends javax.swing.JInternalFrame {
     public AddCoach() {
         initComponents();
         setTitle("Employees -> Add Coach");
-        employeeNumber = iWindow.getDB().getNextEmp()+1;
-        jLabel1.setText(new Integer(employeeNumber).toString());
         
         //Finished Loading
         //Add cities to the city chooser
         for (E_Cities city : E_Cities.values()) {
             slctCity.addItem(city.toString());
         }
+        
+        Random rand = new Random();
+        while (employeeNumber < 1){
+            int temp = rand.nextInt(99999);
+            if (temp > 10000 && !iWindow.getDB().getEmployees().containsKey(temp))
+                employeeNumber = temp;
+        }
+        jLabel1.setText(employeeNumber+"");
     }
 
     /**
