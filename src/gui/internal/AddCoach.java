@@ -38,6 +38,9 @@ public class AddCoach extends javax.swing.JInternalFrame {
     public AddCoach() {
         initComponents();
         setTitle("Employees -> Add Coach");
+        employeeNumber = iWindow.getDB().getNextEmp()+1;
+        jLabel1.setText(new Integer(employeeNumber).toString());
+        
         //Finished Loading
         //Add cities to the city chooser
         for (E_Cities city : E_Cities.values()) {
@@ -451,8 +454,6 @@ public class AddCoach extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(140, 10, 90, 20);
-        employeeNumber = iWindow.getDB().getNextEmp();
-        jLabel1.setText(new Integer(employeeNumber).toString());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

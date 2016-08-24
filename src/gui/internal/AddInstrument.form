@@ -212,7 +212,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="12">
-            <StringItem index="0" value="Select Instrument Type"/>
+            <StringItem index="0" value="Select Instrument"/>
             <StringItem index="1" value="CROSS"/>
             <StringItem index="2" value="CYCLE"/>
             <StringItem index="3" value="ROWER"/>
@@ -223,7 +223,7 @@
             <StringItem index="8" value="POWER_STATION"/>
             <StringItem index="9" value="ROPE_CLIMBER"/>
             <StringItem index="10" value="SHOULDER_PRESS"/>
-            <StringItem index="11" value="MATTRESS;"/>
+            <StringItem index="11" value="MATTRESS"/>
           </StringArray>
         </Property>
       </Properties>
@@ -231,7 +231,6 @@
         <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="insTypeFocusLost"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="for(E_Rooms r : E_Rooms.values()){&#xa;      insType.addItem(r.toString());&#xa;}"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
       <Constraints>

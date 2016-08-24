@@ -501,8 +501,6 @@ public class AddLesson extends javax.swing.JInternalFrame {
             lessonName = E_Lessons.valueOf(LessonName.getSelectedItem().toString());
         }
         
-        lessonNumAuto.setText(new Integer(lessonNum).toString());
-        
         iWindow.update();
     }//GEN-LAST:event_LessonNameFocusLost
     

@@ -38,27 +38,28 @@ public class CancelSubscription extends javax.swing.JInternalFrame {
         setTitle("Customer #"+customer.getId()+" -> Cancel Subscription");
         iWindow.update();
         //Finished Loading
-          String str = customer.getId();
-        subChooser.removeAllItems();
+        String str = customer.getId();
+        custError.setForeground(Color.GREEN);
+        custError.setText(customer.getFirstName() +" " + customer.getLastName());
+        custNum = str;
+        updateSubs();
         
-
-            subChooser.addItem("Select Subscription");
-            custError.setForeground(Color.GREEN);
-            custError.setText(customer.getFirstName() +" " + customer.getLastName());
-            custNum = str;
-            int counter=0;
-            for (Subscription sub:cust.getSubs()){
-                counter++;
-                subChooser.addItem(sub.getNumber() + " - End date: " + sub.getLastDay());
-            }
-            
-            if(counter==0)
-                Connect.setEnabled(false);
-    
-            
-      
+        
         
         iWindow.update();
+    }
+    
+    private void updateSubs(){
+        subChooser.removeAllItems();
+        subChooser.addItem("Select Subscription");
+        int counter=0;
+        for (Subscription sub:customer.getSubs()){
+            counter++;
+            subChooser.addItem(sub.getNumber() + " - End date: " + sub.getLastDay());
+        }
+        
+        if(counter==0)
+            Connect.setEnabled(false);
     }
     
     /**
@@ -167,7 +168,7 @@ public class CancelSubscription extends javax.swing.JInternalFrame {
             MessageBox.setText("Subscription " +subNum + " was successfully deleted from customer " + customer.getId());
             iWindow.log(new Date().toString() + " - Subscription " + subNum + " was successfully deleted from customer "+ customer.getId());
             
-
+            iWindow.exportData();
             //Update Window
             CancelSubscription cancel = new CancelSubscription(customer);
             iWindow.openWin(cancel);

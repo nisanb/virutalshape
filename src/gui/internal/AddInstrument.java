@@ -39,7 +39,14 @@ public class AddInstrument extends javax.swing.JInternalFrame {
         this.room = room;
         lblBranchNum.setText(""+branch.getBranchNumber());
         lblRoomNum.setText(""+room.getRoomNum());
+        //updateIns();
         //Finished Loading
+    }
+    
+    private void updateIns(){
+        for (E_Types type:E_Types.values()){
+            insType.addItem(type.toString());
+        }
     }
     
     /**
@@ -144,7 +151,7 @@ public class AddInstrument extends javax.swing.JInternalFrame {
 
         insType.setBackground(new java.awt.Color(0, 0, 0));
         insType.setForeground(new java.awt.Color(255, 255, 255));
-        insType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Instrument Type", "CROSS", "CYCLE", "ROWER", "STEPPER", "BENCH", "KETTLEBELLS", "WEIGHTLIFTING_BAR", "POWER_STATION", "ROPE_CLIMBER", "SHOULDER_PRESS", "MATTRESS;" }));
+        insType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Instrument", "CROSS", "CYCLE", "ROWER", "STEPPER", "BENCH", "KETTLEBELLS", "WEIGHTLIFTING_BAR", "POWER_STATION", "ROPE_CLIMBER", "SHOULDER_PRESS", "MATTRESS" }));
         insType.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 insTypeFocusLost(evt);
@@ -152,9 +159,6 @@ public class AddInstrument extends javax.swing.JInternalFrame {
         });
         getContentPane().add(insType);
         insType.setBounds(180, 70, 170, 20);
-        for(E_Rooms r : E_Rooms.values()){
-            insType.addItem(r.toString());
-        }
 
         jLabel3.setToolTipText("Subscription Number ");
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -209,6 +213,11 @@ public class AddInstrument extends javax.swing.JInternalFrame {
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Successfully added instrument " + type  +" to branch" + branchNum);
             iWindow.log(new Date().toString() + "Successfully added instrument " + type  +" to branch" + branchNum);
+            iWindow.exportData();
+            
+            InsNum.setText(""); amount = -1;
+            insStatus.setSelectedIndex(0); status = true;
+            insType.setSelectedIndex(0); type=null;
         }       
         else{
             MessageBox.setForeground(Color.RED);

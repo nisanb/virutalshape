@@ -84,7 +84,7 @@ public class IShape implements Serializable {
     /**
      * This variables are required for auto numbering of new objects
      */
-    private int EMPLOYEES=0, SUBSCRIPTIONS=0, WORKOUTS=0, LESSONS=0;
+    private int EMPLOYEES, SUBSCRIPTIONS, WORKOUTS, LESSONS;
     
     private static IShape Data;
     // -------------------------------Constructors------------------------------
@@ -98,6 +98,10 @@ public class IShape implements Serializable {
         lessons = new HashMap<Integer, Lesson>();
         workouts = new HashMap<Integer, Workout>();
         subs = new HashMap<Integer,Subscription>();
+        EMPLOYEES = 0;
+        SUBSCRIPTIONS = 0;
+        WORKOUTS = 0;
+        LESSONS = 0;
     }
     
     // -----------------------------------------Getters------------------------------------

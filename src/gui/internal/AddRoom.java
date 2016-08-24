@@ -230,6 +230,12 @@ public class AddRoom extends javax.swing.JInternalFrame {
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Successfully added room to branch" + branch.getBranchNumber());
             iWindow.log(new Date().toString() + " - " + "Successfully added room to branch" + branch.getBranchNumber());
+            iWindow.exportData();
+            
+            roomNumber.setText(""); roomNum=-1; 
+            people1.setText(""); maxNumOfTrainees=-1;
+            InsNum.setText(""); maxNumOfInstruments=-1;
+            
         }       
         else{
             MessageBox.setForeground(Color.RED);
