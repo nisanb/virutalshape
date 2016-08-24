@@ -39,15 +39,18 @@ public class AddInstrument extends javax.swing.JInternalFrame {
         this.room = room;
         lblBranchNum.setText(""+branch.getBranchNumber());
         lblRoomNum.setText(""+room.getRoomNum());
-        //updateIns();
-        //Finished Loading
-    }
-    
-    private void updateIns(){
-        for (E_Types type:E_Types.values()){
+        insType.removeAllItems();
+        insType.addItem("Select Instrument");
+         for (E_Types type:E_Types.values()){
             insType.addItem(type.toString());
         }
+         iWindow.update();
+       
     }
+    
+   
+       
+   
     
     /**
      * This method is called from within the constructor to initialize the form.

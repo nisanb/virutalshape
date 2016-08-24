@@ -100,15 +100,19 @@ public class ViewRoom extends javax.swing.JInternalFrame {
             tmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/instruments/"+ins.getType()+ext+".png"))); // NOI18N
             pnlGym.add(tmp);
             
-            
+            Instrument tmpins = ins;
+             if(ins.getStatus() && customer!=null)
             tmp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 
-
-               AddInstrumentToWorkout add = new AddInstrumentToWorkout(customer, ins, workoutNum);
+            
+               
+               AddInstrumentToWorkout add = new AddInstrumentToWorkout(customer, tmpins, workoutNum);
                 iWindow.openWin(add);
-            }
-        });
+                 }
+            
+             });
+           
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
