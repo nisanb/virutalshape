@@ -11,13 +11,14 @@ import java.util.TreeMap;
 import utils.WorkoutComparator;
 
 public class Workout implements Serializable {
+    static final long serialVersionUID = 11;
 
 	// -------------------------------Class Members------------------------------
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -3159715238195584504L;
+	
 
 	/**
 	 * the workout number

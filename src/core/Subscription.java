@@ -18,6 +18,7 @@ import utils.E_Periods;
  * @author University Of Haifa-Israel
  */
 public class Subscription implements Serializable {
+    static final long serialVersionUID = 10;
     // -------------------------------Class
     // Members------------------------------
     

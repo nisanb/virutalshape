@@ -21,7 +21,7 @@ import utils.E_Levels;
  * @author University Of Haifa-Israel
  */
 public class Coach extends Employee implements Serializable {
-    
+    static final long serialVersionUID = 5;
     // -------------------------------Class
     // Members------------------------------
     

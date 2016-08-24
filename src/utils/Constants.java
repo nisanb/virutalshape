@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @author University Of Haifa-Israel
  */
 public final class Constants implements Serializable {
-
+static final long serialVersionUID = 13;
 	/**
 	 * The maximum of coaches in a single branch
 	 */

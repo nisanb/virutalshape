@@ -7,7 +7,9 @@ import java.io.Serializable;
  * @author Java Course Team 2016
  * @author University Of Haifa-Israel
  */
+
 public enum E_Cities implements Serializable {
+        
 	//-------------------------------------------------------------Values---------------------------------------------------------------------
 		// cities in Israel for Employee, Branch and Customer entities
 		Acre("Israel"),	Afula("Israel"),	Arad("Israel"),	Ariel("Israel"),	Ashdod("Israel"),	Ashkelon("Israel"),	Baqa_Jatt("Israel"),	Bat_Yam("Israel"),	Beersheba("Israel"),
@@ -37,5 +39,5 @@ public enum E_Cities implements Serializable {
 		public String getCountry() { 
 			return country; 
 		}
-
+final long serialVersionUID = 14;
 	}// ~ END OF Enum Class Cities

@@ -3,6 +3,7 @@ package utils;
 import java.io.Serializable;
 
 public enum E_Levels implements Serializable {
+    
 	//-------------------------------------------------------------Values---------------------------------------------------------------------
 	// levels of lessons
 	BEGINNERS(1), INTERMEDIATE(2), ADVANCED(3), PROFESSIONAL(3);
@@ -18,4 +19,5 @@ public enum E_Levels implements Serializable {
 			public int getLevel() { 
 				return level; 
 			}
+                        final long serialVersionUID = 16;
 }

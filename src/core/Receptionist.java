@@ -14,7 +14,7 @@ import java.util.Set;
  * @author University Of Haifa-Israel
  */
 public class Receptionist extends Employee implements Serializable {
-
+static final long serialVersionUID = 8;
 	// -------------------------------Class Members------------------------------
 	/**
 	 * All receptionist's subscriptions

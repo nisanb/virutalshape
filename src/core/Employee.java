@@ -17,7 +17,7 @@ public class Employee implements Serializable{
     /**
      *
      */
-    private static final long serialVersionUID = -2113891689244281240L;
+    static final long serialVersionUID = 6;
     
     // -------------------------------Class Members------------------------------
     /**

@@ -71,7 +71,7 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         
 
         for (Customer cust : iWindow.getDB().getCustomers().values()) {
-            chooseCustomer.addItem("#"+cust.getId()+" - "+cust.getFirstName()+" "+cust.getLastName());
+            chooseCustomer.addItem(cust.toString());
         }
         
         iWindow.update();

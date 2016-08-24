@@ -14,6 +14,6 @@ public enum E_Periods implements Serializable {
 	public int getNumber() {
 		return number;
 	}
-	
+	final long serialVersionUID = 17;
 	
 }

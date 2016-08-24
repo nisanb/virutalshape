@@ -16,6 +16,7 @@ import utils.E_Rooms;
  * @author University Of Haifa-Israel
  */
 public class Room implements Serializable {
+    static final long serialVersionUID = 9;
 	// -------------------------------Class
 	// Members------------------------------
 

@@ -30,7 +30,7 @@ import utils.MyFileLogWriter;
  * @author nisan
  */
 public class MainGui extends javax.swing.JFrame implements Serializable  {
-    
+    static final long serialVersionUID = 12;
     
  
     /**

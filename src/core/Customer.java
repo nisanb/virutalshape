@@ -21,6 +21,7 @@ import utils.Constants;
  * @author University Of Haifa-Israel
  */
 public class Customer implements Serializable {
+    static final long serialVersionUID = 2;
     // -------------------------------Class
     // Members------------------------------
     /**
@@ -535,6 +536,9 @@ public class Customer implements Serializable {
     
     @Override
     public String toString() {
+        return getFirstName()+ " " + getLastName() + " ("+getId()+")";
+    }
+    public String toString2() {
         return "Customer [ID Number=" + id + ", firstName=" + firstName
                 + ", lastName=" + lastName + ", birthDate="
                 + birthDate.getDate() + "/" + (birthDate.getMonth() + 1) + "/"

@@ -12,6 +12,8 @@ import utils.E_Cities;
  * @author University Of Haifa-Israel
  */
 public class Address implements Serializable {
+    static final long serialVersionUID = 3;
+    
 	// -------------------------------Class Members------------------------------
 	/** The Address city */
 	private E_Cities city;

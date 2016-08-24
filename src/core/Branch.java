@@ -25,7 +25,7 @@ import core.*;
  * @author University Of Haifa-Israel
  */
 public class Branch implements Serializable {
-
+static final long serialVersionUID = 4;
 	// -------------------------------Class
 	// Members------------------------------
 	/**

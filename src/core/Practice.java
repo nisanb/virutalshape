@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
  * @author University Of Haifa-Israel
  */
 public class Practice implements Serializable{
+    static final long serialVersionUID = 7;
 	// -------------------------------Class Members---------------------------
 
 	/**
