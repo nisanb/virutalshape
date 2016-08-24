@@ -263,7 +263,11 @@ public class Employee implements Serializable{
     * @see java.lang.Object#toString()
     */
     @Override
-    public String toString() {
+    public String toString(){
+        return firstName+" "+lastName+ " ("+empNum+")";
+    }
+    
+    public String toString2() {
         return "employeeNumber=" + empNum + ", firstName=" + firstName
                 + ", lastName=" + lastName + ", birthDate="
                 + birthDate.getDate() + "/" + (birthDate.getMonth() + 1) + "/"

@@ -18,5 +18,24 @@ public class PositiveValidator {
         }
         
         return false;
+ 
     }
+    
+    /**
+     * Get ID from String
+     * @param str
+     * @return 
+     */
+    public static String getID(String str){
+   
+        //Split
+        String arr[] = str.split("\\(");
+        str = arr[1];
+       arr= str.split("\\)");
+        str = arr[0];
+        
+        //Return string
+        return str;
+    }
+    
 }

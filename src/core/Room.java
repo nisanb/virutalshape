@@ -318,7 +318,12 @@ public class Room implements Serializable {
 	}
 
 	@Override
-	public String toString() {
+        public String toString(){
+            return roomType.toString()+" ("+roomNum+")";
+        }
+        
+        
+	public String toString2() {
 		return "Room [roomNum=" + roomNum + ", maxNumOfTrainees="
 				+ maxNumOfTrainees + ", maxNumOfInstruments="
 				+ maxNumOfInstruments + ", roomType=" + roomType

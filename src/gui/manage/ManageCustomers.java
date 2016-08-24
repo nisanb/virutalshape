@@ -505,6 +505,11 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         fldCustID.setText("Search Customer");
         fldCustID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         fldCustID.setCaretColor(new java.awt.Color(255, 255, 255));
+        fldCustID.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fldCustIDFocusGained(evt);
+            }
+        });
         fldCustID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fldCustIDActionPerformed(evt);
@@ -550,14 +555,8 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
             if (item.equals("Select Customer")) {
                 return;
             }
-        int i;
-        String str = item.toString();
-            for(i=0;i<item.toString().length();i++){
-                if(Character.isSpace(str.charAt(i))){
-                    str = str.substring(1,i);
-                    break;
-                }
-            }
+            int i;
+            String str = PositiveValidator.getID(item.toString());
             
             
             
@@ -588,7 +587,9 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
                    fldCustID.setText("");
                    lblError.setText("");
                    lblError.setVisible(true);
+                   iWindow.update();
                    return;
+                   
                }
          if(evt.getKeyCode()!=KeyEvent.VK_ENTER)
             return;
@@ -698,6 +699,17 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         AddInstrumentToWorkout add = new AddInstrumentToWorkout(customer);
         iWindow.openWin(add);
     }//GEN-LAST:event_lblAddInsToWorkMouseClicked
+
+    private void fldCustIDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fldCustIDFocusGained
+        // TODO add your handling code here:
+         if(fldCustID.getText().equals("Search Customer")){
+                   fldCustID.setText("");
+                   lblError.setText("");
+                   lblError.setVisible(true);
+                   iWindow.update();
+                   return;
+               }
+    }//GEN-LAST:event_fldCustIDFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

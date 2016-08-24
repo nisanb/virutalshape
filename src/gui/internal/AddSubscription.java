@@ -53,10 +53,17 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         ID = customer.getId();
         setTitle("Customer #"+cust.getId()+" -> Add Subscription");
         lblCustomerID.setText(cust.getId());
-        lblRespID.setVisible(false);
-        recp.setVisible(true);
+        lblRespID.setVisible(true);
+      
         subNumber = iWindow.getDB().getSubs().size()+2;
         subNum.setText(new Integer(subNumber).toString());
+        
+        for(Employee emp : iWindow.getDB().getEmployees().values()){
+            if(emp.getClass().equals(Coach.class))
+                continue;
+            selectResp.addItem(emp.toString());
+        }
+        
         //Finished Loading
     }
 
@@ -71,7 +78,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         lblCustomerID.setText(cust.getId());
         lblRespID.setText(""+respID);
         lblRespID.setVisible(true);
-        recp.setVisible(false);
+          selectResp.setVisible(false);
         //Finished Loading
     }
 
@@ -85,6 +92,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
+        selectResp = new javax.swing.JComboBox<>();
         btnAddCustomer = new javax.swing.JButton();
         cusrError = new javax.swing.JLabel();
         recpError = new javax.swing.JLabel();
@@ -93,7 +101,6 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         month = new javax.swing.JComboBox<>();
         year = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        recp = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         length = new javax.swing.JComboBox<>();
@@ -122,6 +129,18 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         jLabel3.setText("Customer ID");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 10, 110, 20);
+
+        selectResp.setBackground(new java.awt.Color(0, 0, 0));
+        selectResp.setForeground(new java.awt.Color(255, 255, 255));
+        selectResp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Receptionist" }));
+        selectResp.setToolTipText("");
+        selectResp.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                selectRespItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(selectResp);
+        selectResp.setBounds(140, 40, 170, 22);
 
         btnAddCustomer.setBackground(new java.awt.Color(102, 102, 102));
         btnAddCustomer.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -177,22 +196,6 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel12);
         jLabel12.setBounds(30, 40, 110, 20);
 
-        recp.setBackground(new java.awt.Color(0, 0, 0));
-        recp.setColumns(10);
-        recp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        recp.setForeground(new java.awt.Color(255, 255, 255));
-        recp.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        recp.setCaretColor(new java.awt.Color(255, 255, 255));
-        recp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        recp.setSelectionColor(new java.awt.Color(204, 204, 204));
-        recp.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                recpFocusLost(evt);
-            }
-        });
-        getContentPane().add(recp);
-        recp.setBounds(140, 40, 170, 21);
-
         jLabel3.setToolTipText("Subscription Number ");
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(204, 204, 204));
@@ -215,7 +218,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(length);
-        length.setBounds(140, 130, 170, 20);
+        length.setBounds(140, 130, 170, 22);
 
         subError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         subError.setForeground(new java.awt.Color(255, 0, 0));
@@ -269,7 +272,9 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         }
         
         iWindow.update();
-        
+        if(receptNumber<=0){
+            receptNumber = Integer.parseInt( PositiveValidator.getID(selectResp.getSelectedItem().toString()) );
+        }
         System.out.println(subNumber + " " +  ID + " " +  receptNumber + " "+ period + " " + startDate);
         
         if(iWindow.getDB().addSubToCustomer(subNumber, customer.getId(), receptNumber, period, startDate)){
@@ -286,29 +291,6 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         iWindow.update();
             
     }//GEN-LAST:event_btnAddCustomerMouseClicked
-
-    private void recpFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recpFocusLost
-        String str = recp.getText();
-        if (!PositiveValidator.isPositiveStringNum(str)) {
-            recpError.setText("Positive digits only");
-            receptNumber = -1;
-            iWindow.update();
-            return;
-        }
-
-        receptNumber = Integer.parseInt(str);
-        Employee emp = iWindow.getDB().getEmployees().get(receptNumber);
-        if (emp instanceof Receptionist) {
-            recpError.setForeground(Color.green);
-            recpError.setText(emp.getFirstName() + " " + emp.getLastName());
-        } else {
-            recpError.setForeground(Color.red);
-            recpError.setText("Receptionist number doesn't exists");
-            receptNumber = -1;
-        }
-        iWindow.update();
-
-    }//GEN-LAST:event_recpFocusLost
 
     private void lengthItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_lengthItemStateChanged
         if(length.getSelectedIndex() == 0) return;
@@ -336,6 +318,10 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_lengthItemStateChanged
 
+    private void selectRespItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selectRespItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectRespItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel MessageBox;
@@ -352,8 +338,8 @@ public class AddSubscription extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblRespID;
     private javax.swing.JComboBox<String> length;
     private javax.swing.JComboBox<String> month;
-    private javax.swing.JTextField recp;
     private javax.swing.JLabel recpError;
+    private javax.swing.JComboBox<String> selectResp;
     private javax.swing.JLabel subError;
     private javax.swing.JLabel subNum;
     private javax.swing.JComboBox<String> year;

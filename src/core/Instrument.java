@@ -17,7 +17,7 @@ import utils.E_Types;
  * @author University Of Haifa-Israel
  */
 public class Instrument implements Bookable, Serializable  {
-    
+    static final long serialVersionUID = 20;
     // -------------------------------Class Members------------------------------
     /**
      * instrument number
@@ -254,7 +254,11 @@ public class Instrument implements Bookable, Serializable  {
     }
     
     @Override
-    public String toString() {
+    public String toString(){
+        return type.toString()+" ("+num+")";
+    }
+    
+    public String toString2() {
         return "Instrument [num=" + num + ", room=" + room.getRoomNum()
                 + " in branch number " + room.getBranch().getBranchNumber()
                 + ", status=" + status + ", type=" + type + "]\n";

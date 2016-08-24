@@ -5,6 +5,7 @@
  */
 package gui.manage;
 
+import Validators.PositiveValidator;
 import gui.iWindow;
 import core.Branch;
 import core.Employee;
@@ -483,9 +484,8 @@ lblViewRoom.hide();
         }
 
         //Get Room Object
-        String str = chooseRoom.getSelectedItem().toString();
+        String str = PositiveValidator.getID(chooseRoom.getSelectedItem().toString());
         
-        str = str.substring(1, str.length());
       
         int roomNum = Integer.parseInt(str);
         
@@ -630,7 +630,7 @@ lblViewRoom.hide();
         } else {
             chooseRoom.addItem("Choose Room");
             for (Room r : branch.getRooms()) {
-                chooseRoom.addItem("#" + r.getRoomNum());
+                chooseRoom.addItem(r.toString());
             }
         }
 

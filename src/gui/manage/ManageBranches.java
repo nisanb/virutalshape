@@ -5,6 +5,7 @@
  */
 package gui.manage;
 
+import Validators.PositiveValidator;
 import gui.iWindow;
 import core.Branch;
 import core.Employee;
@@ -501,7 +502,7 @@ public class ManageBranches extends javax.swing.JInternalFrame {
                 return;
             }
             // do something with object
-            String str = item.toString().substring(8, 10);
+            String str = PositiveValidator.getID(item.toString());
             Branch branch = new Branch(Integer.parseInt(str));
 
             updateData(branch);

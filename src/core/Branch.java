@@ -336,7 +336,7 @@ static final long serialVersionUID = 4;
         
 	@Override
 	public String toString() {		
-		return "Branch #"+getBranchNumber()+" "+getBranchName();
+		return branchName+" ("+branchNumber+")";
 	}
      
 	public String toString2() {		

@@ -78,7 +78,7 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
     
 
         for (Employee emp : iWindow.getDB().getEmployees().values()) {
-            chooseBranch.addItem("#"+emp.getEmployeeNumber()+" - "+emp.getFirstName()+" "+emp.getLastName());
+            chooseBranch.addItem(emp.toString());
         }
         
         
@@ -513,23 +513,12 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
             if (item.equals("Select Employee")) {
                 return;
             }
-        int i;
-        String str = item.toString();
-            for(i=0;i<item.toString().length();i++){
-                if(Character.isSpace(str.charAt(i))){
-                    str = str.substring(1,i);
-                    break;
-                }
-            }
             
+            
+            int i;
+            String str = PositiveValidator.getID(item.toString());
             int empNum = Integer.parseInt(str);
-            
-            
-            // do something with object
-           
             this.emp = iWindow.getDB().getEmployees().get(Integer.parseInt(str));
-            
-            
             updateData();
 
         }
@@ -544,7 +533,13 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_AddCoachMouseClicked
 
     private void fldEmpIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fldEmpIDActionPerformed
-        // TODO add your handling code here:
+        if(fldEmpID.getText().equals("Search Employee")){
+                           fldEmpID.setText("");
+                           lblError.setText("");
+                           lblError.setVisible(true);
+                           iWindow.update();
+                           return;
+                       }
     }//GEN-LAST:event_fldEmpIDActionPerformed
 
     private void fldEmpIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fldEmpIDKeyPressed
@@ -552,6 +547,7 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
                    fldEmpID.setText("");
                    lblError.setText("");
                    lblError.setVisible(true);
+                   iWindow.update();
                    return;
                }
          if(evt.getKeyCode()!=KeyEvent.VK_ENTER)
