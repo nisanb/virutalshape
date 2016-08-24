@@ -368,7 +368,6 @@ public class iWindow {
         if (getCurrentWindow() == null) return; 
         getCurrentWindow().setVisible(false);
         getCurrentWindow().setVisible(true);
-        exportData();
     }
     public static void update(JInternalFrame frame){
         frame.setVisible(false);

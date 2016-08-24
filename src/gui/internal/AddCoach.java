@@ -529,6 +529,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Coach was added successfully");
             iWindow.log(new Date().toString() + " - " + employeeNumber + "was added successfully");
+            iWindow.exportData();
         }       
         else{
             MessageBox.setForeground(Color.RED);

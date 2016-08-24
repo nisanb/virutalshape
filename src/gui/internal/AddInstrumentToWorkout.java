@@ -391,6 +391,7 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Instrument " + type + " was added successfully to workout " + workoutNum);
             iWindow.log(new Date().toString() + " - Instrument " + type + " was added successfully to workout " + workoutNum);
+            iWindow.exportData();
             
         }
         else{

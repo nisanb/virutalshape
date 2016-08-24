@@ -153,6 +153,7 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
             MessageBox.setText("Successfully connected employee to new branch");
             iWindow.log(new Date().toString() + " - " + EmployeeID + " was successfully connected employee to new branch");
             lblBranchID.setText(new Integer(branchNum).toString());
+            iWindow.exportData();
         }       
         else{
             MessageBox.setForeground(Color.RED);

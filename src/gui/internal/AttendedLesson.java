@@ -296,6 +296,7 @@ public class AttendedLesson extends javax.swing.JInternalFrame {
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Customer " +custNum + "was successfully registered as attended to lesson " + lessonNum);
             iWindow.log(new Date().toString() + " - Customer " + custNum + " was successfully registred as attended to lesson "+ lessonNum);
+            iWindow.exportData();
         }
         else{
             MessageBox.setForeground(Color.RED);

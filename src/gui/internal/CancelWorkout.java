@@ -179,6 +179,7 @@ public class CancelWorkout extends javax.swing.JInternalFrame {
             MessageBox.setText("Workout " + workoutNum + " was removed successfully from customer " + customer.getId());
             iWindow.log(new Date().toString() + " - Workout " + workoutNum + " was removed successfully from customer " + customer.getId());
             setWorkouts();
+            iWindow.exportData();
         }
         else{
             MessageBox.setForeground(Color.RED);

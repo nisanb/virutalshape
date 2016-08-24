@@ -254,6 +254,7 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Customer's address was added successfully");
             iWindow.log(new Date().toString() + " - " + id + " was added successfully");
+            iWindow.exportData();
         }       
         else{
             MessageBox.setForeground(Color.RED);

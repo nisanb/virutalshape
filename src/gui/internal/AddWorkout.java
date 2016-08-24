@@ -236,6 +236,7 @@ public class AddWorkout extends javax.swing.JInternalFrame {
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Workout " +workoutNum + " was added successfully to Customer " + custNum);
             iWindow.log(new Date().toString() + " - Workout " +workoutNum + " was added successfully to Customer " + custNum);
+            iWindow.exportData();
         }
         else{
             MessageBox.setForeground(Color.RED);

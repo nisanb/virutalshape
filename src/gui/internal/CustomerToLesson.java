@@ -296,6 +296,7 @@ public class CustomerToLesson extends javax.swing.JInternalFrame {
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Customer " +custNum + "was added successfully to lesson " + lessonNum);
             iWindow.log(new Date().toString() + " - Customer " + custNum + " was added successfully to lesson "+ lessonNum);
+            iWindow.exportData();
         }
         else{
             MessageBox.setForeground(Color.RED);

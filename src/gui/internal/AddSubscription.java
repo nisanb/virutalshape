@@ -276,6 +276,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Subscription was added successfully");
             iWindow.log(new Date().toString() + " - " + subNumber + " was added successfully");
+            iWindow.exportData();
         }       
         else{
             MessageBox.setForeground(Color.RED);
