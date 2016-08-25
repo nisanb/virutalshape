@@ -732,7 +732,7 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
                 
                  types = types+"<br>"+les.toString();
             }
-            types = types.substring(4, types.length());
+            //types = types.substring(4, types.length());
             lbl2.setText("<html>"+types+"</html>");
             
             txt3.setText("Total Lessons");

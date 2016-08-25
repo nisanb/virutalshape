@@ -61,12 +61,14 @@ public class Coach extends Employee implements Serializable {
         
         super(empNum, firstName, lastName, birthDate, startWorkingDate,
                 password, address);
-        this.level = 1;
-        if (level > 0 && level < 4)
-            this.level = level;
-        this.setWorkBranch(branch);
-        this.lessons = new ArrayList<Lesson>();
+        this.level = level;
+        if (level <= 0 && level > 4)
+            this.level = 1;
         this.types = new E_Lessons[E_Lessons.values().length];
+        System.arraycopy(types, 0, this.types, 0, types.length);
+        this.lessons = new ArrayList<Lesson>();
+        this.setWorkBranch(branch);
+
     }
     
     /**

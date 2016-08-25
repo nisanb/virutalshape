@@ -46,7 +46,9 @@ public class AddLesson extends javax.swing.JInternalFrame {
         lblBranchID.setText(branch.getBranchNumber()+ " - "+branch.getBranchName());
         lblRoomID.setText(""+room.getRoomNum());
         
-        
+        for (E_Lessons l:E_Lessons.values()){
+            LessonName.addItem(l.toString());
+        }
         //Finished Loading
     }
     

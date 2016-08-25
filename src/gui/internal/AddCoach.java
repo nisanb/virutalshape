@@ -743,7 +743,9 @@ public class AddCoach extends javax.swing.JInternalFrame {
         types = new E_Lessons[str.length];
         for (int i = 0; i < str.length; i++){
             types[i] = E_Lessons.valueOf(str[i]);      
+            System.out.println(types[i]);
         }
+        
         iWindow.update();
     }//GEN-LAST:event_copyMouseClicked
 
@@ -834,15 +836,5 @@ public class AddCoach extends javax.swing.JInternalFrame {
     private String street;
     private int housNumber;
     private String[] phones;
-//    String[] phoneNumber;
-
-//    Address address = new Address(country, city, street,
-//            housNumber, phoneNumber);
-//    
-//    Coach coach = new Coach(employeeNumber, firstName, lastName,
-//            birthDate, startWorkingDate, password, level, address,
-//            types);
-    //Manual variables declaration 
-
 
 }
