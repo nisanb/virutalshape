@@ -378,11 +378,13 @@ public class AttendedLesson extends javax.swing.JInternalFrame {
         }
         
         lessonChooser.removeAllItems();
+        lessonChooser.addItem("Select Lesson");
         Branch branch = iWindow.getDB().getBranches().get(branchNum);
         System.out.println(customer.getSubs().size());
         for (Subscription sub:customer.getSubs()){
             for (Lesson l:sub.getLessons()){
-                if (l.getStartDate().before(start) &&  l.getRegistered().get(custNum) == false){
+                if (l !=null && l.getStartDate().before(start) &&  
+                        l.getRoom().getBranch().equals(branch)){
                     lessonChooser.addItem(l.toString2());
                 }
             }
@@ -422,12 +424,15 @@ public class AttendedLesson extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_lesNumFocusLost
         
     private void lessonChooserItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_lessonChooserItemStateChanged
+        if (lessonChooser.getSelectedIndex() == 0) return;
+        if (lessonChooser.getSelectedItem() == null) return;
         String str = lessonChooser.getSelectedItem().toString();
         if (str == null) return;
         for (int i = 0; i < str.length(); i++){
             if (Character.isDigit(str.charAt(i))) continue;
             else str = str.substring(0,i);
         }
+        
         lessonNum = Integer.parseInt(str);
         iWindow.update();
         Lesson les = iWindow.getDB().getLessons().get(lessonNum);
