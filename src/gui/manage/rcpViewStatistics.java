@@ -22,10 +22,6 @@ public class rcpViewStatistics extends javax.swing.JInternalFrame {
         initComponents();
         selectQuery.addItem("Customers - Attended Lessons");
         selectQuery.addItem("Customers - Visited Branch X but not Y");
-        selectQuery.addItem("Lessons - Get Most Popular Lesson");
-        selectQuery.addItem("Coaches - Get ALL Senior Coaches");
-        selectQuery.addItem("Customer - Top Active Customer");
-        selectQuery.addItem("Instrument - Top Used Instrument");
         selectQuery.addItem("Customers - Attending more than one city");
         selectQuery.addItem("Customers - Get Potential Customers Per Branch");
         
@@ -116,21 +112,9 @@ public class rcpViewStatistics extends javax.swing.JInternalFrame {
                 
             break;
             case 3: 
-                str = iWindow.getDB().getTheMostPopularLessonType(); 
-            break;
-            case 4: 
-                str = iWindow.getDB().getAllSuperSeniorCoaches(); 
-            break;
-            case 5: 
-                str = iWindow.getDB().getTopCustomerOfTheMonth(); 
-            break;
-            case 6: 
-                str = iWindow.getDB().getTopIstrumentType(); 
-            break;
-            case 7: 
                 str = iWindow.getDB().getAllCustomersAttendingMoreThan1City(); 
             break;
-            case 8: 
+            case 4: 
                 str = iWindow.getDB().getPotentialCustomersPerBranch(); 
             break;
      

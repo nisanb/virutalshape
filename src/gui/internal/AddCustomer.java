@@ -497,8 +497,9 @@ public class AddCustomer extends javax.swing.JInternalFrame {
             iWindow.update();
             return;
         }
+        
+        if (!iWindow.getDB().getCustomers().containsKey(str)) {
 
-        if (!iWindow.getDB().getCustomers().containsKey((IDfield.getText()))) {
             numError.setText(" ");
             id = str;
         } else {

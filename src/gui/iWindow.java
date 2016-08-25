@@ -62,33 +62,33 @@ public class iWindow {
     protected static JInternalFrame lastWindow = null;
     protected static JPanel panel = null;
 
-    //======================================= Main ==========================================
-    public static void main(String[] args){
-        IShape = importData();
-        Employee Admin = new Employee(1, "Admin", " ", new Date (0,0,0), new Date (0,0,0),
-                    "Admin", new Address("Israel",E_Cities.Haifa,null,11,null));
-        //Set IShape DB to GUI
-        //iWindow.setDB(IShape);
-        JFrame login = null;
-        if(skipLogin){
-            iWindow.setUser(4,Admin );
-            login = new MainGui();
-            
-        }
-        
-        else{
-            
-            if(IShape.getFirst()) //if is the first time running
-                login = new LoginGui(true);
-            else
-                login = new LoginGui(false);
-        }
-            
-        
-        login.setVisible(true);
-        //exportData();
-    }// END OF ~ main
-    
+//    //======================================= Main ==========================================
+//    public static void main(String[] args){
+//        IShape = importData();
+//        Employee Admin = new Employee(1, "Admin", " ", new Date (0,0,0), new Date (0,0,0),
+//                    "Admin", new Address("Israel",E_Cities.Haifa,null,11,null));
+//        //Set IShape DB to GUI
+//        //iWindow.setDB(IShape);
+//        JFrame login = null;
+//        if(skipLogin){
+//            iWindow.setUser(4,Admin );
+//            login = new MainGui();
+//            
+//        }
+//        
+//        else{
+//            
+//            if(IShape.getFirst()) //if is the first time running
+//                login = new LoginGui(true);
+//            else
+//                login = new LoginGui(false);
+//        }
+//            
+//        
+//        login.setVisible(true);
+//        //exportData();
+//    }// END OF ~ main
+//    
     //=================================== Import & Export ====================================
     
         private static IShape importData() {

@@ -126,7 +126,6 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         lblCountLessons = new javax.swing.JLabel();
         txtWorkBranch = new javax.swing.JLabel();
         lblBirthDate = new javax.swing.JLabel();
-        btnEdit = new javax.swing.JLabel();
         txtBranchName = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         txtPassword = new javax.swing.JLabel();
@@ -149,6 +148,9 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         jSeparator12 = new javax.swing.JSeparator();
         jSeparator13 = new javax.swing.JSeparator();
         infotitle = new javax.swing.JLabel();
+        txtPhone = new javax.swing.JLabel();
+        lblPhoneNum = new javax.swing.JLabel();
+        lblEmailAddr = new javax.swing.JLabel();
         txtTotalRooms1 = new javax.swing.JLabel();
         lblAddress = new javax.swing.JLabel();
         btnEdit1 = new javax.swing.JLabel();
@@ -159,6 +161,7 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         lblCancelSub = new javax.swing.JLabel();
         lblNewLesson1 = new javax.swing.JLabel();
         lblCancelWorkout = new javax.swing.JLabel();
+        txtTotalRooms2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         fldCustID = new javax.swing.JTextField();
         lblError = new javax.swing.JLabel();
@@ -263,15 +266,6 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         lblBirthDate.setText("bday");
         statisticsPanel.add(lblBirthDate);
         lblBirthDate.setBounds(210, 100, 200, 16);
-
-        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/edit-11-24.png"))); // NOI18N
-        btnEdit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEditMouseClicked(evt);
-            }
-        });
-        statisticsPanel.add(btnEdit);
-        btnEdit.setBounds(340, 50, 30, 30);
 
         txtBranchName.setBackground(new java.awt.Color(255, 255, 255));
         txtBranchName.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -399,17 +393,35 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         moreInfo.add(infotitle);
         infotitle.setBounds(40, 20, 160, 40);
 
+        txtPhone.setBackground(new java.awt.Color(255, 255, 255));
+        txtPhone.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        txtPhone.setForeground(new java.awt.Color(255, 255, 255));
+        txtPhone.setText("Phone Number");
+        moreInfo.add(txtPhone);
+        txtPhone.setBounds(50, 100, 100, 16);
+
+        lblPhoneNum.setForeground(new java.awt.Color(255, 255, 255));
+        lblPhoneNum.setText("lblPhone");
+        lblPhoneNum.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        moreInfo.add(lblPhoneNum);
+        lblPhoneNum.setBounds(160, 100, 170, 150);
+
+        lblEmailAddr.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmailAddr.setText("lblEmail");
+        moreInfo.add(lblEmailAddr);
+        lblEmailAddr.setBounds(160, 60, 170, 16);
+
         txtTotalRooms1.setBackground(new java.awt.Color(255, 255, 255));
         txtTotalRooms1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         txtTotalRooms1.setForeground(new java.awt.Color(255, 255, 255));
-        txtTotalRooms1.setText("Address");
+        txtTotalRooms1.setText("Email Address");
         moreInfo.add(txtTotalRooms1);
         txtTotalRooms1.setBounds(50, 60, 100, 16);
 
         lblAddress.setForeground(new java.awt.Color(255, 255, 255));
         lblAddress.setText("lblAddress");
         moreInfo.add(lblAddress);
-        lblAddress.setBounds(210, 60, 170, 16);
+        lblAddress.setBounds(160, 80, 170, 16);
 
         btnEdit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/edit-11-24.png"))); // NOI18N
         btnEdit1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -496,6 +508,13 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         });
         moreInfo.add(lblCancelWorkout);
         lblCancelWorkout.setBounds(130, 310, 100, 13);
+
+        txtTotalRooms2.setBackground(new java.awt.Color(255, 255, 255));
+        txtTotalRooms2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        txtTotalRooms2.setForeground(new java.awt.Color(255, 255, 255));
+        txtTotalRooms2.setText("Address");
+        moreInfo.add(txtTotalRooms2);
+        txtTotalRooms2.setBounds(50, 80, 100, 16);
 
         getContentPane().add(moreInfo);
         moreInfo.setBounds(410, 90, 370, 400);
@@ -638,11 +657,6 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_fldCustIDKeyTyped
 
-    private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_btnEditMouseClicked
-
     private void lblShowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblShowMouseClicked
         // TODO add your handling code here:
         lblPassword.setText(""+customer.getPassword());
@@ -718,7 +732,6 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddCustomer;
-    private javax.swing.JLabel btnEdit;
     private javax.swing.JLabel btnEdit1;
     private javax.swing.JComboBox<String> chooseCustomer;
     private javax.swing.JTextField fldCustID;
@@ -748,6 +761,7 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblCountLessons;
     private javax.swing.JLabel lblCountWorkouts;
     private javax.swing.JLabel lblCustomerID;
+    private javax.swing.JLabel lblEmailAddr;
     private javax.swing.JLabel lblEmployeeName;
     private javax.swing.JLabel lblError;
     private javax.swing.JLabel lblNewLesson;
@@ -755,6 +769,7 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblNewSub;
     private javax.swing.JLabel lblNewWorkout;
     private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblPhoneNum;
     private javax.swing.JLabel lblShow;
     private javax.swing.JLabel lblSubs;
     private javax.swing.JLabel lblTitle;
@@ -766,8 +781,10 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
     private javax.swing.JLabel txtBranchName;
     private javax.swing.JLabel txtID;
     private javax.swing.JLabel txtPassword;
+    private javax.swing.JLabel txtPhone;
     private javax.swing.JLabel txtStartWorkingDate;
     private javax.swing.JLabel txtTotalRooms1;
+    private javax.swing.JLabel txtTotalRooms2;
     private javax.swing.JLabel txtWorkBranch;
     // End of variables declaration//GEN-END:variables
 
@@ -790,6 +807,14 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         //Date Values
         String strBirthDate = new SimpleDateFormat("dd/MM/yyyy").format(customer.getBirthDate());
         
+        
+        //Check if RCP is logged in
+        if(iWindow.getCustomerLogged()!=null){
+           lblNewLesson.setVisible(false);
+           lblNewLesson1.setVisible(false);
+           lblNewSub.setVisible(false);
+           lblCancelSub.setVisible(false);
+        }
         
         //setText to Lables
         lblBirthDate.setText("" + strBirthDate);
@@ -820,10 +845,17 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         );
         lblSubs.setText(""+subsCount);
         lblActiveSubs.setText(""+countActiveSubs);
-
+        lblEmailAddr.setText(""+customer.getEmail().toString().substring(7,customer.getEmail().toString().length()));
         statisticsPanel.show();
         moreInfo.setVisible(true);
         
+        String phoneArray = "<html>";
+        for(String phone : customer.getCustomerAddress().getPhoneNumber()){
+            phoneArray+=phone+"<br>";
+        }
+        phoneArray+="</html>";
+        
+        lblPhoneNum.setText(phoneArray);
         
    
         

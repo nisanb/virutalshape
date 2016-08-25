@@ -36,20 +36,27 @@ import utils.E_Types;
  */
 public class UpdateCustAddress extends javax.swing.JInternalFrame {
 
+    private Customer customer;
+    private URL email;
     /**
      * Creates new form NewJInternalFrame
      */
     public UpdateCustAddress(Customer cust) {
         id = cust.getId();
+        this.customer = cust;
+
         initComponents();
         IDfield.setText(id);
         setTitle("Customers -> Update Customer Address");
-                
+
+        updateData();
         //Finished Loading
+        slctCity.addItem(customer.getCustomerAddress().getCity().toString());
+        slctCity.setSelectedIndex(1);
         for (E_Cities city : E_Cities.values()) {
             slctCity.addItem(city.toString());
         }
-        
+
     }
 
     /**
@@ -80,6 +87,9 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         numError2 = new javax.swing.JLabel();
         MessageBox = new javax.swing.JLabel();
         IDfield = new javax.swing.JLabel();
+        emailfield = new javax.swing.JTextField();
+        mailError = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -130,6 +140,11 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         slctCity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         slctCity.setForeground(new java.awt.Color(255, 255, 255));
         slctCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select City" }));
+        slctCity.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                slctCityItemStateChanged(evt);
+            }
+        });
         slctCity.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 slctCityFocusLost(evt);
@@ -166,7 +181,7 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(changeAddr);
-        changeAddr.setBounds(530, 210, 140, 23);
+        changeAddr.setBounds(530, 310, 140, 23);
 
         btnBranchCountry.setBackground(new java.awt.Color(0, 0, 0));
         btnBranchCountry.setColumns(20);
@@ -235,47 +250,73 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         MessageBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         MessageBox.setForeground(new java.awt.Color(0, 255, 0));
         getContentPane().add(MessageBox);
-        MessageBox.setBounds(30, 210, 470, 20);
+        MessageBox.setBounds(30, 310, 470, 20);
 
         IDfield.setBackground(new java.awt.Color(0, 0, 0));
         IDfield.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(IDfield);
         IDfield.setBounds(140, 10, 160, 20);
 
+        emailfield.setBackground(new java.awt.Color(0, 0, 0));
+        emailfield.setColumns(20);
+        emailfield.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        emailfield.setForeground(new java.awt.Color(255, 255, 255));
+        emailfield.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        emailfield.setCaretColor(null);
+        emailfield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                emailfieldFocusLost(evt);
+            }
+        });
+        getContentPane().add(emailfield);
+        emailfield.setBounds(140, 190, 170, 21);
+
+        mailError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        mailError.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(mailError);
+        mailError.setBounds(350, 190, 170, 20);
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel11.setText("Email");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(30, 190, 110, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     /**
      * this method adds updates customer address on ishape
-     * @param evt 
+     *
+     * @param evt
      */
-    
+
     private void changeAddrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeAddrMouseClicked
-    Address address = new Address(country, city, street,
-            housNumber, phones);
-    
-    if (iWindow.getDB().changeCustomerAddress(id, country, city, street, housNumber, phones)){
-        MessageBox.setForeground(Color.GREEN);
+        Address address = new Address(country, city, street,
+                housNumber, phones);
+
+        if (iWindow.getDB().changeCustomerAddress(id, country, city, street, housNumber, phones)) {
+            customer.setEmail(email);
+            MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Customer's address was added successfully");
             iWindow.log(new Date().toString() + " - " + id + " was added successfully");
             iWindow.exportData();
-        }       
-        else{
+        } else {
             MessageBox.setForeground(Color.RED);
             MessageBox.setText("Failed to add customer");
             iWindow.log(new Date().toString() + " - " + id + " was falied to be add");
         }
-    
+
         System.out.println(iWindow.getDB().getCustomers().get(id));
-    
-    iWindow.update();
-            
+
+        iWindow.update();
+
     }//GEN-LAST:event_changeAddrMouseClicked
 
-   
     /**
      * this method validates the street name input
-     * @param evt 
+     *
+     * @param evt
      */
     private void btnhStreetFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnhStreetFocusLost
         String str = btnhStreet.getText();
@@ -289,17 +330,52 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         iWindow.update();
     }//GEN-LAST:event_btnhStreetFocusLost
 
+    public void updateData() {
+        if (customer == null) {
+            return;
+        }
+        btnHouseNumber.setText(customer.getCustomerAddress().getHousNumber() + "");
+
+        String phoneStr = "";
+        String phoneArray[] = customer.getCustomerAddress().getPhoneNumber();
+       
+        
+        for(String tmp : phoneArray){
+            phoneStr = phoneStr + tmp + ", ";
+        }
+        phoneStr = phoneStr.substring(0, phoneStr.length()-2);
+        
+        btnPhoneNumber.setText(phoneStr);
+        String email = customer.getEmail().toString();
+        email = email.substring(7, email.length());
+        emailfield.setText(email);
+        btnhStreet.setText(customer.getCustomerAddress().getStreet());
+        String str = (String) slctCity.getSelectedItem();
+        if (str.equals("Select City")) {
+            return;
+        }
+
+        city = E_Cities.valueOf(str);
+        btnBranchCountry.setText(city.getCountry());
+        country = city.getCountry();
+        
+        iWindow.update();
+
+        
+        
+    }
+
     /**
      * this method validates the house number input
-     * @param evt 
+     *
+     * @param evt
      */
     private void btnHouseNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnHouseNumberFocusLost
         String str = btnHouseNumber.getText();
         if (PositiveValidator.isPositiveStringNum(str) && str.length() < 5) {
             houseError.setText(" ");
             housNumber = Integer.parseInt(str);
-                    
-       
+
         } else {
             houseError.setText("up tp 4 digit number");
             housNumber = -1;
@@ -309,21 +385,22 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
 
     /**
      * this method validates phone number using validator
-     * @param evt 
+     *
+     * @param evt
      */
     private void btnPhoneNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnPhoneNumberFocusLost
-      
+
         if (phones == null) {
             String[] phones = new String[5];
         }
-        try{
-        String str = btnPhoneNumber.getText();
-        phones = str.split(", ");
-        } catch (java.lang.ArrayIndexOutOfBoundsException obe){
+        try {
+            String str = btnPhoneNumber.getText();
+            phones = str.split(", ");
+        } catch (java.lang.ArrayIndexOutOfBoundsException obe) {
             phoneError.setText("up to 5 phone numbers");
         }
-        
-        for (String s:phones){
+
+        for (String s : phones) {
             if (!PhoneValidator.validatePhone(s)) {
                 phoneError.setText("wrong format. example: 972-xxxxxxx, 04-xxxxxxx");
                 iWindow.update();
@@ -333,24 +410,50 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         phoneError.setText(" ");
         iWindow.update();
     }//GEN-LAST:event_btnPhoneNumberFocusLost
-    
+
     /**
      * this method checks user's city selection and sets the city and country
-     * @param evt 
+     *
+     * @param evt
      */
     private void slctCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_slctCityFocusLost
+
+    }//GEN-LAST:event_slctCityFocusLost
+
+    private void slctCityItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_slctCityItemStateChanged
+        // TODO add your handling code here:
         
         String str = (String) slctCity.getSelectedItem();
-        if(str.equals("Select City"))
+        if (str.equals("Select City")) {
             return;
-        
+        }
+
         city = E_Cities.valueOf(str);
         btnBranchCountry.setText(city.getCountry());
         country = city.getCountry();
         iWindow.update();
-    }//GEN-LAST:event_slctCityFocusLost
+    }//GEN-LAST:event_slctCityItemStateChanged
 
-    
+    private void emailfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailfieldFocusLost
+        String str = emailfield.getText();
+        if (EmailValidator.validateEmail(str)){
+            str = "http:\\"+"\\"+str;
+            try {
+                email = new URL(str);
+                mailError.setText(" ");
+            } catch (MalformedURLException ex) {
+                mailError.setText("username@domain.xx");
+            }
+
+        }
+        else{
+            mailError.setText("username@domain.xx");
+            email = null;
+        }
+        iWindow.update();
+
+    }//GEN-LAST:event_emailfieldFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IDfield;
@@ -360,13 +463,16 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
     private javax.swing.JTextField btnPhoneNumber;
     private javax.swing.JTextField btnhStreet;
     private javax.swing.JButton changeAddr;
+    private javax.swing.JTextField emailfield;
     private javax.swing.JLabel houseError;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel mailError;
     private javax.swing.JLabel numError;
     private javax.swing.JLabel numError2;
     private javax.swing.JLabel phoneError;
@@ -381,5 +487,5 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
     private String street;
     private int housNumber;
     private String[] phones = new String[5];
-    
+
 }
