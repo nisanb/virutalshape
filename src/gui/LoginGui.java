@@ -34,7 +34,7 @@ public class LoginGui extends javax.swing.JFrame {
     /**
      * Creates new form LoginView
      */
-    public LoginGui() {
+    public LoginGui(boolean firstTime) {
 
         //Cancel top bar
         setUndecorated(true);
@@ -45,6 +45,9 @@ public class LoginGui extends javax.swing.JFrame {
         //Hide Error Labels
         lblErrorLogin.hide();
         errimg.hide();
+        
+        if(!firstTime)
+        lblFirstLogin.hide();
        
         //Center window
         setLocationRelativeTo(null);
@@ -66,6 +69,7 @@ public class LoginGui extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        lblFirstLogin = new javax.swing.JLabel();
         fldUsername = new javax.swing.JTextField();
         fldPassword = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
@@ -85,6 +89,13 @@ public class LoginGui extends javax.swing.JFrame {
         });
         getContentPane().add(jLabel1);
         jLabel1.setBounds(10, 10, 50, 60);
+
+        lblFirstLogin.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        lblFirstLogin.setForeground(new java.awt.Color(255, 255, 255));
+        lblFirstLogin.setText("<html>Welcome to Virtual iShape<br>The system recognized this is your first time running this program.<br>Please use the following default login details to log in:<br>Username: Admin<br>Password: Admin</html>");
+        lblFirstLogin.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        getContentPane().add(lblFirstLogin);
+        lblFirstLogin.setBounds(120, 60, 350, 140);
 
         fldUsername.setBackground(new Color(0,0,0,0));
         fldUsername.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
@@ -214,42 +225,42 @@ public class LoginGui extends javax.swing.JFrame {
         // TODO add your handling code here:
         doLogin();
     }//GEN-LAST:event_jLabel2MouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginGui().setVisible(true);
-            }
-        });
-    }
+//
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(LoginGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(LoginGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(LoginGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(LoginGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new LoginGui().setVisible(true);
+//            }
+//        });
+//    }
     
     
     /**
@@ -344,6 +355,7 @@ public class LoginGui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblErrorLogin;
+    private javax.swing.JLabel lblFirstLogin;
     // End of variables declaration//GEN-END:variables
 
      

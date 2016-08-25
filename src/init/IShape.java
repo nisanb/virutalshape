@@ -47,6 +47,7 @@ import java.text.SimpleDateFormat;
  */
 public class IShape implements Serializable {
     static final long serialVersionUID = 1;
+    private boolean firstLogin = true;
     
     // --------------------------Class Members---------------------------
     /**
@@ -1266,6 +1267,21 @@ public class IShape implements Serializable {
         return "Total time: "+count +" Minutes ";
     }
 
+    /**
+     * Sets first login param
+     * @param bool 
+     */
+    public void setFirst(boolean bool){
+        this.firstLogin = bool;
+    }
+    
+    /**
+     * Retreives first login param
+     * @return 
+     */
+    public boolean getFirst(){
+        return this.firstLogin;
+    }
     // -------------------------------hashCode equals11 &
     // toString------------------------------
     

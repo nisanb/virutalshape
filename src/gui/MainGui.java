@@ -458,7 +458,7 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
         // TODO add your handling code here:
         dispose();
         iWindow.clean();
-        LoginGui tmp = new LoginGui();
+        LoginGui tmp = new LoginGui(iWindow.getDB().getFirst());
         tmp.setVisible(true);
         iWindow.playAudio(3);
         

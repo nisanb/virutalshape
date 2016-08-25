@@ -78,8 +78,14 @@ public class iWindow {
             
         }
         
-        else
-            login = new LoginGui();
+        else{
+            
+            if(IShape.getFirst()) //if is the first time running
+                login = new LoginGui(true);
+            else
+                login = new LoginGui(false);
+        }
+            
         
         login.setVisible(true);
         //exportData();
@@ -95,10 +101,12 @@ public class iWindow {
             ObjectInputStream objInput = new ObjectInputStream(input);
             IShape Data = (IShape) objInput.readObject();
             System.err.println("Successfully imported Data.cer");
+            Data.setFirst(false);
             return Data;
         } catch (Exception e) {
             System.err.println("Failed to import database");
             IShape Data = new IShape();
+            Data.setFirst(true);
             return Data;
         }
         
