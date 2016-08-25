@@ -72,7 +72,7 @@ public class iWindow {
         //Set IShape DB to GUI
         //iWindow.setDB(IShape);
         JFrame login = null;
-        if(skipLogin){
+        if(!skipLogin){
             iWindow.setUser(4,Admin );
             login = new MainGui();
             
