@@ -179,6 +179,7 @@ public class iWindow {
             return;
         BasicInternalFrameUI bi = (BasicInternalFrameUI)frame.getUI();
         bi.setNorthPane(null);
+        
         frame.setBackground(new Color(255,255,255,5));
         
         frame.setSize(800,600);

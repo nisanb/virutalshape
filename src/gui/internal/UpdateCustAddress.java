@@ -117,6 +117,7 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         btnPhoneNumber.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnPhoneNumber.setForeground(new java.awt.Color(255, 255, 255));
         btnPhoneNumber.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnPhoneNumber.setCaretColor(new java.awt.Color(255, 255, 255));
         btnPhoneNumber.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btnPhoneNumberFocusLost(evt);
@@ -172,6 +173,7 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         btnBranchCountry.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBranchCountry.setForeground(new java.awt.Color(255, 255, 255));
         btnBranchCountry.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnBranchCountry.setCaretColor(new java.awt.Color(255, 255, 255));
         btnBranchCountry.setEnabled(false);
         getContentPane().add(btnBranchCountry);
         btnBranchCountry.setBounds(140, 70, 170, 21);
@@ -181,6 +183,7 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         btnhStreet.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnhStreet.setForeground(new java.awt.Color(255, 255, 255));
         btnhStreet.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnhStreet.setCaretColor(new java.awt.Color(255, 255, 255));
         btnhStreet.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btnhStreetFocusLost(evt);
@@ -194,6 +197,7 @@ public class UpdateCustAddress extends javax.swing.JInternalFrame {
         btnHouseNumber.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnHouseNumber.setForeground(new java.awt.Color(255, 255, 255));
         btnHouseNumber.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnHouseNumber.setCaretColor(new java.awt.Color(255, 255, 255));
         btnHouseNumber.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btnHouseNumberFocusLost(evt);

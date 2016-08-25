@@ -185,7 +185,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Branch Nunber");
+        jLabel3.setText("Branch Number");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 20, 110, 20);
 
@@ -206,6 +206,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnPhoneNumber.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnPhoneNumber.setForeground(new java.awt.Color(255, 255, 255));
         btnPhoneNumber.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        btnPhoneNumber.setCaretColor(null);
         btnPhoneNumber.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btnPhoneNumberFocusLost(evt);
@@ -219,7 +220,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnBranchNum.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBranchNum.setForeground(new java.awt.Color(255, 255, 255));
         btnBranchNum.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        btnBranchNum.setCaretColor(new java.awt.Color(255, 255, 255));
+        btnBranchNum.setCaretColor(null);
         btnBranchNum.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         btnBranchNum.setSelectionColor(new java.awt.Color(204, 204, 204));
         btnBranchNum.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -235,6 +236,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnBranchName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBranchName.setForeground(new java.awt.Color(255, 255, 255));
         btnBranchName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        btnBranchName.setCaretColor(null);
         btnBranchName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btnBranchNameFocusLost(evt);
@@ -297,6 +299,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnBranchCountry.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBranchCountry.setForeground(new java.awt.Color(255, 255, 255));
         btnBranchCountry.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        btnBranchCountry.setCaretColor(null);
         btnBranchCountry.setEnabled(false);
         btnBranchCountry.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -325,6 +328,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         btnHouseNumber.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnHouseNumber.setForeground(new java.awt.Color(255, 255, 255));
         btnHouseNumber.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        btnHouseNumber.setCaretColor(null);
         btnHouseNumber.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btnHouseNumberFocusLost(evt);
@@ -365,25 +369,26 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
 
         numError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         numError.setForeground(new java.awt.Color(255, 0, 0));
-        numError.setText("Input valid numbers only");
+        numError.setText("Branch number must consist of two or more digits");
         getContentPane().add(numError);
-        numError.setBounds(350, 20, 170, 20);
+        numError.setBounds(350, 20, 320, 20);
 
         lblfailed.setForeground(new java.awt.Color(255, 0, 51));
         lblfailed.setText("Failed adding Branch!");
         getContentPane().add(lblfailed);
-        lblfailed.setBounds(30, 260, 190, 14);
+        lblfailed.setBounds(30, 260, 190, 16);
 
         lblsuccess.setForeground(new java.awt.Color(51, 255, 0));
         lblsuccess.setText("Successfully added Branch!");
         getContentPane().add(lblsuccess);
-        lblsuccess.setBounds(30, 260, 190, 14);
+        lblsuccess.setBounds(30, 260, 190, 16);
 
         btnBranchStreet1.setBackground(new java.awt.Color(0, 0, 0));
         btnBranchStreet1.setColumns(20);
         btnBranchStreet1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBranchStreet1.setForeground(new java.awt.Color(255, 255, 255));
         btnBranchStreet1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        btnBranchStreet1.setCaretColor(null);
         btnBranchStreet1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btnBranchStreet1FocusLost(evt);

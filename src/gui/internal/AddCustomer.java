@@ -139,6 +139,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         btnPhoneNumber.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnPhoneNumber.setForeground(new java.awt.Color(255, 255, 255));
         btnPhoneNumber.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnPhoneNumber.setCaretColor(null);
         btnPhoneNumber.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btnPhoneNumberFocusLost(evt);
@@ -152,7 +153,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         IDfield.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         IDfield.setForeground(new java.awt.Color(255, 255, 255));
         IDfield.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        IDfield.setCaretColor(new java.awt.Color(255, 255, 255));
+        IDfield.setCaretColor(null);
         IDfield.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         IDfield.setSelectionColor(new java.awt.Color(204, 204, 204));
         IDfield.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -168,6 +169,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         NameField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         NameField.setForeground(new java.awt.Color(255, 255, 255));
         NameField.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        NameField.setCaretColor(null);
         NameField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 NameFieldFocusLost(evt);
@@ -223,6 +225,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         btnBranchCountry.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBranchCountry.setForeground(new java.awt.Color(255, 255, 255));
         btnBranchCountry.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnBranchCountry.setCaretColor(null);
         btnBranchCountry.setEnabled(false);
         btnBranchCountry.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -237,6 +240,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         btnBranchStreet.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBranchStreet.setForeground(new java.awt.Color(255, 255, 255));
         btnBranchStreet.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnBranchStreet.setCaretColor(null);
         btnBranchStreet.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btnBranchStreetFocusLost(evt);
@@ -250,6 +254,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         btnHouseNumber.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnHouseNumber.setForeground(new java.awt.Color(255, 255, 255));
         btnHouseNumber.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnHouseNumber.setCaretColor(null);
         btnHouseNumber.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btnHouseNumberFocusLost(evt);
@@ -289,6 +294,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         LastField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         LastField.setForeground(new java.awt.Color(255, 255, 255));
         LastField.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        LastField.setCaretColor(null);
         LastField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 LastFieldFocusLost(evt);
@@ -334,12 +340,14 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setToolTipText("");
+        jPasswordField1.setCaretColor(null);
         getContentPane().add(jPasswordField1);
         jPasswordField1.setBounds(140, 160, 170, 20);
 
         jPasswordField2.setBackground(new java.awt.Color(0, 0, 0));
         jPasswordField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPasswordField2.setForeground(new java.awt.Color(255, 255, 255));
+        jPasswordField2.setCaretColor(null);
         jPasswordField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jPasswordField2FocusLost(evt);
@@ -354,19 +362,19 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         day.setToolTipText("");
         day.setName(""); // NOI18N
         getContentPane().add(day);
-        day.setBounds(140, 100, 50, 20);
+        day.setBounds(140, 100, 50, 22);
 
         month.setBackground(new java.awt.Color(0, 0, 0));
         month.setForeground(new java.awt.Color(255, 255, 255));
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(month);
-        month.setBounds(200, 100, 60, 20);
+        month.setBounds(200, 100, 60, 22);
 
         year.setBackground(new java.awt.Color(0, 0, 0));
         year.setForeground(new java.awt.Color(255, 255, 255));
         year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yeay", "1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938", "1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
         getContentPane().add(year);
-        year.setBounds(270, 100, 60, 20);
+        year.setBounds(270, 100, 60, 22);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(204, 204, 204));
@@ -379,6 +387,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         emailfield.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         emailfield.setForeground(new java.awt.Color(255, 255, 255));
         emailfield.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        emailfield.setCaretColor(null);
         emailfield.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 emailfieldFocusLost(evt);

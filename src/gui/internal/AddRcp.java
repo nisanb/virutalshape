@@ -143,6 +143,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         btnPhoneNumber.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnPhoneNumber.setForeground(new java.awt.Color(255, 255, 255));
         btnPhoneNumber.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnPhoneNumber.setCaretColor(new java.awt.Color(255, 255, 255));
         btnPhoneNumber.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btnPhoneNumberFocusLost(evt);
@@ -156,6 +157,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         NameField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         NameField.setForeground(new java.awt.Color(255, 255, 255));
         NameField.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        NameField.setCaretColor(new java.awt.Color(255, 255, 255));
         NameField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 NameFieldFocusLost(evt);
@@ -211,6 +213,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         btnBranchCountry.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBranchCountry.setForeground(new java.awt.Color(255, 255, 255));
         btnBranchCountry.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnBranchCountry.setCaretColor(new java.awt.Color(255, 255, 255));
         btnBranchCountry.setEnabled(false);
         btnBranchCountry.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -225,6 +228,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         btnBranchStreet.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBranchStreet.setForeground(new java.awt.Color(255, 255, 255));
         btnBranchStreet.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnBranchStreet.setCaretColor(new java.awt.Color(255, 255, 255));
         btnBranchStreet.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btnBranchStreetFocusLost(evt);
@@ -238,6 +242,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         btnHouseNumber.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnHouseNumber.setForeground(new java.awt.Color(255, 255, 255));
         btnHouseNumber.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnHouseNumber.setCaretColor(new java.awt.Color(255, 255, 255));
         btnHouseNumber.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btnHouseNumberFocusLost(evt);
@@ -277,6 +282,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         LastField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         LastField.setForeground(new java.awt.Color(255, 255, 255));
         LastField.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        LastField.setCaretColor(new java.awt.Color(255, 255, 255));
         LastField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 LastFieldFocusLost(evt);
@@ -328,12 +334,14 @@ public class AddRcp extends javax.swing.JInternalFrame {
         jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setToolTipText("");
+        jPasswordField1.setCaretColor(new java.awt.Color(255, 255, 255));
         getContentPane().add(jPasswordField1);
         jPasswordField1.setBounds(140, 160, 170, 20);
 
         jPasswordField2.setBackground(new java.awt.Color(0, 0, 0));
         jPasswordField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPasswordField2.setForeground(new java.awt.Color(255, 255, 255));
+        jPasswordField2.setCaretColor(new java.awt.Color(255, 255, 255));
         jPasswordField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jPasswordField2FocusLost(evt);
@@ -348,13 +356,13 @@ public class AddRcp extends javax.swing.JInternalFrame {
         day.setToolTipText("");
         day.setName(""); // NOI18N
         getContentPane().add(day);
-        day.setBounds(140, 100, 50, 20);
+        day.setBounds(140, 100, 50, 22);
 
         month.setBackground(new java.awt.Color(0, 0, 0));
         month.setForeground(new java.awt.Color(255, 255, 255));
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(month);
-        month.setBounds(200, 100, 60, 20);
+        month.setBounds(200, 100, 60, 22);
 
         year.setBackground(new java.awt.Color(0, 0, 0));
         year.setForeground(new java.awt.Color(255, 255, 255));
@@ -365,20 +373,20 @@ public class AddRcp extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(year);
-        year.setBounds(270, 100, 60, 20);
+        year.setBounds(270, 100, 60, 22);
 
         day1.setBackground(new java.awt.Color(0, 0, 0));
         day1.setForeground(new java.awt.Color(255, 255, 255));
         day1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         day1.setName(""); // NOI18N
         getContentPane().add(day1);
-        day1.setBounds(140, 130, 50, 20);
+        day1.setBounds(140, 130, 50, 22);
 
         month1.setBackground(new java.awt.Color(0, 0, 0));
         month1.setForeground(new java.awt.Color(255, 255, 255));
         month1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(month1);
-        month1.setBounds(200, 130, 60, 20);
+        month1.setBounds(200, 130, 60, 22);
 
         year1.setBackground(new java.awt.Color(0, 0, 0));
         year1.setForeground(new java.awt.Color(255, 255, 255));
@@ -389,7 +397,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(year1);
-        year1.setBounds(270, 130, 60, 20);
+        year1.setBounds(270, 130, 60, 22);
 
         MessageBox.setBackground(new Color (0,0,0,90));
         MessageBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
