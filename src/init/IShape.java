@@ -1204,10 +1204,9 @@ public class IShape implements Serializable {
                 count++;
         }
         
-        return "Branch number "+branchNum+" has "+count+" Minutes of total working time.";
+        return "Total time: "+count +" Minutes ";
     }
-    
-    
+
     // -------------------------------hashCode equals11 &
     // toString------------------------------
     

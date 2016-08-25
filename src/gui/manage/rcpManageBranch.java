@@ -178,7 +178,7 @@ lblViewRoom.hide();
             }
         });
         statisticsPanel.add(chooseRoom);
-        chooseRoom.setBounds(210, 230, 170, 22);
+        chooseRoom.setBounds(210, 230, 170, 20);
 
         jSeparator8.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator8.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -188,7 +188,7 @@ lblViewRoom.hide();
         lblBranchID.setForeground(new java.awt.Color(255, 255, 255));
         lblBranchID.setText("id");
         statisticsPanel.add(lblBranchID);
-        lblBranchID.setBounds(210, 60, 70, 16);
+        lblBranchID.setBounds(210, 60, 70, 14);
 
         txtID.setBackground(new java.awt.Color(255, 255, 255));
         txtID.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -200,7 +200,7 @@ lblViewRoom.hide();
         lblTotalWorkouts.setForeground(new java.awt.Color(255, 255, 255));
         lblTotalWorkouts.setText("workouts");
         statisticsPanel.add(lblTotalWorkouts);
-        lblTotalWorkouts.setBounds(210, 120, 70, 16);
+        lblTotalWorkouts.setBounds(210, 120, 190, 14);
 
         txtTotalWorkouts.setBackground(new java.awt.Color(255, 255, 255));
         txtTotalWorkouts.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -212,7 +212,7 @@ lblViewRoom.hide();
         lblTotalLessons.setForeground(new java.awt.Color(255, 255, 255));
         lblTotalLessons.setText("lessons");
         statisticsPanel.add(lblTotalLessons);
-        lblTotalLessons.setBounds(210, 140, 70, 16);
+        lblTotalLessons.setBounds(210, 140, 190, 14);
 
         txtTotalLessons.setBackground(new java.awt.Color(255, 255, 255));
         txtTotalLessons.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -224,7 +224,7 @@ lblViewRoom.hide();
         lblVisitedCustomers.setForeground(new java.awt.Color(255, 255, 255));
         lblVisitedCustomers.setText("customers");
         statisticsPanel.add(lblVisitedCustomers);
-        lblVisitedCustomers.setBounds(210, 160, 70, 16);
+        lblVisitedCustomers.setBounds(210, 160, 190, 14);
 
         txtVisitedCustomers.setBackground(new java.awt.Color(255, 255, 255));
         txtVisitedCustomers.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -236,7 +236,7 @@ lblViewRoom.hide();
         lblBranchAddress.setForeground(new java.awt.Color(255, 255, 255));
         lblBranchAddress.setText("address");
         statisticsPanel.add(lblBranchAddress);
-        lblBranchAddress.setBounds(210, 100, 200, 16);
+        lblBranchAddress.setBounds(210, 100, 200, 14);
 
         txtBranchName.setBackground(new java.awt.Color(255, 255, 255));
         txtBranchName.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -248,7 +248,7 @@ lblViewRoom.hide();
         lblTotalEmployees.setForeground(new java.awt.Color(255, 255, 255));
         lblTotalEmployees.setText("employees");
         statisticsPanel.add(lblTotalEmployees);
-        lblTotalEmployees.setBounds(210, 180, 70, 16);
+        lblTotalEmployees.setBounds(210, 180, 190, 14);
 
         txtTotalEmployees.setBackground(new java.awt.Color(255, 255, 255));
         txtTotalEmployees.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -260,7 +260,7 @@ lblViewRoom.hide();
         lblTotalRooms.setForeground(new java.awt.Color(255, 255, 255));
         lblTotalRooms.setText("rooms");
         statisticsPanel.add(lblTotalRooms);
-        lblTotalRooms.setBounds(210, 200, 70, 16);
+        lblTotalRooms.setBounds(210, 200, 150, 14);
 
         txtTotalRooms.setBackground(new java.awt.Color(255, 255, 255));
         txtTotalRooms.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -347,7 +347,7 @@ lblViewRoom.hide();
         lblRoomID.setForeground(new java.awt.Color(255, 255, 255));
         lblRoomID.setText("id");
         roomPanel.add(lblRoomID);
-        lblRoomID.setBounds(210, 60, 70, 16);
+        lblRoomID.setBounds(210, 60, 70, 14);
 
         txtID1.setBackground(new java.awt.Color(255, 255, 255));
         txtID1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -359,7 +359,7 @@ lblViewRoom.hide();
         lblRoomInstruments.setForeground(new java.awt.Color(255, 255, 255));
         lblRoomInstruments.setText("insrtuments");
         roomPanel.add(lblRoomInstruments);
-        lblRoomInstruments.setBounds(210, 120, 70, 16);
+        lblRoomInstruments.setBounds(210, 120, 70, 14);
 
         txtTotalWorkouts1.setBackground(new java.awt.Color(255, 255, 255));
         txtTotalWorkouts1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -371,7 +371,7 @@ lblViewRoom.hide();
         lblRoomTotalLessons.setForeground(new java.awt.Color(255, 255, 255));
         lblRoomTotalLessons.setText("lessons");
         roomPanel.add(lblRoomTotalLessons);
-        lblRoomTotalLessons.setBounds(210, 140, 70, 16);
+        lblRoomTotalLessons.setBounds(210, 140, 70, 14);
 
         txtTotalLessons1.setBackground(new java.awt.Color(255, 255, 255));
         txtTotalLessons1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -383,7 +383,7 @@ lblViewRoom.hide();
         lblRoomMaxTrainees.setForeground(new java.awt.Color(255, 255, 255));
         lblRoomMaxTrainees.setText("mtrainees");
         roomPanel.add(lblRoomMaxTrainees);
-        lblRoomMaxTrainees.setBounds(210, 100, 200, 16);
+        lblRoomMaxTrainees.setBounds(210, 100, 200, 14);
 
         txtBranchName1.setBackground(new java.awt.Color(255, 255, 255));
         txtBranchName1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N

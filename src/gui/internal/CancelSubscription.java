@@ -14,6 +14,7 @@ import java.awt.Color;
 import utils.E_Cities;
 import java.lang.*;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -55,7 +56,8 @@ public class CancelSubscription extends javax.swing.JInternalFrame {
         int counter=0;
         for (Subscription sub:customer.getSubs()){
             counter++;
-            subChooser.addItem(sub.getNumber() + " - End date: " + sub.getLastDay());
+            String strDate = new SimpleDateFormat("dd/MM/yyyy").format(sub.getLastDay());
+            subChooser.addItem(sub.getNumber() + " - End date: " + strDate);
         }
         
         if(counter==0)

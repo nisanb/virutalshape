@@ -55,7 +55,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         lblCustomerID.setText(cust.getId());
         lblRespID.setVisible(true);
       
-        subNumber = iWindow.getDB().getSubs().size()+111;
+        subNumber = iWindow.getDB().getNextSub()+1;
         subNum.setText(new Integer(subNumber).toString());
         
         for(Employee emp : iWindow.getDB().getEmployees().values()){
@@ -262,6 +262,14 @@ public class AddSubscription extends javax.swing.JInternalFrame {
             
             startDate = new Date(y, m, d);
             Date today = new Date();
+            double weekInMillis = 6.048e+8;
+            if (Math.abs(startDate.getTime() - today.getTime()) > 2*weekInMillis){
+                dateError.setForeground(Color.red);
+                dateError.setText("Date must be whithin 2 week range");
+                iWindow.update();
+                return;
+            }
+            
             String strDate = new SimpleDateFormat("dd/MM/yyyy").format(startDate);
             dateError.setForeground(Color.GREEN);
             dateError.setText(strDate);
