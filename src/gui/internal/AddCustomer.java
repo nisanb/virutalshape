@@ -455,6 +455,16 @@ public class AddCustomer extends javax.swing.JInternalFrame {
             return;
         }
         
+        
+        if (id==null || firstName==null || lastName==null || birthDate==null
+                || password==null || email==null || country==null ||
+                city==null || street==null || housNumber < 1 || phones == null){
+            MessageBox.setForeground(Color.red);
+            MessageBox.setText("Please fill all required fields");
+            iWindow.update();
+            return;
+        }
+        
         Address address = new Address(country, city, street, housNumber, phones);
     
     if (iWindow.getDB().addCustomer(id, firstName, lastName, birthDate, password, email, address)){
@@ -488,7 +498,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
             return;
         }
 
-        if (!iWindow.getDB().getCustomers().containsKey(Integer.parseInt(IDfield.getText()))) {
+        if (!iWindow.getDB().getCustomers().containsKey((IDfield.getText()))) {
             numError.setText(" ");
             id = str;
         } else {
