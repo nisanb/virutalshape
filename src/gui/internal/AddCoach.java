@@ -551,7 +551,6 @@ public class AddCoach extends javax.swing.JInternalFrame {
             return;
         }
         
-        
         //create address
 //        System.out.println(employeeNumber + " " +  firstName + " " + lastName+ " " +
 //                birthDate+ " " + startWorkingDate+ " " + password+ " " + level);
@@ -760,14 +759,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
         String str = (String) selectBranch.getSelectedItem();
         //System.err.println("STR: "+str+" Length: "+(str.length())+" Value: "+str);
         
-        for (int i = 0; i < str.length(); i++){
-            if (Character.isDigit(str.charAt(i))) continue;
-            else{
-                str = str.substring(0, i);
-            }
-        }
-        if(str.length()<1) return;
-        int branchNum = Integer.parseInt(str);
+        int branchNum = Integer.parseInt(PositiveValidator.getID(str));
         branch = iWindow.getDB().getBranches().get(branchNum);
         branchError.setText(" ");
         
@@ -828,7 +820,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     //Manual variables declaration 
-    private Branch branch;
+    private Branch branch = null;
     private int employeeNumber;
     private String firstName;
     private String lastName;
