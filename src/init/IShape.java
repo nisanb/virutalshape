@@ -691,6 +691,11 @@ public class IShape implements Serializable {
         int numberOfLessons = 0;
         Customer profitableCustomer = null;
         
+        //Basic Protection against NULL iShape
+        if(customers.size()==0 || customers==null){
+            return "No customers found in database.";
+        }
+        
         for (Customer customer : customers.values()) {
             if (customer.getAttendedLessons().size() > numberOfLessons) {
                 profitableCustomer = customer;
@@ -728,6 +733,17 @@ public class IShape implements Serializable {
      */
     public String getAllCustomersFromBranchXbutNotFromBranchY(
             int branchXnumber, int branchYnumber) {
+        
+        //Basic Protection
+        if(branches.size()==0 || branches==null){
+            return "No Branches found in database.";
+
+        }
+        if(customers.size()==0 || branches==null){
+            return "No customers found in database";
+        }
+        
+        
         List<Customer> customersFromBranchX = new ArrayList<Customer>();
         // Check if branch X and branch Y exist
         if (branchXnumber > 0 && branchYnumber > 0) {
@@ -796,10 +812,18 @@ public class IShape implements Serializable {
      * @return a lesson type
      */
     public String getTheMostPopularLessonType() {
+        
+        //Basic Protection
+        if(branches.size()==0 || customers.size()==0 || lessons.size()==0){
+            return "Not enough data in order to show statistics.";
+        }
+        
         //Both ways are ok- this and the next one marked in green
         //first way: lower time complexity, higher space complexity than second way
         //firs way result: AEROBICS
         //second way result: YOGA
+        
+        
         int maxRegisteredForType = 0, count = 0;
         E_Lessons popularLessonType = null;
         Map<E_Lessons, Integer> popLess = new HashMap<E_Lessons, Integer>();
@@ -842,6 +866,11 @@ public class IShape implements Serializable {
      * @return the receptionist of the month if it exist, null other
      */
     public String getReceptionistOfTheMonth() {
+        
+        if(subs.size()==0 || employees.size()==0){
+            return "Not enough data to view statistics";
+        }
+        
         Date today = new Date();
         int count, maxActiveSubs = 0;
         Receptionist recepOfTheMonth = null;
@@ -876,6 +905,10 @@ public class IShape implements Serializable {
      * @return an array of super senior coaches if found, null other
      */
     public String getAllSuperSeniorCoaches() {
+         if(branches.size()==0 || employees.size()==0){
+            return "Not enough data to view statistics";
+        }
+         
         Date today = new Date();
         List<Coach> superCoaches = new ArrayList<Coach>();
         int count = 0;
@@ -912,6 +945,9 @@ public class IShape implements Serializable {
      * @return the top receptionist
      */
     public String getTopJanuaryReceptionists() {
+         if(subs.size()==0 || employees.size()==0){
+            return "Not enough data to view statistics";
+        }
         Receptionist topReceptionist = null;
         int max = 0;
         for (Employee emp : employees.values())
@@ -936,6 +972,10 @@ public class IShape implements Serializable {
      * @return the customer who registered to the most time this month
      */
     public String getTopCustomerOfTheMonth() {
+         if(subs.size()==0 || customers.size()==0 || branches.size()==0 || lessons.size()==0){
+            return "Not enough data to view statistics";
+        }
+         
         Customer topCust = null;
         int maxTime = 0, count;
         Date today = new Date();
@@ -977,6 +1017,9 @@ public class IShape implements Serializable {
      * @return the most ordered type of instrument
      */
     public String getTopIstrumentType() {
+         if(workouts.size()==0 || customers.size()==0 || branches.size()==0){
+            return "Not enough data to view statistics";
+        }
         HashMap<E_Types, Integer> types = new HashMap<>();
         for (E_Types type : E_Types.values()) {
             types.put(type, 0);
@@ -1005,6 +1048,9 @@ public class IShape implements Serializable {
      * @return the list of customers, or null
      */
     public String getAllCustomersAttendingMoreThan1City() {
+         if(branches.size()==0 || lessons.size()==0 || customers.size()==0 || lessons.size()==0){
+            return "Not enough data to view statistics";
+        }
         ArrayList<Customer> customersDiffCities = new ArrayList<Customer>();
         if (!this.customers.isEmpty()) {
             for (Customer c : this.customers.values()) {
@@ -1045,6 +1091,9 @@ public class IShape implements Serializable {
      *         EXTRA 7 POINTS
      */
     public String getMostActiveDatePerBranchThisMonth() {
+         if(subs.size()==0 || branches.size()==0 || customers.size()==0){
+            return "Not enough data to view statistics";
+        }
         
         HashMap<Branch, Date> active = new HashMap<Branch, Date>();
         if (!this.branches.isEmpty()) {
@@ -1120,6 +1169,10 @@ public class IShape implements Serializable {
      * @return a set with all popular branches
      */
     public String getPopularBranches() {
+         if(branches.size()==0 || customers.size()==0 || lessons.size()==0){
+            return "Not enough data to view statistics";
+        }
+         
         Map<Branch, Integer> branchAndTime = new HashMap<Branch, Integer>();
         Set<Branch> popular = new HashSet<Branch>();
         Date today = new Date();
@@ -1163,6 +1216,9 @@ public class IShape implements Serializable {
      * @return
      */
     public String getPotentialCustomersPerBranch() {
+         if(subs.size()==0 || customers.size()==0 || branches.size()==0){
+            return "Not enough data to view statistics";
+        }
         Map<Branch, ArrayList<Customer>> potential = new HashMap<Branch, ArrayList<Customer>>();
         if (!branches.isEmpty()) {
             for (Branch b : branches.values()) {
@@ -1198,6 +1254,9 @@ public class IShape implements Serializable {
     
     
     public String getTotalWorkoutsByBranch(int branchNum){
+         if(subs.size()==0 || customers.size()==0 || branches.size()==0 || workouts.size()==0){
+            return "Not enough data to view statistics";
+        }
         int count=0;
         for(Workout w : getWorkouts().values()){
             if(branchNum==w.getBranchNum())
