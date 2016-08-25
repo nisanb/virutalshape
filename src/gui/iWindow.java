@@ -94,11 +94,11 @@ public class iWindow {
         private static IShape importData() {
         // TODO Auto-generated method stub
         try {
-            String fileName = "Data.cer";
+            String fileName = "IShape.ser";
             FileInputStream input = new FileInputStream(fileName);
             ObjectInputStream objInput = new ObjectInputStream(input);
             IShape Data = (IShape) objInput.readObject();
-            System.err.println("Successfully imported Data.cer");
+            System.err.println("Successfully imported IShape.ser");
             Data.setFirst(false);
             return Data;
         } catch (Exception e) {
@@ -113,13 +113,13 @@ public class iWindow {
     
     /**
      * Exports the database
-     * Will use Data.cer file
+     * Will use IShape.ser file
      * 
      * &&&&     Overrides file on export        &&&&
      */
     public static void exportData() {
         try {
-            String fileName = "Data.cer";
+            String fileName = "IShape.ser";
             FileOutputStream output = new FileOutputStream(fileName);
             ObjectOutputStream objoutput = new ObjectOutputStream(output);
             objoutput.writeObject(IShape);
