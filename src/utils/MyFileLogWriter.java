@@ -7,8 +7,10 @@ import java.io.IOException;
 /**
  * A utility class for logging output text to a file
  * note: final means that we can't extends this class
- * @author Java Course Team 2016
+ * @author Java Corse Team 2016
  * @author University Of Haifa-Israel
+ * 
+ * DISABLED
  */
 public final class MyFileLogWriter{
     
@@ -26,12 +28,6 @@ public final class MyFileLogWriter{
         * we can use Calendar.getInstance().getTimeInMillis() by adding it
         * to the name of the file.
         */
-        outputLogFile = new File("output.txt");
-        try {
-            writer = new FileWriter(outputLogFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
     
     /**
@@ -39,23 +35,15 @@ public final class MyFileLogWriter{
      * @param message
      */
     public static void writeToFileInSeparateLine(String message){
+        return;
         
-        try {
-            writer.write(message+"\n");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
     
     /**
      * Saves the log file (by closing the file writer)
      */
     public static void saveLogFile(){
-        try {
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return;
     }
     
     

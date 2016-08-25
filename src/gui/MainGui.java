@@ -125,7 +125,7 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
         setMaximumSize(new java.awt.Dimension(1024, 765));
         setMinimumSize(new java.awt.Dimension(1024, 765));
         setPreferredSize(new java.awt.Dimension(1024, 765));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         pnlCust.setOpaque(false);
 
@@ -185,7 +185,8 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
                 .addContainerGap(219, Short.MAX_VALUE))
         );
 
-        getContentPane().add(pnlCust, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 190, 410));
+        getContentPane().add(pnlCust);
+        pnlCust.setBounds(0, 70, 190, 410);
 
         pnlRcp.setOpaque(false);
 
@@ -257,7 +258,8 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
                 .addContainerGap(162, Short.MAX_VALUE))
         );
 
-        getContentPane().add(pnlRcp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 190, 410));
+        getContentPane().add(pnlRcp);
+        pnlRcp.setBounds(0, 70, 190, 410);
 
         pnlCoach.setOpaque(false);
 
@@ -300,7 +302,8 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
                 .addContainerGap(281, Short.MAX_VALUE))
         );
 
-        getContentPane().add(pnlCoach, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 190, 410));
+        getContentPane().add(pnlCoach);
+        pnlCoach.setBounds(0, 70, 190, 410);
 
         pnlAdmin.setOpaque(false);
 
@@ -367,14 +370,16 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
                 .addContainerGap(151, Short.MAX_VALUE))
         );
 
-        getContentPane().add(pnlAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 190, 410));
+        getContentPane().add(pnlAdmin);
+        pnlAdmin.setBounds(0, 70, 190, 410);
 
         btnDisconnect.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDisconnectMouseClicked(evt);
             }
         });
-        getContentPane().add(btnDisconnect, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, 180, 40));
+        getContentPane().add(btnDisconnect);
+        btnDisconnect.setBounds(10, 630, 180, 40);
 
         iReturn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/arrow-88-24.png"))); // NOI18N
         iReturn.setToolTipText("Return Last Window");
@@ -383,7 +388,8 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
                 iReturnMouseClicked(evt);
             }
         });
-        getContentPane().add(iReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 30, 30));
+        getContentPane().add(iReturn);
+        iReturn.setBounds(620, 40, 30, 30);
 
         btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -395,12 +401,14 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
                 btnExitPropertyChange(evt);
             }
         });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 700, 180, 40));
+        getContentPane().add(btnExit);
+        btnExit.setBounds(10, 700, 180, 40);
 
         lblAuthLogged.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblAuthLogged.setForeground(new java.awt.Color(255, 0, 0));
         lblAuthLogged.setText("Administrator");
-        getContentPane().add(lblAuthLogged, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 170, 50));
+        getContentPane().add(lblAuthLogged);
+        lblAuthLogged.setBounds(20, 10, 170, 50);
 
         ContentFrame.setForeground(new java.awt.Color(255, 51, 102));
         ;
@@ -419,11 +427,13 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
             .addGap(0, 650, Short.MAX_VALUE)
         );
 
-        getContentPane().add(ContentFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 820, 650));
+        getContentPane().add(ContentFrame);
+        ContentFrame.setBounds(200, 90, 820, 650);
 
         lblName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblName.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 190, 30));
+        getContentPane().add(lblName);
+        lblName.setBounds(660, 40, 190, 30);
 
         btnFB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/facebook-3-24.png"))); // NOI18N
         btnFB.setText("jLabel1");
@@ -432,12 +442,14 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
                 btnFBMouseClicked(evt);
             }
         });
-        getContentPane().add(btnFB, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 550, 30, 30));
+        getContentPane().add(btnFB);
+        btnFB.setBounds(90, 550, 30, 30);
 
         lblTitle.setFont(new java.awt.Font("Leelawadee UI", 1, 13)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 153, 0));
         lblTitle.setText("Welcome to Virtual iShape");
-        getContentPane().add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 420, 20));
+        getContentPane().add(lblTitle);
+        lblTitle.setBounds(220, 50, 420, 20);
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MainUI/ishapegui.png"))); // NOI18N
         Background.setText("A");
@@ -449,7 +461,8 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
                 BackgroundMouseClicked(evt);
             }
         });
-        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(Background);
+        Background.setBounds(0, 0, 1038, 770);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
