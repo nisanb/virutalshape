@@ -502,6 +502,8 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
                 str = str.substring(0, i);
             }
         }
+        
+        if (!PositiveValidator.isPositiveStringNum(str)) return;
         workoutNum = Integer.parseInt(str);
         details.setText(selectWorkout.getSelectedItem().toString());
         

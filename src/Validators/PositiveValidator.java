@@ -36,11 +36,10 @@ public class PositiveValidator {
      * @return 
      */
     public static String getID(String str){
-   
         //Split
         String arr[] = str.split("\\(");
         str = arr[1];
-       arr= str.split("\\)");
+        arr= str.split("\\)");
         str = arr[0];
         
         //Return string

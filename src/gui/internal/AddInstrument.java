@@ -212,6 +212,12 @@ public class AddInstrument extends javax.swing.JInternalFrame {
 
         int branchNum = branch.getBranchNumber();
         int roomNum = room.getRoomNum();
+        
+        if(amount < 1 || roomNum < 1 || type == null || branchNum < 1 || insStatus.getSelectedIndex() == 0){
+            MessageBox.setForeground(Color.RED);
+            MessageBox.setText("Please select all required fields");
+            return;
+        }
         if(iWindow.getDB().addInstrumentToRoom(branchNum, roomNum,type, status, amount)){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Successfully added instrument " + type  +" to branch" + branchNum);
@@ -246,12 +252,14 @@ public class AddInstrument extends javax.swing.JInternalFrame {
             insNumError.setText("Positive 2 digits only");
             amount = -1;
             iWindow.update();
+            return;
         }
 
         else {
             insNumError.setText(" ");
             amount = Integer.parseInt(str);
         }
+        
         iWindow.update();
     }//GEN-LAST:event_InsNumFocusLost
 
@@ -260,8 +268,13 @@ public class AddInstrument extends javax.swing.JInternalFrame {
      * @param evt 
      */
     private void insTypeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_insTypeFocusLost
-        if(insType.getSelectedItem().equals("Select Instrument Type"))
+        if(insType.getSelectedIndex() == 0){
+            MessageBox.setForeground(Color.red);
+            MessageBox.setText("One or more field are empty");
+            type = null;
+            iWindow.update();
             return;
+        }
         if(insType.getSelectedItem().toString().length()<=0)
             return;
         
@@ -271,9 +284,14 @@ public class AddInstrument extends javax.swing.JInternalFrame {
 
     /**
      * this method gets the instrument status
-     * @param evt 
+     * @param evt
      */
     private void insStatusFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_insStatusFocusLost
+        if (insStatus.getSelectedIndex() == 0){
+            MessageBox.setForeground(Color.red);
+            MessageBox.setText("One or more field are empty");
+            return;
+        }
         if (insStatus.getSelectedIndex() == 2) status = true;
         else if (insStatus.getSelectedIndex() == 1) status = false;
     }//GEN-LAST:event_insStatusFocusLost

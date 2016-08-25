@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package gui.manage;
 
 import Validators.PositiveValidator;
@@ -23,6 +23,7 @@ import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListCellRenderer;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import utils.E_Rooms;
 
@@ -31,7 +32,7 @@ import utils.E_Rooms;
  * @author nisans
  */
 public class rcpManageBranch extends javax.swing.JInternalFrame {
-
+    
     private Object obj = null;
     private static Branch branch;
     private static Room room;
@@ -40,20 +41,24 @@ public class rcpManageBranch extends javax.swing.JInternalFrame {
      */
     public rcpManageBranch() {
         initComponents();
-        this.branch = iWindow.getEmployeeLogged().getWorkBranch();
-        
-        setTitle("Manage "+branch.getBranchName());
-        
-      
-        statisticsPanel.hide();
-        roomPanel.hide();
-        lblAddInstrument.hide();
-        AddLesson.hide();
-lblViewRoom.hide();
-        updateData(branch);
-
+        if (iWindow.getEmployeeLogged().getWorkBranch() == null) {
+            JOptionPane.showMessageDialog(null, "This employee is not connected to branch");
+            this.hide();
+            return;
+        }
+        else{
+            this.branch = iWindow.getEmployeeLogged().getWorkBranch();
+            setTitle("Manage "+branch.getBranchName()); 
+            statisticsPanel.hide();
+            roomPanel.hide();
+            lblAddInstrument.hide();
+            AddLesson.hide();
+            lblViewRoom.hide();
+            updateData(branch);
+            
+        }
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -165,7 +170,6 @@ lblViewRoom.hide();
 
         chooseRoom.setBackground(new java.awt.Color(0, 0, 0));
         chooseRoom.setForeground(new java.awt.Color(255, 255, 255));
-        chooseRoom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         chooseRoom.setOpaque(false);
         chooseRoom.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -447,32 +451,32 @@ lblViewRoom.hide();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
         // TODO add your handling code here:
-       
+        
         AddBranchForm add = new AddBranchForm(branch);
-
+        
         iWindow.openWin(add);
     }//GEN-LAST:event_btnEditMouseClicked
-
+    
     private void lblNewRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewRoomMouseClicked
         // Open New Room for Branch
         AddRoom add = new AddRoom(branch);
         iWindow.openWin(add);
-
+        
     }//GEN-LAST:event_lblNewRoomMouseClicked
-
+    
     private void btnEdit1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEdit1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEdit1MouseClicked
-
+    
     private void lblAddInstrumentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddInstrumentMouseClicked
         //Open Add Instrument GUI
         AddInstrument add = new AddInstrument(branch, room);
         iWindow.openWin(add);
     }//GEN-LAST:event_lblAddInstrumentMouseClicked
-
+    
     private void chooseRoomItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chooseRoomItemStateChanged
         // TODO add your handling code here:
         //Chosen Room
@@ -482,16 +486,16 @@ lblViewRoom.hide();
             
             return;
         }
-
+        
         //Get Room Object
         String str = PositiveValidator.getID(chooseRoom.getSelectedItem().toString());
         
-      
+        
         int roomNum = Integer.parseInt(str);
         
         Room tmp = new Room(roomNum, branch.getBranchNumber());
         for(Room r : branch.getRooms()){
-           
+            
             if(r.equals(tmp)){
                 //Room found
                 room = r;
@@ -520,7 +524,7 @@ lblViewRoom.hide();
         //Update Components
         lblRoomID.setText(""+room.getRoomNum());
         System.err.println("TP: "+room.getMaxNumOfInstruments());
-       
+        
         
         lblRoomMaxTrainees.setText(""+room.getMaxNumOfTrainees());
         
@@ -529,23 +533,23 @@ lblViewRoom.hide();
         roomPanel.setVisible(true);
         
     }//GEN-LAST:event_chooseRoomItemStateChanged
-
+    
     private void chooseRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseRoomActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chooseRoomActionPerformed
-
+    
     private void AddLessonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddLessonMouseClicked
         AddLesson add = new AddLesson(branch, room);
         iWindow.openWin(add);
     }//GEN-LAST:event_AddLessonMouseClicked
-
+    
     private void lblViewRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblViewRoomMouseClicked
         // TODO add your handling code here:
         ViewRoom add = new ViewRoom(room);
         iWindow.openWin(add);
     }//GEN-LAST:event_lblViewRoomMouseClicked
-
-
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddLesson;
     private javax.swing.JLabel btnEdit;
@@ -598,26 +602,26 @@ lblViewRoom.hide();
     private javax.swing.JLabel txtTotalWorkouts1;
     private javax.swing.JLabel txtVisitedCustomers;
     // End of variables declaration//GEN-END:variables
-
-
-
+    
+    
+    
     /**
      * Updates the current data on form
-     * 
+     *
      * Given branch
-     * 
-     * 
-     * @param tmp 
+     *
+     *
+     * @param tmp
      */
     public void updateData(Branch tmp) {
-
+        
         //First Defence
         //Should not happen anyway!
         if (tmp == null) {
             System.err.println("Branch not found.");
             return;
         }
-
+        
         //Get Branch Variable from HashMap
         branch = iWindow.getDB().getBranches().get(tmp.getBranchNumber());
         
@@ -626,11 +630,11 @@ lblViewRoom.hide();
         lblBranchID.setText("" + branch.getBranchNumber());
         lblBranchName.setText("" + branch.getBranchName());
         lblTotalEmployees.setText("" + (branch.getCoaches().size() + branch.getRespt().size()));
-
+        
         lblTotalLessons.setText("" + branch.getLessonsCount());
         lblVisitedCustomers.setText("" + branch.getUniqueVisitors());
         lblTotalWorkouts.setText("" + iWindow.getDB().getTotalWorkoutsByBranch(branch.getBranchNumber()));
-
+        
         //Room Selector
         chooseRoom.removeAllItems();
         if (branch.getRooms().size() == 0) {
@@ -641,7 +645,7 @@ lblViewRoom.hide();
                 chooseRoom.addItem(r.toString());
             }
         }
-
+        
         statisticsPanel.show();
         for (Employee emp : branch.getCoaches()) {
             System.err.println(emp);
