@@ -12,6 +12,7 @@ import javax.swing.JDesktopPane;
 import gui.internal.*;
 import gui.manage.ManageCustomers;
 import gui.manage.ManageEmployees;
+import gui.internal.ViewLessons;
 import gui.manage.ViewStatistics;
 import gui.manage.rcpManageBranch;
 import gui.manage.rcpViewStatistics;
@@ -139,7 +140,7 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
 
         btnEmployees4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         btnEmployees4.setForeground(new java.awt.Color(255, 255, 255));
-        btnEmployees4.setText("Test3");
+        btnEmployees4.setText("View Workouts");
         btnEmployees4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEmployees4MouseClicked(evt);
@@ -148,7 +149,7 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
 
         btnEmployees5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         btnEmployees5.setForeground(new java.awt.Color(255, 255, 255));
-        btnEmployees5.setText("Test2");
+        btnEmployees5.setText("View Lessons");
         btnEmployees5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEmployees5MouseClicked(evt);
@@ -583,10 +584,14 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
 
     private void btnEmployees4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmployees4MouseClicked
         // TODO add your handling code here:
+        ViewWorkouts add = new ViewWorkouts(iWindow.getCustomerLogged());
+        iWindow.openWin(add);
     }//GEN-LAST:event_btnEmployees4MouseClicked
 
     private void btnEmployees5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmployees5MouseClicked
         // TODO add your handling code here:
+        ViewLessons add = new ViewLessons(iWindow.getCustomerLogged());
+        iWindow.openWin(add);
     }//GEN-LAST:event_btnEmployees5MouseClicked
 
     private void btnEmployees6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmployees6MouseClicked

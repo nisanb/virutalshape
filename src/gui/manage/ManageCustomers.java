@@ -29,6 +29,8 @@ import gui.internal.CancelSubscription;
 import gui.internal.CancelWorkout;
 import gui.internal.CustomerToLesson;
 import gui.internal.UpdateCustAddress;
+import gui.internal.ViewLessons;
+import gui.internal.ViewWorkouts;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -137,6 +139,8 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         lblActiveSubs = new javax.swing.JLabel();
         txt7 = new javax.swing.JLabel();
         lblSubs = new javax.swing.JLabel();
+        lblNewLesson2 = new javax.swing.JLabel();
+        lblNewLesson3 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         AddCustomer = new javax.swing.JLabel();
@@ -337,6 +341,28 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         lblSubs.setText("id");
         statisticsPanel.add(lblSubs);
         lblSubs.setBounds(210, 180, 70, 16);
+
+        lblNewLesson2.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblNewLesson2.setForeground(new java.awt.Color(51, 102, 255));
+        lblNewLesson2.setText("[View Lessons]");
+        lblNewLesson2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNewLesson2MouseClicked(evt);
+            }
+        });
+        statisticsPanel.add(lblNewLesson2);
+        lblNewLesson2.setBounds(20, 290, 80, 13);
+
+        lblNewLesson3.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblNewLesson3.setForeground(new java.awt.Color(51, 102, 255));
+        lblNewLesson3.setText("[View Workouts]");
+        lblNewLesson3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNewLesson3MouseClicked(evt);
+            }
+        });
+        statisticsPanel.add(lblNewLesson3);
+        lblNewLesson3.setBounds(130, 290, 90, 13);
 
         getContentPane().add(statisticsPanel);
         statisticsPanel.setBounds(0, 90, 420, 350);
@@ -729,6 +755,18 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
                }
     }//GEN-LAST:event_fldCustIDFocusGained
 
+    private void lblNewLesson2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewLesson2MouseClicked
+        // TODO add your handling code here:
+        ViewLessons add = new ViewLessons(customer);
+        iWindow.openWin(add);
+    }//GEN-LAST:event_lblNewLesson2MouseClicked
+
+    private void lblNewLesson3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewLesson3MouseClicked
+        // TODO add your handling code here:
+        ViewWorkouts add = new ViewWorkouts(customer);
+        iWindow.openWin(add);
+    }//GEN-LAST:event_lblNewLesson3MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddCustomer;
@@ -766,6 +804,8 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblError;
     private javax.swing.JLabel lblNewLesson;
     private javax.swing.JLabel lblNewLesson1;
+    private javax.swing.JLabel lblNewLesson2;
+    private javax.swing.JLabel lblNewLesson3;
     private javax.swing.JLabel lblNewSub;
     private javax.swing.JLabel lblNewWorkout;
     private javax.swing.JLabel lblPassword;
