@@ -14,6 +14,7 @@ import gui.manage.ManageCustomers;
 import gui.manage.ManageEmployees;
 import gui.manage.ViewStatistics;
 import gui.manage.rcpManageBranch;
+import gui.manage.rcpViewStatistics;
 import init.IShape;
 import java.awt.Desktop;
 import java.io.Serializable;
@@ -97,6 +98,7 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
         pnlRcp = new javax.swing.JPanel();
         btnCustomers1 = new javax.swing.JLabel();
         btnEmployees1 = new javax.swing.JLabel();
+        btnEmployees6 = new javax.swing.JLabel();
         btnEmployees3 = new javax.swing.JLabel();
         pnlCoach = new javax.swing.JPanel();
         btnCustomers2 = new javax.swing.JLabel();
@@ -204,6 +206,15 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
             }
         });
 
+        btnEmployees6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnEmployees6.setForeground(new java.awt.Color(255, 255, 255));
+        btnEmployees6.setText("View Statistics");
+        btnEmployees6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEmployees6MouseClicked(evt);
+            }
+        });
+
         btnEmployees3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         btnEmployees3.setForeground(new java.awt.Color(255, 255, 255));
         btnEmployees3.setText("Manage Branch");
@@ -226,7 +237,8 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
                     .addGroup(pnlRcpLayout.createSequentialGroup()
                         .addGroup(pnlRcpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCustomers1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEmployees3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnEmployees3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEmployees6, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -239,7 +251,9 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
                 .addComponent(btnEmployees3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEmployees1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEmployees6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(162, Short.MAX_VALUE))
         );
 
         getContentPane().add(pnlRcp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 190, 410));
@@ -575,6 +589,12 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEmployees5MouseClicked
 
+    private void btnEmployees6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmployees6MouseClicked
+        // TODO add your handling code here:
+        rcpViewStatistics add = new rcpViewStatistics();
+        iWindow.openWin(add);
+    }//GEN-LAST:event_btnEmployees6MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -595,6 +615,7 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
     private javax.swing.JLabel btnEmployees3;
     private javax.swing.JLabel btnEmployees4;
     private javax.swing.JLabel btnEmployees5;
+    private javax.swing.JLabel btnEmployees6;
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnFB;
     private javax.swing.JLabel btnStatistics;
