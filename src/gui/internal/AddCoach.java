@@ -662,7 +662,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
      * @param evt 
      */
     private void LastFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LastFieldFocusLost
-        String str = NameField.getText();
+        String str = LastField.getText();
         if (!CharValidator.isWord(str) || str.length() < 2) {
             Lerror.setText("Invalid name");
             lastName = null;
