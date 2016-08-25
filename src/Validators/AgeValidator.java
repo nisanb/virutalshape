@@ -16,7 +16,6 @@ public class AgeValidator {
 	public static boolean ValidateAge(Date birthday, int min){
 		Date today = new Date();
 		if (birthday.after(today)) {
-			//TODO - Enter code to return error message
 			return false;
 		}
 		

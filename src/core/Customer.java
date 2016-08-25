@@ -287,95 +287,47 @@ public class Customer implements Serializable {
      * @return true if this sub was removed successfully or false otherwise
      */
     public boolean removeSubscription(Subscription sub) {
-        if (sub != null)	{
-            if (sub.getCustomer() != null
-                    && this.id.equals(sub.getCustomer().getId()))
-                if (this.subs.contains(sub)) {
-                    // the subscription exists - sub should be delete!
-                    Subscription subToDelete = this.subs.get(this.subs
-                            .indexOf(sub));
-                    this.subs.remove(subToDelete);
-                    if (this.subs.size() >= 1
-                            && !subToDelete.getLessons().isEmpty()) {
-                        // add all possible lessons to another subscription and
-                        // delete them from the subToDelete
-                        // check if there is another sub that fits them
-                        
-                        //move possible lessons
-                        ArrayList<Lesson> temp = new ArrayList<Lesson>(
-                                subToDelete.getLessons());
-                        for (Lesson l : temp)	{
-                            boolean changed = false;
-                            for (Subscription s : this.subs)
-                                if (!changed && l.getStartDate().after(s.getStartDate())
-                                        && l.getStartDate().before(s.getLastDay())) {
-                                    Subscription subTo = this.subs
-                                            .get(this.subs.indexOf(s));
-                                    if (subTo.addLesson(l))	{
-                                        if (subToDelete.cancelLesson(l))
-                                            changed=true;
-                                    }
-                                }
-                        }
-                        // add all possible workouts to another subscription and
-                        // delete them from the subToDelete
-                        // check if there is another sub that fits them
-                        
-                        //move possible lessons
-                        ArrayList<Workout> tempW = new ArrayList<Workout>(
-                                subToDelete.getWorkouts());
-                        for (Workout w : tempW)	{
-                            boolean changed = false;
-                            for (Subscription s : this.subs)
-                                if (!changed && w.getDate().after(s.getStartDate())
-                                        && w.getDate().before(s.getLastDay())) {
-                                    Subscription subTo = this.subs
-                                            .get(this.subs.indexOf(s));
-                                    if (subTo.addWorkout(w))
-                                        if (subToDelete.cancelWorkout(w))
-                                            changed=true;
-                                }
-                        }
-                    }
-                    // cancel left lessons in subToDelete
-                    //only if lesson is in the future
-                    HashSet<Lesson> cloneL = new HashSet<>(
-                            subToDelete.getLessons());
-                    if (!cloneL.isEmpty()) {
-                        Iterator<Lesson> it = cloneL.iterator();
-                        while (it.hasNext()) {
-                            Lesson l = (Lesson) it.next();
-                            Set<Lesson> tempLes=new HashSet<Lesson>(subToDelete.getLessons());
-                            tempLes.remove(l);
-                            subToDelete.setLessons(tempLes);
-                            if (l.getStartDate().after(new Date()))	{
-                                Map<Customer, Boolean> tempReg = new HashMap<>(l.getRegistered());
-                                tempReg.remove(this);
-                                l.setRegistered(tempReg);
-                            }
-                        }
-                    }
-                    // cancel left Workouts in subToDelete
-                    HashSet<Workout> cloneW = new HashSet<>(
-                            subToDelete.getWorkouts());
-                    if (!cloneW.isEmpty()) {
-                        Iterator<Workout> it = cloneW.iterator();
-                        while (it.hasNext()) {
-                            Workout W = (Workout) it.next();
-                            subToDelete.getWorkouts().remove(W);
-                            Map<Practice, Instrument> temp = new HashMap(W.getTimeAndinstruments());
-                            Iterator<Practice> itP = temp.keySet().iterator();
-                            while (itP.hasNext()) {
-                                Practice p = itP.next();
-                                W.cancelInstrument(temp.get(p), p.getStart(), p.getEnd());
-                            }
-                        }
-                    }
-                    return true;
-                }
+        if(sub==null) return false;
+        
+        //Find the subscription to delete
+        Subscription toDelete = null;
+        int index;
+        for(Subscription s:this.subs){
+            if(s==null)	continue;
+            if(s.equals(sub)) {
+                toDelete=s;
+                break;
+            }
         }
-        return false;
+        
+        if(toDelete==null) return false; //Not Found Subscription
+        
+        //Go through sub and check if there are lesson to move
+        for(Lesson les : toDelete.getLessons()){
+            if(les==null) continue;
+            
+            Subscription toMove = getValidSub(toDelete, les.getStartDate());
+            if (toMove == null) continue;
+            if (toMove.addLesson(les)) continue;
+            else les.cancelCustomer(this, null);
+            
+        }
+        
+        for (Workout w:toDelete.getWorkouts()){
+            if (w == null) continue;
+            
+            Subscription toMove = getValidSub(toDelete, w.getDate());
+            if (toMove == null) continue;
+            if (toMove.addWorkout(w)) continue;
+            else sub.cancelWorkout(w);
+        }
+        
+        //Clear subscription
+        this.subs.remove(this.subs.indexOf(toDelete));
+        return true;
+        
     }
+    
     
     /**
      * This method adds a lesson to the lessons ArrayList of the customer IF he
@@ -394,6 +346,25 @@ public class Customer implements Serializable {
                     return true;
         }
         return false;
+    }
+    
+    /**
+     * This method is helper method for cancelSubscription - it finds a valid subscription
+     * to copy customer's lessons and workouts
+     * @param toDelete
+     * @param date of the lesson/workout
+     * @return
+     */
+    private Subscription getValidSub (Subscription toDelete, Date date ){
+        
+        for(Subscription toMove : this.subs){
+            //Find subscription to move
+            if(date==null || toMove.equals(toDelete)) continue;
+            if(date.after(toMove.getStartDate())
+                    && date.before(toMove.getLastDay())) return toMove;
+            
+        }
+        return null;
     }
     
     /**
@@ -459,7 +430,7 @@ public class Customer implements Serializable {
                                 Instrument ins = workoutToCancel.getTimeAndinstruments().get(p);
                                 //System.out.println("sub: " + sub +  ", p: " + p + "ins: " + ins);
                                 if (ins.cancelCustomer(sub, p)){
-                                   // System.out.println("true");
+                                    // System.out.println("true");
                                     flag = true;
                                 }
                             }
@@ -469,7 +440,7 @@ public class Customer implements Serializable {
                             sub.cancelWorkout(w);
                             return true;
                         }
-                            
+                        
                     }
         return false;
     }

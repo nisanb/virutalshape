@@ -606,7 +606,13 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
 
     private void lblChangeBranchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblChangeBranchMouseClicked
         // Open New Room for Branch
-        EmpToBranch add = new EmpToBranch(emp.getEmployeeNumber(), emp.getWorkBranch().getBranchNumber());
+        EmpToBranch add = null;
+        if (emp.getWorkBranch() == null){
+            add = new EmpToBranch(emp.getEmployeeNumber());
+        }
+        else{
+            add = new EmpToBranch(emp.getEmployeeNumber(), emp.getWorkBranch().getBranchNumber());
+        }
         iWindow.openWin(add);
     }//GEN-LAST:event_lblChangeBranchMouseClicked
 

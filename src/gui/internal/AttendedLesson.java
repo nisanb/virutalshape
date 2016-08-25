@@ -284,6 +284,13 @@ public class AttendedLesson extends javax.swing.JInternalFrame {
         
         custNum = customer.getId();
         if (lessonNum < 1 || customer == null) return;
+        if (!iWindow.getDB().getLessons().get(lessonNum).getRegistered().containsKey(customer)){
+            MessageBox.setForeground(Color.RED);
+            MessageBox.setText("Customer wasn't registered to this lesson");
+            iWindow.update();
+            return;
+        }
+        
         if (iWindow.getDB().getLessons().get(lessonNum).getRegistered().get(customer) == true){
             MessageBox.setForeground(Color.GREEN);
             MessageBox.setText("Customer " +custNum + "was successfully registered as attended to lesson " + lessonNum);

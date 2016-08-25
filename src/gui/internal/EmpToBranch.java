@@ -34,6 +34,16 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
         lblBranchID.setText(BranchID+"");
         //Finished Loading
     }
+
+    public EmpToBranch(int e) {
+        initComponents();
+        this.EmployeeID=e;
+        this.BranchID=0;
+        setTitle("Employee #"+e+" -> Connect Employee to Branch");
+        lblEmployeeID.setText(EmployeeID+"");
+        lblBranchID.setText(BranchID+"");
+        //Finished Loading
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.

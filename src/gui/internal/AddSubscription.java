@@ -55,7 +55,7 @@ public class AddSubscription extends javax.swing.JInternalFrame {
         lblCustomerID.setText(cust.getId());
         lblRespID.setVisible(true);
       
-        subNumber = iWindow.getDB().getSubs().size()+2;
+        subNumber = iWindow.getDB().getSubs().size()+111;
         subNum.setText(new Integer(subNumber).toString());
         
         for(Employee emp : iWindow.getDB().getEmployees().values()){
