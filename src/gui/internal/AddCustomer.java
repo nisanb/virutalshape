@@ -583,7 +583,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
 
     /**
      * this method checks user's city selection and sets the city and country
-     * @param evt 
+     * @param evt
      */
     private void slctCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_slctCityFocusLost
         if (slctCity.getSelectedIndex() == 0) return;

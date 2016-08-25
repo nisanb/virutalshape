@@ -690,14 +690,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         String str = (String) selectBranch.getSelectedItem();
         //System.err.println("STR: "+str+" Length: "+(str.length())+" Value: "+str);
 
-        for (int i = 0; i < str.length(); i++){
-            if (Character.isDigit(str.charAt(i))) continue;
-            else{
-                str = str.substring(0, i);
-            }
-        }
-        if(str.length()<1) return;
-        int branchNum = Integer.parseInt(str);
+        int branchNum = Integer.parseInt(PositiveValidator.getID(str)); 
         branch = iWindow.getDB().getBranches().get(branchNum);
         branchError.setText(" ");
 
@@ -765,7 +758,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
     private String street;
     int housNumber;
     private String[] phones;
-    private Branch branch;
+    private Branch branch = null;
     
 
 }

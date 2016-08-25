@@ -23,16 +23,11 @@ public class rcpViewStatistics extends javax.swing.JInternalFrame {
         selectQuery.addItem("Customers - Attended Lessons");
         selectQuery.addItem("Customers - Visited Branch X but not Y");
         selectQuery.addItem("Lessons - Get Most Popular Lesson");
-        selectQuery.addItem("Receptionist - Top of the Month");
         selectQuery.addItem("Coaches - Get ALL Senior Coaches");
-        selectQuery.addItem("Receptionist - Top January Receptionist");
         selectQuery.addItem("Customer - Top Active Customer");
         selectQuery.addItem("Instrument - Top Used Instrument");
         selectQuery.addItem("Customers - Attending more than one city");
-        selectQuery.addItem("Branches - Get Most Active Date Per Branch");
-        selectQuery.addItem("Branches - Get Popular Branches");
         selectQuery.addItem("Customers - Get Potential Customers Per Branch");
-        selectQuery.addItem("Branch - Get Total WorkTime By Branch");
         
         
     }
@@ -124,44 +119,21 @@ public class rcpViewStatistics extends javax.swing.JInternalFrame {
                 str = iWindow.getDB().getTheMostPopularLessonType(); 
             break;
             case 4: 
-                str = iWindow.getDB().getReceptionistOfTheMonth(); 
-            break;
-            case 5: 
                 str = iWindow.getDB().getAllSuperSeniorCoaches(); 
             break;
-            case 6: 
-                str = iWindow.getDB().getTopJanuaryReceptionists(); 
-            break;
-            case 7: 
+            case 5: 
                 str = iWindow.getDB().getTopCustomerOfTheMonth(); 
             break;
-            case 8: 
+            case 6: 
                 str = iWindow.getDB().getTopIstrumentType(); 
             break;
-            case 9: 
+            case 7: 
                 str = iWindow.getDB().getAllCustomersAttendingMoreThan1City(); 
             break;
-            case 10: 
-                str = iWindow.getDB().getMostActiveDatePerBranchThisMonth(); 
-            break;
-            case 11: 
-                str = iWindow.getDB().getPopularBranches(); 
-            break;
-            case 12: 
+            case 8: 
                 str = iWindow.getDB().getPotentialCustomersPerBranch(); 
             break;
-            case 13: 
-                String input = JOptionPane.showInputDialog("Please input a Branch Number");
-               
-                if(PositiveValidator.isPositiveStringNum(input)){
-                    int BranchX = Integer.parseInt(input);
-
-                    str = iWindow.getDB().getTotalWorkoutsByBranch(BranchX);
-                } else
-                    JOptionPane.showMessageDialog(this, "Input is invalid!");
-            break;
-            
-            
+     
         }
         
         lblContent.setText(str);
