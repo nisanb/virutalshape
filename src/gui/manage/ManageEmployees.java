@@ -76,7 +76,6 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
 
         lblError.setVisible(false);
     
-
         for (Employee emp : iWindow.getDB().getEmployees().values()) {
             chooseBranch.addItem(emp.toString());
         }

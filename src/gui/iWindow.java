@@ -3,6 +3,7 @@
  * Other windows will remain active but at hide state;
  */
 package gui;
+import core.Address;
 import core.Customer;
 import core.Employee;
 import core.Receptionist;
@@ -19,6 +20,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComponent;
@@ -31,6 +33,7 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 import jdk.nashorn.internal.scripts.JO;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
+import utils.E_Cities;
 import utils.MyFileLogWriter;
 
 /**
@@ -64,12 +67,13 @@ public class iWindow {
     //======================================= Main ==========================================
     public static void main(String[] args){
         IShape = importData();
-
+        Employee Admin = new Employee(1, "Admin", " ", new Date (0,0,0), new Date (0,0,0),
+                    "Admin", new Address("Israel",E_Cities.Haifa,null,11,null));
         //Set IShape DB to GUI
         //iWindow.setDB(IShape);
         JFrame login = null;
         if(skipLogin){
-            iWindow.setUser(4, iWindow.getDB().getEmployees().get(11));
+            iWindow.setUser(4,Admin );
             login = new MainGui();
             
         }
@@ -94,7 +98,8 @@ public class iWindow {
             return Data;
         } catch (Exception e) {
             System.err.println("Failed to import database");
-            return null;
+            IShape Data = new IShape();
+            return Data;
         }
         
         

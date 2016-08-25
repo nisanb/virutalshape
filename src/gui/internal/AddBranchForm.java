@@ -290,7 +290,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnAddBranch);
-        btnAddBranch.setBounds(190, 260, 110, 17);
+        btnAddBranch.setBounds(420, 260, 110, 17);
 
         btnBranchCountry.setBackground(new java.awt.Color(0, 0, 0));
         btnBranchCountry.setColumns(20);
@@ -372,12 +372,12 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         lblfailed.setForeground(new java.awt.Color(255, 0, 51));
         lblfailed.setText("Failed adding Branch!");
         getContentPane().add(lblfailed);
-        lblfailed.setBounds(30, 230, 190, 16);
+        lblfailed.setBounds(30, 260, 190, 14);
 
         lblsuccess.setForeground(new java.awt.Color(51, 255, 0));
         lblsuccess.setText("Successfully added Branch!");
         getContentPane().add(lblsuccess);
-        lblsuccess.setBounds(30, 230, 190, 16);
+        lblsuccess.setBounds(30, 260, 190, 14);
 
         btnBranchStreet1.setBackground(new java.awt.Color(0, 0, 0));
         btnBranchStreet1.setColumns(20);
@@ -403,7 +403,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
     private void btnBranchNumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchNumFocusLost
        if(editForm) return;
         String str = btnBranchNum.getText();
-        if (!PositiveValidator.isPositiveStringNum(str) || str.length() !=8){
+        if (!PositiveValidator.isPositiveStringNum(str) || str.length()<2){
             numExists.setVisible(false);
             numError.setVisible(true);
             branchNumber = -1;
@@ -473,16 +473,26 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
 
     private void btnPhoneNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnPhoneNumberFocusLost
      
+        if (phones == null) {
+            String[] phones = new String[5];
+        }
+        try{
         String str = btnPhoneNumber.getText();
-        if (PhoneValidator.validatePhone(str)) {
-            phoneError.setVisible(false);
-            phoneNumber.add(str);
+        phones = str.split(", ");
+        } catch (java.lang.ArrayIndexOutOfBoundsException obe){
+            phoneError.setText("up to 5 phone numbers");
+        }
+        
+        for (String s:phones){
+            if (!PhoneValidator.validatePhone(s)) {
+                phoneError.setText("wrong format. example: 972-xxxxxxx, 04-xxxxxxx");
+                iWindow.update();
+                return;
+            }
+        }
+        phoneError.setText(" ");
+        iWindow.update();                                     
 
-        }
-        else {
-            phoneError.setVisible(true);
-        }
-        iWindow.update();
     }//GEN-LAST:event_btnPhoneNumberFocusLost
 
     private void slctCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_slctCityFocusLost
@@ -506,22 +516,14 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         if(editForm){
             branch.setBranchName(branchName);
             //Transform Phone Number
-            String[] arr = new String[phoneNumber.size()];
-            
-            for(int i=0;i<phoneNumber.size();i++){
-                arr[i]=phoneNumber.get(i);
-                System.err.println("Transferred "+arr[i]);
-            }
-            if(phoneNumber.size()>0){
-                branch.getBranchAddress().setPhoneNumber(arr);
-            }
             lblsuccess.setText("Successfully updated Branch");
             lblsuccess.setVisible(true);
             iWindow.update();
             return; 
         }
         
-        if (iWindow.getDB().addBranch(branchNumber, branchName, city, country, street, housNumber, phoneNumber.toArray(new String[phoneNumber.size()]) )){
+        System.out.println(branchNumber+" " + branchName +" "+ city +" " +country +" " +street +" " + housNumber +" " + phones);
+        if (iWindow.getDB().addBranch(branchNumber, branchName, city, country, street, housNumber, phones)){
             //Success
             lblfailed.setVisible(false);
             lblsuccess.setVisible(true);
@@ -551,7 +553,18 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formMouseClicked
 
     private void btnBranchStreet1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBranchStreet1FocusLost
-        // TODO add your handling code here:
+        if(editForm) return;
+        String str = btnBranchStreet1.getText();
+        if (CharValidator.isWord(str)) {
+            streetError.setVisible(false);
+            street = str;
+        }
+        else {
+            streetError.setVisible(true);
+            
+            street = null;
+        }
+        iWindow.update();
     }//GEN-LAST:event_btnBranchStreet1FocusLost
 
 
@@ -589,7 +602,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
     private E_Cities city = null;
     private String street = null;
     private int housNumber = 0;
-    private ArrayList<String> phoneNumber = new ArrayList<String>();
+    private String[] phones;
     //Manual variables declaration 
     
     
