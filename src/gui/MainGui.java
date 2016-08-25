@@ -472,8 +472,7 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
     }//GEN-LAST:event_BackgroundMouseClicked
 
     private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
-        dispose();
-        iWindow.playAudio(3);
+        hide();
         System.exit(0);
     }//GEN-LAST:event_btnExitMouseClicked
 
@@ -488,7 +487,6 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
         iWindow.clean();
         LoginGui tmp = new LoginGui(iWindow.getDB().getFirst());
         tmp.setVisible(true);
-        iWindow.playAudio(3);
         
     }//GEN-LAST:event_btnDisconnectMouseClicked
 

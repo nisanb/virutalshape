@@ -290,7 +290,7 @@ public class LoginGui extends javax.swing.JFrame {
             dispose();
             MainGui tmp = new MainGui();
             tmp.setVisible(true);
-            iWindow.playAudio(1);
+
             return;
         }
         
@@ -311,7 +311,7 @@ public class LoginGui extends javax.swing.JFrame {
                 //Found customer, checking password
                 if(cust.getPassword().equals(fldPassword.getText())){
                     //Able to login!
-                    iWindow.playAudio(1);
+
                     iWindow.log("Successfully logged in. Loading GUI");
                     dispose();
                     iWindow.setUser(1, cust);
@@ -349,9 +349,13 @@ public class LoginGui extends javax.swing.JFrame {
             
         }
         
-        iWindow.playAudio(2);
+
         lblErrorLogin.show();
+        lblErrorLogin.setVisible(true);
         errimg.show();
+        errimg.setVisible(true);
+
+        
     }
 
 

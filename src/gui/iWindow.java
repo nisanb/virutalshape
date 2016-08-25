@@ -33,8 +33,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import jdk.nashorn.internal.scripts.JO;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
 import utils.E_Cities;
 import utils.MyFileLogWriter;
 
@@ -453,45 +451,6 @@ public class iWindow {
         frame.setVisible(true);
     }
 
-    /**
-     * Plays an audio file given type INT number
-     *
-     * @param type
-     */
-    public static void playAudio(int type) {
-        String gongFile = "";
-        switch (type) {
-            case 1: //logged in
-                gongFile = "./src/gui/sounds/success.wav";
-                break;
-            case 2: //error
-                gongFile = "./src/gui/sounds/error.wav";
-                break;
-            case 3:
-                gongFile = "./src/gui/sounds/quit.wav";
-                break;
-            default:
-                return;
-        }
-
-        InputStream in = null;
-        try {
-            in = new FileInputStream(gongFile);
-        } catch (FileNotFoundException ex) {
-            System.err.println("WTF");
-            Logger.getLogger(LoginGui.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        // create an audiostream from the inputstream
-        AudioStream audioStream = null;
-        try {
-            audioStream = new AudioStream(in);
-        } catch (IOException ex) {
-            Logger.getLogger(LoginGui.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        // play the audio clip with the audioplayer class
-        AudioPlayer.player.start(audioStream);
-    }
+    
 
 }
