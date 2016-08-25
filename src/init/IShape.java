@@ -722,7 +722,7 @@ public class IShape implements Serializable {
             }
         }
         if (profitableCustomer == null)
-            return null;
+            return "No profitable customer was found.";
         Collections.sort(profitableCustomer.getAttendedLessons(),
                 new Comparator<Lesson>() {
                     public int compare(Lesson l1, Lesson l2) {

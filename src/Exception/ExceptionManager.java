@@ -5,6 +5,7 @@
  */
 package Exception;
 
+import Validators.PhoneValidator;
 import core.Customer;
 import gui.iWindow;
 import javax.swing.JInternalFrame;
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
  * @author nisan
  */
 public class ExceptionManager {
+
     
     public static Boolean windowException(JInternalFrame frame){
         

@@ -5,6 +5,7 @@
  */
 package gui.internal;
 
+import Exception.ExceptionManager;
 import gui.iWindow;
 import core.Address;
 import core.Branch;
