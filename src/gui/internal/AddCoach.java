@@ -523,7 +523,14 @@ public class AddCoach extends javax.swing.JInternalFrame {
         //create address
 //        System.out.println(employeeNumber + " " +  firstName + " " + lastName+ " " +
 //                birthDate+ " " + startWorkingDate+ " " + password+ " " + level);
-        
+        if (city == null || street == null || housNumber < 1 || phones == null || employeeNumber < 10000 
+                || firstName == null || lastName == null || birthDate == null ||
+                startWorkingDate == null || password == null || types == null){
+            MessageBox.setForeground(Color.red);
+            MessageBox.setText("Some filed are not correct");
+            iWindow.update();
+            return;
+    }
         try{
         Address address = new Address(country, city, street, housNumber, phones);
         
