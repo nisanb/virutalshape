@@ -13,11 +13,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-import utils.CoachComperator;
+import comparators.CoachComperator;
+import comparators.RoomComparator;
 import utils.Constants;
 import utils.E_Rooms;
 import utils.E_Types;
 import core.*;
+import java.util.Comparator;
 /**
  * Class Branch ~ represent a single branch of the company
  * 
@@ -159,6 +161,8 @@ static final long serialVersionUID = 4;
 	 * @return the branch rooms
 	 */
 	public List<Room> getRooms() {
+                Collections.sort(rooms, new RoomComparator());
+                
 		return Collections.unmodifiableList(rooms);
 	}
 

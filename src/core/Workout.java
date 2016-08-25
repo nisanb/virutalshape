@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.TreeMap;
 
-import utils.WorkoutComparator;
+import comparators.WorkoutComparator;
 
 /**
  * Workout Class

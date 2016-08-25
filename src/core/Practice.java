@@ -136,9 +136,9 @@ public class Practice implements Serializable{
          * From - To
         */
         public String getTime(){
-            String str = new SimpleDateFormat("hh:mm").format(getStart());
+            String str = new SimpleDateFormat("HH:mm").format(getStart());
             str += " - ";
-            str += new SimpleDateFormat("hh:mm").format(getEnd());
+            str += new SimpleDateFormat("HH:mm").format(getEnd());
             return str;
             
         }

@@ -10,7 +10,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
-import utils.CoachComperator;
+import comparators.CoachComperator;
 import utils.E_Lessons;
 import utils.E_Levels;
 

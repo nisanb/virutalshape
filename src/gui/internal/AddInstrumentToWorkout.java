@@ -21,8 +21,14 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeMap;
+import java.util.TreeSet;
 import javafx.beans.binding.Bindings;
 import javax.swing.JCheckBox;
 import javax.swing.JList;
@@ -34,6 +40,8 @@ import javax.swing.table.TableColumnModel;
 import utils.E_Lessons;
 import utils.E_Rooms;
 import utils.E_Types;
+import comparators.PracticeComparator;
+import comparators.WorkoutComparator;
 
 /**
  *
@@ -454,7 +462,12 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
         String lbl = "<html>"
                 + "#\tTime\t\tCustomer\tPractice Length<br>";
         
-        for(Map.Entry<Practice, Customer> e : this.instrument.getOrders().entrySet()){
+      
+        
+        TreeMap<Practice, Customer> map = new TreeMap<Practice, Customer>(new PracticeComparator());
+        map.putAll(this.instrument.getOrders());
+        
+        for(Map.Entry<Practice, Customer> e : map.entrySet()){
  
           
             lbl+=(counter++)+"\t"+e.getKey().getTime()+

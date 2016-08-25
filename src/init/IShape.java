@@ -37,6 +37,7 @@ import core.Room;
 import core.Subscription;
 import core.Workout;
 import java.text.SimpleDateFormat;
+import java.util.TreeMap;
 
 
 /**
@@ -53,33 +54,33 @@ public class IShape implements Serializable {
     /**
      * IShape employees
      */
-    private HashMap<Integer, Employee> employees;
+    private TreeMap<Integer, Employee> employees;
     
     /**
      * IShape branches
      */
-    private HashMap<Integer, Branch> branches;
+    private TreeMap<Integer, Branch> branches;
     
     /**
      * IShape customers
      */
-    private HashMap<String, Customer> customers;
+    private TreeMap<String, Customer> customers;
     
     /**
      * IShape lessons
      */
-    private HashMap<Integer, Lesson> lessons;
+    private TreeMap<Integer, Lesson> lessons;
     
     /**
      * IShape Workouts
      */
-    private HashMap<Integer, Workout> workouts;
+    private TreeMap<Integer, Workout> workouts;
     
     
     /**
      * IShape subscriptions
      */
-    private HashMap<Integer, Subscription> subs;
+    private TreeMap<Integer, Subscription> subs;
     
     
     /**
@@ -93,12 +94,12 @@ public class IShape implements Serializable {
      * Full Constructor ~ use for initial all data structures
      */
     public IShape() {
-        employees = new HashMap<Integer, Employee>();
-        branches = new HashMap<Integer, Branch>();
-        customers = new HashMap<String, Customer>();
-        lessons = new HashMap<Integer, Lesson>();
-        workouts = new HashMap<Integer, Workout>();
-        subs = new HashMap<Integer,Subscription>();
+        employees = new TreeMap<Integer, Employee>();
+        branches = new TreeMap<Integer, Branch>();
+        customers = new TreeMap<String, Customer>();
+        lessons = new TreeMap<Integer, Lesson>();
+        workouts = new TreeMap<Integer, Workout>();
+        subs = new TreeMap<Integer,Subscription>();
         EMPLOYEES = 0;
         SUBSCRIPTIONS = 0;
         WORKOUTS = 0;

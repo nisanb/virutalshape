@@ -113,6 +113,7 @@ public class ViewRoom extends javax.swing.JInternalFrame {
             pnlGym.add(tmp);
             
             Instrument tmpins = ins;
+            tmp.setToolTipText(ins.getType().toString());
              if(ins.getStatus() && customer!=null)
             tmp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

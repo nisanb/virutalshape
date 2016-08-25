@@ -262,6 +262,9 @@ public class AddInstrument extends javax.swing.JInternalFrame {
     private void insTypeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_insTypeFocusLost
         if(insType.getSelectedItem().equals("Select Instrument Type"))
             return;
+        if(insType.getSelectedItem().toString().length()<=0)
+            return;
+        
         type = E_Types.valueOf((String)insType.getSelectedItem());
             
     }//GEN-LAST:event_insTypeFocusLost

@@ -678,7 +678,7 @@
 //        }
 //            
 //        else
-//            login = new LoginGui();
+//            login = new LoginGui(true);
 //        
 //        login.setVisible(true);
 //        exportData();
