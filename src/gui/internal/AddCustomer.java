@@ -220,7 +220,7 @@ public class AddCustomer extends javax.swing.JInternalFrame {
         getContentPane().add(btnAddCustomer);
         btnAddCustomer.setBounds(420, 350, 140, 23);
 
-        btnBranchCountry.setBackground(new java.awt.Color(0, 0, 0));
+        btnBranchCountry.setBackground(new Color(102,102,102,85));
         btnBranchCountry.setColumns(20);
         btnBranchCountry.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBranchCountry.setForeground(new java.awt.Color(255, 255, 255));

@@ -282,8 +282,8 @@
     </Component>
     <Component class="javax.swing.JTextField" name="btnBranchCountry">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new Color (102,102,102,85)" type="code"/>
         </Property>
         <Property name="columns" type="int" value="20"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -748,7 +748,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="92">
-            <StringItem index="0" value="Yeay"/>
+            <StringItem index="0" value="Year"/>
             <StringItem index="1" value="1930"/>
             <StringItem index="2" value="1931"/>
             <StringItem index="3" value="1932"/>
@@ -955,7 +955,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="92">
-            <StringItem index="0" value="Yeay"/>
+            <StringItem index="0" value="Year"/>
             <StringItem index="1" value="1930"/>
             <StringItem index="2" value="1931"/>
             <StringItem index="3" value="1932"/>

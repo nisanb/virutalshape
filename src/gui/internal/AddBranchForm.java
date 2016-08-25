@@ -294,7 +294,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         getContentPane().add(btnAddBranch);
         btnAddBranch.setBounds(420, 260, 110, 17);
 
-        btnBranchCountry.setBackground(new java.awt.Color(0, 0, 0));
+        btnBranchCountry.setBackground(new Color (102,102,102,85));
         btnBranchCountry.setColumns(20);
         btnBranchCountry.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBranchCountry.setForeground(new java.awt.Color(255, 255, 255));
@@ -376,12 +376,12 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         lblfailed.setForeground(new java.awt.Color(255, 0, 51));
         lblfailed.setText("Failed adding Branch!");
         getContentPane().add(lblfailed);
-        lblfailed.setBounds(30, 260, 190, 16);
+        lblfailed.setBounds(30, 260, 190, 14);
 
         lblsuccess.setForeground(new java.awt.Color(51, 255, 0));
         lblsuccess.setText("Successfully added Branch!");
         getContentPane().add(lblsuccess);
-        lblsuccess.setBounds(30, 260, 190, 16);
+        lblsuccess.setBounds(30, 260, 190, 14);
 
         btnBranchStreet1.setBackground(new java.awt.Color(0, 0, 0));
         btnBranchStreet1.setColumns(20);
