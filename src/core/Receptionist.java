@@ -40,6 +40,21 @@ static final long serialVersionUID = 8;
 				password, address);
 		this.subscriptions = new HashSet<Subscription>();
 	}
+        
+        
+        /**
+         * 
+         */
+        	public Receptionist(int empNum, String firstName, String lastName,
+			Date birthDate, Date startWorkingDate, String password,
+			Address address,Branch branch) {
+		super(empNum, firstName, lastName, birthDate, startWorkingDate,
+				password, address);
+		this.subscriptions = new HashSet<Subscription>();
+                this.setWorkBranch(branch);
+	}
+        
+        
 
 	/**
 	 * Partial constructor

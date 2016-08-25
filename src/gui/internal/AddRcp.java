@@ -44,6 +44,13 @@ public class AddRcp extends javax.swing.JInternalFrame {
         }
         
         
+        //Add branches for selection
+        selectBranch.addItem("Select Branch");
+        for (Branch b : iWindow.getDB().getBranches().values()){
+            selectBranch.addItem(b.toString());
+        }
+        
+        
         Random rand = new Random();
         while (employeeNumber < 1){
             int temp = rand.nextInt(99999);
@@ -100,6 +107,9 @@ public class AddRcp extends javax.swing.JInternalFrame {
         MessageBox = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         DateError = new javax.swing.JLabel();
+        selectBranch = new javax.swing.JComboBox<>();
+        CoachLevel1 = new javax.swing.JLabel();
+        branchError = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -118,7 +128,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("Phone Number");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 310, 110, 20);
+        jLabel2.setBounds(30, 340, 110, 20);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
@@ -136,7 +146,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Country");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(30, 220, 110, 20);
+        jLabel5.setBounds(30, 250, 110, 20);
 
         btnPhoneNumber.setBackground(new java.awt.Color(0, 0, 0));
         btnPhoneNumber.setColumns(15);
@@ -150,7 +160,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnPhoneNumber);
-        btnPhoneNumber.setBounds(140, 310, 170, 21);
+        btnPhoneNumber.setBounds(140, 340, 170, 21);
 
         NameField.setBackground(new java.awt.Color(0, 0, 0));
         NameField.setColumns(20);
@@ -176,25 +186,25 @@ public class AddRcp extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(slctCity);
-        slctCity.setBounds(140, 190, 170, 20);
+        slctCity.setBounds(140, 220, 170, 20);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 204));
         jLabel6.setText("City");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(30, 190, 110, 20);
+        jLabel6.setBounds(30, 220, 110, 20);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setText("Street");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(30, 250, 110, 20);
+        jLabel7.setBounds(30, 280, 110, 20);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setText("House Number");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(30, 280, 110, 20);
+        jLabel8.setBounds(30, 310, 110, 20);
 
         btnAddRsp.setBackground(new java.awt.Color(102, 102, 102));
         btnAddRsp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -206,7 +216,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnAddRsp);
-        btnAddRsp.setBounds(410, 350, 140, 23);
+        btnAddRsp.setBounds(410, 380, 140, 23);
 
         btnBranchCountry.setBackground(new java.awt.Color(0, 0, 0));
         btnBranchCountry.setColumns(20);
@@ -221,7 +231,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnBranchCountry);
-        btnBranchCountry.setBounds(140, 220, 170, 21);
+        btnBranchCountry.setBounds(140, 250, 170, 21);
 
         btnBranchStreet.setBackground(new java.awt.Color(0, 0, 0));
         btnBranchStreet.setColumns(20);
@@ -235,7 +245,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnBranchStreet);
-        btnBranchStreet.setBounds(140, 250, 170, 21);
+        btnBranchStreet.setBounds(140, 280, 170, 21);
 
         btnHouseNumber.setBackground(new java.awt.Color(0, 0, 0));
         btnHouseNumber.setColumns(4);
@@ -249,7 +259,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnHouseNumber);
-        btnHouseNumber.setBounds(140, 280, 170, 21);
+        btnHouseNumber.setBounds(140, 310, 170, 21);
 
         numError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         numError.setForeground(new java.awt.Color(255, 0, 0));
@@ -259,17 +269,17 @@ public class AddRcp extends javax.swing.JInternalFrame {
         phoneError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         phoneError.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(phoneError);
-        phoneError.setBounds(350, 310, 300, 20);
+        phoneError.setBounds(350, 340, 300, 20);
 
         streetError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         streetError.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(streetError);
-        streetError.setBounds(350, 250, 180, 20);
+        streetError.setBounds(350, 280, 180, 20);
 
         houseError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         houseError.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(houseError);
-        houseError.setBounds(350, 280, 180, 20);
+        houseError.setBounds(350, 310, 180, 20);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(204, 204, 204));
@@ -322,14 +332,14 @@ public class AddRcp extends javax.swing.JInternalFrame {
         Password.setForeground(new java.awt.Color(204, 204, 204));
         Password.setText("Password");
         getContentPane().add(Password);
-        Password.setBounds(30, 160, 110, 20);
+        Password.setBounds(30, 190, 110, 20);
         Password.setToolTipText("At least 4 digit equal passwords");
 
         Password1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Password1.setForeground(new java.awt.Color(204, 204, 204));
         Password1.setText("Retype");
         getContentPane().add(Password1);
-        Password1.setBounds(320, 160, 60, 20);
+        Password1.setBounds(320, 190, 60, 20);
 
         jPasswordField1.setBackground(new java.awt.Color(0, 0, 0));
         jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -337,7 +347,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         jPasswordField1.setToolTipText("");
         jPasswordField1.setCaretColor(new java.awt.Color(255, 255, 255));
         getContentPane().add(jPasswordField1);
-        jPasswordField1.setBounds(140, 160, 170, 20);
+        jPasswordField1.setBounds(140, 190, 170, 20);
 
         jPasswordField2.setBackground(new java.awt.Color(0, 0, 0));
         jPasswordField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -349,7 +359,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jPasswordField2);
-        jPasswordField2.setBounds(380, 160, 170, 20);
+        jPasswordField2.setBounds(380, 190, 170, 20);
 
         day.setBackground(new java.awt.Color(0, 0, 0));
         day.setForeground(new java.awt.Color(255, 255, 255));
@@ -404,7 +414,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         MessageBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         MessageBox.setForeground(new java.awt.Color(0, 255, 0));
         getContentPane().add(MessageBox);
-        MessageBox.setBounds(30, 350, 330, 20);
+        MessageBox.setBounds(30, 380, 330, 20);
 
         jLabel1.setBackground(new Color (0,0,0,90));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -415,6 +425,27 @@ public class AddRcp extends javax.swing.JInternalFrame {
         DateError.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(DateError);
         DateError.setBounds(350, 110, 170, 20);
+
+        selectBranch.setBackground(new Color(0,0,0,90));
+        selectBranch.setForeground(new java.awt.Color(255, 255, 255));
+        selectBranch.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                selectBranchFocusLost(evt);
+            }
+        });
+        getContentPane().add(selectBranch);
+        selectBranch.setBounds(140, 160, 170, 20);
+
+        CoachLevel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        CoachLevel1.setForeground(new java.awt.Color(204, 204, 204));
+        CoachLevel1.setText("Work Branch");
+        getContentPane().add(CoachLevel1);
+        CoachLevel1.setBounds(30, 160, 110, 20);
+
+        branchError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        branchError.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(branchError);
+        branchError.setBounds(380, 160, 170, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -466,7 +497,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         
         if (city == null || street == null || housNumber < 1 || phones == null || employeeNumber < 10000
                 || firstName == null || lastName == null || birthDate == null ||
-                startWorkingDate == null || password == null){
+                startWorkingDate == null || password == null || branch == null){
             MessageBox.setForeground(Color.red);
             MessageBox.setText("Some filed are not correct");
             iWindow.update();
@@ -650,8 +681,35 @@ public class AddRcp extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jPasswordField2FocusLost
 
+    private void selectBranchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selectBranchFocusLost
+        if (selectBranch.getSelectedIndex() == 0){
+            branchError.setForeground(Color.red);
+            branchError.setText("Please choose working branch");
+            branch = null;
+            iWindow.update();
+            return;
+        }
+
+        String str = (String) selectBranch.getSelectedItem();
+        //System.err.println("STR: "+str+" Length: "+(str.length())+" Value: "+str);
+
+        for (int i = 0; i < str.length(); i++){
+            if (Character.isDigit(str.charAt(i))) continue;
+            else{
+                str = str.substring(0, i);
+            }
+        }
+        if(str.length()<1) return;
+        int branchNum = Integer.parseInt(str);
+        branch = iWindow.getDB().getBranches().get(branchNum);
+        branchError.setText(" ");
+
+        iWindow.update();
+    }//GEN-LAST:event_selectBranchFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CoachLevel1;
     private javax.swing.JLabel DateError;
     private javax.swing.JLabel Ferror;
     private javax.swing.JTextField LastField;
@@ -660,6 +718,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
     private javax.swing.JTextField NameField;
     private javax.swing.JLabel Password;
     private javax.swing.JLabel Password1;
+    private javax.swing.JLabel branchError;
     private javax.swing.JButton btnAddRsp;
     private javax.swing.JTextField btnBranchCountry;
     private javax.swing.JTextField btnBranchStreet;
@@ -686,6 +745,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
     private javax.swing.JLabel numError;
     private javax.swing.JLabel numError2;
     private javax.swing.JLabel phoneError;
+    private javax.swing.JComboBox<String> selectBranch;
     private javax.swing.JComboBox<String> slctCity;
     private javax.swing.JLabel streetError;
     private javax.swing.JComboBox<String> year;
@@ -704,6 +764,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
     private String street;
     int housNumber;
     private String[] phones;
+    private Branch branch;
     
 
 }
