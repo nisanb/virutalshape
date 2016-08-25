@@ -216,6 +216,7 @@ public class AddInstrument extends javax.swing.JInternalFrame {
         if(amount < 1 || roomNum < 1 || type == null || branchNum < 1 || insStatus.getSelectedIndex() == 0){
             MessageBox.setForeground(Color.RED);
             MessageBox.setText("Please select all required fields");
+            iWindow.update();
             return;
         }
         if(iWindow.getDB().addInstrumentToRoom(branchNum, roomNum,type, status, amount)){
@@ -269,10 +270,10 @@ public class AddInstrument extends javax.swing.JInternalFrame {
      */
     private void insTypeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_insTypeFocusLost
         if(insType.getSelectedIndex() == 0){
-            MessageBox.setForeground(Color.red);
-            MessageBox.setText("One or more field are empty");
-            type = null;
-            iWindow.update();
+//            MessageBox.setForeground(Color.red);
+//            MessageBox.setText("One or more field are empty");
+//            type = null;
+//            iWindow.update();
             return;
         }
         if(insType.getSelectedItem().toString().length()<=0)
@@ -288,8 +289,9 @@ public class AddInstrument extends javax.swing.JInternalFrame {
      */
     private void insStatusFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_insStatusFocusLost
         if (insStatus.getSelectedIndex() == 0){
-            MessageBox.setForeground(Color.red);
-            MessageBox.setText("One or more field are empty");
+//            MessageBox.setForeground(Color.red);
+//            MessageBox.setText("One or more field are empty");
+//            iWindow.update();
             return;
         }
         if (insStatus.getSelectedIndex() == 2) status = true;
