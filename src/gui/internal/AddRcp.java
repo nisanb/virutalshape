@@ -323,6 +323,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         Password.setText("Password");
         getContentPane().add(Password);
         Password.setBounds(30, 160, 110, 20);
+        Password.setToolTipText("At least 4 digit equal passwords");
 
         Password1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Password1.setForeground(new java.awt.Color(204, 204, 204));
@@ -356,13 +357,13 @@ public class AddRcp extends javax.swing.JInternalFrame {
         day.setToolTipText("");
         day.setName(""); // NOI18N
         getContentPane().add(day);
-        day.setBounds(140, 100, 50, 22);
+        day.setBounds(140, 100, 50, 20);
 
         month.setBackground(new java.awt.Color(0, 0, 0));
         month.setForeground(new java.awt.Color(255, 255, 255));
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(month);
-        month.setBounds(200, 100, 60, 22);
+        month.setBounds(200, 100, 60, 20);
 
         year.setBackground(new java.awt.Color(0, 0, 0));
         year.setForeground(new java.awt.Color(255, 255, 255));
@@ -373,20 +374,20 @@ public class AddRcp extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(year);
-        year.setBounds(270, 100, 60, 22);
+        year.setBounds(270, 100, 60, 20);
 
         day1.setBackground(new java.awt.Color(0, 0, 0));
         day1.setForeground(new java.awt.Color(255, 255, 255));
         day1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         day1.setName(""); // NOI18N
         getContentPane().add(day1);
-        day1.setBounds(140, 130, 50, 22);
+        day1.setBounds(140, 130, 50, 20);
 
         month1.setBackground(new java.awt.Color(0, 0, 0));
         month1.setForeground(new java.awt.Color(255, 255, 255));
         month1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(month1);
-        month1.setBounds(200, 130, 60, 22);
+        month1.setBounds(200, 130, 60, 20);
 
         year1.setBackground(new java.awt.Color(0, 0, 0));
         year1.setForeground(new java.awt.Color(255, 255, 255));
@@ -397,7 +398,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(year1);
-        year1.setBounds(270, 130, 60, 22);
+        year1.setBounds(270, 130, 60, 20);
 
         MessageBox.setBackground(new Color (0,0,0,90));
         MessageBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -566,6 +567,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
         for (String s:phones){
             if (!PhoneValidator.validatePhone(s)) {
                 phoneError.setText("wrong format. example: 972-xxxxxxx, 04-xxxxxxx");
+                phones = null;
                 iWindow.update();
                 return;
             }
@@ -635,7 +637,7 @@ public class AddRcp extends javax.swing.JInternalFrame {
      * @param evt 
      */
     private void jPasswordField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField2FocusLost
-        if (!jPasswordField2.getText().equals(jPasswordField1.getText())) {
+        if (!jPasswordField2.getText().equals(jPasswordField1.getText()) || jPasswordField1.getText().length() < 4) {
             Password.setForeground(Color.RED);
             Password1.setForeground(Color.RED);
             password = null;

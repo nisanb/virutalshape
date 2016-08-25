@@ -345,6 +345,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
         Password.setText("Password");
         getContentPane().add(Password);
         Password.setBounds(30, 290, 110, 20);
+        Password.setToolTipText("At least 4 digit equal passwords");
 
         Password1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Password1.setForeground(new java.awt.Color(204, 204, 204));
@@ -392,38 +393,38 @@ public class AddCoach extends javax.swing.JInternalFrame {
         day.setToolTipText("");
         day.setName(""); // NOI18N
         getContentPane().add(day);
-        day.setBounds(140, 100, 50, 22);
+        day.setBounds(140, 100, 50, 20);
 
         month.setBackground(new java.awt.Color(0, 0, 0));
         month.setForeground(new java.awt.Color(255, 255, 255));
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(month);
-        month.setBounds(200, 100, 60, 22);
+        month.setBounds(200, 100, 60, 20);
 
         year.setBackground(new java.awt.Color(0, 0, 0));
         year.setForeground(new java.awt.Color(255, 255, 255));
         year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yeay", "1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938", "1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
         getContentPane().add(year);
-        year.setBounds(270, 100, 60, 22);
+        year.setBounds(270, 100, 60, 20);
 
         day1.setBackground(new java.awt.Color(0, 0, 0));
         day1.setForeground(new java.awt.Color(255, 255, 255));
         day1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         day1.setName(""); // NOI18N
         getContentPane().add(day1);
-        day1.setBounds(140, 130, 50, 22);
+        day1.setBounds(140, 130, 50, 20);
 
         month1.setBackground(new java.awt.Color(0, 0, 0));
         month1.setForeground(new java.awt.Color(255, 255, 255));
         month1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(month1);
-        month1.setBounds(200, 130, 60, 22);
+        month1.setBounds(200, 130, 60, 20);
 
         year1.setBackground(new java.awt.Color(0, 0, 0));
         year1.setForeground(new java.awt.Color(255, 255, 255));
         year1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yeay", "1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938", "1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
         getContentPane().add(year1);
-        year1.setBounds(270, 130, 60, 22);
+        year1.setBounds(270, 130, 60, 20);
 
         jComboBox1.setBackground(new java.awt.Color(0, 0, 0));
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
@@ -434,7 +435,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(190, 160, 70, 22);
+        jComboBox1.setBounds(190, 160, 70, 20);
 
         copy.setText(">>");
         copy.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -443,7 +444,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(copy);
-        copy.setBounds(320, 220, 50, 25);
+        copy.setBounds(320, 220, 50, 23);
 
         list1.setBackground(new java.awt.Color(0, 0, 0));
         list1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -633,6 +634,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
         for (String s:phones){
             if (!PhoneValidator.validatePhone(s)) {
                 phoneError.setText("wrong format. example: 972-xxxxxxx, 04-xxxxxxx");
+                phones = null;
                 iWindow.update();
                 return;
             }
@@ -676,7 +678,7 @@ public class AddCoach extends javax.swing.JInternalFrame {
      * @param evt 
      */
     private void jPasswordField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField2FocusLost
-        if (!jPasswordField2.getText().equals(jPasswordField1.getText())) {
+        if (!jPasswordField2.getText().equals(jPasswordField1.getText()) || jPasswordField1.getText().length() < 4) {
             Password.setForeground(Color.RED);
             Password1.setForeground(Color.RED);
             password = null;

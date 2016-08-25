@@ -495,7 +495,7 @@ public class IShape implements Serializable {
     public boolean addWorkout(int workoutNum, String customerNum, Date date,
             int branchNum) {
         
-        if (workoutNum > 0 && customerNum != null && date != null && branchNum > 0) {
+        if (workoutNum > 0 && customerNum != null && date != null && branchNum > 0 ) {
             WORKOUTS++;
             if (customers.containsKey(customerNum)) {
                 Customer cust = customers.get(customerNum);

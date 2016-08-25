@@ -491,6 +491,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
         for (String s:phones){
             if (!PhoneValidator.validatePhone(s)) {
                 phoneError.setText("wrong format. example: 972-xxxxxxx, 04-xxxxxxx");
+                phones = null;
                 iWindow.update();
                 return;
             }
@@ -527,7 +528,7 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
             return; 
         }
         
-        System.out.println(branchNumber+" " + branchName +" "+ city +" " +country +" " +street +" " + housNumber +" " + phones);
+        //System.out.println(branchNumber+" " + branchName +" "+ city +" " +country +" " +street +" " + housNumber +" " + phones);
         if (iWindow.getDB().addBranch(branchNumber, branchName, city, country, street, housNumber, phones)){
             //Success
             lblfailed.setVisible(false);

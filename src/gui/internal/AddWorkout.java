@@ -219,10 +219,17 @@ public class AddWorkout extends javax.swing.JInternalFrame {
             iWindow.update();
             return;
         }
-        
+                
         if (selectBranch.getSelectedIndex() == 0) if (branchNum < 1){
             MessageBox.setForeground(Color.red);
             MessageBox.setText("Please select all fields");
+            iWindow.update();
+            return;
+        }
+        
+        if (!customer.hasValidSub(start)){
+            MessageBox.setForeground(Color.red);
+            MessageBox.setText("Customer has no valid sub for this workout");
             iWindow.update();
             return;
         }
