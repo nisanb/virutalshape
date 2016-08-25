@@ -1,6 +1,7 @@
 package core;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.time.Period;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -130,4 +131,17 @@ public class Practice implements Serializable{
 		return true;
 	}
 
+        /**
+         * Returns time in minutes
+         * From - To
+        */
+        public String getTime(){
+            String str = new SimpleDateFormat("hh:mm").format(getStart());
+            str += " - ";
+            str += new SimpleDateFormat("hh:mm").format(getEnd());
+            return str;
+            
+        }
+        
+        
 }

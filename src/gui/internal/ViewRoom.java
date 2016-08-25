@@ -68,6 +68,7 @@ public class ViewRoom extends javax.swing.JInternalFrame {
         pnlGym = new javax.swing.JPanel();
         background = new javax.swing.JLabel();
 
+        setAutoscrolls(true);
         getContentPane().setLayout(null);
 
         pnlGym.setOpaque(false);

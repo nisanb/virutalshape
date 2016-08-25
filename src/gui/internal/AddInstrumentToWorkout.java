@@ -14,6 +14,7 @@ import core.Room;
 import core.Subscription;
 import core.Workout;
 import java.awt.Color;
+import java.awt.Component;
 import utils.E_Cities;
 import java.lang.*;
 import java.net.URL;
@@ -21,9 +22,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Map;
 import javafx.beans.binding.Bindings;
 import javax.swing.JCheckBox;
 import javax.swing.JList;
+import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 import utils.E_Lessons;
 import utils.E_Rooms;
 import utils.E_Types;
@@ -43,7 +50,7 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
     
     public AddInstrumentToWorkout(Customer cust) {
         initComponents();
-        
+
         this.customer = cust;
         lblCustomerID.setVisible(true);
         lblCustomerID.setText(customer.getId());
@@ -73,12 +80,13 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
      */
     public AddInstrumentToWorkout(Customer cust, Instrument ins, int workoutNum) {
         initComponents();
+
         setTitle("Customer -> Add Intrument to Workout");
         this.customer = cust;
         this.instrument = ins;
         this.type = ins.getType();
         this.workoutNum = workoutNum;
-        
+
         //set customer's id field
         lblCustomerID.setVisible(true);
         lblCustomerID.setText(customer.getId());
@@ -99,7 +107,7 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
         start = new Date(y, m, d);
         String strDate = new SimpleDateFormat("dd/MM/yyyy").format(start);
         dateLabel.setText(strDate);
-        
+        updateTable();
         //Finished Loading
         iWindow.update();
     
@@ -140,6 +148,7 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
         lblInstrumentType = new javax.swing.JLabel();
         dateLabel = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        lblList = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0,85));
         setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
@@ -185,7 +194,7 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(selectWorkout);
-        selectWorkout.setBounds(160, 40, 190, 20);
+        selectWorkout.setBounds(160, 40, 190, 22);
 
         custError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         custError.setForeground(new java.awt.Color(255, 0, 0));
@@ -254,7 +263,7 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(selectRoom);
-        selectRoom.setBounds(160, 70, 190, 20);
+        selectRoom.setBounds(160, 70, 190, 22);
 
         lblCustomerID.setForeground(new java.awt.Color(255, 255, 255));
         lblCustomerID.setText("jLabel2");
@@ -280,26 +289,26 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
             }
         });
         insPanel.add(insType);
-        insType.setBounds(160, 70, 190, 20);
+        insType.setBounds(160, 70, 190, 22);
         insType.removeAllItems();
 
         Second.setBackground(new java.awt.Color(0, 0, 0));
         Second.setForeground(new java.awt.Color(255, 255, 255));
         Second.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Second", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "18", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "34", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         insPanel.add(Second);
-        Second.setBounds(290, 130, 60, 20);
+        Second.setBounds(290, 130, 60, 22);
 
         Minute.setBackground(new java.awt.Color(0, 0, 0));
         Minute.setForeground(new java.awt.Color(255, 255, 255));
         Minute.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minute", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "18", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "34", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         insPanel.add(Minute);
-        Minute.setBounds(220, 130, 60, 20);
+        Minute.setBounds(220, 130, 60, 22);
 
         Hour.setBackground(new java.awt.Color(0, 0, 0));
         Hour.setForeground(new java.awt.Color(255, 255, 255));
         Hour.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hour", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "18", "20", "21", "22", "23" }));
         insPanel.add(Hour);
-        Hour.setBounds(160, 130, 50, 20);
+        Hour.setBounds(160, 130, 50, 22);
 
         duration.setBackground(new java.awt.Color(0, 0, 0));
         duration.setForeground(new java.awt.Color(255, 255, 255));
@@ -310,7 +319,7 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
             }
         });
         insPanel.add(duration);
-        duration.setBounds(160, 160, 190, 20);
+        duration.setBounds(160, 160, 190, 22);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -347,6 +356,12 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
         jLabel7.setText("Select Workout");
         getContentPane().add(jLabel7);
         jLabel7.setBounds(30, 40, 110, 20);
+
+        lblList.setForeground(new java.awt.Color(255, 255, 255));
+        lblList.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblList.setMaximumSize(new java.awt.Dimension(530, 360));
+        getContentPane().add(lblList);
+        lblList.setBounds(20, 290, 530, 360);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -412,7 +427,53 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
         iWindow.update();
         
     }//GEN-LAST:event_ConnectMouseClicked
+    
+    /**
+     * This method updates the JTable with instruments' training times
+     */
+    private void updateTable(){
         
+        /**
+         * In case there was a problem sending the instrument
+         */
+        if(this.instrument == null)
+            return;
+        
+        /**
+         * If instrument has no practices yet
+         */
+        if(this.instrument.getOrders().size()==0){
+            return;
+        }
+   
+        int counter=1;
+        int row = this.instrument.getOrders().size();
+        int col = 4;
+        
+        Object tblData[][] = new Object[row][col];
+        String lbl = "<html>"
+                + "#\tTime\t\tCustomer\tPractice Length<br>";
+        
+        for(Map.Entry<Practice, Customer> e : this.instrument.getOrders().entrySet()){
+ 
+          
+            lbl+=(counter++)+"\t"+e.getKey().getTime()+
+                    "\t"+e.getValue().getFirstName()+" "+e.getValue().getLastName().substring(0,1)+"\t"+e.getKey().getTimeInMinute()+" Minutes<br>";
+            
+          
+            
+            
+        }
+        lbl+="</html>";
+        lblList.setSize(400,700);
+        lbl = lbl.replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+        System.err.println(lbl);
+        lblList.setText(lbl);
+        
+        iWindow.update();
+    }
+     
+    
     private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_formFocusLost
@@ -560,6 +621,7 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lblCustomerID;
     private javax.swing.JLabel lblInstrumentType;
+    private javax.swing.JLabel lblList;
     private javax.swing.JLabel lblSelectRoom;
     private javax.swing.JLabel lblWorkoutNum;
     private javax.swing.JComboBox<String> selectRoom;
