@@ -607,11 +607,18 @@ public class AddBranchForm extends javax.swing.JInternalFrame {
     
     
     
-
+    /**
+     * Returns the current branch on the form
+     * @return 
+     */
     public Branch getBranch(){
         return this.branch;
     }
 
+    /**
+     * Returns true if branch exists
+     * @return 
+     */
     public boolean isEdit(){
         if(getBranch()==null){
             return false;

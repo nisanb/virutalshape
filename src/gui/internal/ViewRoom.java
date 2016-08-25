@@ -19,7 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
-import utils.ResizeImage;
+
 
 
 /**
@@ -30,6 +30,7 @@ public class ViewRoom extends javax.swing.JInternalFrame {
     private Room room;
     private int workoutNum;
     private Customer customer;
+    
     /**
      * Creates new form ViewRoom
      */
@@ -41,6 +42,12 @@ public class ViewRoom extends javax.swing.JInternalFrame {
        updateRoom();
         
     }
+    
+    /**
+     * Specific constructor 
+     * Given a room ~ will update the form coordinately 
+     * @param r 
+     */
      public ViewRoom(Room r) {
         initComponents();
         this.room = r;
@@ -90,6 +97,10 @@ public class ViewRoom extends javax.swing.JInternalFrame {
         }
         return image;
     }
+     
+     /**
+      * Updates the current data using static ROOM
+      */
     public void updateRoom(){
         for(Instrument ins : room.getInstruments()){
             String ext = "";

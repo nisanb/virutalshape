@@ -77,6 +77,10 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
         iWindow.update();
     }
     
+    /**
+     * Specific constructor to display current customer logged in
+     * @param cust 
+     */
     public ManageCustomers(Customer cust){
          initComponents();
          setTitle("Manage Your Account");
@@ -769,6 +773,10 @@ public class ManageCustomers extends javax.swing.JInternalFrame {
 
 
 
+    /**
+     * updateData ~ Updates the current form and statistics data 
+     * Using static Customer ~ customer
+     */
     public void updateData() {
         
         

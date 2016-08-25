@@ -142,6 +142,11 @@ public class IShape implements Serializable {
         return Collections.unmodifiableMap(workouts);
     }
     
+    
+    /**
+     * Returns subscription map
+     * @return 
+     */
     public Map<Integer,Subscription> getSubs(){
         return Collections.unmodifiableMap(subs);
     }
@@ -154,14 +159,26 @@ public class IShape implements Serializable {
         return EMPLOYEES;
     }
     
+    /**
+     * Returns the next workout num
+     * @return 
+     */
     public int getNextWork(){
         return WORKOUTS;
     }
     
+    /**
+     * Returns the next subscription number
+     * @return 
+     */
     public int getNextSub(){
         return SUBSCRIPTIONS;
     }
     
+    /**
+     * Returns the next lesson number
+     * @return 
+     */
     public int getNextLes(){
         return LESSONS;
     }

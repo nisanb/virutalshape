@@ -11,11 +11,12 @@ package Validators;
  */
 public class PhoneValidator {
     
-    
-//    public static void main(String[] args){
-//        System.err.println(validatePhone("123-4567890"));
-//    }
 
+    /**
+     * Returns wether a given string is a phone number
+     * @param number
+     * @return True if yes, false otherwise
+     */
 	public static boolean validatePhone (String number){	  
 	    if (number == null)  return false;
 	    

@@ -134,6 +134,10 @@ public class Employee implements Serializable{
         return workBranch;
     }
     
+    /**
+     * Returns Employee first & last Name
+     * @return 
+     */
     public String getnName(){
         return this.firstName + " " + this.getLastName();
     }
@@ -267,6 +271,10 @@ public class Employee implements Serializable{
         return firstName+" "+lastName+ " ("+empNum+")";
     }
     
+    /**
+     * Secondery toString
+     * @return 
+     */
     public String toString2() {
         return "employeeNumber=" + empNum + ", firstName=" + firstName
                 + ", lastName=" + lastName + ", birthDate="

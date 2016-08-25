@@ -108,11 +108,4 @@ public class iStatisticsNew extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblEmployees;
     // End of variables declaration//GEN-END:variables
 
-    public int getWindowID(){
-        return this.WindowID;
-    }
-
-    public void setWindowID(int id){
-        this.WindowID=id;
-    }
 }

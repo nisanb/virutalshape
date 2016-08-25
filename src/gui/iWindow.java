@@ -56,10 +56,6 @@ public class iWindow {
     private static IShape IShape;
     
     
-    public static IShape getIShape(){
-        return IShape;
-    }
-    
     //iWindow Management
     protected static JInternalFrame currentWindow = null;
     protected static JPanel panel = null;
@@ -113,6 +109,12 @@ public class iWindow {
         
     }
     
+    /**
+     * Exports the database
+     * Will use Data.cer file
+     * 
+     * &&&&     Overrides file on export        &&&&
+     */
     public static void exportData() {
         try {
             String fileName = "Data.cer";
@@ -356,10 +358,18 @@ public class iWindow {
         lblTitle=title;
     }
     
+    /**
+     * Returns the employee logged in
+     * @return 
+     */
     public static Employee getEmployeeLogged(){
         return employeeLogged;
     }
     
+    /**
+     * Returns the customer logged in
+     * @return 
+     */
     public static Customer getCustomerLogged(){
         return customerLogged;
     }
@@ -377,15 +387,28 @@ public class iWindow {
    }
     
 
+     /**
+      * Updates the current frame used
+      */
     public static void update(){
         if (getCurrentWindow() == null) return; 
         getCurrentWindow().setVisible(false);
         getCurrentWindow().setVisible(true);
     }
+    
+    /**
+     * Updates the frame given ~ frame
+     * @param frame 
+     */
     public static void update(JInternalFrame frame){
         frame.setVisible(false);
         frame.setVisible(true);
     }
+    
+    /**
+     * Plays an audio file given type INT number
+     * @param type 
+     */
     public static void playAudio(int type){
         String gongFile = "";
         switch(type){

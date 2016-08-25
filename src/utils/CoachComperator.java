@@ -6,7 +6,7 @@ import java.util.Comparator;
 import core.Coach;
 
 /**
- * Class CoachComperator ~ implements Comparator<Coach>
+ * Class CoachComperator ~ implements Comparator
  * 
  * order coaches by amount of lessons they give and then by seniority
  * 

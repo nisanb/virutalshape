@@ -2,6 +2,10 @@ package utils;
 
 import java.io.Serializable;
 
+/**
+ * Enum class for coach and lesson levels
+ * @author nisan
+ */
 public enum E_Levels implements Serializable {
     
 	//-------------------------------------------------------------Values---------------------------------------------------------------------

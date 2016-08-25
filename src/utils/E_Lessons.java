@@ -2,6 +2,10 @@ package utils;
 
 import java.io.Serializable;
 
+/**
+ * Lessons ENUM (Lesson Types)
+ * @author nisan
+ */
 public enum E_Lessons implements Serializable {
     
 	//all types of lessons that are possible

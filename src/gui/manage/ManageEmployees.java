@@ -674,6 +674,10 @@ public class ManageEmployees extends javax.swing.JInternalFrame {
 
 
 
+    /**
+     * Updates the current form data
+     * Using static Employee ~ emp
+     */
     public void updateData() {
         
         

@@ -319,6 +319,10 @@ public class Lesson implements Bookable, Serializable {
 		return true;
 	}
         
+        /**
+         * Secondery toString
+         * @return 
+         */
         public String toString2(){
             String strDate = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(startDate);
             return this.lessonNum + " - " + this.name + ", " + strDate + ", " + this.coach.getnName();

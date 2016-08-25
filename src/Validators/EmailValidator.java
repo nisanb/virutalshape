@@ -2,16 +2,18 @@ package Validators;
 
 import java.io.Serializable;
 
-	 /**
-	  * @author Mickey Shalev - 200681872 
-	  * Checks whether the given email address is valid according to format:
-	  * Format user_name@domain.ending.....
-	  * @param email represents the email address.
-	  * @return true if the email is valid, false otherwise.
-	  */
-public class EmailValidator{
-	
 
+/**
+ * Email Validator Class
+ * @author mickey
+ */
+public class EmailValidator{
+
+        /**
+        * Checks whether the given email address is valid according to format:
+        * Format user_name@domain.ending.....
+        * @param email represents the email address.
+        */
 	public static boolean validateEmail (String email){	  
 	    if (email == null)  return false;
 	    

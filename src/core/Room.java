@@ -322,7 +322,10 @@ public class Room implements Serializable {
             return roomType.toString()+" ("+roomNum+")";
         }
         
-        
+        /**
+         * Secondery toString
+         * @return 
+         */
 	public String toString2() {
 		return "Room [roomNum=" + roomNum + ", maxNumOfTrainees="
 				+ maxNumOfTrainees + ", maxNumOfInstruments="

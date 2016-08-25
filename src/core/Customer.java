@@ -495,6 +495,11 @@ public class Customer implements Serializable {
         return countValid;
     }
     
+    /**
+     * Returns wether the customer has valid subscriptions to a given date or not
+     * @param d
+     * @return 
+     */
     public boolean hasValidSub(Date d){
         for (Subscription sub:this.getSubs()){
             if (sub.getLastDay().after(d)) return true;
@@ -509,6 +514,11 @@ public class Customer implements Serializable {
     public String toString() {
         return getFirstName()+ " " + getLastName() + " ("+getId()+")";
     }
+    
+    /**
+     * Secondery toString
+     * @return 
+     */
     public String toString2() {
         return "Customer [ID Number=" + id + ", firstName=" + firstName
                 + ", lastName=" + lastName + ", birthDate="

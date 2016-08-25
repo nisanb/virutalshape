@@ -35,6 +35,11 @@ public class EmpToBranch extends javax.swing.JInternalFrame {
         //Finished Loading
     }
 
+    /**
+     * Connects employee to branch given a specific employee number
+     * Will display current branch
+     * @param e 
+     */
     public EmpToBranch(int e) {
         initComponents();
         this.EmployeeID=e;

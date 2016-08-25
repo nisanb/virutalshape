@@ -1,5 +1,10 @@
 package Validators;
 
+
+/**
+ * Character Validator 
+ * @author mickey
+ */
 public class CharValidator {
     
     /**

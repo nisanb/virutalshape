@@ -144,7 +144,10 @@ public class Address implements Serializable {
             return street+" "+housNumber+", "+city+" ("+country+")";
         }
         
-        
+        /**
+         * Secondery toString
+         * @return 
+         */
 	public String toString1() {
 		return "Address [country="
 				+ country

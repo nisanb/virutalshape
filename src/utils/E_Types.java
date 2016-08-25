@@ -2,6 +2,10 @@ package utils;
 
 import java.io.Serializable;
 
+/**
+ * GYM Room Types
+ * @author nisan
+ */
 public enum E_Types implements Serializable{
 	//types of instruments
 	CROSS, CYCLE, ROWER, STEPPER, BENCH, KETTLEBELLS, WEIGHTLIFTING_BAR, POWER_STATION,

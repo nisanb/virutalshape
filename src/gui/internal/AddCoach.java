@@ -773,13 +773,6 @@ public class AddCoach extends javax.swing.JInternalFrame {
 //            birthDate, startWorkingDate, password, level, address,
 //            types);
     //Manual variables declaration 
-    public int getWindowID() {
-        return this.WindowID;
-    }
 
-    public void setWindowID(int id) {
-        this.WindowID = id;
-    }
-    
 
 }

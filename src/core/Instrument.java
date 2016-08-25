@@ -258,6 +258,10 @@ public class Instrument implements Bookable, Serializable  {
         return type.toString()+" ("+num+")";
     }
     
+    /**
+     * Secondery toString
+     * @return 
+     */
     public String toString2() {
         return "Instrument [num=" + num + ", room=" + room.getRoomNum()
                 + " in branch number " + room.getBranch().getBranchNumber()

@@ -675,7 +675,10 @@ public class ManageBranches extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
 
-
+    /**
+     * Updates the current form data given a branch
+     * @param tmp 
+     */
     public void updateData(Branch tmp) {
 
         //First Defence

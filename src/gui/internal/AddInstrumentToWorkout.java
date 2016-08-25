@@ -63,6 +63,14 @@ public class AddInstrumentToWorkout extends javax.swing.JInternalFrame {
         iWindow.update();
     
     }
+    
+    /**
+     * Adds instrument to workout specific constructor
+     * Given the params, will update the form accordinely
+     * @param cust
+     * @param ins
+     * @param workoutNum 
+     */
     public AddInstrumentToWorkout(Customer cust, Instrument ins, int workoutNum) {
         initComponents();
         setTitle("Customer -> Add Intrument to Workout");

@@ -21,7 +21,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 
-
+/**
+ * Class LoginGui
+ * Displays login gui for the UI
+ * @author nisan
+ */
 public class LoginGui extends javax.swing.JFrame {
 
     //Static Username String

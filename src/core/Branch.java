@@ -321,8 +321,11 @@ static final long serialVersionUID = 4;
 		return false;
 	}// ~ END OF removeRoom
 	
-	//helper method for maintaining the tree ordered correctly
-	//call when adding/removing lessons to/from a coach
+
+        /**
+         * Helper Method for maintaning the tree ordered correctly
+         * Call when adding or removing lessons to and from a coach
+        **/
 	public void reorderCoaches() {
 		Set<Coach> temp = new TreeSet<Coach>(new CoachComperator());
 		temp.addAll(coaches);
@@ -339,6 +342,10 @@ static final long serialVersionUID = 4;
 		return branchName+" ("+branchNumber+")";
 	}
      
+        /**
+         * Secondery toString
+         * @return 
+         */
 	public String toString2() {		
 		return "Branch [branchNumber=" + branchNumber + ", branchName="
 				+ branchName + ", coaches=" + coaches.toString().replace("[", "{").replace("]", "}") 

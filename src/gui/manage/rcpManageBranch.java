@@ -601,6 +601,14 @@ lblViewRoom.hide();
 
 
 
+    /**
+     * Updates the current data on form
+     * 
+     * Given branch
+     * 
+     * 
+     * @param tmp 
+     */
     public void updateData(Branch tmp) {
 
         //First Defence

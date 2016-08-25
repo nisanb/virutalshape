@@ -10,6 +10,14 @@ import java.util.TreeMap;
 
 import utils.WorkoutComparator;
 
+/**
+ * Workout Class
+ * 
+ * Can hold practices, which holds instruments and usage times
+ * Workout is considered as a part of a customer subscription, and specific GYM Room
+ * 
+ * @author nisan
+ */
 public class Workout implements Serializable {
     static final long serialVersionUID = 11;
 
@@ -238,6 +246,10 @@ public class Workout implements Serializable {
 				+ ", date=" + date + ", sub=" + sub + "]";
 	}
         
+        /**
+         * Secondery toString 
+         * @return 
+         */
         public String toString2(){
             String strDate = new SimpleDateFormat("dd/MM/yyyy").format(date);
             return this.number + " - " + this.branchNum + " " + strDate + ", Total time: " + this.getTotalWorkoutTime();
