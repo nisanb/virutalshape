@@ -3,6 +3,7 @@
  * Display login window to Virtual iShape
  */
 package gui;
+import core.Coach;
   import java.io.*;
 import sun.audio.*;
 
@@ -333,7 +334,10 @@ public class LoginGui extends javax.swing.JFrame {
                     //Able to login
                     iWindow.log("Successfully logged in. Loading GUI");
                     dispose();
-                    iWindow.setUser(2, (Receptionist) emp);
+                    if(emp instanceof Receptionist)
+                        iWindow.setUser(2, (Receptionist) emp);
+                    else
+                        iWindow.setUser(3, (Coach) emp);
                     MainGui gui = new MainGui();
                     gui.setVisible(true);
                     

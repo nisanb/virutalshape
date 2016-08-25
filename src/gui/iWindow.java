@@ -3,6 +3,7 @@
  * Other windows will remain active but at hide state;
  */
 package gui;
+import Exception.ExceptionManager;
 import core.Address;
 import core.Customer;
 import core.Employee;
@@ -58,6 +59,7 @@ public class iWindow {
     
     //iWindow Management
     protected static JInternalFrame currentWindow = null;
+    protected static JInternalFrame lastWindow = null;
     protected static JPanel panel = null;
 
     //======================================= Main ==========================================
@@ -177,6 +179,13 @@ public class iWindow {
     public static void openWin(JInternalFrame frame){
         if(frame==null)
             return;
+        
+        
+        //Check for exceptions
+        if(ExceptionManager.windowException(frame))
+            return;
+        
+        
         BasicInternalFrameUI bi = (BasicInternalFrameUI)frame.getUI();
         bi.setNorthPane(null);
         
@@ -198,9 +207,15 @@ public class iWindow {
         }
         else{
 
+            //Hide the opened window
             getCurrentWindow().setVisible(false);
-            getCurrentWindow().dispose();
+            
+            //Set the last window from the current one
+            setLastWindow(getCurrentWindow());
+            
+            //Set the current window
             setCurrentWindow(frame);
+
 
         }
         
@@ -224,6 +239,23 @@ public class iWindow {
     }
     
     /**
+     * Returns one loop back to the last window opened
+     */
+    public static void returnWindow(){
+        
+        if(getCurrentWindow()==null || getLastWindow()==null)
+            return;
+        
+        
+        getCurrentWindow().hide();
+        JInternalFrame tmp = getCurrentWindow();
+        setCurrentWindow(getLastWindow());
+        setLastWindow(tmp);
+        
+        iWindow.update();
+    }
+    
+    /**
      * Aquire the content pane panel
      * @return 
      */
@@ -231,7 +263,21 @@ public class iWindow {
         return panel;
     }
 
+    /**
+     * Sets the last window opened
+     * @param frame 
+     */
+    public static void setLastWindow(JInternalFrame frame){
+        lastWindow = frame;
+    }
     
+    /**
+     * Returns the last window opened
+     * @return 
+     */
+    public static JInternalFrame getLastWindow(){
+        return lastWindow;
+    }
 
   
     /**

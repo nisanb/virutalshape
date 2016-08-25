@@ -362,7 +362,7 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
         getContentPane().add(btnDisconnect, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, 180, 40));
 
         iReturn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gui/buttons/arrow-88-24.png"))); // NOI18N
-        iReturn.setToolTipText("Return");
+        iReturn.setToolTipText("Return Last Window");
         iReturn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 iReturnMouseClicked(evt);
@@ -499,7 +499,7 @@ public class MainGui extends javax.swing.JFrame implements Serializable  {
     }//GEN-LAST:event_btnCustomersMouseClicked
 
     private void iReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iReturnMouseClicked
-    
+        iWindow.returnWindow();
     }//GEN-LAST:event_iReturnMouseClicked
 
     private void btnEmployeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmployeesMouseClicked
